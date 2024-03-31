@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -23,12 +24,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import src.Model.ChiTietPhieuNhapHang;
 import src.Model.HangHoa;
 import src.Model.HinhAnh;
 import src.Model.NhomHang;
+import src.Model.TheKho;
 import src.Service.HangHoaService;
 import src.Service.HinhAnhService;
+import src.Service.KhachHangService;
+import src.Service.NhaCungCapService;
+import src.Service.NhanVienService;
 import src.Service.NhomHangService;
+import src.Service.TheKhoService;
+import src.Util.Util;
 
 /**
  *
@@ -42,10 +51,16 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private HangHoa hangHoa;
     private HangHoaService hangHoaService = new HangHoaService();
     private NhomHangService nhomHangService = new NhomHangService();
+    private TheKhoService theKhoService = new TheKhoService();
     private HinhAnhService hinhAnhService = new HinhAnhService();
     private List<HinhAnh> danhSachHinhAnh = new ArrayList<>();
+    private NhanVienService nhanVienService = new NhanVienService();
+    private KhachHangService khachHangService = new KhachHangService();
+    private NhaCungCapService nhaCungCapService = new NhaCungCapService();
+    private Util util = new Util();
     List<String> danhSachLinkHinhAnh = new ArrayList<>();
     List<String> danhSachLinkMoiHinhAnh = new ArrayList<>();
+    List<TheKho> danhSachTheKho = new ArrayList<>();
     String destinationFolderPath = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image";
     public Frame_chiTietHangHoa() {
         initComponents();
@@ -186,7 +201,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel45 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedPaneChiTietHangHoa_theKho = new javax.swing.JTabbedPane();
         jPanel38 = new javax.swing.JPanel();
         lbChiTietHangHoa_tenHangHoa = new javax.swing.JLabel();
         jPanel40 = new javax.swing.JPanel();
@@ -243,6 +258,12 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
 
         jPanel45.setBackground(new java.awt.Color(209, 202, 202));
         jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabbedPaneChiTietHangHoa_theKho.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbedPaneChiTietHangHoa_theKhoStateChanged(evt);
+            }
+        });
 
         jPanel38.setBackground(new java.awt.Color(255, 255, 255));
         jPanel38.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -686,19 +707,16 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         });
         jPanel38.add(btnChiTietHangHoa_thayHinh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 40, -1));
 
-        jTabbedPane1.addTab("Thông tin", jPanel38);
+        tabbedPaneChiTietHangHoa_theKho.addTab("Thông tin", jPanel38);
 
         jPanel39.setBackground(new java.awt.Color(255, 255, 255));
 
         tbChiTietHangHoa_theKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Mã thẻ kho", "Phương thức", "Thời gian", "Người thực hiện", "Đối tác", "Giá vốn", "Số lượng", "Tốn cuối"
+                "Mã thẻ kho", "Phương thức", "Thời gian", "Người thực hiện", "Đối tác", "Giá vốn", "Số lượng", "Tồn cuối"
             }
         ));
         jScrollPane9.setViewportView(tbChiTietHangHoa_theKho);
@@ -762,9 +780,9 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Thẻ kho", jPanel39);
+        tabbedPaneChiTietHangHoa_theKho.addTab("Thẻ kho", jPanel39);
 
-        jPanel45.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 530));
+        jPanel45.add(tabbedPaneChiTietHangHoa_theKho, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -975,6 +993,42 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnChiTietHangHoa_thayHinh3ActionPerformed
 
+    private void tabbedPaneChiTietHangHoa_theKhoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneChiTietHangHoa_theKhoStateChanged
+        int tabbedPaneSelected = tabbedPaneChiTietHangHoa_theKho.getSelectedIndex();
+        short tongSoLuong = 0;
+        if (tabbedPaneSelected == 1){
+            try {
+                danhSachTheKho = theKhoService.hienThiTatCaTheKhoTheoMaHangHoa(hangHoa.getMaHangHoa());
+                DefaultTableModel recordTable = (DefaultTableModel)tbChiTietHangHoa_theKho.getModel();
+                recordTable.setRowCount(0);
+                for (TheKho theKho : danhSachTheKho) {
+                    theKhoService.themTheKho(theKho);
+                    Vector columnData = new Vector();
+                    columnData.add(theKho.getMaTheKho());
+                    columnData.add(theKho.getPhuongThuc());
+                    columnData.add(util.localDateParseMethod(theKho.getThoiGian()));
+                    columnData.add(nhanVienService.hienThiNhanVienTheoMaNhanVien(theKho.getMaNhanVien()).getTenNhanVien());
+                    
+                    if (theKho.getMaNhaCungCap() == null){
+                        columnData.add(khachHangService.hienThiKhachHangTheoMaKhachHang(theKho.getMaKhachHang()).getTenKhachHang());
+                    } else {
+                        columnData.add(nhaCungCapService.hienThiNhaCungCapTheoMaNhaCungCap(theKho.getMaNhaCungCap()).getTenNhaCungCap());
+                    }
+                    
+                    columnData.add(theKho.getGiaVon());
+                    columnData.add(theKho.getSoLuong());
+                    columnData.add(theKho.getTonCuoi());
+                    tongSoLuong += theKho.getSoLuong();
+                    
+                    recordTable.addRow(columnData);
+                }
+                lbChiTietHangHoa_theKho_tongTonKho.setText(String.valueOf(tongSoLuong));
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_tabbedPaneChiTietHangHoa_theKhoStateChanged
+
     private String layTenFile(){
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogType(JFileChooser.OPEN_DIALOG);
@@ -1100,7 +1154,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel60;
     private javax.swing.JPanel jPanel90;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbChiTietHangHang_hinhAnh0;
     private javax.swing.JLabel lbChiTietHangHoa_error;
     private javax.swing.JLabel lbChiTietHangHoa_tenHangHoa;
@@ -1109,6 +1162,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private javax.swing.JLabel lbChiTietHinhAnh_hinhAnh2;
     private javax.swing.JLabel lbChiTietHinhAnh_hinhAnh3;
     private javax.swing.JPanel panelChiTietHangHoa_error;
+    private javax.swing.JTabbedPane tabbedPaneChiTietHangHoa_theKho;
     private javax.swing.JTable tbChiTietHangHoa_theKho;
     private javax.swing.JTextField tfChiTietHangHang_giaBan;
     private javax.swing.JTextField tfChiTietHangHang_giaVon;

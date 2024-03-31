@@ -44,7 +44,10 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+        <Container class="javax.swing.JTabbedPane" name="tabbedPaneChiTietHangHoa_theKho">
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tabbedPaneChiTietHangHoa_theKhoStateChanged"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="1320" height="530"/>
@@ -965,7 +968,7 @@
                     <Component class="javax.swing.JTable" name="tbChiTietHangHoa_theKho">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="8" rowCount="4">
+                          <Table columnCount="8" rowCount="0">
                             <Column editable="true" title="M&#xe3; th&#x1ebb; kho" type="java.lang.Object"/>
                             <Column editable="true" title="Ph&#x1b0;&#x1a1;ng th&#x1ee9;c" type="java.lang.Object"/>
                             <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
@@ -973,7 +976,7 @@
                             <Column editable="true" title="&#x110;&#x1ed1;i t&#xe1;c" type="java.lang.Object"/>
                             <Column editable="true" title="Gi&#xe1; v&#x1ed1;n" type="java.lang.Object"/>
                             <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
-                            <Column editable="true" title="T&#x1ed1;n cu&#x1ed1;i" type="java.lang.Object"/>
+                            <Column editable="true" title="T&#x1ed3;n cu&#x1ed1;i" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>
