@@ -910,7 +910,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="jButton31">
+                    <Component class="javax.swing.JButton" name="btnDatHang_datHang">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -985,7 +985,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel305" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lb_tongSoLuong" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="tfDatHang_soLuong" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -996,7 +996,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel305" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lb_tongSoLuong" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfDatHang_soLuong" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1012,7 +1012,7 @@
                             <Property name="text" type="java.lang.String" value="T&#x1ed5;ng s&#x1ed1; l&#x1b0;&#x1ee3;ng:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lb_tongSoLuong">
+                        <Component class="javax.swing.JLabel" name="tfDatHang_soLuong">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="16" style="1"/>
@@ -1042,7 +1042,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel289" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lb_tongTienHang" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="tfDatHang_tongTienHang" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1053,7 +1053,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel289" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lb_tongTienHang" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfDatHang_tongTienHang" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1069,7 +1069,7 @@
                             <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n h&#xe0;ng:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lb_tongTienHang">
+                        <Component class="javax.swing.JLabel" name="tfDatHang_tongTienHang">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Times New Roman" size="16" style="1"/>
