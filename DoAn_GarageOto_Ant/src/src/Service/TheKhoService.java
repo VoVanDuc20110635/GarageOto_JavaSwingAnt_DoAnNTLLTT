@@ -56,11 +56,26 @@ public class TheKhoService {
                              String.valueOf(theKho.getSoLuong()),
                              String.valueOf(theKho.getSoLuongThucTe()),
                              String.valueOf(theKho.getThoiGian()),
-                             bangChamCongMoi.getMaNhanVien());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+                             String.valueOf(theKho.getTonCuoi()),
+                             String.valueOf(theKho.getMaHangHoa()),
+                             String.valueOf(theKho.getMaKhachHang()),
+                             String.valueOf(theKho.getMaNhanVien()));
+                ConnectorDB.executeUpdateQueryConnectorDB(query);
            } 
            if (theKho.getMaKhachHang()== null){
-               System.out.println("huhu");
+               String query = String.format("insert into the_kho(ma_the_kho, gia_von, phuong_thuc, so_luong, so_luong_thuc_te, thoi_gian, ton_cuoi, ma_hang_hoa, ma_nhan_vien, ma_nha_cung_cap) " +
+                             "values ('%s', %s, '%s', %s, %s, '%s', %s, '%s', '%s', '%s')",
+                             theKho.getMaTheKho(),
+                             String.valueOf(theKho.getGiaVon()),
+                             theKho.getPhuongThuc(),
+                             String.valueOf(theKho.getSoLuong()),
+                             String.valueOf(theKho.getSoLuongThucTe()),
+                             String.valueOf(theKho.getThoiGian()),
+                             String.valueOf(theKho.getTonCuoi()),
+                             String.valueOf(theKho.getMaHangHoa()),
+                             String.valueOf(theKho.getMaNhanVien()),
+                             String.valueOf(theKho.getMaNhaCungCap()));
+                ConnectorDB.executeUpdateQueryConnectorDB(query);
            }
            
             return 1;
