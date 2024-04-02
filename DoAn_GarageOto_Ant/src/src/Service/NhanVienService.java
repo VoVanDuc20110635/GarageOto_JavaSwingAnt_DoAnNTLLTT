@@ -18,12 +18,13 @@ import src.Util.Util;
  */
 public class NhanVienService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     private ChiNhanhServive chiNhanhServive = new ChiNhanhServive();
     private LichLamViecService lichLamViecService = new LichLamViecService();
     
     public List<NhanVien> hienThiTatCaNhanVien () throws SQLException{ //
         String query = String.format("select * from nhan_vien");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -48,12 +49,13 @@ public class NhanVienService {
             }
             danhSachNhanVien.add(nhanVien);
         }
+        connectorDB.closeConnection();
         return danhSachNhanVien;
     }
     
     public NhanVien hienThiNhanVienTheoMaNhanVien (String maNhanVien) throws SQLException{ //
         String query = String.format("select * from nhan_vien where ma_nhan_vien = '%s'", maNhanVien);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -76,6 +78,7 @@ public class NhanVienService {
                 nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
             }
         }
+        connectorDB.closeConnection();
         return nhanVien;
     }
 }

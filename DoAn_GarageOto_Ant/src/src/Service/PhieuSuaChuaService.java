@@ -18,9 +18,10 @@ import src.Util.Util;
  */
 public class PhieuSuaChuaService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<PhieuSuaChua> hienThiTatCaPhieuSuaChua() throws SQLException{ //
         String query = String.format("select * from phieu_sua_chua");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -41,6 +42,7 @@ public class PhieuSuaChuaService {
             }
             danhSachPhieuSuaChua.add(phieuSuaChua);
         }
+        connectorDB.closeConnection();
         return danhSachPhieuSuaChua;
     }
     

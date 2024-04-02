@@ -17,10 +17,11 @@ import src.Model.LichLamViec;
  * @author WINDOWS 10
  */
 public class LichLamViecService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     private Util util = new Util();
     public LichLamViec hienThiLichLamViecTheoMaLichLamViec (String maLichLamViec) throws SQLException{ //
         String query = String.format("select * from lich_lam_viec where ma_lich_lam_viec = '%s'", maLichLamViec);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -34,6 +35,7 @@ public class LichLamViecService {
                 lichLamViec.setNgayKetThuc(util.localDateParseMethod(resultTable.getString("ngay_ket_thuc")));
             }
         }
+        connectorDB.closeConnection();
         return lichLamViec;
     }
 }

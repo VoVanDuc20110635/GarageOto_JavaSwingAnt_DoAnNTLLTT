@@ -19,9 +19,10 @@ import src.Util.Util;
  */
 public class CaLamService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<CaLam> hienThiTatCaCaLam () throws SQLException{ //
         String query = String.format("select * from ca_lam");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -36,12 +37,13 @@ public class CaLamService {
             }
             danhSachCaLam.add(caLam);
         }
+        connectorDB.closeConnection();
         return danhSachCaLam;
     }
     
     public CaLam hienThiCaLamTheoMaCaLam (String maCaLam) throws SQLException{ //
         String query = String.format("select * from ca_lam where ma_ca_lam = '%s'", maCaLam);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -54,6 +56,7 @@ public class CaLamService {
                 caLam.setThoiGianKetThuc(util.localDateParseMethodToLocalTime(resultTable.getString("thoi_gian_ket_thuc")));
             }
         }
+        connectorDB.closeConnection();
         return caLam;
     }
 }

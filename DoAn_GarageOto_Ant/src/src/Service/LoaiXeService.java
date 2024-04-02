@@ -17,9 +17,10 @@ import src.Model.LoaiXe;
  * @author WINDOWS 10
  */
 public class LoaiXeService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<LoaiXe> hienThiTatCaLoaiXe() throws SQLException{ //
         String query = String.format("select * from loai_xe ");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -32,12 +33,13 @@ public class LoaiXeService {
             }
             danhSachLoaiXe.add(loaiXe);
         }
+        connectorDB.closeConnection();
         return danhSachLoaiXe;
     }
     
     public LoaiXe hienThiLoaiXeTheoMaLoaiXe(String maLoaiXe) throws SQLException{ //
         String query = String.format("select * from loai_xe where ma_loai_xe = '%s'", maLoaiXe);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -48,6 +50,7 @@ public class LoaiXeService {
                 loaiXe.setTenLoaiXe(resultTable.getString("ten_loai_xe"));
             }
         }
+        connectorDB.closeConnection();
         return loaiXe;
     }
 }

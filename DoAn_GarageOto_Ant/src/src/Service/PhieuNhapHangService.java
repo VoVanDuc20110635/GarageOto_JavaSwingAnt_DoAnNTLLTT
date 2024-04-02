@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -23,13 +23,14 @@ import src.Util.Util;
  */
 public class PhieuNhapHangService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     private NhaCungCapService nhaCungCapService = new NhaCungCapService();
     private ChiNhanhServive chiNhanhServive = new ChiNhanhServive();
     private NhanVienService nhanVienService = new NhanVienService();
     
     public List<PhieuNhapHang> hienThiTatCaPhieuNhapHang () throws SQLException{ //
         String query = String.format("select * from phieu_nhap_hang");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -48,12 +49,13 @@ public class PhieuNhapHangService {
             }
             danhSachPhieuNhapHang.add(phieuNhapHang);
         }
+        connectorDB.closeConnection();
         return danhSachPhieuNhapHang;
     }
     
     public PhieuNhapHang layPhieuNhapHangDuaTrenMaPhieuNhapHang (String maPhieuNhapHang) throws SQLException{ //
         String query = String.format("select * from phieu_nhap_hang where phieu_nhap_hang = '%s'", maPhieuNhapHang);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -70,6 +72,7 @@ public class PhieuNhapHangService {
                 phieuNhapHang.setMaNhanVienTao(resultTable.getString("ma_nhan_vien"));
                 phieuNhapHang.setTienDaTra(resultTable.getShort("tien_da_tra"));            }
         }
+        connectorDB.closeConnection();
         return phieuNhapHang;
     }
     
@@ -79,7 +82,8 @@ public class PhieuNhapHangService {
                              String.valueOf(phieuNhapHang.getTrangThai()),
                              String.valueOf(phieuNhapHang.getMaNhaCungCap()),
                              String.valueOf(phieuNhapHang.getPhieuNhapHang()));
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;

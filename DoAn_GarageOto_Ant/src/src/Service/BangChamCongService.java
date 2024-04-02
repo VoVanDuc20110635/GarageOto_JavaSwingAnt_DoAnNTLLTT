@@ -20,9 +20,10 @@ import src.Util.Util;
  */
 public class BangChamCongService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<BangChamCong> hienThiTatCaBangChamCong () throws SQLException{ //
         String query = String.format("select * from bang_cham_cong");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -39,12 +40,13 @@ public class BangChamCongService {
             }
             danhSachBangChamCong.add(bangChamCong);
         }
+        connectorDB.closeConnection();
         return danhSachBangChamCong;
     }
     public List<BangChamCong> hienThiBangChamCongTheoMaNhanVien (String maNhanVien) throws SQLException{ //
         String query = String.format("select * from bang_cham_cong where ma_nhan_vien='%s'",
                              maNhanVien);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -61,6 +63,7 @@ public class BangChamCongService {
             }
             danhSachBangChamCong.add(bangChamCong);
         }
+        connectorDB.closeConnection();
         return danhSachBangChamCong;
     }
     
@@ -73,7 +76,8 @@ public class BangChamCongService {
                              bangChamCongMoi.getTrangThai(),
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;
@@ -88,7 +92,8 @@ public class BangChamCongService {
                              bangChamCongMoi.getMaCaLam(),
                              bangChamCongMoi.getMaNhanVien(),
                              bangChamCongMoi.getMaBangChamCong());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;
@@ -98,7 +103,7 @@ public class BangChamCongService {
     public List<BangChamCong> hienThiBangChamCongTheoTheoNgayBatDauVaNgayKetThuc (Date ngayBatDau, Date ngayKetThuc) throws SQLException{ //
         String query = String.format("select * from bang_cham_cong where ngay_lam between '%s' and '%s'",
                              util.layNgayString(ngayBatDau), util.layNgayString(ngayKetThuc));
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -115,13 +120,14 @@ public class BangChamCongService {
             }
             danhSachBangChamCong.add(bangChamCong);
         }
+        connectorDB.closeConnection();
         return danhSachBangChamCong;
     }
     
     public List<BangChamCong> hienThiBangChamCongTheoTheoNgay (Date date) throws SQLException{ //
         String query = String.format("select * from bang_cham_cong where DATE(ngay_lam) = '%s'",
                              util.layNgayString(date));
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -138,13 +144,14 @@ public class BangChamCongService {
             }
             danhSachBangChamCong.add(bangChamCong);
         }
+        connectorDB.closeConnection();
         return danhSachBangChamCong;
     }
     
     public List<BangChamCong> hienThiBangChamCongTheoTheoThang (String thang, String nam) throws SQLException{ //
         String query = String.format("select * from bang_cham_cong where MONTH(ngay_lam) = %s and YEAR(ngay_lam) = %s",
                              thang, nam);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -161,13 +168,14 @@ public class BangChamCongService {
             }
             danhSachBangChamCong.add(bangChamCong);
         }
+        connectorDB.closeConnection();
         return danhSachBangChamCong;
     }
     
     public List<BangChamCong> hienThiBangChamCongTheoTheoNam ( String nam) throws SQLException{ //
         String query = String.format("select * from bang_cham_cong where YEAR(ngay_lam) = %s",
                              nam);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -184,6 +192,7 @@ public class BangChamCongService {
             }
             danhSachBangChamCong.add(bangChamCong);
         }
+        connectorDB.closeConnection();
         return danhSachBangChamCong;
     }
     

@@ -17,10 +17,11 @@ import src.Model.HinhAnh;
  * @author WINDOWS 10
  */
 public class HinhAnhService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     public HinhAnh hienThiHinhAnhTheoMaNhanVien (String maNhanVien) throws SQLException{ //
         String query = String.format("select * from hinh_anh where ma_nhan_vien ='%s'",
                              maNhanVien);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -35,13 +36,14 @@ public class HinhAnhService {
                 hinhAnh.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
             }
         }
+        connectorDB.closeConnection();
         return hinhAnh;
     }
     
     public HinhAnh hienThiHinhAnhTheoMaHangHoa (String maHangHoa) throws SQLException{ //
         String query = String.format("select * from hinh_anh where ma_hang_hoa ='%s'",
                              maHangHoa);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -57,13 +59,14 @@ public class HinhAnhService {
             }
             break;  
         }
+        connectorDB.closeConnection();
         return hinhAnh;
     }
     
     public List<HinhAnh> hienThiTatCaHinhAnhTheoMaHangHoa (String maHangHoa) throws SQLException{ //
         String query = String.format("select * from hinh_anh where ma_hang_hoa ='%s'",
                              maHangHoa);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -79,6 +82,7 @@ public class HinhAnhService {
             }
             danhSacHinhAnh.add(hinhAnh);
         }
+        connectorDB.closeConnection();
         return danhSacHinhAnh;
     }
     
@@ -95,7 +99,8 @@ public class HinhAnhService {
                              hinhAnh.getMaHangHoa());
            }
             System.out.println("query them hinh anh: " +  query);
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
 //        } catch (Exception err){
 //            return 0;
@@ -104,7 +109,7 @@ public class HinhAnhService {
     
     public int demSoHinhAnh() throws SQLException{
         String query = String.format("SELECT COUNT(*) AS row_count FROM hinh_anh;");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -112,6 +117,7 @@ public class HinhAnhService {
         while(resultTable.next()){
             numberOfRows = resultTable.getInt("row_count");
         }
+        connectorDB.closeConnection();
         return numberOfRows;
     }
     
@@ -120,7 +126,8 @@ public class HinhAnhService {
            String query = String.format("update hinh_anh set ten_hinh='%s' where ma_hinh_anh='%s'",
                              hinhAnhMoi.getTenHinh(),
                              hinhAnhMoi.getMaHinhAnh());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;

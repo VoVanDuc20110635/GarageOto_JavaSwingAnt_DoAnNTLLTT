@@ -18,10 +18,11 @@ import src.Util.Util;
  * @author WINDOWS 10
  */
 public class KhachHangService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     private Util util = new Util();
     public List<KhachHang> hienThiTatCaKhachHang () throws SQLException{ //
         String query = String.format("select * from khach_hang");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -45,12 +46,13 @@ public class KhachHangService {
             }
             danhSachKhachHang.add(khachHang);
         }
+        connectorDB.closeConnection();
         return danhSachKhachHang;
     }
     
     public KhachHang hienThiKhachHangTheoMaKhachHang (String maKhachHang) throws SQLException{ //
         String query = String.format("select * from khach_hang where ma_khach_hang = '%s'", maKhachHang);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -72,6 +74,7 @@ public class KhachHangService {
                 khachHang.setLoaiKhach(resultTable.getString("loai_khach"));
             }
         }
+        connectorDB.closeConnection();
         return khachHang;
     }
     
@@ -95,7 +98,8 @@ public class KhachHangService {
                              khachHang.getTongNo(),
                              khachHang.getMaNhanVien(),
                              khachHang.getGioiTinh());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;
@@ -103,7 +107,7 @@ public class KhachHangService {
     }
     public int demSoKhachHang() throws SQLException{
         String query = String.format("SELECT COUNT(*) AS row_count FROM khach_hang;");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -111,6 +115,7 @@ public class KhachHangService {
         while(resultTable.next()){
             numberOfRows = resultTable.getInt("row_count");
         }
+        connectorDB.closeConnection();
         return numberOfRows;
     }
 }

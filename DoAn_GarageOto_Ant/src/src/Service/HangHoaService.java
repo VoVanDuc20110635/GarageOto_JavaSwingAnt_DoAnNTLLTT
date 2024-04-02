@@ -17,6 +17,7 @@ import src.Model.HangHoa;
  * @author WINDOWS 10
  */
 public class HangHoaService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<HangHoa> hienThiTatCaHangHoa(String maHangHoa, String tenHangHoa) throws SQLException{ //
         String query = String.format("select * from hang_hoa");
         int flag = 0;
@@ -30,7 +31,7 @@ public class HangHoaService {
         if (tenHangHoa.equals("") == false && 0 == flag){
             query += String.format(" where ten_hang_hoa like '%%%s%%' ", tenHangHoa);
         }
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -51,12 +52,13 @@ public class HangHoaService {
             }
             danhSachHangHoa.add(hangHoa);
         }
+        connectorDB.closeConnection();
         return danhSachHangHoa;
     }
     
     public HangHoa hienThiHangHoaTheoMaHangHoa(String maHangHoa) throws SQLException{ //
         String query = String.format("select * from hang_hoa where ma_hang_hoa = '%s'", maHangHoa);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -74,6 +76,7 @@ public class HangHoaService {
                 hangHoa.setTrangThai(resultTable.getInt("trang_thai"));
             }
         }
+        connectorDB.closeConnection();
         return hangHoa;
     }
     
@@ -96,7 +99,7 @@ public class HangHoaService {
             query += String.format(" AND ten_hang_hoa like '%%%s%%' ", tenHangHoa);
         }
         System.out.println(query);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -116,6 +119,7 @@ public class HangHoaService {
             }
             danhSachHangHoa.add(hangHoa);
         }
+        connectorDB.closeConnection();
         return danhSachHangHoa;
     }
     
@@ -131,7 +135,8 @@ public class HangHoaService {
                              String.valueOf(hangHoaMoi.getTonKho()),
                              hangHoaMoi.getMaNhomHang(),
                              hangHoaMoi.getLoaiHang());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;
@@ -139,7 +144,7 @@ public class HangHoaService {
     }
     public int demSoHangHoa() throws SQLException{
         String query = String.format("SELECT COUNT(*) AS row_count FROM hang_hoa;");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -147,6 +152,7 @@ public class HangHoaService {
         while(resultTable.next()){
             numberOfRows = resultTable.getInt("row_count");
         }
+        connectorDB.closeConnection();
         return numberOfRows;
     }
     public int updateHangHoa (HangHoa hangHoa) throws SQLException{ //   
@@ -160,7 +166,8 @@ public class HangHoaService {
                              hangHoa.getGiaVon(),
                              hangHoa.getTrangThai(),
                              hangHoa.getMaHangHoa());
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;
@@ -172,7 +179,8 @@ public class HangHoaService {
            String query = String.format("update hang_hoa set trang_thai=%s where ma_hang_hoa='%s'",
                              trangThaiHangHoa,
                              maHangHoa);
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;

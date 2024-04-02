@@ -17,9 +17,10 @@ import src.Model.NhomHang;
  * @author WINDOWS 10
  */
 public class NhomHangService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<NhomHang> hienThiTatCaNhomHang() throws SQLException{ //
         String query = String.format("select * from nhom_hang ");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -32,12 +33,13 @@ public class NhomHangService {
             }
             danhSachNhomHang.add(nhomHang);
         }
+        connectorDB.closeConnection();
         return danhSachNhomHang;
     }
     
     public NhomHang hienThiNhomHangTheoMaNhomHang(String maNhomHang) throws SQLException{ //
         String query = String.format("select * from nhom_hang where ma_nhom_hang = '%s'", maNhomHang);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;

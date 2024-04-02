@@ -18,9 +18,10 @@ import src.Model.ChiNhanh;
  */
 public class ChiNhanhServive {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<ChiNhanh> hienThiTatCaChiNhanh () throws SQLException{ //
         String query = String.format("select * from chi_nhanh");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -35,12 +36,13 @@ public class ChiNhanhServive {
             }
             danhSachChiNhanh.add(chiNhanh);
         }
+        connectorDB.closeConnection();
         return danhSachChiNhanh;
     }
     
     public ChiNhanh hienThiChiNhanhTheoMaChiNhanh (String maChiNhanh) throws SQLException{ //
         String query = String.format("select * from chi_nhanh where ma_chi_nhanh = '%s'", maChiNhanh);        
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -53,6 +55,7 @@ public class ChiNhanhServive {
                 chiNhanh.setTrangThai(resultTable.getString("trang_thai"));
             }
         }
+        connectorDB.closeConnection();
         return chiNhanh;
     }
 }

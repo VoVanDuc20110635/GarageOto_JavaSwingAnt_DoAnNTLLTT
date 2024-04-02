@@ -19,9 +19,10 @@ import src.Util.Util;
  */
 public class PhieuTraHangService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<PhieuTraHang> hienThiTatCaPhieuTraHang () throws SQLException{ //
         String query = String.format("select * from phieu_tra_hang");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -41,12 +42,13 @@ public class PhieuTraHangService {
             
             danhSachPhieuTraHang.add(phieuTraHang);
         }
+        connectorDB.closeConnection();
         return danhSachPhieuTraHang;
     }
     
     public PhieuTraHang hienThiPhieuTraHangTheoMaPhieuTraHang (String maPhieuTraHang) throws SQLException{ //
         String query = String.format("select * from phieu_tra_hang where ma_phieu_tra_hang = '%s'", maPhieuTraHang);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -64,13 +66,14 @@ public class PhieuTraHangService {
                 phieuTraHang.setTrangThai(resultTable.getString("trang_thai"));
             }
         }
+        connectorDB.closeConnection();
         return phieuTraHang;
     }
     
     public double tinhTongTienThuDuocSauKhiTraHang(String maKhachHang) throws SQLException{
         String query = String.format("select * from phieu_tra_hang where ma_khach_hang = '%s'", maKhachHang);
         double tongTien = 0;
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -79,6 +82,7 @@ public class PhieuTraHangService {
             tongTien += resultTable.getDouble("can_tra");
             
         }
+        connectorDB.closeConnection();
         return tongTien;
     }
 }

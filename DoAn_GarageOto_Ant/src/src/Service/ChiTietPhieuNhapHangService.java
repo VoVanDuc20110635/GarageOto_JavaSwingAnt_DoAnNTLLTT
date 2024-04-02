@@ -17,11 +17,12 @@ import src.Model.ChiTietPhieuNhapHang;
  * @author WINDOWS 10
  */
 public class ChiTietPhieuNhapHangService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     private HangHoaService hangHoaService = new HangHoaService();
     public List<ChiTietPhieuNhapHang> hienThiChiTietPhieuNhapHangTheoMaPhieuNhapHang (String maPhieuNhapHang) throws SQLException{ //
         String query = String.format("select * from chi_tiet_phieu_nhap_hang where ma_phieu_nhap_hang='%s'",
                              maPhieuNhapHang);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -41,13 +42,14 @@ public class ChiTietPhieuNhapHangService {
             chiTietPhieuNhapHang.setHangHoa(hangHoaService.hienThiHangHoaTheoMaHangHoa(chiTietPhieuNhapHang.getMaHangHoa()));
             danhSachChiTietPhieuNhapHang.add(chiTietPhieuNhapHang);
         }
+        connectorDB.closeConnection();
         return danhSachChiTietPhieuNhapHang;
     }   
     
     public ChiTietPhieuNhapHang hienThiChiTietPhieuNhapHangTheoMaChiTietPhieuNhapHang (String maChiTietPhieuNhapHang) throws SQLException{ //
         String query = String.format("select * from chi_tiet_phieu_nhap_hang where ma_chi_tiet_phieu_nhap_hang='%s'",
                              maChiTietPhieuNhapHang);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -66,6 +68,7 @@ public class ChiTietPhieuNhapHangService {
             }
             chiTietPhieuNhapHang.setHangHoa(hangHoaService.hienThiHangHoaTheoMaHangHoa(chiTietPhieuNhapHang.getMaHangHoa()));
         }
+        connectorDB.closeConnection();
         return chiTietPhieuNhapHang;
     }
     
@@ -76,7 +79,8 @@ public class ChiTietPhieuNhapHangService {
                              String.valueOf(chiTietPhieuNhapHang.getSo_luong()),
                              String.valueOf(chiTietPhieuNhapHang.getGiam_gia()),
                              String.valueOf(chiTietPhieuNhapHang.getMaChiTietPhieuNhapHang()));
-            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
             return 1;
         } catch (Exception err){
             return 0;

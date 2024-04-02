@@ -20,10 +20,11 @@ import src.Util.Util;
  */
 public class NhaCungCapService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     private NhanVienService nhanVienService = new NhanVienService();
     public List<NhaCungCap> hienThiTatCaNhaCungCap () throws SQLException{ //
         String query = String.format("select * from nha_cung_cap");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -44,12 +45,13 @@ public class NhaCungCapService {
             }
             danhSachNhaCungCap.add(nhaCungCap);
         }
+        connectorDB.closeConnection();
         return danhSachNhaCungCap;
     }
     
     public NhaCungCap hienThiNhaCungCapTheoMaNhaCungCap (String maNhaCungCap) throws SQLException{ //
         String query = String.format("select * from nha_cung_cap where ma_nha_cung_cap = '%s'", maNhaCungCap);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -68,6 +70,7 @@ public class NhaCungCapService {
                 nhaCungCap.setNoCanTra(Double.parseDouble(resultTable.getString("no_can_tra")));
             }
         }
+        connectorDB.closeConnection();
         return nhaCungCap;
     }
     

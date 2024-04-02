@@ -18,10 +18,11 @@ import src.Util.Util;
  * @author WINDOWS 10
  */
 public class HoaDonService {
+    private ConnectorDB connectorDB = new ConnectorDB();
     private Util util = new Util();
     public List<HoaDon> hienThiTatCaHoaDon () throws SQLException{ //
         String query = String.format("select * from hoa_don");
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -44,12 +45,13 @@ public class HoaDonService {
             }
             danhSachHoaDon.add(hoaDon);
         }
+        connectorDB.closeConnection();
         return danhSachHoaDon;
     }
     
     public HoaDon hienThiHoaDonTheoMaHoadon (String maHoaDon) throws SQLException{ //
         String query = String.format("select * from hoa_don where ma_hoa_don = '%s'", maHoaDon);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -69,6 +71,7 @@ public class HoaDonService {
                 hoaDon.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
             }
         }
+        connectorDB.closeConnection();
         return hoaDon;
     }
 }

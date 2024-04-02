@@ -18,9 +18,10 @@ import src.Util.Util;
  */
 public class TheKhoService {
     private Util util = new Util();
+    private ConnectorDB connectorDB = new ConnectorDB();
     public List<TheKho> hienThiTatCaTheKhoTheoMaHangHoa(String maHangHoa) throws SQLException{ //
         String query = String.format("select * from the_kho where ma_hang_hoa = '%s'", maHangHoa);
-        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int q = resultSetMetaData.getColumnCount();
         int i;
@@ -42,6 +43,7 @@ public class TheKhoService {
             }
             danhSachTheKho.add(theKho);
         }
+        connectorDB.closeConnection();
         return danhSachTheKho;
     }
     
@@ -60,7 +62,7 @@ public class TheKhoService {
                              String.valueOf(theKho.getMaHangHoa()),
                              String.valueOf(theKho.getMaKhachHang()),
                              String.valueOf(theKho.getMaNhanVien()));
-                ConnectorDB.executeUpdateQueryConnectorDB(query);
+                connectorDB.executeUpdateQueryConnectorDB(query);
            } 
            if (theKho.getMaKhachHang()== null){
                String query = String.format("insert into the_kho(ma_the_kho, gia_von, phuong_thuc, so_luong, so_luong_thuc_te, thoi_gian, ton_cuoi, ma_hang_hoa, ma_nhan_vien, ma_nha_cung_cap) " +
@@ -75,10 +77,10 @@ public class TheKhoService {
                              String.valueOf(theKho.getMaHangHoa()),
                              String.valueOf(theKho.getMaNhanVien()),
                              String.valueOf(theKho.getMaNhaCungCap()));
-                ConnectorDB.executeUpdateQueryConnectorDB(query);
+                connectorDB.executeUpdateQueryConnectorDB(query);
            }
-           
-            return 1;
+           connectorDB.closeConnection();
+           return 1;
         } catch (Exception err){
             return 0;
         }
