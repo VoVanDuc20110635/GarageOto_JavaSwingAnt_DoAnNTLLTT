@@ -33,13 +33,15 @@ public class KhachHangService {
                 khachHang.setDiaChi(resultTable.getString("dia_chi"));
                 khachHang.setEmail(resultTable.getString("email"));
                 khachHang.setMaSoThue(resultTable.getString("ma_so_thue"));
-                khachHang.setNgaySinh(util.localDateParseMethod(resultTable.getString("ngay_sinh")));
+                khachHang.setNgaySinh(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_sinh")));
                 khachHang.setNgayTao(util.localDateParseMethod(resultTable.getString("ngay_tao")));
                 khachHang.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 khachHang.setTenKhachHang(resultTable.getString("ten_khach_hang"));
                 khachHang.setTongBan(resultTable.getDouble("tong_ban"));
                 khachHang.setTongNo(resultTable.getDouble("tong_no"));
                 khachHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+                khachHang.setGioiTinh(resultTable.getString("gioi_tinh"));
+                khachHang.setLoaiKhach(resultTable.getString("loai_khach"));
             }
             danhSachKhachHang.add(khachHang);
         }
@@ -59,15 +61,56 @@ public class KhachHangService {
                 khachHang.setDiaChi(resultTable.getString("dia_chi"));
                 khachHang.setEmail(resultTable.getString("email"));
                 khachHang.setMaSoThue(resultTable.getString("ma_so_thue"));
-                khachHang.setNgaySinh(util.localDateParseMethod(resultTable.getString("ngay_sinh")));
+                khachHang.setNgaySinh(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_sinh")));
                 khachHang.setNgayTao(util.localDateParseMethod(resultTable.getString("ngay_tao")));
                 khachHang.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 khachHang.setTenKhachHang(resultTable.getString("ten_khach_hang"));
                 khachHang.setTongBan(resultTable.getDouble("tong_ban"));
                 khachHang.setTongNo(resultTable.getDouble("tong_no"));
                 khachHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+                khachHang.setGioiTinh(resultTable.getString("gioi_tinh"));
+                khachHang.setLoaiKhach(resultTable.getString("loai_khach"));
             }
         }
         return khachHang;
+    }
+    
+    public int themKhachHang (KhachHang khachHang) throws SQLException{ //   
+        System.out.println(khachHang.getNgaySinh());
+        System.out.println(khachHang.getNgayTao());
+//        util.localDateParseMethod(LocalDateTime.now();
+        try{
+           String query = String.format("insert into khach_hang(ma_khach_hang, dia_chi, email, ma_so_thue, ngay_sinh,"
+                   + "ngay_tao, so_dien_thoai, ten_khach_hang, tong_ban, tong_no, ma_nhan_vien, gioi_tinh) " +
+                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s')",
+                             khachHang.getMaKhachHang(),
+                             khachHang.getDiaChi(),
+                             khachHang.getEmail(),
+                             khachHang.getMaSoThue(),
+                             String.valueOf(khachHang.getNgaySinh()),
+                             String.valueOf(util.localDateParseMethod(khachHang.getNgayTao())),
+                             khachHang.getSoDienThoai(),
+                             khachHang.getTenKhachHang(),
+                             khachHang.getTongBan(),
+                             khachHang.getTongNo(),
+                             khachHang.getMaNhanVien(),
+                             khachHang.getGioiTinh());
+            ConnectorDB.executeUpdateQueryConnectorDB(query);
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    public int demSoKhachHang() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM khach_hang;");
+        ResultSet resultTable = ConnectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        return numberOfRows;
     }
 }

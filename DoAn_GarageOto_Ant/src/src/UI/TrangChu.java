@@ -71,6 +71,7 @@ import src.Service.PhieuTraHangService;
 import src.UI.HangHoa.Frame_ThemHangHoa;
 import src.UI.HangHoa.Frame_chiTietHangHoa;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
+import src.UI.KhachHang.Frame_ThemKhachHang;
 import src.Util.AlwaysOpenComboBoxUI;
 import src.Util.Util;
 
@@ -281,7 +282,7 @@ public class TrangChu extends javax.swing.JFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         tb_danhSachKhachHang = new javax.swing.JTable();
         jPanel72 = new javax.swing.JPanel();
-        jButton25 = new javax.swing.JButton();
+        btnKhachHang_them = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel73 = new javax.swing.JPanel();
@@ -1784,11 +1785,16 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel71.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1520, 500));
 
-        jButton25.setBackground(new java.awt.Color(0, 204, 0));
-        jButton25.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton25.setForeground(new java.awt.Color(255, 255, 255));
-        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
-        jButton25.setText("Khách hàng");
+        btnKhachHang_them.setBackground(new java.awt.Color(0, 204, 0));
+        btnKhachHang_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnKhachHang_them.setForeground(new java.awt.Color(255, 255, 255));
+        btnKhachHang_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
+        btnKhachHang_them.setText("Khách hàng");
+        btnKhachHang_them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKhachHang_themActionPerformed(evt);
+            }
+        });
 
         jButton26.setBackground(new java.awt.Color(102, 102, 102));
         jButton26.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -1802,7 +1808,7 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel72Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton25)
+                .addComponent(btnKhachHang_them)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton26)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1812,7 +1818,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel72Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKhachHang_them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -3376,11 +3382,12 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void tabbedPane_doiTacStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPane_doiTacStateChanged
         int selectedIndex = tabbedPane_doiTac.getSelectedIndex();
-        if (selectedIndex == 0) { // Change 1 to the index of your specific tab
+        int selectedIndexMain = tabbedPane_trangChu.getSelectedIndex();
+        if (selectedIndex == 0 && selectedIndexMain == 2) { // Change 1 to the index of your specific tab
             hienThiDanhSachKhachHang();
         }
         
-        if (selectedIndex == 1) { // Change 1 to the index of your specific tab
+        if (selectedIndex == 1 && selectedIndexMain == 2) { // Change 1 to the index of your specific tab
             hienThiDanhSachNhaCungCap();
         }
     }//GEN-LAST:event_tabbedPane_doiTacStateChanged
@@ -3393,6 +3400,9 @@ public class TrangChu extends javax.swing.JFrame {
         }
         if (selectedTab == 1){
             hienThiDanhSachHangHoaKhiDatHang();
+        }
+        if (selectedTab == 2){
+            hienThiDanhSachKhachHang();
         }
     }//GEN-LAST:event_tabbedPane_trangChuStateChanged
 
@@ -3739,6 +3749,13 @@ public class TrangChu extends javax.swing.JFrame {
             tfDatHang_timHangHoa.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_tfDatHang_timHangHoaFocusLost
+
+    private void btnKhachHang_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang_themActionPerformed
+        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang();
+        frame_themKhachHang.setVisible(true);
+        frame_themKhachHang.setSize(950, 400);
+        frame_themKhachHang.setLocation(0,0);
+    }//GEN-LAST:event_btnKhachHang_themActionPerformed
     
 
     
@@ -4333,6 +4350,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnHangHoa_taiLai;
     private javax.swing.JButton btnHangHoa_them;
     private javax.swing.JButton btnHangHoa_timKiem;
+    private javax.swing.JButton btnKhachHang_them;
     private javax.swing.JButton btn_bangCongCapNhat;
     private javax.swing.JButton btn_bangCongReset;
     private javax.swing.JButton btn_bangCongThem;
@@ -4362,7 +4380,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;

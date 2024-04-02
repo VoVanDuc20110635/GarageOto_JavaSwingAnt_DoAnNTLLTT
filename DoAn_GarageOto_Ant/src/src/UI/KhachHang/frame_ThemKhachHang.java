@@ -4,17 +4,36 @@
  */
 package src.UI.KhachHang;
 
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import src.Model.KhachHang;
+import src.Service.KhachHangService;
+import src.Util.Util;
+
 /**
  *
  * @author WINDOWS 10
  */
-public class frame_ThemKhachHang extends javax.swing.JFrame {
-
+public class Frame_ThemKhachHang extends javax.swing.JFrame {
+    private Util util = new Util();
+    private KhachHangService khachHangService = new KhachHangService();
     /**
      * Creates new form frame_ThemKhachHang
      */
-    public frame_ThemKhachHang() {
+    public Frame_ThemKhachHang() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        int soLuongKhachHang = 0;
+        try {
+            soLuongKhachHang = khachHangService.demSoKhachHang();
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        soLuongKhachHang = soLuongKhachHang + 1;
+        tfThemKhachHang_maKhachHang.setText("KH0" + soLuongKhachHang);
     }
 
     /**
@@ -34,56 +53,35 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jPanel86 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
-        jPanel92 = new javax.swing.JPanel();
-        jLabel70 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
+        btnThemKhachHang_luu = new javax.swing.JButton();
         jPanel93 = new javax.swing.JPanel();
         jLabel71 = new javax.swing.JLabel();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        radioThemKhachHang_nu = new javax.swing.JRadioButton();
+        radioThemKhachHang_nam = new javax.swing.JRadioButton();
+        dateChooserThemKhachHang_ngaySinh = new com.toedter.calendar.JDateChooser();
         jPanel94 = new javax.swing.JPanel();
         jLabel72 = new javax.swing.JLabel();
-        jTextField31 = new javax.swing.JTextField();
+        tfThemKhachHang_maKhachHang = new javax.swing.JTextField();
         jPanel95 = new javax.swing.JPanel();
         jLabel79 = new javax.swing.JLabel();
-        jTextField32 = new javax.swing.JTextField();
+        tfThemKhachHang_tenKhachHang = new javax.swing.JTextField();
         jPanel96 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
-        jTextField33 = new javax.swing.JTextField();
+        tfThemKhachHang_diaChi = new javax.swing.JTextField();
         jPanel97 = new javax.swing.JPanel();
         jLabel81 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
-        jPanel98 = new javax.swing.JPanel();
-        jLabel82 = new javax.swing.JLabel();
-        jTextField35 = new javax.swing.JTextField();
-        jPanel99 = new javax.swing.JPanel();
-        jLabel83 = new javax.swing.JLabel();
-        jTextField36 = new javax.swing.JTextField();
+        tfThemKhachHang_dienThoai = new javax.swing.JTextField();
         jPanel100 = new javax.swing.JPanel();
         jLabel84 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jPanel112 = new javax.swing.JPanel();
-        jLabel85 = new javax.swing.JLabel();
-        jTextField38 = new javax.swing.JTextField();
+        radioThemKhachHang_caNhan = new javax.swing.JRadioButton();
+        radioThemKhachHang_congTy = new javax.swing.JRadioButton();
         jPanel113 = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
-        jTextField39 = new javax.swing.JTextField();
-        jPanel114 = new javax.swing.JPanel();
-        jLabel87 = new javax.swing.JLabel();
-        jTextField40 = new javax.swing.JTextField();
-        jPanel115 = new javax.swing.JPanel();
-        jLabel88 = new javax.swing.JLabel();
-        jTextField41 = new javax.swing.JTextField();
-        jPanel116 = new javax.swing.JPanel();
-        jLabel89 = new javax.swing.JLabel();
-        jTextField42 = new javax.swing.JTextField();
+        tfThemKhachHang_email = new javax.swing.JTextField();
         jPanel128 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
-        jTextField43 = new javax.swing.JTextField();
-        jButton11 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        tfThemKhachHang_maSoThue = new javax.swing.JTextField();
+        btnThemKhachHang_boQua = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,33 +131,17 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
 
         jPanel88.add(jPanel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, 130, 30));
 
-        jLabel70.setText("Ảnh");
-
-        javax.swing.GroupLayout jPanel92Layout = new javax.swing.GroupLayout(jPanel92);
-        jPanel92.setLayout(jPanel92Layout);
-        jPanel92Layout.setHorizontalGroup(
-            jPanel92Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel92Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
-        jPanel92Layout.setVerticalGroup(
-            jPanel92Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel92Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel70)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 48, -1, -1));
-
-        jButton10.setBackground(new java.awt.Color(0, 102, 255));
-        jButton10.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Lưu");
-        jButton10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 255)));
-        jPanel88.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 100, 31));
+        btnThemKhachHang_luu.setBackground(new java.awt.Color(0, 102, 255));
+        btnThemKhachHang_luu.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnThemKhachHang_luu.setForeground(new java.awt.Color(255, 255, 255));
+        btnThemKhachHang_luu.setText("Lưu");
+        btnThemKhachHang_luu.setBorder(null);
+        btnThemKhachHang_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemKhachHang_luuActionPerformed(evt);
+            }
+        });
+        jPanel88.add(btnThemKhachHang_luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, 100, 31));
 
         jPanel93.setBackground(new java.awt.Color(255, 255, 255));
         jPanel93.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -167,13 +149,15 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel71.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel71.setText("Ngày sinh");
 
-        buttonGroup1.add(jRadioButton7);
-        jRadioButton7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jRadioButton7.setText("Nữ");
+        buttonGroup1.add(radioThemKhachHang_nu);
+        radioThemKhachHang_nu.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radioThemKhachHang_nu.setText("Nữ");
 
-        buttonGroup1.add(jRadioButton8);
-        jRadioButton8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jRadioButton8.setText("Nam");
+        buttonGroup1.add(radioThemKhachHang_nam);
+        radioThemKhachHang_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radioThemKhachHang_nam.setText("Nam");
+
+        dateChooserThemKhachHang_ngaySinh.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel93Layout = new javax.swing.GroupLayout(jPanel93);
         jPanel93.setLayout(jPanel93Layout);
@@ -183,11 +167,11 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(dateChooserThemKhachHang_ngaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton8)
+                .addComponent(radioThemKhachHang_nam)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton7)
+                .addComponent(radioThemKhachHang_nu)
                 .addContainerGap())
         );
         jPanel93Layout.setVerticalGroup(
@@ -195,15 +179,15 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
             .addGroup(jPanel93Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel93Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(radioThemKhachHang_nu)
+                    .addComponent(dateChooserThemKhachHang_ngaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel93Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel71)
-                        .addComponent(jRadioButton8)))
+                        .addComponent(radioThemKhachHang_nam)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 370, 40));
+        jPanel88.add(jPanel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 370, 40));
 
         jPanel94.setBackground(new java.awt.Color(255, 255, 255));
         jPanel94.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -211,8 +195,9 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel72.setText("Mã khách hàng");
 
-        jTextField31.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField31.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_maKhachHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemKhachHang_maKhachHang.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_maKhachHang.setEnabled(false);
 
         javax.swing.GroupLayout jPanel94Layout = new javax.swing.GroupLayout(jPanel94);
         jPanel94.setLayout(jPanel94Layout);
@@ -222,7 +207,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemKhachHang_maKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel94Layout.setVerticalGroup(
@@ -231,7 +216,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel94Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel72)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemKhachHang_maKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -243,8 +228,8 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel79.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel79.setText("Tên khách hàng");
 
-        jTextField32.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField32.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_tenKhachHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemKhachHang_tenKhachHang.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel95Layout = new javax.swing.GroupLayout(jPanel95);
         jPanel95.setLayout(jPanel95Layout);
@@ -254,7 +239,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemKhachHang_tenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel95Layout.setVerticalGroup(
@@ -263,20 +248,21 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel95Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel79)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemKhachHang_tenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 370, 30));
+        jPanel88.add(jPanel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 370, 30));
 
         jPanel96.setBackground(new java.awt.Color(255, 255, 255));
         jPanel96.setPreferredSize(new java.awt.Dimension(450, 100));
 
+        jLabel80.setBackground(new java.awt.Color(255, 255, 255));
         jLabel80.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel80.setText("Địa chỉ");
 
-        jTextField33.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField33.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_diaChi.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemKhachHang_diaChi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel96Layout = new javax.swing.GroupLayout(jPanel96);
         jPanel96.setLayout(jPanel96Layout);
@@ -286,7 +272,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField33, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemKhachHang_diaChi, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel96Layout.setVerticalGroup(
@@ -295,7 +281,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel96Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel80)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemKhachHang_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -307,8 +293,8 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel81.setText("Điện thoại");
 
-        jTextField34.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField34.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_dienThoai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemKhachHang_dienThoai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel97Layout = new javax.swing.GroupLayout(jPanel97);
         jPanel97.setLayout(jPanel97Layout);
@@ -318,7 +304,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField34, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemKhachHang_dienThoai, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel97Layout.setVerticalGroup(
@@ -327,75 +313,11 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel97Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel81)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemKhachHang_dienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 370, 40));
-
-        jPanel98.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel98.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel82.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel82.setText("Khu vực");
-
-        jTextField35.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField35.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel98Layout = new javax.swing.GroupLayout(jPanel98);
-        jPanel98.setLayout(jPanel98Layout);
-        jPanel98Layout.setHorizontalGroup(
-            jPanel98Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel98Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField35, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel98Layout.setVerticalGroup(
-            jPanel98Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel98Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel98Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel82)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 370, 30));
-
-        jPanel99.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel99.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel83.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel83.setText("Phường xã");
-
-        jTextField36.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField36.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel99Layout = new javax.swing.GroupLayout(jPanel99);
-        jPanel99.setLayout(jPanel99Layout);
-        jPanel99Layout.setHorizontalGroup(
-            jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel99Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField36, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel99Layout.setVerticalGroup(
-            jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel99Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel83)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 370, 30));
+        jPanel88.add(jPanel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 370, 40));
 
         jPanel100.setBackground(new java.awt.Color(255, 255, 255));
         jPanel100.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -403,13 +325,13 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel84.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel84.setText("Loại khách");
 
-        buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jRadioButton3.setText("Cá nhân");
+        buttonGroup2.add(radioThemKhachHang_caNhan);
+        radioThemKhachHang_caNhan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radioThemKhachHang_caNhan.setText("Cá nhân");
 
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jRadioButton4.setText("Công ty");
+        buttonGroup2.add(radioThemKhachHang_congTy);
+        radioThemKhachHang_congTy.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radioThemKhachHang_congTy.setText("Công ty");
 
         javax.swing.GroupLayout jPanel100Layout = new javax.swing.GroupLayout(jPanel100);
         jPanel100.setLayout(jPanel100Layout);
@@ -419,9 +341,9 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radioThemKhachHang_caNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radioThemKhachHang_congTy, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel100Layout.setVerticalGroup(
@@ -430,44 +352,12 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel100Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel84)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                    .addComponent(radioThemKhachHang_caNhan)
+                    .addComponent(radioThemKhachHang_congTy))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 370, 30));
-
-        jPanel112.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel112.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel85.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel85.setText("Công ty");
-
-        jTextField38.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField38.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel112Layout = new javax.swing.GroupLayout(jPanel112);
-        jPanel112.setLayout(jPanel112Layout);
-        jPanel112Layout.setHorizontalGroup(
-            jPanel112Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel112Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField38, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel112Layout.setVerticalGroup(
-            jPanel112Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel112Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel112Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel85)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 370, 30));
+        jPanel88.add(jPanel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 370, 30));
 
         jPanel113.setBackground(new java.awt.Color(255, 255, 255));
         jPanel113.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -475,8 +365,8 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel86.setText("Email");
 
-        jTextField39.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField39.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemKhachHang_email.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel113Layout = new javax.swing.GroupLayout(jPanel113);
         jPanel113.setLayout(jPanel113Layout);
@@ -486,7 +376,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField39, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemKhachHang_email, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel113Layout.setVerticalGroup(
@@ -495,107 +385,11 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel113Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel86)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemKhachHang_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel88.add(jPanel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 370, 40));
-
-        jPanel114.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel114.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel87.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel87.setText("Facebook");
-
-        jTextField40.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField40.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel114Layout = new javax.swing.GroupLayout(jPanel114);
-        jPanel114.setLayout(jPanel114Layout);
-        jPanel114Layout.setHorizontalGroup(
-            jPanel114Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel114Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel87, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField40, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel114Layout.setVerticalGroup(
-            jPanel114Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel114Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel114Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel87)
-                    .addComponent(jTextField40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 370, 30));
-
-        jPanel115.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel115.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel88.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel88.setText("Nhóm");
-
-        jTextField41.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField41.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel115Layout = new javax.swing.GroupLayout(jPanel115);
-        jPanel115.setLayout(jPanel115Layout);
-        jPanel115Layout.setHorizontalGroup(
-            jPanel115Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel115Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField41, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel115Layout.setVerticalGroup(
-            jPanel115Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel115Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel115Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel88)
-                    .addComponent(jTextField41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, 370, 30));
-
-        jPanel116.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel116.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel89.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel89.setText("Ghi chú");
-
-        jTextField42.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField42.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel116Layout = new javax.swing.GroupLayout(jPanel116);
-        jPanel116.setLayout(jPanel116Layout);
-        jPanel116Layout.setHorizontalGroup(
-            jPanel116Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel116Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField42, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel116Layout.setVerticalGroup(
-            jPanel116Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel116Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel116Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel89)
-                    .addComponent(jTextField42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 370, 30));
 
         jPanel128.setBackground(new java.awt.Color(255, 255, 255));
         jPanel128.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -603,8 +397,8 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         jLabel90.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel90.setText("Mã số thuế");
 
-        jTextField43.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField43.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemKhachHang_maSoThue.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemKhachHang_maSoThue.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel128Layout = new javax.swing.GroupLayout(jPanel128);
         jPanel128.setLayout(jPanel128Layout);
@@ -614,7 +408,7 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField43, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemKhachHang_maSoThue, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel128Layout.setVerticalGroup(
@@ -623,23 +417,18 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel128Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel90)
-                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemKhachHang_maSoThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel88.add(jPanel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 370, 30));
 
-        jButton11.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(51, 153, 255));
-        jButton11.setText("Chọn ảnh");
-        jButton11.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 255)));
-        jPanel88.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 166, 100, 31));
-
-        jButton13.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(51, 153, 255));
-        jButton13.setText("Bỏ qua");
-        jButton13.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 255)));
-        jPanel88.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 440, 100, 31));
+        btnThemKhachHang_boQua.setBackground(new java.awt.Color(255, 153, 153));
+        btnThemKhachHang_boQua.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnThemKhachHang_boQua.setForeground(new java.awt.Color(255, 255, 255));
+        btnThemKhachHang_boQua.setText("Bỏ qua");
+        btnThemKhachHang_boQua.setBorder(null);
+        jPanel88.add(btnThemKhachHang_boQua, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, 100, 31));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -665,6 +454,36 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThemKhachHang_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachHang_luuActionPerformed
+                                                          
+        KhachHang khachHang = new KhachHang();
+        khachHang.setMaKhachHang(tfThemKhachHang_maKhachHang.getText());
+        khachHang.setDiaChi(tfThemKhachHang_diaChi.getText());
+        khachHang.setEmail(tfThemKhachHang_email.getText());
+        khachHang.setMaSoThue(tfThemKhachHang_maSoThue.getText());
+        khachHang.setNgaySinh(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooserThemKhachHang_ngaySinh.getDate())));
+        khachHang.setNgayTao(LocalDateTime.now());
+        khachHang.setSoDienThoai(tfThemKhachHang_dienThoai.getText());
+        khachHang.setTenKhachHang(tfThemKhachHang_tenKhachHang.getText());
+        khachHang.setMaNhanVien("NV004");
+        if (radioThemKhachHang_nam.isSelected()){
+            khachHang.setGioiTinh("Nam");
+        } else {
+            khachHang.setGioiTinh("Nữ");
+        }
+        if (radioThemKhachHang_congTy.isSelected()){
+            khachHang.setLoaiKhach("Công ty");
+        } else {
+            khachHang.setLoaiKhach("Cá nhân");
+        }
+        try {
+            khachHangService.themKhachHang(khachHang);
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnThemKhachHang_luuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -682,82 +501,62 @@ public class frame_ThemKhachHang extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame_ThemKhachHang().setVisible(true);
+                new Frame_ThemKhachHang().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThemKhachHang_boQua;
+    private javax.swing.JButton btnThemKhachHang_luu;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton13;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser dateChooserThemKhachHang_ngaySinh;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel81;
-    private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel100;
-    private javax.swing.JPanel jPanel112;
     private javax.swing.JPanel jPanel113;
-    private javax.swing.JPanel jPanel114;
-    private javax.swing.JPanel jPanel115;
-    private javax.swing.JPanel jPanel116;
     private javax.swing.JPanel jPanel128;
     private javax.swing.JPanel jPanel86;
     private javax.swing.JPanel jPanel87;
     private javax.swing.JPanel jPanel88;
-    private javax.swing.JPanel jPanel92;
     private javax.swing.JPanel jPanel93;
     private javax.swing.JPanel jPanel94;
     private javax.swing.JPanel jPanel95;
     private javax.swing.JPanel jPanel96;
     private javax.swing.JPanel jPanel97;
-    private javax.swing.JPanel jPanel98;
-    private javax.swing.JPanel jPanel99;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField40;
-    private javax.swing.JTextField jTextField41;
-    private javax.swing.JTextField jTextField42;
-    private javax.swing.JTextField jTextField43;
+    private javax.swing.JRadioButton radioThemKhachHang_caNhan;
+    private javax.swing.JRadioButton radioThemKhachHang_congTy;
+    private javax.swing.JRadioButton radioThemKhachHang_nam;
+    private javax.swing.JRadioButton radioThemKhachHang_nu;
+    private javax.swing.JTextField tfThemKhachHang_diaChi;
+    private javax.swing.JTextField tfThemKhachHang_dienThoai;
+    private javax.swing.JTextField tfThemKhachHang_email;
+    private javax.swing.JTextField tfThemKhachHang_maKhachHang;
+    private javax.swing.JTextField tfThemKhachHang_maSoThue;
+    private javax.swing.JTextField tfThemKhachHang_tenKhachHang;
     // End of variables declaration//GEN-END:variables
 }

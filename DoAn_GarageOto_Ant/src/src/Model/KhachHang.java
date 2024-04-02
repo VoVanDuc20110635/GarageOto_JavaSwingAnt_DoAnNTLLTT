@@ -4,7 +4,9 @@
  */
 package src.Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.time.LocalDateTime;
 public class KhachHang {
     private String maKhachHang;
     private String tenKhachHang;
-    private LocalDateTime ngaySinh;
+    private LocalDate ngaySinh;
     private String maSoThue;
     private String email;
     private String soDienThoai;
@@ -21,13 +23,15 @@ public class KhachHang {
     private LocalDateTime ngayTao;
     private double tongBan;
     private double tongNo;
+    private String gioiTinh;
+    private String loaiKhach;
     private String maNhanVien;
     private NhanVien nhanVien;
 
     public KhachHang() {
     }
 
-    public KhachHang(String maKhachHang, String tenKhachHang, LocalDateTime ngaySinh, String maSoThue, String email, String soDienThoai, String diaChi, LocalDateTime ngayTao, double tongBan, double tongNo, String maNhanVien) {
+    public KhachHang(String maKhachHang, String tenKhachHang, LocalDate ngaySinh, String maSoThue, String email, String soDienThoai, String diaChi, LocalDateTime ngayTao, double tongBan, double tongNo, String maNhanVien) {
         this.maKhachHang = maKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.ngaySinh = ngaySinh;
@@ -57,11 +61,11 @@ public class KhachHang {
         this.tenKhachHang = tenKhachHang;
     }
 
-    public LocalDateTime getNgaySinh() {
+    public LocalDate getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(LocalDateTime ngaySinh) {
+    public void setNgaySinh(LocalDate ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -135,6 +139,22 @@ public class KhachHang {
 
     public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+    }
+
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getLoaiKhach() {
+        return loaiKhach;
+    }
+
+    public void setLoaiKhach(String loaiKhach) {
+        this.loaiKhach = loaiKhach;
     }
    
     
