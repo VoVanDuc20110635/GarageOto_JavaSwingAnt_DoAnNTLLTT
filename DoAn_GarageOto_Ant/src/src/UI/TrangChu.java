@@ -33,6 +33,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +41,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import src.Model.BangChamCong;
 import src.Model.CaLam;
 import src.Model.ChiNhanh;
@@ -165,8 +167,8 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPanel65 = new javax.swing.JPanel();
         jPanel84 = new javax.swing.JPanel();
-        jLabel65 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
+        tfDatHang_timHangHoa = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel66 = new javax.swing.JLabel();
         jPanel85 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -761,12 +763,30 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel84.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
         jPanel84.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/find.jpg"))); // NOI18N
-        jPanel84.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
+        tfDatHang_timHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfDatHang_timHangHoa.setForeground(new java.awt.Color(204, 204, 204));
+        tfDatHang_timHangHoa.setText("Tìm hàng hóa");
+        tfDatHang_timHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfDatHang_timHangHoa.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfDatHang_timHangHoaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfDatHang_timHangHoaFocusLost(evt);
+            }
+        });
+        tfDatHang_timHangHoa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfDatHang_timHangHoaKeyReleased(evt);
+            }
+        });
+        jPanel84.add(tfDatHang_timHangHoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
 
-        jTextField24.setText("Tìm hàng hóa");
-        jTextField24.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel84.add(jTextField24, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 260, -1));
+        jButton1.setBackground(new java.awt.Color(255, 153, 153));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Tìm kiếm");
+        jPanel84.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, 40));
 
         jLabel66.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel66.setForeground(new java.awt.Color(255, 255, 255));
@@ -788,7 +808,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel65Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel84, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jPanel84, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel66, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -3630,10 +3650,19 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_danhSachHangHoaMouseClicked
 
     private void tbDatHang_danhSachHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDatHang_danhSachHangHoaMouseClicked
-        int index = tbDatHang_danhSachHangHoa.getSelectedRow();
+        int index0 = tbDatHang_danhSachHangHoa.getSelectedRow();
+        int index = tbDatHang_danhSachHangHoa.convertRowIndexToModel(index0);
         TableModel modelTbDanhSachHangHoa = tbDatHang_danhSachHangHoa.getModel();
         int selectedRow = tbDatHang_danhSachHangHoa.getSelectedRow();
         DefaultTableModel modelTbDanhSachHangHoaDaChon = (DefaultTableModel) tbDatHang_danhSachHangHoaDaChon.getModel();
+        
+        for (int i = 0; i < modelTbDanhSachHangHoaDaChon.getRowCount(); i++) {
+            Object value = modelTbDanhSachHangHoaDaChon.getValueAt(i, 0); // Get value from the first column
+            if (value != null && value.toString().equals(modelTbDanhSachHangHoa.getValueAt(index, 1).toString())) {
+                return;
+            }
+        }
+        
         modelTbDanhSachHangHoaDaChon.addRow(new Object[]{
                     modelTbDanhSachHangHoa.getValueAt(index, 1).toString(),
                     modelTbDanhSachHangHoa.getValueAt(index, 2).toString(),
@@ -3691,6 +3720,25 @@ public class TrangChu extends javax.swing.JFrame {
             tfDatHang_tongTienHang.setText(String.valueOf(Long.parseLong(tfDatHang_tongTienHang.getText()) + donGia));
         }
     }//GEN-LAST:event_tbDatHang_danhSachHangHoaDaChonMouseClicked
+
+    private void tfDatHang_timHangHoaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDatHang_timHangHoaKeyReleased
+        String query = tfDatHang_timHangHoa.getText().toLowerCase();
+        filterHangHoaDatHang(query);
+    }//GEN-LAST:event_tfDatHang_timHangHoaKeyReleased
+
+    private void tfDatHang_timHangHoaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDatHang_timHangHoaFocusGained
+        if (tfDatHang_timHangHoa.getText().equals("Tìm hàng hóa")){
+            tfDatHang_timHangHoa.setText("");
+            tfDatHang_timHangHoa.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tfDatHang_timHangHoaFocusGained
+
+    private void tfDatHang_timHangHoaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfDatHang_timHangHoaFocusLost
+        if (tfDatHang_timHangHoa.getText().equals("")){
+            tfDatHang_timHangHoa.setText("Tìm hàng hóa");
+            tfDatHang_timHangHoa.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tfDatHang_timHangHoaFocusLost
     
 
     
@@ -4214,6 +4262,30 @@ public class TrangChu extends javax.swing.JFrame {
         
     }
     
+    public void filterHangHoaDatHang(String query){
+        DefaultTableModel model = (DefaultTableModel) tbDatHang_danhSachHangHoa.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tbDatHang_danhSachHangHoa.setRowSorter(tr);
+        
+        RowFilter<DefaultTableModel, Object> rowFilter = new RowFilter<DefaultTableModel, Object>() {
+            @Override
+            public boolean include(Entry<? extends DefaultTableModel, ? extends Object> entry) {
+                // Get the value in the second column (index 2) of the current row
+                Object value = entry.getValue(2 );
+                if (value != null) {
+                    // Convert the value to lowercase string
+                    String columnValue = value.toString().toLowerCase();
+                    // Check if the column value contains the query string
+                    return columnValue.contains(query.toLowerCase());
+                }
+                return false;
+            }
+        };
+
+        
+        tr.setRowFilter(rowFilter);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -4283,6 +4355,7 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateChooserChamCong_ngayBatDau;
     private com.toedter.calendar.JDateChooser dateChooserChamCong_ngayKetThuc;
     private com.toedter.calendar.JDateChooser dateChooserChamCong_theongay_ngay;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
@@ -4365,7 +4438,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
@@ -4499,7 +4571,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField29;
     private javax.swing.JTextField jTextField30;
     private javax.swing.JTextField jTextField31;
@@ -4542,6 +4613,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tb_danhSachPhieuSuaChua;
     private javax.swing.JTable tb_danhSachPhieuTraHang;
     private javax.swing.JLabel tfDatHang_soLuong;
+    private javax.swing.JTextField tfDatHang_timHangHoa;
     private javax.swing.JLabel tfDatHang_tongTienHang;
     private javax.swing.JTextField tfHangHoa_maHangHoa;
     private javax.swing.JTextField tfHangHoa_timTheoTen;
