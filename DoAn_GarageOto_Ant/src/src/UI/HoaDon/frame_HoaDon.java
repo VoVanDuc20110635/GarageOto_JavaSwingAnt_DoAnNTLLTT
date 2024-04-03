@@ -14,15 +14,16 @@ import javax.swing.table.DefaultTableModel;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
+import src.Service.HoaDonService;
 import src.UI.TrangChu;
 import src.Util.FullTextTableCellRenderer;
+import src.Util.WritePDF;
 
 /**
  *
  * @author WINDOWS 10
  */
 public class Frame_HoaDon extends javax.swing.JFrame {
-    
     private List<HoaDonChiTiet> danhSachHoaDonChiTiet;
     private KhachHang khachHang;
     private String maHoaDon;
@@ -33,6 +34,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     double tienThua;
     double giamGia;
     String ngayHienTai;
+    
+    private HoaDonService hoaDonService = new HoaDonService();
     /**
      * Creates new form frame_HoaDon
      */
@@ -507,6 +510,11 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         btnHoaDon_in.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnHoaDon_in.setForeground(new java.awt.Color(255, 255, 255));
         btnHoaDon_in.setText("IN");
+        btnHoaDon_in.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoaDon_inActionPerformed(evt);
+            }
+        });
         jPanel174.add(btnHoaDon_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 710, 60, 30));
 
         jScrollPane7.setViewportView(jPanel174);
@@ -534,6 +542,18 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHoaDon_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_inActionPerformed
+        WritePDF writePDF = new WritePDF();
+        HoaDon hoaDon = new HoaDon();
+        try {
+            hoaDon = hoaDonService.hienThiHoaDonTheoMaHoadon(this.maHoaDon);
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        writePDF.writeHoaDon(hoaDon, danhSachHoaDonChiTiet, khachHang);
+        
+    }//GEN-LAST:event_btnHoaDon_inActionPerformed
 
     /**
      * @param args the command line arguments

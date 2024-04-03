@@ -3932,9 +3932,12 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnDatHang_datHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_datHangActionPerformed
         KhachHang khachHang = new KhachHang();
-        khachHang.setMaKhachHang(tfDatHang_maKhachHang.getText());
-        khachHang.setTenKhachHang(tfDatHang_tenKhachHang.getText());
-        khachHang.setSoDienThoai(tfDatHang_soDienThoai.getText());
+        
+        try {
+            khachHang = khachHangService.hienThiKhachHangTheoMaKhachHang(tfDatHang_maKhachHang.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String maHoaDon = lbDatHang_maDonHang.getText();
         List<HoaDonChiTiet> danhSachHoaDonChiTiet = new ArrayList<>();
         for (int i =0; i< tbDatHang_danhSachHangHoaDaChon.getRowCount(); i++){
@@ -4423,7 +4426,7 @@ public class TrangChu extends javax.swing.JFrame {
                 JButton button = new JButton("Xóa");
                 button.setBackground(Color.blue);
                 Font font = new Font("Times New Roman", Font.BOLD, 16);
-                button.setFont(font);
+                button.setFont(font);   
                 button.setForeground(Color.WHITE);
                 return button;
             }
