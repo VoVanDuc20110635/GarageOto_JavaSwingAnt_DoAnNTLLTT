@@ -4,12 +4,18 @@
  */
 package src.UI.HoaDon;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
+import src.Service.HoaDonChiTietService;
+import src.Service.HoaDonService;
 import src.Util.Util;
 
 /**
@@ -23,6 +29,8 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     private int tongSoLuong;
     private double tongTienHang;
     private Util util = new Util();
+    private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietService();
+    private HoaDonService hoaDonService = new HoaDonService();
     /**
      * Creates new form frame_ThanhToan
      */
@@ -43,6 +51,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     }
     
     void hienThiThongTin(){
+        
         String ngayGioHienTai = util.localDateParseMethod(LocalDateTime.now());
         lbThanhToan_ngay.setText(ngayGioHienTai);
         lbThanhToan_maHoaDon.setText(maHoaDon);
@@ -315,12 +324,20 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         jPanel121.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel148.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel148.setText("Giảm giá");
+        jLabel148.setText("Giảm giá (%)");
 
         tfThanhToan_giamGia.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         tfThanhToan_giamGia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         tfThanhToan_giamGia.setText("0");
         tfThanhToan_giamGia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThanhToan_giamGia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfThanhToan_giamGiaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfThanhToan_giamGiaFocusLost(evt);
+            }
+        });
         tfThanhToan_giamGia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfThanhToan_giamGiaKeyReleased(evt);
@@ -334,9 +351,9 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(jPanel121Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel148)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(tfThanhToan_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addComponent(tfThanhToan_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         jPanel121Layout.setVerticalGroup(
             jPanel121Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,6 +409,14 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         tfThanhToan_khachThanhToan.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         tfThanhToan_khachThanhToan.setText("0");
         tfThanhToan_khachThanhToan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThanhToan_khachThanhToan.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfThanhToan_khachThanhToanFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfThanhToan_khachThanhToanFocusLost(evt);
+            }
+        });
         tfThanhToan_khachThanhToan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfThanhToan_khachThanhToanKeyReleased(evt);
@@ -485,7 +510,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfThanhToan_giamGiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfThanhToan_giamGiaKeyReleased
-        double tienCanTra = this.tongTienHang * (1- Double.parseDouble(tfThanhToan_giamGia.getText()));
+        double tienCanTra = this.tongTienHang * (1- Double.parseDouble(tfThanhToan_giamGia.getText())/100);
         lbThanhToan_khachCanTra.setText(String.valueOf(tienCanTra));
     }//GEN-LAST:event_tfThanhToan_giamGiaKeyReleased
 
@@ -496,14 +521,67 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_tfThanhToan_khachThanhToanKeyReleased
 
     private void btnThanhToan_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToan_thanhToanActionPerformed
+
+        HoaDon hoaDon = new HoaDon();
+        hoaDon.setMaHoaDon(this.maHoaDon);
+        hoaDon.setGiamGia(Double.parseDouble(tfThanhToan_giamGia.getText()));
+        hoaDon.setLoaiThuChi("Thu");
+        hoaDon.setThoiGian(util.localDateParseMethodFromTableSwing(lbThanhToan_ngay.getText()));
+        hoaDon.setTienDaTra(Double.parseDouble(tfThanhToan_khachThanhToan.getText()));
+        hoaDon.setTongTien(tongTienHang);
+        hoaDon.setTrangThai("Hoàn thành");
+        hoaDon.setMaKhachHang(this.khachHang.getMaKhachHang());
+        hoaDon.setMaNhanVien("NV005");
+        try {
+            hoaDonService.themHoaDon(hoaDon);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (HoaDonChiTiet hoaDonChiTiet: danhSachHoaDonChiTiet){
+            try {
+                hoaDonChiTietService.themHoaDonChiTiet(hoaDonChiTiet);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
         double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
         double tienKhachTra = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
         double tienThua = Double.parseDouble(tfThanhToan_tienThuaTraKhach.getText());
-        Frame_HoaDon frame_hoaDon = new Frame_HoaDon(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua);
+        double giamGia = Double.parseDouble(tfThanhToan_giamGia.getText());
+        String ngayGioHienTai = util.localDateParseMethod(LocalDateTime.now());
+        Frame_HoaDon frame_hoaDon = new Frame_HoaDon(ngayGioHienTai, danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua, giamGia);
         frame_hoaDon.setVisible(true);
-        frame_hoaDon.setSize(370, 780);
-        frame_hoaDon.setLocation(1170,0);
+        frame_hoaDon.setSize(450, 780);
+        frame_hoaDon.setLocation(1070,0);
     }//GEN-LAST:event_btnThanhToan_thanhToanActionPerformed
+
+    private void tfThanhToan_giamGiaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfThanhToan_giamGiaFocusGained
+        if (tfThanhToan_giamGia.getText().equals("0")){
+            tfThanhToan_giamGia.setText("");
+        }
+    }//GEN-LAST:event_tfThanhToan_giamGiaFocusGained
+
+    private void tfThanhToan_giamGiaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfThanhToan_giamGiaFocusLost
+        if (tfThanhToan_giamGia.getText().equals("")){
+            tfThanhToan_giamGia.setText("0");
+        }
+    }//GEN-LAST:event_tfThanhToan_giamGiaFocusLost
+
+    private void tfThanhToan_khachThanhToanFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfThanhToan_khachThanhToanFocusGained
+        if (tfThanhToan_khachThanhToan.getText().equals("0")){
+            tfThanhToan_khachThanhToan.setText("");
+        }
+    }//GEN-LAST:event_tfThanhToan_khachThanhToanFocusGained
+
+    private void tfThanhToan_khachThanhToanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfThanhToan_khachThanhToanFocusLost
+        if (tfThanhToan_khachThanhToan.getText().equals("")){
+            tfThanhToan_khachThanhToan.setText("0");
+        }
+    }//GEN-LAST:event_tfThanhToan_khachThanhToanFocusLost
 
     /**
      * @param args the command line arguments

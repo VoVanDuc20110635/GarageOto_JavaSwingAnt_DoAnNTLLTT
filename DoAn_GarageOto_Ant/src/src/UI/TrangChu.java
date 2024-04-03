@@ -3915,7 +3915,7 @@ public class TrangChu extends javax.swing.JFrame {
                     tfDatHang_soDienThoai.setText(parts[j]);
                 }
             }
-            int soHoaDon = hoaDonService.demSoHoaDon();
+            int soHoaDon = hoaDonService.demSoHoaDon() + 1;
             String maHoaDon = "HD0" + soHoaDon;
             tfDatHang_tenKhachHang.setText(tenKhachHang);
             lbDatHang_maDonHang.setText(maHoaDon + tfDatHang_maKhachHang.getText().trim());
@@ -3946,6 +3946,8 @@ public class TrangChu extends javax.swing.JFrame {
             hoaDonChiTiet.setThanhTien(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,6).toString()));
             hoaDonChiTiet.setMaHangHoa(String.valueOf(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,0).toString()));
             hoaDonChiTiet.setMaHoaDon(maHoaDon);
+            hoaDonChiTiet.setTenHangHoa(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,1).toString());
+            danhSachHoaDonChiTiet.add(hoaDonChiTiet);
         }
         int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText().toString());
         double tongTienHang = Double.parseDouble(tfDatHang_tongTienHang.getText().toString());

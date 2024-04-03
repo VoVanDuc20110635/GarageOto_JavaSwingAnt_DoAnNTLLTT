@@ -476,9 +476,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel148" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="120" max="32767" attributes="0"/>
-                          <Component id="tfThanhToan_giamGia" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="92" max="32767" attributes="0"/>
+                          <Component id="tfThanhToan_giamGia" min="-2" pref="142" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -501,7 +501,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Gi&#x1ea3;m gi&#xe1;"/>
+                    <Property name="text" type="java.lang.String" value="Gi&#x1ea3;m gi&#xe1; (%)"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfThanhToan_giamGia">
@@ -520,6 +520,8 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfThanhToan_giamGiaFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfThanhToan_giamGiaFocusLost"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfThanhToan_giamGiaKeyReleased"/>
                   </Events>
                 </Component>
@@ -647,6 +649,8 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfThanhToan_khachThanhToanFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfThanhToan_khachThanhToanFocusLost"/>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfThanhToan_khachThanhToanKeyReleased"/>
                   </Events>
                 </Component>

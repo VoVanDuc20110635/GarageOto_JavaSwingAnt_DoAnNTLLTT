@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import src.ConnectDB.ConnectorDB;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import src.Model.HoaDon;
 import src.Util.Util;
@@ -86,5 +85,25 @@ public class HoaDonService {
         }
         connectorDB.closeConnection();
         return numberOfRows;
+    }
+    public int themHoaDon (HoaDon hoaDon) throws SQLException{ //   
+        try{
+           String query = String.format("insert into hoa_don(ma_hoa_don, giam_gia, loai_thu_chi, thoi_gian, tien_da_tra, tong_tien, trang_thai, ma_khach_hang, ma_nhan_vien)" +
+                             "values ('%s', %s, '%s', '%s' , %s , %s, '%s', '%s', '%s' )",
+                hoaDon.getMaHoaDon(),
+                hoaDon.getGiamGia(),
+                hoaDon.getLoaiThuChi(),
+                util.localDateParseMethod( hoaDon.getThoiGian()),
+                hoaDon.getTienDaTra(),
+                hoaDon.getTongTien(),
+                hoaDon.getTrangThai(),
+                hoaDon.getMaKhachHang(),
+                hoaDon.getMaNhanVien());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
     }
 }
