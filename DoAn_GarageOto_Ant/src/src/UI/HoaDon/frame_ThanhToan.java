@@ -4,19 +4,56 @@
  */
 package src.UI.HoaDon;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFrame;
+import src.Model.HoaDonChiTiet;
+import src.Model.KhachHang;
+import src.Util.Util;
+
 /**
  *
  * @author WINDOWS 10
  */
-public class frame_ThanhToan extends javax.swing.JFrame {
-
+public class Frame_ThanhToan extends javax.swing.JFrame {
+    private List<HoaDonChiTiet> danhSachHoaDonChiTiet;
+    private KhachHang khachHang;
+    private String maHoaDon;
+    private int tongSoLuong;
+    private double tongTienHang;
+    private Util util = new Util();
     /**
      * Creates new form frame_ThanhToan
      */
-    public frame_ThanhToan() {
+    public Frame_ThanhToan() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    public Frame_ThanhToan(List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang) {
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.danhSachHoaDonChiTiet = danhSachHoaDonChiTiet;
+        this.khachHang = khachHang;
+        this.maHoaDon = maHoaDon;
+        this.tongSoLuong = tongSoLuong;
+        this.tongTienHang = tongTienHang;
+        hienThiThongTin();
+    }
+    
+    void hienThiThongTin(){
+        String ngayGioHienTai = util.localDateParseMethod(LocalDateTime.now());
+        lbThanhToan_ngay.setText(ngayGioHienTai);
+        lbThanhToan_maHoaDon.setText(maHoaDon);
+        lbThanhToan_maKhachHang.setText(khachHang.getMaKhachHang());
+        lbThanhToan_tenKhachHang.setText(khachHang.getTenKhachHang());
+        lbThanhToan_soDienThoai.setText(khachHang.getSoDienThoai());
+        lbThanhToan_tongSoLuongHang.setText(String.valueOf( this.tongSoLuong));
+        lbThanhToan_tongTienHang.setText(String.valueOf( this.tongTienHang));
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,44 +66,39 @@ public class frame_ThanhToan extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel89 = new javax.swing.JPanel();
         jPanel101 = new javax.swing.JPanel();
-        jLabel75 = new javax.swing.JLabel();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel107 = new javax.swing.JLabel();
+        lbThanhToan_ngay = new javax.swing.JLabel();
+        lbThanhToan_maHoaDon = new javax.swing.JLabel();
         jPanel109 = new javax.swing.JPanel();
         jLabel76 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
+        lbThanhToan_tenNhanhVien = new javax.swing.JLabel();
         jPanel110 = new javax.swing.JPanel();
         jPanel111 = new javax.swing.JPanel();
         jLabel105 = new javax.swing.JLabel();
-        jLabel104 = new javax.swing.JLabel();
+        lbThanhToan_maKhachHang = new javax.swing.JLabel();
         jPanel117 = new javax.swing.JPanel();
-        jLabel114 = new javax.swing.JLabel();
+        lbThanhToan_tenKhachHang = new javax.swing.JLabel();
         jLabel106 = new javax.swing.JLabel();
         jPanel119 = new javax.swing.JPanel();
-        jLabel116 = new javax.swing.JLabel();
+        lbThanhToan_soDienThoai = new javax.swing.JLabel();
         jLabel113 = new javax.swing.JLabel();
         jPanel118 = new javax.swing.JPanel();
-        jLabel115 = new javax.swing.JLabel();
+        lbThanhToan_tongTienHang = new javax.swing.JLabel();
         jLabel109 = new javax.swing.JLabel();
         jPanel160 = new javax.swing.JPanel();
-        jLabel145 = new javax.swing.JLabel();
+        lbThanhToan_tongSoLuongHang = new javax.swing.JLabel();
         jPanel121 = new javax.swing.JPanel();
-        jLabel147 = new javax.swing.JLabel();
         jLabel148 = new javax.swing.JLabel();
+        tfThanhToan_giamGia = new javax.swing.JTextField();
         jPanel122 = new javax.swing.JPanel();
-        jLabel149 = new javax.swing.JLabel();
+        lbThanhToan_khachCanTra = new javax.swing.JLabel();
         jLabel150 = new javax.swing.JLabel();
         jPanel120 = new javax.swing.JPanel();
-        jLabel146 = new javax.swing.JLabel();
         jLabel112 = new javax.swing.JLabel();
+        tfThanhToan_khachThanhToan = new javax.swing.JTextField();
         jPanel125 = new javax.swing.JPanel();
-        jLabel153 = new javax.swing.JLabel();
-        jRadioButton20 = new javax.swing.JRadioButton();
-        jPanel123 = new javax.swing.JPanel();
-        jLabel151 = new javax.swing.JLabel();
-        jRadioButton18 = new javax.swing.JRadioButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        tfThanhToan_tienThuaTraKhach = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnThanhToan_thanhToan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,20 +107,15 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         jPanel101.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel75.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel75.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel75.setText("10/05/2023");
-        jLabel75.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        lbThanhToan_ngay.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lbThanhToan_ngay.setForeground(new java.awt.Color(153, 153, 153));
+        lbThanhToan_ngay.setText("10/05/2023");
+        lbThanhToan_ngay.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
-        jLabel77.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel77.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel77.setText("12:50");
-        jLabel77.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        jLabel107.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel107.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel107.setText("Mã hóa đơn");
-        jLabel107.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        lbThanhToan_maHoaDon.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lbThanhToan_maHoaDon.setForeground(new java.awt.Color(153, 153, 153));
+        lbThanhToan_maHoaDon.setText("Mã hóa đơn");
+        lbThanhToan_maHoaDon.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel101Layout = new javax.swing.GroupLayout(jPanel101);
         jPanel101.setLayout(jPanel101Layout);
@@ -96,20 +123,17 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             jPanel101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel101Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel75)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(jLabel107, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                .addComponent(lbThanhToan_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(lbThanhToan_maHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel101Layout.setVerticalGroup(
             jPanel101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel101Layout.createSequentialGroup()
                 .addGroup(jPanel101Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel75)
-                    .addComponent(jLabel77)
-                    .addComponent(jLabel107))
+                    .addComponent(lbThanhToan_ngay)
+                    .addComponent(lbThanhToan_maHoaDon))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
@@ -121,8 +145,8 @@ public class frame_ThanhToan extends javax.swing.JFrame {
         jLabel76.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel76.setText("Nhân viên thanh toán:");
 
-        jLabel78.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel78.setText("Hằng");
+        lbThanhToan_tenNhanhVien.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbThanhToan_tenNhanhVien.setText("Hằng");
 
         javax.swing.GroupLayout jPanel109Layout = new javax.swing.GroupLayout(jPanel109);
         jPanel109.setLayout(jPanel109Layout);
@@ -132,7 +156,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel76)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbThanhToan_tenNhanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(125, Short.MAX_VALUE))
         );
         jPanel109Layout.setVerticalGroup(
@@ -140,7 +164,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(jPanel109Layout.createSequentialGroup()
                 .addGroup(jPanel109Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel76)
-                    .addComponent(jLabel78))
+                    .addComponent(lbThanhToan_tenNhanhVien))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
@@ -154,9 +178,9 @@ public class frame_ThanhToan extends javax.swing.JFrame {
         jLabel105.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel105.setText("Mã khách hàng:");
 
-        jLabel104.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel104.setText("NAM 59 C1");
+        lbThanhToan_maKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lbThanhToan_maKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbThanhToan_maKhachHang.setText("NAM 59 C1");
 
         javax.swing.GroupLayout jPanel111Layout = new javax.swing.GroupLayout(jPanel111);
         jPanel111.setLayout(jPanel111Layout);
@@ -166,7 +190,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel105)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbThanhToan_maKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel111Layout.setVerticalGroup(
@@ -175,7 +199,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel111Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel105)
-                    .addComponent(jLabel104))
+                    .addComponent(lbThanhToan_maKhachHang))
                 .addContainerGap())
         );
 
@@ -183,9 +207,9 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         jPanel117.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel114.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel114.setText("Lê Văn Nam");
+        lbThanhToan_tenKhachHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbThanhToan_tenKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbThanhToan_tenKhachHang.setText("Lê Văn Nam");
 
         jLabel106.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel106.setText("Tên khách hàng:");
@@ -198,7 +222,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel106)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbThanhToan_tenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel117Layout.setVerticalGroup(
@@ -206,7 +230,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel117Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel117Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel114)
+                    .addComponent(lbThanhToan_tenKhachHang)
                     .addComponent(jLabel106))
                 .addContainerGap())
         );
@@ -215,9 +239,9 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         jPanel119.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel116.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel116.setText("086017884");
+        lbThanhToan_soDienThoai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbThanhToan_soDienThoai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbThanhToan_soDienThoai.setText("086017884");
 
         jLabel113.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel113.setText("Số điện thoại:");
@@ -230,7 +254,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel113)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbThanhToan_soDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel119Layout.setVerticalGroup(
@@ -238,7 +262,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel119Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel119Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel116)
+                    .addComponent(lbThanhToan_soDienThoai)
                     .addComponent(jLabel113))
                 .addContainerGap())
         );
@@ -247,19 +271,19 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         jPanel118.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel115.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel115.setText("600000");
+        lbThanhToan_tongTienHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbThanhToan_tongTienHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbThanhToan_tongTienHang.setText("600000");
 
         jLabel109.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel109.setText("Tổng tiền hàng");
 
         jPanel160.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel145.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel145.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel145.setText("2");
-        jPanel160.add(jLabel145, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 20));
+        lbThanhToan_tongSoLuongHang.setBackground(new java.awt.Color(204, 204, 204));
+        lbThanhToan_tongSoLuongHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbThanhToan_tongSoLuongHang.setText("2");
+        jPanel160.add(lbThanhToan_tongSoLuongHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 20));
 
         javax.swing.GroupLayout jPanel118Layout = new javax.swing.GroupLayout(jPanel118);
         jPanel118.setLayout(jPanel118Layout);
@@ -271,8 +295,8 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel160, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lbThanhToan_tongTienHang, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         jPanel118Layout.setVerticalGroup(
             jPanel118Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +305,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addGroup(jPanel118Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel160, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel118Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel115)
+                        .addComponent(lbThanhToan_tongTienHang)
                         .addComponent(jLabel109)))
                 .addContainerGap())
         );
@@ -290,13 +314,18 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         jPanel121.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel147.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel147.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel147.setText("0");
-        jLabel147.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
         jLabel148.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel148.setText("Giảm giá");
+
+        tfThanhToan_giamGia.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        tfThanhToan_giamGia.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        tfThanhToan_giamGia.setText("0");
+        tfThanhToan_giamGia.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThanhToan_giamGia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfThanhToan_giamGiaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel121Layout = new javax.swing.GroupLayout(jPanel121);
         jPanel121.setLayout(jPanel121Layout);
@@ -305,8 +334,8 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(jPanel121Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel148)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(tfThanhToan_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel121Layout.setVerticalGroup(
@@ -314,19 +343,19 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel121Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel121Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel147)
-                    .addComponent(jLabel148))
+                    .addComponent(jLabel148)
+                    .addComponent(tfThanhToan_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel110.add(jPanel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 30));
+        jPanel110.add(jPanel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, 40));
 
         jPanel122.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel149.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel149.setForeground(new java.awt.Color(0, 102, 255));
-        jLabel149.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel149.setText("600000");
+        lbThanhToan_khachCanTra.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        lbThanhToan_khachCanTra.setForeground(new java.awt.Color(0, 102, 255));
+        lbThanhToan_khachCanTra.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbThanhToan_khachCanTra.setText("0");
 
         jLabel150.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel150.setText("Khách cần trả");
@@ -339,7 +368,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel150)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbThanhToan_khachCanTra, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel122Layout.setVerticalGroup(
@@ -347,7 +376,7 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel122Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel122Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel149)
+                    .addComponent(lbThanhToan_khachCanTra)
                     .addComponent(jLabel150))
                 .addContainerGap())
         );
@@ -356,13 +385,18 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         jPanel120.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel146.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel146.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel146.setText("1000000");
-        jLabel146.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
         jLabel112.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel112.setText("Khách thanh toán");
+
+        tfThanhToan_khachThanhToan.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        tfThanhToan_khachThanhToan.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        tfThanhToan_khachThanhToan.setText("0");
+        tfThanhToan_khachThanhToan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThanhToan_khachThanhToan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfThanhToan_khachThanhToanKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel120Layout = new javax.swing.GroupLayout(jPanel120);
         jPanel120.setLayout(jPanel120Layout);
@@ -371,8 +405,8 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(jPanel120Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel112)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(tfThanhToan_khachThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel120Layout.setVerticalGroup(
@@ -380,8 +414,8 @@ public class frame_ThanhToan extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel120Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel120Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel146)
-                    .addComponent(jLabel112))
+                    .addComponent(jLabel112)
+                    .addComponent(tfThanhToan_khachThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -390,81 +424,51 @@ public class frame_ThanhToan extends javax.swing.JFrame {
         jPanel125.setBackground(new java.awt.Color(255, 255, 255));
         jPanel125.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(204, 204, 204)));
 
-        jLabel153.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel153.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel153.setText("1000000");
+        tfThanhToan_tienThuaTraKhach.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThanhToan_tienThuaTraKhach.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        tfThanhToan_tienThuaTraKhach.setText("0");
 
-        buttonGroup1.add(jRadioButton20);
-        jRadioButton20.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jRadioButton20.setText("Tiền thừa trả khách");
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel1.setText("Tiền thừa trả khách:");
 
         javax.swing.GroupLayout jPanel125Layout = new javax.swing.GroupLayout(jPanel125);
         jPanel125.setLayout(jPanel125Layout);
         jPanel125Layout.setHorizontalGroup(
             jPanel125Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel125Layout.createSequentialGroup()
-                .addComponent(jRadioButton20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(tfThanhToan_tienThuaTraKhach, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel125Layout.setVerticalGroup(
             jPanel125Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel125Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel125Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel153)
-                    .addComponent(jRadioButton20))
-                .addGap(51, 51, 51))
+                .addGroup(jPanel125Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel125Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(2, 2, 2))
+                    .addGroup(jPanel125Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfThanhToan_tienThuaTraKhach)))
+                .addGap(54, 54, 54))
         );
 
         jPanel110.add(jPanel125, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 330, 30));
 
-        jPanel123.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel151.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel151.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel151.setText("1000000");
-
-        buttonGroup1.add(jRadioButton18);
-        jRadioButton18.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jRadioButton18.setText("Tính vào công nợ");
-
-        javax.swing.GroupLayout jPanel123Layout = new javax.swing.GroupLayout(jPanel123);
-        jPanel123.setLayout(jPanel123Layout);
-        jPanel123Layout.setHorizontalGroup(
-            jPanel123Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel123Layout.createSequentialGroup()
-                .addComponent(jRadioButton18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel123Layout.setVerticalGroup(
-            jPanel123Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel123Layout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addGroup(jPanel123Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel151)
-                    .addComponent(jRadioButton18))
-                .addContainerGap())
-        );
-
-        jPanel110.add(jPanel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, -1));
-
         jPanel89.add(jPanel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 340, 360));
 
-        jButton14.setBackground(new java.awt.Color(0, 102, 255));
-        jButton14.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setText("THANH TOÁN");
-        jPanel89.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 140, 40));
-
-        jButton15.setBackground(new java.awt.Color(153, 153, 153));
-        jButton15.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("IN");
-        jPanel89.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, -1, 40));
+        btnThanhToan_thanhToan.setBackground(new java.awt.Color(0, 102, 255));
+        btnThanhToan_thanhToan.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnThanhToan_thanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        btnThanhToan_thanhToan.setText("THANH TOÁN");
+        btnThanhToan_thanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToan_thanhToanActionPerformed(evt);
+            }
+        });
+        jPanel89.add(btnThanhToan_thanhToan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -479,6 +483,27 @@ public class frame_ThanhToan extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfThanhToan_giamGiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfThanhToan_giamGiaKeyReleased
+        double tienCanTra = this.tongTienHang * (1- Double.parseDouble(tfThanhToan_giamGia.getText()));
+        lbThanhToan_khachCanTra.setText(String.valueOf(tienCanTra));
+    }//GEN-LAST:event_tfThanhToan_giamGiaKeyReleased
+
+    private void tfThanhToan_khachThanhToanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfThanhToan_khachThanhToanKeyReleased
+        double tienThanhToan = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
+        double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
+        tfThanhToan_tienThuaTraKhach.setText(String.valueOf(tienThanhToan - tienCanTra));
+    }//GEN-LAST:event_tfThanhToan_khachThanhToanKeyReleased
+
+    private void btnThanhToan_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToan_thanhToanActionPerformed
+        double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
+        double tienKhachTra = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
+        double tienThua = Double.parseDouble(tfThanhToan_tienThuaTraKhach.getText());
+        Frame_HoaDon frame_hoaDon = new Frame_HoaDon(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua);
+        frame_hoaDon.setVisible(true);
+        frame_hoaDon.setSize(370, 780);
+        frame_hoaDon.setLocation(1170,0);
+    }//GEN-LAST:event_btnThanhToan_thanhToanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,50 +522,37 @@ public class frame_ThanhToan extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame_ThanhToan().setVisible(true);
+                new Frame_ThanhToan().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThanhToan_thanhToan;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel113;
-    private javax.swing.JLabel jLabel114;
-    private javax.swing.JLabel jLabel115;
-    private javax.swing.JLabel jLabel116;
-    private javax.swing.JLabel jLabel145;
-    private javax.swing.JLabel jLabel146;
-    private javax.swing.JLabel jLabel147;
     private javax.swing.JLabel jLabel148;
-    private javax.swing.JLabel jLabel149;
     private javax.swing.JLabel jLabel150;
-    private javax.swing.JLabel jLabel151;
-    private javax.swing.JLabel jLabel153;
-    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
     private javax.swing.JPanel jPanel101;
     private javax.swing.JPanel jPanel109;
     private javax.swing.JPanel jPanel110;
@@ -551,11 +563,20 @@ public class frame_ThanhToan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel120;
     private javax.swing.JPanel jPanel121;
     private javax.swing.JPanel jPanel122;
-    private javax.swing.JPanel jPanel123;
     private javax.swing.JPanel jPanel125;
     private javax.swing.JPanel jPanel160;
     private javax.swing.JPanel jPanel89;
-    private javax.swing.JRadioButton jRadioButton18;
-    private javax.swing.JRadioButton jRadioButton20;
+    private javax.swing.JLabel lbThanhToan_khachCanTra;
+    private javax.swing.JLabel lbThanhToan_maHoaDon;
+    private javax.swing.JLabel lbThanhToan_maKhachHang;
+    private javax.swing.JLabel lbThanhToan_ngay;
+    private javax.swing.JLabel lbThanhToan_soDienThoai;
+    private javax.swing.JLabel lbThanhToan_tenKhachHang;
+    private javax.swing.JLabel lbThanhToan_tenNhanhVien;
+    private javax.swing.JLabel lbThanhToan_tongSoLuongHang;
+    private javax.swing.JLabel lbThanhToan_tongTienHang;
+    private javax.swing.JTextField tfThanhToan_giamGia;
+    private javax.swing.JTextField tfThanhToan_khachThanhToan;
+    private javax.swing.JLabel tfThanhToan_tienThuaTraKhach;
     // End of variables declaration//GEN-END:variables
 }

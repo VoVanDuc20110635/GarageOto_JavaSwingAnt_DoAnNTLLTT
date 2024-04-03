@@ -51,6 +51,7 @@ import src.Model.ChiNhanh;
 import src.Model.HangHoa;
 import src.Model.HinhAnh;
 import src.Model.HoaDon;
+import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Model.LoaiXe;
 import src.Model.NhaCungCap;
@@ -74,6 +75,7 @@ import src.Service.PhieuTraHangService;
 import src.UI.HangHoa.Frame_ThemHangHoa;
 import src.UI.HangHoa.Frame_chiTietHangHoa;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
+import src.UI.HoaDon.Frame_ThanhToan;
 import src.UI.KhachHang.Frame_ThemKhachHang;
 import src.Util.AlwaysOpenComboBoxUI;
 import src.Util.Util;
@@ -174,7 +176,8 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel84 = new javax.swing.JPanel();
         tfDatHang_timHangHoa = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabel66 = new javax.swing.JLabel();
+        lbDatHang_maDonHang = new javax.swing.JLabel();
+        lbDatHang_maDonHang1 = new javax.swing.JLabel();
         jPanel85 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbDatHang_danhSachHangHoa = new javax.swing.JTable();
@@ -201,6 +204,9 @@ public class TrangChu extends javax.swing.JFrame {
         tfDatHang_maKhachHang = new javax.swing.JLabel();
         jPanel252 = new javax.swing.JPanel();
         jLabel304 = new javax.swing.JLabel();
+        tfDatHang_soDienThoai = new javax.swing.JLabel();
+        jPanel253 = new javax.swing.JPanel();
+        jLabel306 = new javax.swing.JLabel();
         tfDatHang_tenKhachHang = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel91 = new javax.swing.JPanel();
@@ -796,9 +802,12 @@ public class TrangChu extends javax.swing.JFrame {
         jButton1.setText("Tìm kiếm");
         jPanel84.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, 40));
 
-        jLabel66.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel66.setText("Mã đơn hàng");
+        lbDatHang_maDonHang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbDatHang_maDonHang.setForeground(new java.awt.Color(255, 255, 255));
+
+        lbDatHang_maDonHang1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbDatHang_maDonHang1.setForeground(new java.awt.Color(255, 255, 255));
+        lbDatHang_maDonHang1.setText("Mã đơn hàng");
 
         javax.swing.GroupLayout jPanel65Layout = new javax.swing.GroupLayout(jPanel65);
         jPanel65.setLayout(jPanel65Layout);
@@ -807,9 +816,14 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel65Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jPanel84, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1025, Short.MAX_VALUE)
-                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1027, Short.MAX_VALUE)
+                .addComponent(lbDatHang_maDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(jPanel65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel65Layout.createSequentialGroup()
+                    .addContainerGap(1249, Short.MAX_VALUE)
+                    .addComponent(lbDatHang_maDonHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(173, 173, 173)))
         );
         jPanel65Layout.setVerticalGroup(
             jPanel65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -817,8 +831,13 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel84, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel66, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbDatHang_maDonHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel65Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel65Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(lbDatHang_maDonHang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jPanel9.add(jPanel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1520, 50));
@@ -927,6 +946,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnDatHang_datHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnDatHang_datHang.setForeground(new java.awt.Color(255, 255, 255));
         btnDatHang_datHang.setText("ĐẶT HÀNG");
+        btnDatHang_datHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatHang_datHangActionPerformed(evt);
+            }
+        });
         jPanel106.add(btnDatHang_datHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 500, 130, 40));
 
         tbDatHang_danhSachHangHoaDaChon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -957,6 +981,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel106.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 760, 340));
 
         jPanel250.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel250.setEnabled(false);
 
         jLabel305.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel305.setText("Tổng số lượng:");
@@ -964,6 +989,7 @@ public class TrangChu extends javax.swing.JFrame {
         tfDatHang_soLuong.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         tfDatHang_soLuong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         tfDatHang_soLuong.setText("0");
+        tfDatHang_soLuong.setEnabled(false);
 
         javax.swing.GroupLayout jPanel250Layout = new javax.swing.GroupLayout(jPanel250);
         jPanel250.setLayout(jPanel250Layout);
@@ -996,6 +1022,7 @@ public class TrangChu extends javax.swing.JFrame {
         tfDatHang_tongTienHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         tfDatHang_tongTienHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         tfDatHang_tongTienHang.setText("0");
+        tfDatHang_tongTienHang.setEnabled(false);
 
         javax.swing.GroupLayout jPanel242Layout = new javax.swing.GroupLayout(jPanel242);
         jPanel242.setLayout(jPanel242Layout);
@@ -1028,6 +1055,7 @@ public class TrangChu extends javax.swing.JFrame {
         tfDatHang_maKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         tfDatHang_maKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         tfDatHang_maKhachHang.setText("id");
+        tfDatHang_maKhachHang.setEnabled(false);
 
         javax.swing.GroupLayout jPanel247Layout = new javax.swing.GroupLayout(jPanel247);
         jPanel247.setLayout(jPanel247Layout);
@@ -1055,22 +1083,23 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel252.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel304.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel304.setText("Tên khách hàng:");
+        jLabel304.setText("Số điện thoại:");
 
-        tfDatHang_tenKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        tfDatHang_tenKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        tfDatHang_tenKhachHang.setText("name");
+        tfDatHang_soDienThoai.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        tfDatHang_soDienThoai.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        tfDatHang_soDienThoai.setText("0865611515");
+        tfDatHang_soDienThoai.setEnabled(false);
 
         javax.swing.GroupLayout jPanel252Layout = new javax.swing.GroupLayout(jPanel252);
         jPanel252.setLayout(jPanel252Layout);
         jPanel252Layout.setHorizontalGroup(
             jPanel252Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel252Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel304)
-                .addGap(24, 24, 24)
-                .addComponent(tfDatHang_tenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(tfDatHang_soDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         jPanel252Layout.setVerticalGroup(
             jPanel252Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1078,11 +1107,45 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel252Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel304)
+                    .addComponent(tfDatHang_soDienThoai))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel106.add(jPanel252, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 280, -1));
+
+        jPanel253.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel253.setEnabled(false);
+
+        jLabel306.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel306.setText("Tên khách hàng:");
+
+        tfDatHang_tenKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        tfDatHang_tenKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        tfDatHang_tenKhachHang.setText("name");
+        tfDatHang_tenKhachHang.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel253Layout = new javax.swing.GroupLayout(jPanel253);
+        jPanel253.setLayout(jPanel253Layout);
+        jPanel253Layout.setHorizontalGroup(
+            jPanel253Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel253Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel306)
+                .addGap(24, 24, 24)
+                .addComponent(tfDatHang_tenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+        jPanel253Layout.setVerticalGroup(
+            jPanel253Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel253Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel253Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel306)
                     .addComponent(tfDatHang_tenKhachHang))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel106.add(jPanel252, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
+        jPanel106.add(jPanel253, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
 
         jPanel9.add(jPanel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 70, 790, 550));
 
@@ -3438,6 +3501,13 @@ public class TrangChu extends javax.swing.JFrame {
         if (selectedTab == 1 && tabPane_giaoDich.getSelectedIndex() == 0){
             hienThiDanhSachHangHoaKhiDatHang();
             hienThiDanhSachKhachHangTaiCombobox(cbDatHang_danhSachKhachHang);
+//            int soHoaDon = 0;
+//            try {
+//                soHoaDon = hoaDonService.demSoHoaDon() + 1;
+//            } catch (SQLException ex) {
+//                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            lbDatHang_maDonHang.setText(lbDatHang_maDonHang.getText() + " " + "HD0" + soHoaDon);
             
         }
         if (selectedTab == 2 && tabbedPane_doiTac.getSelectedIndex() == 0){
@@ -3798,16 +3868,28 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKhachHang_themActionPerformed
 
     private void btnDatHang_timKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_timKhachHangActionPerformed
+        String timKhachHang = tfDatHang_timKhachHang.getText();
         cbDatHang_danhSachKhachHang.removeAllItems();
         hienThiDanhSachKhachHangTaiCombobox(cbDatHang_danhSachKhachHang);
+        
+        // lúc thực hiện 2 dòng lệnh trên thì event performed cũng được thực hiện cùng lúc
+        
+        
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         for (int i = 0; i < cbDatHang_danhSachKhachHang.getItemCount(); i++) {
+        
             String item = cbDatHang_danhSachKhachHang.getItemAt(i);
-            if (item.toLowerCase().contains(tfDatHang_timKhachHang.getText().toLowerCase())) {
+            if (item.toLowerCase().contains(timKhachHang.toLowerCase())) {
                 model.addElement(item);
+        
             }
         }
         cbDatHang_danhSachKhachHang.setModel(model);
+        if (cbDatHang_danhSachKhachHang.getItemCount() == 0){
+            tfDatHang_tenKhachHang.setText("");
+            tfDatHang_soDienThoai.setText("");
+            return;
+        }
     }//GEN-LAST:event_btnDatHang_timKhachHangActionPerformed
 
     private void tfDatHang_timKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfDatHang_timKhachHangMouseClicked
@@ -3819,21 +3901,59 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDatHang_timKhachHangMouseClicked
 
     private void cbDatHang_danhSachKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDatHang_danhSachKhachHangActionPerformed
-        
-        tfDatHang_timKhachHang.setText(cbDatHang_danhSachKhachHang.getSelectedItem().toString());
-        String[] parts = cbDatHang_danhSachKhachHang.getSelectedItem().toString().split(" ");
-        String tenKhachHang = "";
-        tfDatHang_maKhachHang.setText(parts[0]);
-        for (int j = 0 ; j < parts.length; j++){
-            if (j == 0){
-                continue;
-            } else {
-                tenKhachHang += parts[j] + " ";
+        try{
+            String[] parts = cbDatHang_danhSachKhachHang.getSelectedItem().toString().split(" ");
+            String tenKhachHang = "";
+            tfDatHang_maKhachHang.setText(parts[0]);
+            for (int j = 0 ; j < parts.length; j++){
+                if (j == 0){
+                    continue;
+                } else if(j != parts.length - 1){
+                    tenKhachHang += parts[j] + " ";
+                }
+                if(j == parts.length - 1){
+                    tfDatHang_soDienThoai.setText(parts[j]);
+                }
             }
+            int soHoaDon = hoaDonService.demSoHoaDon();
+            String maHoaDon = "HD0" + soHoaDon;
+            tfDatHang_tenKhachHang.setText(tenKhachHang);
+            lbDatHang_maDonHang.setText(maHoaDon + tfDatHang_maKhachHang.getText().trim());
+            
+        } catch (Exception err){
+            tfDatHang_tenKhachHang.setText("");
+            tfDatHang_timKhachHang.setText("");
+            tfDatHang_soDienThoai.setText("");
         }
-        tfDatHang_tenKhachHang.setText(tenKhachHang);
+        
+        
         
     }//GEN-LAST:event_cbDatHang_danhSachKhachHangActionPerformed
+
+    private void btnDatHang_datHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_datHangActionPerformed
+        KhachHang khachHang = new KhachHang();
+        khachHang.setMaKhachHang(tfDatHang_maKhachHang.getText());
+        khachHang.setTenKhachHang(tfDatHang_tenKhachHang.getText());
+        khachHang.setSoDienThoai(tfDatHang_soDienThoai.getText());
+        String maHoaDon = lbDatHang_maDonHang.getText();
+        List<HoaDonChiTiet> danhSachHoaDonChiTiet = new ArrayList<>();
+        for (int i =0; i< tbDatHang_danhSachHangHoaDaChon.getRowCount(); i++){
+            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+            hoaDonChiTiet.setMaHoaDonChiTiet(maHoaDon + "CT0" + i);
+            hoaDonChiTiet.setGiaBan(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,2).toString()));
+            hoaDonChiTiet.setGiamGia(0);
+            hoaDonChiTiet.setSoLuong(Short.parseShort(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,4).toString()));
+            hoaDonChiTiet.setThanhTien(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,6).toString()));
+            hoaDonChiTiet.setMaHangHoa(String.valueOf(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,0).toString()));
+            hoaDonChiTiet.setMaHoaDon(maHoaDon);
+        }
+        int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText().toString());
+        double tongTienHang = Double.parseDouble(tfDatHang_tongTienHang.getText().toString());
+        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang);
+        frame_thanhToan.setVisible(true);
+        frame_thanhToan.setSize(360, 650);
+        frame_thanhToan.setLocation(1170,0);
+    }//GEN-LAST:event_btnDatHang_datHangActionPerformed
     
 
     
@@ -4385,7 +4505,7 @@ public class TrangChu extends javax.swing.JFrame {
         try {
             danhSachKhachHangMain = khachHangService.hienThiTatCaKhachHang();
             for (KhachHang khachHang : danhSachKhachHangMain){
-                comboBox.addItem(khachHang.getMaKhachHang() + " " + khachHang.getTenKhachHang());
+                comboBox.addItem(khachHang.getMaKhachHang() + " " + khachHang.getTenKhachHang() + " " + khachHang.getSoDienThoai());
             }
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -4529,6 +4649,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel304;
     private javax.swing.JLabel jLabel305;
+    private javax.swing.JLabel jLabel306;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel51;
@@ -4546,7 +4667,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
@@ -4609,6 +4729,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel250;
     private javax.swing.JPanel jPanel252;
+    private javax.swing.JPanel jPanel253;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
@@ -4691,6 +4812,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField48;
     private javax.swing.JTextField jTextField49;
     private com.toedter.calendar.JYearChooser jYearChooser2;
+    private javax.swing.JLabel lbDatHang_maDonHang;
+    private javax.swing.JLabel lbDatHang_maDonHang1;
     private javax.swing.JLabel lb_maBangChamCong;
     private javax.swing.JLabel lb_soDienThoai;
     private javax.swing.JLabel lb_tenKhachHang;
@@ -4719,6 +4842,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tb_danhSachPhieuSuaChua;
     private javax.swing.JTable tb_danhSachPhieuTraHang;
     private javax.swing.JLabel tfDatHang_maKhachHang;
+    private javax.swing.JLabel tfDatHang_soDienThoai;
     private javax.swing.JLabel tfDatHang_soLuong;
     private javax.swing.JLabel tfDatHang_tenKhachHang;
     private javax.swing.JTextField tfDatHang_timHangHoa;

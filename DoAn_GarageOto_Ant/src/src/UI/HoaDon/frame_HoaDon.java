@@ -4,19 +4,46 @@
  */
 package src.UI.HoaDon;
 
+import java.util.List;
+import javax.swing.JFrame;
+import src.Model.HoaDonChiTiet;
+import src.Model.KhachHang;
+
 /**
  *
  * @author WINDOWS 10
  */
-public class frame_HoaDon extends javax.swing.JFrame {
-
+public class Frame_HoaDon extends javax.swing.JFrame {
+    
+    private List<HoaDonChiTiet> danhSachHoaDonChiTiet;
+    private KhachHang khachHang;
+    private String maHoaDon;
+    private int tongSoLuong;
+    private double tongTienHang;
+    double tienCanTra;
+    double tienKhachTra;
+    double tienThua;
     /**
      * Creates new form frame_HoaDon
      */
-    public frame_HoaDon() {
+    public Frame_HoaDon() {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    public Frame_HoaDon(List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, double tienCanTra, double tienKhachTra, double tienThua) {
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.danhSachHoaDonChiTiet = danhSachHoaDonChiTiet;
+        this.khachHang = khachHang;
+        this.maHoaDon = maHoaDon;
+        this.tongSoLuong = tongSoLuong;
+        this.tongTienHang = tongTienHang;
+        this.tienCanTra = tienCanTra;
+        this.tienKhachTra = tienKhachTra;
+        this.tienThua = tienThua;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,12 +88,10 @@ public class frame_HoaDon extends javax.swing.JFrame {
         jPanel223 = new javax.swing.JPanel();
         jLabel250 = new javax.swing.JLabel();
         jLabel251 = new javax.swing.JLabel();
-        jPanel224 = new javax.swing.JPanel();
-        jLabel252 = new javax.swing.JLabel();
-        jLabel253 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jLabel254 = new javax.swing.JLabel();
+        btnHoaDon_in = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -423,38 +448,6 @@ public class frame_HoaDon extends javax.swing.JFrame {
 
         jPanel177.add(jPanel223, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 330, 30));
 
-        jPanel224.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel252.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel252.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel252.setText("1000000");
-
-        jLabel253.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel253.setText("Tính vào công nợ");
-
-        javax.swing.GroupLayout jPanel224Layout = new javax.swing.GroupLayout(jPanel224);
-        jPanel224.setLayout(jPanel224Layout);
-        jPanel224Layout.setHorizontalGroup(
-            jPanel224Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel224Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel253)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jLabel252, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel224Layout.setVerticalGroup(
-            jPanel224Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel224Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(jPanel224Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel252)
-                    .addComponent(jLabel253))
-                .addContainerGap())
-        );
-
-        jPanel177.add(jPanel224, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, -1, -1));
-
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -470,11 +463,17 @@ public class frame_HoaDon extends javax.swing.JFrame {
 
         jPanel177.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 330, 290));
 
-        jPanel174.add(jPanel177, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 340, 640));
+        jPanel174.add(jPanel177, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 340, 600));
 
         jLabel254.setFont(new java.awt.Font("Segoe UI", 2, 16)); // NOI18N
         jLabel254.setText("Cảm ơn và hẹn gặp lại!");
-        jPanel174.add(jLabel254, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 710, 170, 30));
+        jPanel174.add(jLabel254, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 670, 170, 30));
+
+        btnHoaDon_in.setBackground(new java.awt.Color(153, 153, 153));
+        btnHoaDon_in.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnHoaDon_in.setForeground(new java.awt.Color(255, 255, 255));
+        btnHoaDon_in.setText("IN");
+        jPanel174.add(btnHoaDon_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 710, 60, 30));
 
         jScrollPane7.setViewportView(jPanel174);
 
@@ -519,25 +518,27 @@ public class frame_HoaDon extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_HoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame_HoaDon().setVisible(true);
+                new Frame_HoaDon().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHoaDon_in;
     private javax.swing.JLabel jLabel230;
     private javax.swing.JLabel jLabel231;
     private javax.swing.JLabel jLabel232;
@@ -560,8 +561,6 @@ public class frame_HoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel249;
     private javax.swing.JLabel jLabel250;
     private javax.swing.JLabel jLabel251;
-    private javax.swing.JLabel jLabel252;
-    private javax.swing.JLabel jLabel253;
     private javax.swing.JLabel jLabel254;
     private javax.swing.JPanel jPanel174;
     private javax.swing.JPanel jPanel175;
@@ -575,7 +574,6 @@ public class frame_HoaDon extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel221;
     private javax.swing.JPanel jPanel222;
     private javax.swing.JPanel jPanel223;
-    private javax.swing.JPanel jPanel224;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable4;

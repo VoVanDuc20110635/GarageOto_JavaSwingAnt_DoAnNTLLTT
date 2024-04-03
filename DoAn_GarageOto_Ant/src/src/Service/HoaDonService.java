@@ -74,4 +74,17 @@ public class HoaDonService {
         connectorDB.closeConnection();
         return hoaDon;
     }
+    public int demSoHoaDon() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM hoa_don;");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        connectorDB.closeConnection();
+        return numberOfRows;
+    }
 }
