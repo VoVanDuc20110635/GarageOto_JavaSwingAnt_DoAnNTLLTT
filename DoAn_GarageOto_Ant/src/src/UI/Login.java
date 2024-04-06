@@ -4,12 +4,14 @@
  */
 package src.UI;
 
+import src.Service.MailSender;
+
 /**
  *
  * @author WINDOWS 10
  */
 public class Login extends javax.swing.JFrame {
-
+    private MailSender mailSender = new MailSender();
     /**
      * Creates new form Login
      */
@@ -109,6 +111,11 @@ public class Login extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Login");
         jButton1.setPreferredSize(new java.awt.Dimension(250, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton1);
 
         jPanel1.add(jPanel5);
@@ -173,6 +180,34 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String to = "2k2lmhtlol@gmail.com";
+
+        // Sender's email ID needs to be mentioned
+        String from = "voduc0100@gmail.com";
+
+        // Assuming you are sending email from localhost
+        String host = "smtp.gmail.com";
+
+        // Subject
+        String subject = "This is the Subject Line!";
+
+        // Mail text
+//        String text = "This is the actual message";
+
+        String customerName = "John Doe";
+
+        // Items
+        String[][] items = {
+            {"Oil Change", "1", "$50.00", "$50.00"},
+            {"Air Filter", "2", "$15.00", "$30.00"},
+            // Add more items as necessary
+        };
+
+        
+        mailSender.sendEmail(to, from, host, subject, customerName, items);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
