@@ -4,7 +4,7 @@
  */
 package src.UI;
 
-import src.UI.HoaDon.frame_HoaDonChiTiet;
+import src.UI.HoaDon.Frame_HoaDonChiTiet;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -1291,6 +1291,11 @@ public class TrangChu extends javax.swing.JFrame {
             }
         ));
         tbHoaDon_danhSachHoaDon.setRowHeight(30);
+        tbHoaDon_danhSachHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbHoaDon_danhSachHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(tbHoaDon_danhSachHoaDon);
 
         jPanel8.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 1230, 500));
@@ -4131,6 +4136,29 @@ public class TrangChu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_cbHoaDon_nguoiTaoActionPerformed
+
+    private void tbHoaDon_danhSachHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHoaDon_danhSachHoaDonMouseClicked
+        int index = tbHoaDon_danhSachHoaDon.getSelectedRow();
+        TableModel model = tbHoaDon_danhSachHoaDon.getModel();
+        HoaDon hoaDon = new HoaDon();
+        try {
+            hoaDon = hoaDonService.hienThiHoaDonTheoMaHoadon(model.getValueAt(index, 0).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        phieuNhapHang.setPhieuNhapHang(model.getValueAt(index, 0).toString());
+//        phieuNhapHang.setThoiGian( util.localDateParseMethodWithoutNanosecond(model.getValueAt(index, 1).toString()));
+//        phieuNhapHang.setMaNhaCungCap(model.getValueAt(index, 2).toString());
+//        phieuNhapHang.setTong(Double.parseDouble(model.getValueAt(index, 3).toString()));
+//        phieuNhapHang.setNo(Double.parseDouble(model.getValueAt(index, 4).toString()));
+//        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
+        String tenNhanVien = model.getValueAt(index, 3).toString();
+        String tenDoiTac = model.getValueAt(index, 4).toString();
+        Frame_HoaDonChiTiet frame_hoaDonChiTiet = new Frame_HoaDonChiTiet(hoaDon, tenNhanVien, tenDoiTac);
+        frame_hoaDonChiTiet.setVisible(true);
+        frame_hoaDonChiTiet.setSize(1000, 640);
+        frame_hoaDonChiTiet.setLocation(0,0);
+    }//GEN-LAST:event_tbHoaDon_danhSachHoaDonMouseClicked
     
 
     

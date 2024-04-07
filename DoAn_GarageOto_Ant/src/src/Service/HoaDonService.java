@@ -42,6 +42,7 @@ public class HoaDonService {
                 hoaDon.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 hoaDon.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 hoaDon.setMaPhieuTraHang(resultTable.getString("ma_phieu_tra_hang"));
+                hoaDon.setGhiChu(resultTable.getString("ghi_chu"));
             }
             danhSachHoaDon.add(hoaDon);
         }
@@ -69,6 +70,8 @@ public class HoaDonService {
                 hoaDon.setMaKhachHang(resultTable.getString("ma_khach_hang"));
                 hoaDon.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 hoaDon.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+                hoaDon.setGhiChu(resultTable.getString("ghi_chu"));
+                hoaDon.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
             }
         }
         connectorDB.closeConnection();
@@ -132,10 +135,25 @@ public class HoaDonService {
                 hoaDon.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 hoaDon.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 hoaDon.setMaPhieuTraHang(resultTable.getString("ma_phieu_tra_hang"));
+                hoaDon.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
             }
             danhSachHoaDon.add(hoaDon);
         }
         connectorDB.closeConnection();
         return danhSachHoaDon;
+    }
+    
+    public int updateHoaDon (HoaDon hoaDon) throws SQLException{ //   
+        try{
+           String query = String.format("update hoa_don set trang_thai='%s', ghi_chu='%s', tong_tien=%s",
+                             hoaDon.getThoiGian(),
+                             hoaDon.getGhiChu(),
+                             String.valueOf(hoaDon.getTongTien()));
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
     }
 }
