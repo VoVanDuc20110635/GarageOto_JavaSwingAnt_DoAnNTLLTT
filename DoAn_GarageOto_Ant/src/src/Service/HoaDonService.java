@@ -145,10 +145,9 @@ public class HoaDonService {
     
     public int updateHoaDon (HoaDon hoaDon) throws SQLException{ //   
         try{
-           String query = String.format("update hoa_don set trang_thai='%s', ghi_chu='%s', tong_tien=%s",
-                             hoaDon.getThoiGian(),
+           String query = String.format("update hoa_don set ghi_chu='%s' where ma_hoa_don = '%s'",
                              hoaDon.getGhiChu(),
-                             String.valueOf(hoaDon.getTongTien()));
+                             hoaDon.getMaHoaDon());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;

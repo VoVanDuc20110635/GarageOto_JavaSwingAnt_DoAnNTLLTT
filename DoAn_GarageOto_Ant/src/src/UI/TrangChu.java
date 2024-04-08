@@ -289,6 +289,8 @@ public class TrangChu extends javax.swing.JFrame {
         jButton24 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jPanel32 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         tabbedPane_doiTac = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jPanel71 = new javax.swing.JPanel();
@@ -1887,15 +1889,31 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabPane_giaoDich.addTab("Nhập hàng", jPanel4);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã hàng", "Tên hàng", "Số lượng"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable1);
+
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1540, Short.MAX_VALUE)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1234, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         tabPane_giaoDich.addTab("tab6", jPanel32);
@@ -3495,7 +3513,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
         frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang);
         frame_chiTietDonNhapHang.setVisible(true);
-        frame_chiTietDonNhapHang.setSize(1000, 720);
+        frame_chiTietDonNhapHang.setSize(1000, 710);
         frame_chiTietDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
@@ -4156,7 +4174,7 @@ public class TrangChu extends javax.swing.JFrame {
         String tenDoiTac = model.getValueAt(index, 4).toString();
         Frame_HoaDonChiTiet frame_hoaDonChiTiet = new Frame_HoaDonChiTiet(hoaDon, tenNhanVien, tenDoiTac);
         frame_hoaDonChiTiet.setVisible(true);
-        frame_hoaDonChiTiet.setSize(1000, 640);
+        frame_hoaDonChiTiet.setSize(1075, 620);
         frame_hoaDonChiTiet.setLocation(0,0);
     }//GEN-LAST:event_tbHoaDon_danhSachHoaDonMouseClicked
     
@@ -5078,10 +5096,12 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField33;

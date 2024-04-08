@@ -67,4 +67,18 @@ public class HoaDonChiTietService {
             return 0;
         }
     }
+    
+    public int updateSoLuongHoaDonChiTiet (HoaDonChiTiet hoaDonChiTiet) throws SQLException{ //   
+        try{
+           String query = String.format("update hoa_don_chi_tiet set so_luong=%s where ma_hang_hoa = '%s' && ma_hoa_don = '%s'",
+                             String.valueOf(hoaDonChiTiet.getSoLuong()),
+                             hoaDonChiTiet.getMaHangHoa(),
+                             hoaDonChiTiet.getMaHoaDon());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
 }

@@ -85,4 +85,57 @@ public class PhieuTraHangService {
         connectorDB.closeConnection();
         return tongTien;
     }
+    
+    public int themPhieuTraHangKhachHang (PhieuTraHang phieuTraHang) throws SQLException{ //   
+        try{
+           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_hoa_don, ma_khach_hang, ma_nhan_vien, trang_thai)" +
+                             "values ('%s', %s, %s, '%s' , '%s' , '%s', '%s', '%s' )",
+                phieuTraHang.getMaPhieuTraHang(),
+                String.valueOf(phieuTraHang.getCanTra()),
+                String.valueOf(phieuTraHang.getDaTra()),
+                util.localDateParseMethod( phieuTraHang.getThoiGian()),
+                phieuTraHang.getMaHoaDon(),
+                phieuTraHang.getMaKhachHang(),
+                phieuTraHang.getMaNhanVien(),
+                phieuTraHang.getTrangThai());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int themPhieuTraHangNhaCungCap (PhieuTraHang phieuTraHang) throws SQLException{ //   
+        try{
+           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_hoa_don, ma_nha_cung_cap, ma_nhan_vien, trang_thai)" +
+                             "values ('%s', %s, %s, '%s' , '%s' , '%s', '%s', '%s' )",
+                phieuTraHang.getMaPhieuTraHang(),
+                String.valueOf(phieuTraHang.getCanTra()),
+                String.valueOf(phieuTraHang.getDaTra()),
+                util.localDateParseMethod( phieuTraHang.getThoiGian()),
+                phieuTraHang.getMaHoaDon(),
+                phieuTraHang.getMaNhaCungCap(),
+                phieuTraHang.getMaNhanVien(),
+                phieuTraHang.getTrangThai());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    public int demSoPhieuTraHang() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM phieu_tra_hang;");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        connectorDB.closeConnection();
+        return numberOfRows;
+    }
 }
