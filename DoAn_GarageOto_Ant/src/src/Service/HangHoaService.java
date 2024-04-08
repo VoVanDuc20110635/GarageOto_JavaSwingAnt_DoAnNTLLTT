@@ -186,4 +186,18 @@ public class HangHoaService {
             return 0;
         }
     }
+    
+    public int updateSoLuongTonKhoHangHoa(String maHangHoa, int soLuongTonKho){
+        try{
+            String query = String.format("update hang_hoa set ton_kho = ton_kho + %s where ma_hang_hoa='%s'",
+                             soLuongTonKho,
+                             maHangHoa);
+                connectorDB.executeUpdateQueryConnectorDB(query);
+                connectorDB.closeConnection();
+           
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
 }

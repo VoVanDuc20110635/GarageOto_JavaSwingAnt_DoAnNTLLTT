@@ -715,6 +715,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
         lbHoaDonChiTiet_doiTac2.setText("Số lượng:");
 
         tfHoaDonChiTiet_soLuong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfHoaDonChiTiet_soLuong.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         tfHoaDonChiTiet_soLuong.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         tfHoaDonChiTiet_soLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

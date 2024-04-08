@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
+import src.Service.HangHoaService;
 import src.Service.HoaDonChiTietService;
 import src.Service.HoaDonService;
 import src.Util.Util;
@@ -31,6 +32,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     private Util util = new Util();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietService();
     private HoaDonService hoaDonService = new HoaDonService();
+    private HangHoaService hangHoaService = new HangHoaService();
     /**
      * Creates new form frame_ThanhToan
      */
@@ -534,14 +536,13 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         hoaDon.setMaNhanVien("NV005");
         try {
             hoaDonService.themHoaDon(hoaDon);
-            
-            
         } catch (SQLException ex) {
             Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (HoaDonChiTiet hoaDonChiTiet: danhSachHoaDonChiTiet){
             try {
                 hoaDonChiTietService.themHoaDonChiTiet(hoaDonChiTiet);
+                hangHoaService.updateSoLuongTonKhoHangHoa(hoaDonChiTiet.getMaHangHoa(), (-1)*hoaDonChiTiet.getSoLuong());
             } catch (SQLException ex) {
                 Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
             }

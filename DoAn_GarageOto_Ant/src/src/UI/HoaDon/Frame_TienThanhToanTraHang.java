@@ -14,6 +14,7 @@ import javax.swing.table.TableModel;
 import src.Model.ChiTietPhieuTraHang;
 import src.Model.PhieuTraHang;
 import src.Service.ChiTietPhieuTraHangService;
+import src.Service.HangHoaService;
 import src.Service.PhieuTraHangService;
 import src.Util.Util;
 
@@ -32,6 +33,7 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     
     private PhieuTraHangService phieuTraHangService = new PhieuTraHangService();
     private ChiTietPhieuTraHangService chiTietPhieuTraHangService = new ChiTietPhieuTraHangService();
+    private HangHoaService hangHoaService = new HangHoaService();
     private Util util = new Util();
     /**
      * Creates new form TienThanhToanTraHang
@@ -295,6 +297,11 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tfTienThanhToanTraHang_khachThanhToanKeyReleased
 
     private void btnTienThanhToanTraHang_traHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienThanhToanTraHang_traHangActionPerformed
+        hangHoaService.updateSoLuongTonKhoHangHoa(maHoaDon, -1);
+        TableModel model = tbDanhSachSanPhamTraHang.getModel();
+        for (int i =0 ; i < model.getRowCount(); i++){
+            hangHoaService.updateSoLuongTonKhoHangHoa(model.getValueAt(i, 0).toString(), Short.parseShort(model.getValueAt(i, 3).toString()));
+        }
         thanhToan();
     }//GEN-LAST:event_btnTienThanhToanTraHang_traHangActionPerformed
 

@@ -960,11 +960,11 @@ public class TrangChu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã hàng hóa", "Tên hàng hóa", "Giá bán", "", "SL", "", "Thành tiền", ""
+                "Mã hàng hóa", "Tên hàng hóa", "Tồn kho", "Giá bán", "", "SL", "", "Thành tiền", ""
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, false, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -3882,6 +3882,7 @@ public class TrangChu extends javax.swing.JFrame {
         modelTbDanhSachHangHoaDaChon.addRow(new Object[]{
                     modelTbDanhSachHangHoa.getValueAt(index, 1).toString(),
                     modelTbDanhSachHangHoa.getValueAt(index, 2).toString(),
+                    modelTbDanhSachHangHoa.getValueAt(index, 4).toString(),
                     modelTbDanhSachHangHoa.getValueAt(index, 3).toString(),
                     "", 
                     1,
@@ -3907,29 +3908,34 @@ public class TrangChu extends javax.swing.JFrame {
         DefaultTableModel recordTable = (DefaultTableModel)tbDatHang_danhSachHangHoaDaChon.getModel();
         int selectedRow = tbDatHang_danhSachHangHoaDaChon.getSelectedRow();
         // Check if the click occurred on the specific row and column
-        long donGia = Long.parseLong(model.getValueAt(selectedRow, 2).toString().split("\\.")[0]);
-        long thanhTien = Long.parseLong(model.getValueAt(selectedRow, 6).toString().split("\\.")[0]);
-        if (col == 7){
+        long donGia = Long.parseLong(model.getValueAt(selectedRow, 3).toString().split("\\.")[0]);
+        long thanhTien = Long.parseLong(model.getValueAt(selectedRow, 7).toString().split("\\.")[0]);
+        if (col == 8){
             int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText());
-            int soLuongDuocChon = Integer.parseInt(model.getValueAt(selectedRow, 4).toString());
+            int soLuongDuocChon = Integer.parseInt(model.getValueAt(selectedRow, 5).toString());
             tfDatHang_soLuong.setText(String.valueOf(tongSoLuong - soLuongDuocChon));
             tfDatHang_tongTienHang.setText(String.valueOf(Long.parseLong(tfDatHang_tongTienHang.getText()) - thanhTien));
             recordTable.removeRow(selectedRow);
         }
         
-        if (col == 3){
-            int soLuong = Integer.parseInt(model.getValueAt(selectedRow, 4).toString()) - 1 ;
+        if (col == 4){
+            int soLuong = Integer.parseInt(model.getValueAt(selectedRow, 5).toString()) - 1 ;
             
             if (soLuong < 1){
                 soLuong = 1;
+                return;
             }
             recordTable.setValueAt(soLuong , selectedRow, col + 1);
-            recordTable.setValueAt(soLuong * donGia  , selectedRow, 6);
+            recordTable.setValueAt(soLuong * donGia  , selectedRow, 7);
             tfDatHang_soLuong.setText(String.valueOf(Integer.parseInt(tfDatHang_soLuong.getText()) - 1));
             tfDatHang_tongTienHang.setText(String.valueOf(Long.parseLong(tfDatHang_tongTienHang.getText()) - donGia));
         }
-        if (col == 5){
-            int soLuong = Integer.parseInt(model.getValueAt(selectedRow, 4).toString()) + 1 ;
+        if (col == 6){
+            int soLuong = Integer.parseInt(model.getValueAt(selectedRow, 5).toString().split("\\.")[0]) + 1 ;
+            if (soLuong > Integer.parseInt(model.getValueAt(selectedRow, 2).toString().split("\\.")[0])){
+                soLuong = Integer.parseInt(model.getValueAt(selectedRow, 2).toString().split("\\.")[0]);
+                return;
+            }
             recordTable.setValueAt(soLuong , selectedRow, col - 1);
             recordTable.setValueAt(soLuong * donGia  , selectedRow, 6);
             tfDatHang_soLuong.setText(String.valueOf(Integer.parseInt(tfDatHang_soLuong.getText()) + 1));
@@ -4039,10 +4045,10 @@ public class TrangChu extends javax.swing.JFrame {
         for (int i =0; i< tbDatHang_danhSachHangHoaDaChon.getRowCount(); i++){
             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
             hoaDonChiTiet.setMaHoaDonChiTiet(maHoaDon + "CT0" + i);
-            hoaDonChiTiet.setGiaBan(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,2).toString()));
+            hoaDonChiTiet.setGiaBan(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,3).toString()));
             hoaDonChiTiet.setGiamGia(0);
-            hoaDonChiTiet.setSoLuong(Short.parseShort(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,4).toString()));
-            hoaDonChiTiet.setThanhTien(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,6).toString()));
+            hoaDonChiTiet.setSoLuong(Short.parseShort(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,5).toString()));
+            hoaDonChiTiet.setThanhTien(Double.parseDouble(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,7).toString()));
             hoaDonChiTiet.setMaHangHoa(String.valueOf(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,0).toString()));
             hoaDonChiTiet.setMaHoaDon(maHoaDon);
             hoaDonChiTiet.setTenHangHoa(tbDatHang_danhSachHangHoaDaChon.getModel().getValueAt(i,1).toString());
@@ -4650,6 +4656,10 @@ public class TrangChu extends javax.swing.JFrame {
         });
         int index = 0;
         for (HangHoa hangHoa : danhSachHangHoa){
+            if (hangHoa.getTonKho() <= 0){
+                index++;
+                continue;
+            }
             Vector columnData = new Vector();
             
             try{
@@ -4673,7 +4683,7 @@ public class TrangChu extends javax.swing.JFrame {
         // Assuming you already have a JTable named tbDatHang_danhSachHangHoa
 
         // Create a custom cell renderer for the button column
-        TableColumn buttonColumn = tbDatHang_danhSachHangHoaDaChon.getColumnModel().getColumn(7);
+        TableColumn buttonColumn = tbDatHang_danhSachHangHoaDaChon.getColumnModel().getColumn(8);
         buttonColumn.setCellRenderer(new TableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
@@ -4688,7 +4698,7 @@ public class TrangChu extends javax.swing.JFrame {
         });
         
         
-        tbDatHang_danhSachHangHoaDaChon.getColumnModel().getColumn(3).setCellRenderer(new TableCellRenderer() {
+        tbDatHang_danhSachHangHoaDaChon.getColumnModel().getColumn(4).setCellRenderer(new TableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                                                            boolean isSelected, boolean hasFocus, int row, int column) {
@@ -4701,7 +4711,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
         
-        tbDatHang_danhSachHangHoaDaChon.getColumnModel().getColumn(5).setCellRenderer(new TableCellRenderer() {
+        tbDatHang_danhSachHangHoaDaChon.getColumnModel().getColumn(6).setCellRenderer(new TableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value,
                                                            boolean isSelected, boolean hasFocus, int row, int column) {
@@ -4719,17 +4729,17 @@ public class TrangChu extends javax.swing.JFrame {
         // Get the column model of the table
         TableColumnModel columnModel = tbDatHang_danhSachHangHoaDaChon.getColumnModel();
         // Get the column at the desired index
-        TableColumn columnSL = columnModel.getColumn(4);
+        TableColumn columnSL = columnModel.getColumn(5);
         // Set the preferred width of the column
         columnSL.setMaxWidth(25);
         columnSL.setMinWidth(25);
         
-        TableColumn columnTangSL = columnModel.getColumn(5);
+        TableColumn columnTangSL = columnModel.getColumn(6);
         // Set the preferred width of the column
         columnTangSL.setMaxWidth(37);
         columnTangSL.setMinWidth(37);
         
-        TableColumn columnGiamSL = columnModel.getColumn(3);
+        TableColumn columnGiamSL = columnModel.getColumn(4);
         // Set the preferred width of the column
         columnGiamSL.setMaxWidth(37);
         columnGiamSL.setMinWidth(37);
