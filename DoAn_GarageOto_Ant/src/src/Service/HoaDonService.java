@@ -92,8 +92,8 @@ public class HoaDonService {
     }
     public int themHoaDon (HoaDon hoaDon) throws SQLException{ //   
         try{
-           String query = String.format("insert into hoa_don(ma_hoa_don, giam_gia, loai_thu_chi, thoi_gian, tien_da_tra, tong_tien, trang_thai, ma_khach_hang, ma_nhan_vien)" +
-                             "values ('%s', %s, '%s', '%s' , %s , %s, '%s', '%s', '%s' )",
+           String query = String.format("insert into hoa_don(ma_hoa_don, giam_gia, loai_thu_chi, thoi_gian, tien_da_tra, tong_tien, trang_thai, ma_khach_hang, ma_nhan_vien, ma_chi_nhanh)" +
+                             "values ('%s', %s, '%s', '%s' , %s , %s, '%s', '%s', '%s', '%s' )",
                 hoaDon.getMaHoaDon(),
                 hoaDon.getGiamGia(),
                 hoaDon.getLoaiThuChi(),
@@ -102,7 +102,8 @@ public class HoaDonService {
                 hoaDon.getTongTien(),
                 hoaDon.getTrangThai(),
                 hoaDon.getMaKhachHang(),
-                hoaDon.getMaNhanVien());
+                hoaDon.getMaNhanVien(),
+                hoaDon.getMaChiNhanh());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;

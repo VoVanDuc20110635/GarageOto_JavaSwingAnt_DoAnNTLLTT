@@ -73,6 +73,7 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
         phieuTraHang.setMaKhachHang(maKhachHang);
         phieuTraHang.setMaNhanVien(maNhanVien);
         phieuTraHang.setTrangThai("Đã xử lý");
+        phieuTraHang.setMaChiNhanh("NCC001");
         try {
             phieuTraHangService.themPhieuTraHangKhachHang(phieuTraHang);
         } catch (SQLException ex) {
@@ -88,6 +89,7 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
                 chiTietPhieuTraHang.setSoLuong(Short.parseShort(model.getValueAt(i, 3).toString()));
                 chiTietPhieuTraHang.setThanhTien(Double.parseDouble(model.getValueAt(i, 2).toString()) * Short.parseShort(model.getValueAt(i, 3).toString()) );
                 chiTietPhieuTraHang.setMaHangHoa(model.getValueAt(i, 0).toString());
+                chiTietPhieuTraHang.setTenHangHoa(model.getValueAt(i, 1).toString());
                 chiTietPhieuTraHang.setMaPhieuTraHang(phieuTraHang.getMaPhieuTraHang());
                 chiTietPhieuTraHangService.themChiTietPhieuTraHang(chiTietPhieuTraHang);
             } catch (SQLException ex) {
@@ -297,7 +299,7 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tfTienThanhToanTraHang_khachThanhToanKeyReleased
 
     private void btnTienThanhToanTraHang_traHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTienThanhToanTraHang_traHangActionPerformed
-        hangHoaService.updateSoLuongTonKhoHangHoa(maHoaDon, -1);
+        
         TableModel model = tbDanhSachSanPhamTraHang.getModel();
         for (int i =0 ; i < model.getRowCount(); i++){
             hangHoaService.updateSoLuongTonKhoHangHoa(model.getValueAt(i, 0).toString(), Short.parseShort(model.getValueAt(i, 3).toString()));

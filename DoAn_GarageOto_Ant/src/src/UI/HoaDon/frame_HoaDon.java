@@ -582,19 +582,6 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
         // Subject
         String subject = "This is the Subject Line!";
-
-        // Mail text
-//        String text = "This is the actual message";
-
-//        String customerName = "John Doe";
-
-        // Items
-//        String[][] items = {
-//            {"Oil Change", "1", "$50.00", "$50.00"},
-//            {"Air Filter", "2", "$15.00", "$30.00"},
-//            // Add more items as necessary
-//        };
-
         
         mailSender.sendEmail(to, from, host, subject, hoaDon, danhSachHoaDonChiTiet);
     }//GEN-LAST:event_btnHoaDon_guiMailActionPerformed

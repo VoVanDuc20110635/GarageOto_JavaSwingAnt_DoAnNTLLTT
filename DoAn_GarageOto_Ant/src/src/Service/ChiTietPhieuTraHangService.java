@@ -36,6 +36,7 @@ public class ChiTietPhieuTraHangService {
                 chiTietPhieuTraHang.setThanhTien(resultTable.getDouble("thanh_tien"));
                 chiTietPhieuTraHang.setMaHangHoa(resultTable.getString("ma_hang_hoa"));
                 chiTietPhieuTraHang.setMaPhieuTraHang(resultTable.getString("ma_phieu_tra_hang"));
+                chiTietPhieuTraHang.setTenHangHoa(resultTable.getString("ten_hang_hoa"));
             
             danhSachChiTietPhieuTraHang.add(chiTietPhieuTraHang);
         }
@@ -45,14 +46,15 @@ public class ChiTietPhieuTraHangService {
     
     public int themChiTietPhieuTraHang (ChiTietPhieuTraHang chiTietPhieuTraHang) throws SQLException{ //   
         try{
-           String query = String.format("insert into chi_tiet_phieu_tra_hang(ma_chi_tiet_phieu_tra_hang, gia_tra_hang, so_luong, thanh_tien, ma_hang_hoa, ma_phieu_tra_hang)" +
-                             "values ('%s', %s, %s, %s , '%s' , '%s')",
+           String query = String.format("insert into chi_tiet_phieu_tra_hang(ma_chi_tiet_phieu_tra_hang, gia_tra_hang, so_luong, thanh_tien, ma_hang_hoa, ma_phieu_tra_hang, ten_hang_hoa)" +
+                             "values ('%s', %s, %s, %s , '%s' , '%s', '%s')",
                 chiTietPhieuTraHang.getMaChiTietPhieuTraHang(),
                 String.valueOf(chiTietPhieuTraHang.getGiaTraHang()),
                 String.valueOf(chiTietPhieuTraHang.getSoLuong()),
                 String.valueOf(chiTietPhieuTraHang.getThanhTien()),
                 chiTietPhieuTraHang.getMaHangHoa(),
-                chiTietPhieuTraHang.getMaPhieuTraHang());
+                chiTietPhieuTraHang.getMaPhieuTraHang(),
+                chiTietPhieuTraHang.getTenHangHoa());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;

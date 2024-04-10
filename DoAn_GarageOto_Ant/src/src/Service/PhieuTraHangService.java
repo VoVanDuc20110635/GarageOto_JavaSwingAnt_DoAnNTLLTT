@@ -39,7 +39,7 @@ public class PhieuTraHangService {
                 phieuTraHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 phieuTraHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuTraHang.setTrangThai(resultTable.getString("trang_thai"));
-            
+                phieuTraHang.setMaChiNhanh(resultTable.getString("ma_nha_cung_cap"));
             danhSachPhieuTraHang.add(phieuTraHang);
         }
         connectorDB.closeConnection();
@@ -58,12 +58,13 @@ public class PhieuTraHangService {
                 phieuTraHang.setMaPhieuTraHang(resultTable.getString("ma_phieu_tra_hang"));
                 phieuTraHang.setCanTra(resultTable.getDouble("can_tra"));
                 phieuTraHang.setDaTra(resultTable.getDouble("da_tra"));
-                phieuTraHang.setThoiGian(util.localDateParseMethod(resultTable.getString("da_tra_khach")));
+                phieuTraHang.setThoiGian(util.localDateParseMethod(resultTable.getString("thoi_gian")));
                 phieuTraHang.setMaHoaDon(resultTable.getString("ma_hoa_don"));
                 phieuTraHang.setMaKhachHang(resultTable.getString("ma_khach_hang"));
                 phieuTraHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 phieuTraHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuTraHang.setTrangThai(resultTable.getString("trang_thai"));
+                phieuTraHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
             }
         }
         connectorDB.closeConnection();
@@ -88,8 +89,8 @@ public class PhieuTraHangService {
     
     public int themPhieuTraHangKhachHang (PhieuTraHang phieuTraHang) throws SQLException{ //   
         try{
-           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_hoa_don, ma_khach_hang, ma_nhan_vien, trang_thai)" +
-                             "values ('%s', %s, %s, '%s' , '%s' , '%s', '%s', '%s' )",
+           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_hoa_don, ma_khach_hang, ma_nhan_vien, trang_thai, ma_nha_cung_cap)" +
+                             "values ('%s', %s, %s, '%s' , '%s' , '%s', '%s', '%s', '%s' )",
                 phieuTraHang.getMaPhieuTraHang(),
                 String.valueOf(phieuTraHang.getCanTra()),
                 String.valueOf(phieuTraHang.getDaTra()),
@@ -97,7 +98,8 @@ public class PhieuTraHangService {
                 phieuTraHang.getMaHoaDon(),
                 phieuTraHang.getMaKhachHang(),
                 phieuTraHang.getMaNhanVien(),
-                phieuTraHang.getTrangThai());
+                phieuTraHang.getTrangThai(),
+                phieuTraHang.getMaChiNhanh());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;

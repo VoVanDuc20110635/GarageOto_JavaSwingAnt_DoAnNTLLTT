@@ -553,6 +553,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         hoaDon.setTrangThai("Hoàn thành");
         hoaDon.setMaKhachHang(this.khachHang.getMaKhachHang());
         hoaDon.setMaNhanVien("NV005");
+        hoaDon.setMaChiNhanh("NCC001");
         try {
             hoaDonService.themHoaDon(hoaDon);
         } catch (SQLException ex) {
@@ -577,6 +578,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         
         trangChuReference.resetDanhSachHangHoaMain();
         trangChuReference.hienThiDanhSachHangHoaKhiDatHang();
+        trangChuReference.removeAllRowTableDanhSachHangDaChon();
         
         Frame_HoaDon frame_hoaDon = new Frame_HoaDon(ngayGioHienTai, danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua, giamGia, hoaDon);
         frame_hoaDon.setVisible(true);

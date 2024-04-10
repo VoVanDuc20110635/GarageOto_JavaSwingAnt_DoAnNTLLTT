@@ -14,6 +14,7 @@ public class ChiTietPhieuTraHang {
     private double giaTraHang;
     private double thanhTien;
     private String maHangHoa;
+    private String tenHangHoa;
     private String maPhieuTraHang;
     private HangHoa hangHoa;
     private PhieuTraHang phieuTraHang;
@@ -92,6 +93,14 @@ public class ChiTietPhieuTraHang {
 
     public void setPhieuTraHang(PhieuTraHang phieuTraHang) {
         this.phieuTraHang = phieuTraHang;
+    }
+
+    public String getTenHangHoa() {
+        return tenHangHoa;
+    }
+
+    public void setTenHangHoa(String tenHangHoa) {
+        this.tenHangHoa = tenHangHoa;
     }
     
     

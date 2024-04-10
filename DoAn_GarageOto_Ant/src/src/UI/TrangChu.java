@@ -78,6 +78,7 @@ import src.UI.HangHoa.Frame_chiTietHangHoa;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
 import src.UI.HoaDon.Frame_ThanhToan;
 import src.UI.KhachHang.Frame_ThemKhachHang;
+import src.UI.TraHang.Frame_ChiTietPhieuTraHang2;
 import src.Util.AlwaysOpenComboBoxUI;
 import src.Util.ImportFileCSV;
 import src.Util.Util;
@@ -140,6 +141,11 @@ public class TrangChu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void removeAllRowTableDanhSachHangDaChon(){
+        DefaultTableModel model = (DefaultTableModel) tbDatHang_danhSachHangHoaDaChon.getModel();
+        model.setRowCount(0);
     }
 
     
@@ -243,7 +249,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnHoaDon_timKiem = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tb_danhSachPhieuTraHang = new javax.swing.JTable();
+        tbTraHang_danhSachPhieuTraHang = new javax.swing.JTable();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -1371,8 +1377,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        tb_danhSachPhieuTraHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        tb_danhSachPhieuTraHang.setModel(new javax.swing.table.DefaultTableModel(
+        tbTraHang_danhSachPhieuTraHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tbTraHang_danhSachPhieuTraHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -1380,11 +1386,16 @@ public class TrangChu extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã trả hàng", "Mã hóa đơn", "Nhân Viên", "Thời gian", "Khách hàng/ Nhà cung cấp", "Cần trả ", "Đã trả", "Trạng thái"
+                "Mã phiếu trả hàng", "Mã hóa đơn", "Nhân Viên", "Thời gian", "Khách hàng/ Nhà cung cấp", "Cần trả ", "Đã trả", "Trạng thái"
             }
         ));
-        tb_danhSachPhieuTraHang.setRowHeight(30);
-        jScrollPane3.setViewportView(tb_danhSachPhieuTraHang);
+        tbTraHang_danhSachPhieuTraHang.setRowHeight(30);
+        tbTraHang_danhSachPhieuTraHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTraHang_danhSachPhieuTraHangMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbTraHang_danhSachPhieuTraHang);
 
         jButton18.setBackground(new java.awt.Color(0, 204, 0));
         jButton18.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -3827,14 +3838,27 @@ public class TrangChu extends javax.swing.JFrame {
     private boolean actionPerformedEnabledLoaiXe = true;
     private void cbHangHoa_loaiHangDaChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHangHoa_loaiHangDaChonActionPerformed
         if (actionPerformedEnabled) {
-            cbHangHoa_loaiHangDaChon.removeItem(cbHangHoa_loaiHangDaChon.getSelectedItem());
+            for (int i =0; i< inputs.size(); i++){
+                if (inputs.get(i).equals(cbHangHoa_loaiHangDaChon.getSelectedItem())){
+                    inputs.remove(i);
+                    cbHangHoa_loaiHangDaChon.removeItem(cbHangHoa_loaiHangDaChon.getSelectedItem());
+                    return;
+                }
+            }
         }
         
     }//GEN-LAST:event_cbHangHoa_loaiHangDaChonActionPerformed
 
     private void cbHangHoa_loaiXeDaChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHangHoa_loaiXeDaChonActionPerformed
         if (actionPerformedEnabledLoaiXe) {
-            cbHangHoa_loaiXeDaChon.removeItem(cbHangHoa_loaiXeDaChon.getSelectedItem());
+            
+            for (int i =0; i< inputs.size(); i++){
+                if (inputs.get(i).equals(cbHangHoa_loaiXeDaChon.getSelectedItem())){
+                    inputs.remove(i);
+                    cbHangHoa_loaiXeDaChon.removeItem(cbHangHoa_loaiXeDaChon.getSelectedItem());
+                    return;
+                }
+            }
         }
     }//GEN-LAST:event_cbHangHoa_loaiXeDaChonActionPerformed
 
@@ -3934,6 +3958,7 @@ public class TrangChu extends javax.swing.JFrame {
             tfDatHang_soLuong.setText(String.valueOf(tongSoLuong - soLuongDuocChon));
             tfDatHang_tongTienHang.setText(String.valueOf(Long.parseLong(tfDatHang_tongTienHang.getText()) - thanhTien));
             recordTable.removeRow(selectedRow);
+            
         }
         
         if (col == 4){
@@ -4201,6 +4226,21 @@ public class TrangChu extends javax.swing.JFrame {
         frame_hoaDonChiTiet.setSize(1075, 620);
         frame_hoaDonChiTiet.setLocation(0,0);
     }//GEN-LAST:event_tbHoaDon_danhSachHoaDonMouseClicked
+
+    private void tbTraHang_danhSachPhieuTraHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTraHang_danhSachPhieuTraHangMouseClicked
+        int index = tbTraHang_danhSachPhieuTraHang.getSelectedRow();
+        TableModel model = tbTraHang_danhSachPhieuTraHang.getModel();
+        PhieuTraHang phieuTraHang = new PhieuTraHang();
+        try {
+            phieuTraHang = phieuTraHangService.hienThiPhieuTraHangTheoMaPhieuTraHang(model.getValueAt(index, 0).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Frame_ChiTietPhieuTraHang2 frame_chiTietPhieuTraHang = new Frame_ChiTietPhieuTraHang2(phieuTraHang);
+        frame_chiTietPhieuTraHang.setVisible(true);
+        frame_chiTietPhieuTraHang.setSize(1070, 600);
+        frame_chiTietPhieuTraHang.setLocation(0,0);
+    }//GEN-LAST:event_tbTraHang_danhSachPhieuTraHangMouseClicked
     
 
     
@@ -4281,7 +4321,7 @@ public class TrangChu extends javax.swing.JFrame {
     private void hienThiDanhSachPhieuTraHang(){
         try {
             List<PhieuTraHang> danhSachPhieuTraHang = phieuTraHangService.hienThiTatCaPhieuTraHang();
-            DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachPhieuTraHang.getModel();
+            DefaultTableModel recordTable = (DefaultTableModel)tbTraHang_danhSachPhieuTraHang.getModel();
             recordTable.setRowCount(0);
             for (PhieuTraHang phieuTraHang : danhSachPhieuTraHang) {
                 Vector columnData = new Vector();
@@ -4854,7 +4894,22 @@ public class TrangChu extends javax.swing.JFrame {
     static TrangChu trangChuInstance;
     public static void main(String args[]) {
         // ... Look and feel setting code
-
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Frame_ThanhToan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -5154,6 +5209,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tbDatHang_danhSachHangHoa;
     private javax.swing.JTable tbDatHang_danhSachHangHoaDaChon;
     private javax.swing.JTable tbHoaDon_danhSachHoaDon;
+    private javax.swing.JTable tbTraHang_danhSachPhieuTraHang;
     private javax.swing.JTable tb_danhSachBangChamCong;
     private javax.swing.JTable tb_danhSachChiNhanh;
     private javax.swing.JTable tb_danhSachHangHoa;
@@ -5162,7 +5218,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tb_danhSachNhanVien;
     private javax.swing.JTable tb_danhSachPhieuNhapHang;
     private javax.swing.JTable tb_danhSachPhieuSuaChua;
-    private javax.swing.JTable tb_danhSachPhieuTraHang;
     private javax.swing.JLabel tfDatHang_maKhachHang;
     private javax.swing.JLabel tfDatHang_soDienThoai;
     private javax.swing.JLabel tfDatHang_soLuong;

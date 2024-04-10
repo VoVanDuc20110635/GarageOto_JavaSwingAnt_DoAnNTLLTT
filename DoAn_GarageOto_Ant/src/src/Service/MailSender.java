@@ -17,10 +17,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
+import src.Model.ChiTietPhieuTraHang;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Model.NhanVien;
+import src.Model.PhieuTraHang;
 import src.Util.Util;
 /**
  *
@@ -217,15 +219,132 @@ public class MailSender {
             sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>" + String.valueOf(danhSachHoaDonChiTiet.get(i).getThanhTien()) + "</td>");
             sb.append("</tr>");
         }
+        sb.append("</table>");
+        sb.append("<br>");
+
+        sb.append("<div style='width: 100%; overflow: auto; margin-bottom: 50px;'>"); // Container for the three signature blocks
+
+        // Individual signature blocks
+        sb.append("<div style='width: 33%; float: left; text-align: center;'>");
+        sb.append("<p>Người lập phiếu</p>");
+        sb.append("<p>(Ký và ghi rõ họ tên)</p>");
+        sb.append("<p></p>");
+        sb.append("</div>");
+
+        sb.append("<div style='width: 33%; float: left; text-align: center;'>");
+        sb.append("<p>Nhân viên nhận</p>");
+        sb.append("<p>(Ký và ghi rõ họ tên)</p>");
+        sb.append("<p></p>");
+        sb.append("</div>");
+
+        sb.append("<div style='width: 33%; float: left; text-align: center;'>");
+        sb.append("<p>Nhà cung cấp</p>");
+        sb.append("<p>(Ký và ghi rõ họ tên)</p>");
+        sb.append("<p></p>");
+        sb.append("</div>");
+
+        sb.append("</div>");
+        sb.append("</body></html>");
+
+        return sb.toString();
+    }
+    
+    // gui phieu tra hang
+    public void sendEmailPhieuTraHang(String to, String from, String host, String subject, PhieuTraHang phieuTraHang, List<ChiTietPhieuTraHang> danhSachPhieuTraHang ) {
+        // Get system properties
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        // Setup mail server
+        properties.setProperty("mail.smtp.host", host);
+
         
-//        sb.append("<tr>");
-//        sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>HH005</td>");
-//        sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>HH005</td>");
-//        sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>2,000,000đ</td>");
-//        sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>1</td>");
-//        sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>0.0</td>");
-//        sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>2,000,000đ</td>");
-//        sb.append("</tr>");
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new  PasswordAuthentication("voduc0100@gmail.com", "arozojkhspxuuxeg");
+            }
+        });
+
+        try {
+            // Create a default MimeMessage object
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+            // Set Subject: header field
+            message.setSubject(subject);
+
+            // Now set the actual message
+//            message.setText(text);
+            
+//            String htmlMessage = buildHtmlBill(customerName, items);
+            String htmlMessage = buildHtmlPhieuTraHang(phieuTraHang, danhSachPhieuTraHang);
+//            message.setContent(htmlMessage, "text/html");
+            message.setContent(htmlMessage, "text/html; charset=UTF-8");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+    }
+    
+    public String buildHtmlPhieuTraHang(PhieuTraHang phieuTraHang, List<ChiTietPhieuTraHang> danhSachPhieuTraHang) {
+    // Use StringBuilder to create the HTML content
+        StringBuilder sb = new StringBuilder();
+        sb.append("<html><head><meta charset='UTF-8'></head><body style='font-family: Arial, sans-serif; background-color: #f7f7f7; color: #333;'>");
+        sb.append("<div style='max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border: 1px solid #ddd;'>");
+        sb.append("<h2 style='text-align: center; color: #4A90E2;'>Garage oto Lâm Vinh</h2>");
+        sb.append("<p style='text-align: center;'>Thời gian in phiếu: 03/04/2024 22:20</p>");
+        sb.append("<h1 style='background-color: #4A90E2; color: #fff; padding: 10px; text-align: center;'>PHIẾU TRẢ HÀNG</h1>");
+        sb.append("<p>Mã phiếu:" + String.valueOf(phieuTraHang.getMaPhieuTraHang()) + "</p>");
+        KhachHang khachHang = new KhachHang();
+        try {
+            khachHang = khachHangService.hienThiKhachHangTheoMaKhachHang(phieuTraHang.getMaKhachHang());
+        } catch (SQLException ex) {
+            Logger.getLogger(MailSender.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sb.append("<p>Khách hàng: " + khachHang.getTenKhachHang() + " - " + khachHang.getDiaChi()+ "</p>"); 
+        
+        NhanVien nhanVien = new NhanVien();
+        try {
+            nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(phieuTraHang.getMaNhanVien());
+        } catch (SQLException ex) {
+            Logger.getLogger(MailSender.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sb.append("<p>Người thực hiện: " + nhanVien.getTenNhanVien() + " - Mã nhân viên: " + nhanVien.getMaNhanVien() + "</p>");
+        sb.append("<p>Thời gian nhập: " + util.localDateParseMethod(phieuTraHang.getThoiGian()) + "</p>");
+        sb.append("<p>Tổng thành tiền: <strong>" + String.valueOf(phieuTraHang.getCanTra()) + "đ</strong></p>");
+        sb.append("<br>");
+
+        sb.append("<table style='width: 100%; border-collapse: collapse; border: 1px solid #ddd; background-color: #fff;'>");
+        
+        
+        sb.append("<tr style='background-color: #4A90E2; color: #fff;'>");
+        sb.append("<th style='padding: 8px; border: 1px solid #ddd;'>Mã hàng hóa</th>");
+        sb.append("<th style='padding: 8px; border: 1px solid #ddd;'>Tên hàng hóa</th>");
+        sb.append("<th style='padding: 8px; border: 1px solid #ddd;'>Giá trả hàng</th>");
+        sb.append("<th style='padding: 8px; border: 1px solid #ddd;'>Số lượng</th>");
+        sb.append("<th style='padding: 8px; border: 1px solid #ddd;'>Thành tiền</th>");
+        sb.append("</tr>");
+        
+        for(int i =0; i< danhSachPhieuTraHang.size(); i++){
+            sb.append("<tr>");
+            sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>" + danhSachPhieuTraHang.get(i).getMaHangHoa() + "</td>");
+            sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>" + danhSachPhieuTraHang.get(i).getTenHangHoa()+ "</td>");
+            sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>" + String.valueOf(danhSachPhieuTraHang.get(i).getGiaTraHang()) + "đ</td>");
+            sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>" + String.valueOf(danhSachPhieuTraHang.get(i).getSoLuong()) + "</td>");
+            sb.append("<td style='padding: 8px; border: 1px solid #ddd;'>" + String.valueOf(danhSachPhieuTraHang.get(i).getThanhTien()) + "</td>");
+            sb.append("</tr>");
+        }
         sb.append("</table>");
         sb.append("<br>");
 
