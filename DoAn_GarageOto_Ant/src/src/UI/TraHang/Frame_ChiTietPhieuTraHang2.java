@@ -35,6 +35,7 @@ import src.Service.NhanVienService;
 import src.Service.PhieuTraHangService;
 import src.UI.TrangChu;
 import src.Util.Util;
+import src.Util.WritePDF;
 
 /**
  *
@@ -48,9 +49,10 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
     private NhanVienService nhanVienService = new NhanVienService();
     private ChiTietPhieuTraHangService chiTietPhieuTraHangService = new ChiTietPhieuTraHangService();
     private HangHoaService hangHoaService = new HangHoaService();
+    private PhieuTraHangService phieuTraHangService = new PhieuTraHangService();
     private MailSender mailSender = new MailSender();
     private Util util = new Util();
-
+    
     
     
     
@@ -202,6 +204,11 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
         btnChiTietPhieuTraHang_in.setForeground(new java.awt.Color(255, 255, 255));
         btnChiTietPhieuTraHang_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         btnChiTietPhieuTraHang_in.setText("In");
+        btnChiTietPhieuTraHang_in.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietPhieuTraHang_inActionPerformed(evt);
+            }
+        });
         jPanel239.add(btnChiTietPhieuTraHang_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
 
         btnChiTietPhieuTraHang_huyBo.setBackground(new java.awt.Color(255, 51, 51));
@@ -585,6 +592,11 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
         
         mailSender.sendEmailPhieuTraHang(to, from, host, subject, phieuTraHang, danhSachChiTietPhieuTraHang);
     }//GEN-LAST:event_btnChiTietPhieuTraHang_guiMailActionPerformed
+
+    private void btnChiTietPhieuTraHang_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietPhieuTraHang_inActionPerformed
+        WritePDF writePDF = new WritePDF();
+        writePDF.writePhieuTraHang(phieuTraHang, danhSachChiTietPhieuTraHang);
+    }//GEN-LAST:event_btnChiTietPhieuTraHang_inActionPerformed
 
     /**
      * @param args the command line arguments
