@@ -15,6 +15,7 @@ import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Service.HoaDonService;
+import src.Service.MailSender;
 import src.UI.TrangChu;
 import src.Util.FullTextTableCellRenderer;
 import src.Util.WritePDF;
@@ -26,6 +27,7 @@ import src.Util.WritePDF;
 public class Frame_HoaDon extends javax.swing.JFrame {
     private List<HoaDonChiTiet> danhSachHoaDonChiTiet;
     private KhachHang khachHang;
+    private HoaDon hoaDon;
     private String maHoaDon;
     private int tongSoLuong;
     private double tongTienHang;
@@ -36,6 +38,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     String ngayHienTai;
     
     private HoaDonService hoaDonService = new HoaDonService();
+    private MailSender mailSender = new MailSender();
     /**
      * Creates new form frame_HoaDon
      */
@@ -44,7 +47,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public Frame_HoaDon(String ngayHienTai, List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, double tienCanTra, double tienKhachTra, double tienThua, double giamGia) {
+    public Frame_HoaDon(String ngayHienTai, List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, double tienCanTra, double tienKhachTra, double tienThua, double giamGia, HoaDon hoaDon) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.danhSachHoaDonChiTiet = danhSachHoaDonChiTiet;
@@ -57,6 +60,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         this.tienThua = tienThua;
         this.ngayHienTai = ngayHienTai;
         this.giamGia = giamGia;
+        this.hoaDon = hoaDon;
         hienThiHoaDon();
     }
     
@@ -137,6 +141,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         tbHoaDon_danhSachChiTietHoaDon = new javax.swing.JTable();
         jLabel254 = new javax.swing.JLabel();
         btnHoaDon_in = new javax.swing.JButton();
+        btnHoaDon_guiMail = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -517,6 +522,17 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         });
         jPanel174.add(btnHoaDon_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 710, 60, 30));
 
+        btnHoaDon_guiMail.setBackground(new java.awt.Color(0, 51, 255));
+        btnHoaDon_guiMail.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnHoaDon_guiMail.setForeground(new java.awt.Color(255, 255, 255));
+        btnHoaDon_guiMail.setText("GỬI MAIL");
+        btnHoaDon_guiMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoaDon_guiMailActionPerformed(evt);
+            }
+        });
+        jPanel174.add(btnHoaDon_guiMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 710, 120, 30));
+
         jScrollPane7.setViewportView(jPanel174);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -555,6 +571,34 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnHoaDon_inActionPerformed
 
+    private void btnHoaDon_guiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_guiMailActionPerformed
+        String to = "2k2lmhtlol@gmail.com";
+
+        // Sender's email ID needs to be mentioned
+        String from = "voduc0100@gmail.com";
+
+        // Assuming you are sending email from localhost
+        String host = "smtp.gmail.com";
+
+        // Subject
+        String subject = "This is the Subject Line!";
+
+        // Mail text
+//        String text = "This is the actual message";
+
+//        String customerName = "John Doe";
+
+        // Items
+//        String[][] items = {
+//            {"Oil Change", "1", "$50.00", "$50.00"},
+//            {"Air Filter", "2", "$15.00", "$30.00"},
+//            // Add more items as necessary
+//        };
+
+        
+        mailSender.sendEmail(to, from, host, subject, hoaDon, danhSachHoaDonChiTiet);
+    }//GEN-LAST:event_btnHoaDon_guiMailActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -592,6 +636,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHoaDon_guiMail;
     private javax.swing.JButton btnHoaDon_in;
     private javax.swing.JLabel jLabel233;
     private javax.swing.JLabel jLabel235;

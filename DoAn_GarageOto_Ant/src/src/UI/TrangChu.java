@@ -106,7 +106,7 @@ public class TrangChu extends javax.swing.JFrame {
     private BangChamCongService bangChamCongService = new BangChamCongService();
     private CaLamService caLamService = new CaLamService();
     
-    private List<HangHoa> danhSachHangHoa = new ArrayList<>();
+    private List<HangHoa> danhSachHangHoaMain = new ArrayList<>();
     private List<String> danhSachLinkAnhHangHoa1th = new ArrayList<>();
     private List<KhachHang> danhSachKhachHangMain = new ArrayList<>();
     private List<NhanVien> danhSachNhanVienMain = new ArrayList<>();
@@ -134,6 +134,16 @@ public class TrangChu extends javax.swing.JFrame {
 
     }
 
+    public void resetDanhSachHangHoaMain() {
+        try {
+            this.danhSachHangHoaMain = hangHoaService.hienThiTatCaHangHoa("","");
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -853,7 +863,15 @@ public class TrangChu extends javax.swing.JFrame {
             new String [] {
                 "Hình ảnh", "Mã hàng hóa", "Tên hàng hóa", "Giá bán", "Tồn kho"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbDatHang_danhSachHangHoa.setRowHeight(100);
         tbDatHang_danhSachHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3937,7 +3955,7 @@ public class TrangChu extends javax.swing.JFrame {
                 return;
             }
             recordTable.setValueAt(soLuong , selectedRow, col - 1);
-            recordTable.setValueAt(soLuong * donGia  , selectedRow, 6);
+            recordTable.setValueAt(soLuong * donGia  , selectedRow, 7);
             tfDatHang_soLuong.setText(String.valueOf(Integer.parseInt(tfDatHang_soLuong.getText()) + 1));
             tfDatHang_tongTienHang.setText(String.valueOf(Long.parseLong(tfDatHang_tongTienHang.getText()) + donGia));
         }
@@ -4056,7 +4074,7 @@ public class TrangChu extends javax.swing.JFrame {
         }
         int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText().toString());
         double tongTienHang = Double.parseDouble(tfDatHang_tongTienHang.getText().toString());
-        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang);
+        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, trangChuInstance);
         frame_thanhToan.setVisible(true);
         frame_thanhToan.setSize(360, 650);
         frame_thanhToan.setLocation(1170,0);
@@ -4494,7 +4512,7 @@ public class TrangChu extends javax.swing.JFrame {
         cbHangHoa_loaiXeDaChon.removeAllItems();
         DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachHangHoa.getModel();
         recordTable.setRowCount(0);
-        danhSachHangHoa = hangHoaService.hienThiTatCaHangHoa("","");
+        danhSachHangHoaMain = hangHoaService.hienThiTatCaHangHoa("","");
         tb_danhSachHangHoa.getColumnModel().getColumn(1)
         .setCellRenderer(new DefaultTableCellRenderer() {
             @Override
@@ -4516,7 +4534,7 @@ public class TrangChu extends javax.swing.JFrame {
         });
         cbHangHoa_loaiHang.removeAllItems();
         cbHangHoa_loaiHang.addItem("Chọn loại hàng");
-        for (HangHoa hangHoa : danhSachHangHoa){
+        for (HangHoa hangHoa : danhSachHangHoaMain){
             Vector columnData = new Vector();
             columnData.add(hangHoa.getMaHangHoa());
             try{
@@ -4633,6 +4651,7 @@ public class TrangChu extends javax.swing.JFrame {
     }
      
     public void hienThiDanhSachHangHoaKhiDatHang(){
+        
         DefaultTableModel recordTable = (DefaultTableModel)tbDatHang_danhSachHangHoa.getModel();
         recordTable.setRowCount(0);
         tbDatHang_danhSachHangHoa.getColumnModel().getColumn(0)
@@ -4655,7 +4674,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
         int index = 0;
-        for (HangHoa hangHoa : danhSachHangHoa){
+        for (HangHoa hangHoa : danhSachHangHoaMain){
             if (hangHoa.getTonKho() <= 0){
                 index++;
                 continue;
@@ -4731,18 +4750,28 @@ public class TrangChu extends javax.swing.JFrame {
         // Get the column at the desired index
         TableColumn columnSL = columnModel.getColumn(5);
         // Set the preferred width of the column
-        columnSL.setMaxWidth(25);
-        columnSL.setMinWidth(25);
+        columnSL.setMaxWidth(30);
+        columnSL.setMinWidth(30);
         
         TableColumn columnTangSL = columnModel.getColumn(6);
         // Set the preferred width of the column
-        columnTangSL.setMaxWidth(37);
-        columnTangSL.setMinWidth(37);
-        
+        columnTangSL.setMaxWidth(45);
+        columnTangSL.setMinWidth(45);
+       
         TableColumn columnGiamSL = columnModel.getColumn(4);
         // Set the preferred width of the column
-        columnGiamSL.setMaxWidth(37);
-        columnGiamSL.setMinWidth(37);
+        columnGiamSL.setMaxWidth(45);
+        columnGiamSL.setMinWidth(45);
+        
+        TableColumn columnXoa = columnModel.getColumn(8);
+        // Set the preferred width of the column
+        columnXoa.setMaxWidth(70);
+        columnXoa.setMinWidth(70);
+        
+        TableColumn columnTonKho = columnModel.getColumn(2);
+        // Set the preferred width of the column
+        columnTonKho.setMaxWidth(110);
+        columnTonKho.setMinWidth(110);
 
         
     }
@@ -4822,38 +4851,22 @@ public class TrangChu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    static TrangChu trangChuInstance;
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+        // ... Look and feel setting code
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrangChu().setVisible(true);
+                trangChuInstance = new TrangChu();
+                trangChuInstance.setVisible(true);
+                
+                // Now you can use trangChuInstance to pass to the ThanhToan frame when needed
+                // For example, if you open ThanhToan from a button click in TrangChu, you can pass it like so:
+                // ThanhToan thanhToanFrame = new ThanhToan(trangChuInstance);
+                // thanhToanFrame.setVisible(true);
             }
         });
-        
     }
     
     

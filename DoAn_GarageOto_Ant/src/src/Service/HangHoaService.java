@@ -189,11 +189,12 @@ public class HangHoaService {
     
     public int updateSoLuongTonKhoHangHoa(String maHangHoa, int soLuongTonKho){
         try{
-            String query = String.format("update hang_hoa set ton_kho = ton_kho + %s where ma_hang_hoa='%s'",
+            String query = String.format("update hang_hoa set ton_kho = ton_kho + (%d) where ma_hang_hoa='%s'",
                              soLuongTonKho,
                              maHangHoa);
-                connectorDB.executeUpdateQueryConnectorDB(query);
-                connectorDB.closeConnection();
+            System.out.println(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
            
             return 1;
         } catch (Exception err){

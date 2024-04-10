@@ -20,6 +20,7 @@ import src.Util.Util;
  */
 public class HoaDonChiTietService {
     private Util util = new Util();
+    private HangHoaService hangHoaService = new HangHoaService();
     private ConnectorDB connectorDB = new ConnectorDB();
     public List<HoaDonChiTiet> hienThiHoaDonChiTietTheoMaHoaDon (String maHoadon) throws SQLException{ //
         String query = String.format("select * from hoa_don_chi_tiet where ma_hoa_don = '%s'", maHoadon);
@@ -38,6 +39,7 @@ public class HoaDonChiTietService {
                 hoaDonChiTiet.setThanhTien(resultTable.getDouble("thanh_tien"));
                 hoaDonChiTiet.setMaHangHoa(resultTable.getString("ma_hang_hoa"));
                 hoaDonChiTiet.setMaHoaDon(resultTable.getString("ma_hoa_don"));
+                hoaDonChiTiet.setTenHangHoa(resultTable.getString("ten_hang_hoa"));
             }
             danhSachHoaDonChiTiet.add(hoaDonChiTiet);
         }
@@ -47,15 +49,17 @@ public class HoaDonChiTietService {
     
     public int themHoaDonChiTiet (HoaDonChiTiet hoaDonChiTiet) throws SQLException{ //   
         try{
-           String query = String.format("insert into hoa_don_chi_tiet(ma_hoa_don_chi_tiet, gia_ban, giam_gia, so_luong, thanh_tien, ma_hang_hoa, ma_hoa_don)" +
-                             "values ('%s', %s, %s, %s , %s , '%s', '%s')",
+            String tenHangHoa = hangHoaService.hienThiHangHoaTheoMaHangHoa(hoaDonChiTiet.getMaHangHoa()).getTenHangHoa();
+           String query = String.format("insert into hoa_don_chi_tiet(ma_hoa_don_chi_tiet, gia_ban, giam_gia, so_luong, thanh_tien, ma_hang_hoa, ma_hoa_don, ten_hang_hoa)" +
+                             "values ('%s', %s, %s, %s , %s , '%s', '%s', '%s')",
             hoaDonChiTiet.getMaHoaDonChiTiet(),
                 hoaDonChiTiet.getGiaBan(),
                 hoaDonChiTiet.getGiamGia(),
                 hoaDonChiTiet.getSoLuong(),
                 hoaDonChiTiet.getThanhTien(),
                 hoaDonChiTiet.getMaHangHoa(),
-                hoaDonChiTiet.getMaHoaDon());
+                hoaDonChiTiet.getMaHoaDon(),
+                tenHangHoa);
             connectorDB.executeUpdateQueryConnectorDB(query);
             query = String.format("update hang_hoa set ton_kho = ton_kho - 1 where ma_hang_hoa = '%s'",hoaDonChiTiet.getMaHangHoa());
             connectorDB.executeUpdateQueryConnectorDB(query);

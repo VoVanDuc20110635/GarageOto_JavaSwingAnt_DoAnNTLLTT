@@ -17,6 +17,8 @@ import src.Model.KhachHang;
 import src.Service.HangHoaService;
 import src.Service.HoaDonChiTietService;
 import src.Service.HoaDonService;
+import src.Service.MailSender;
+import src.UI.TrangChu;
 import src.Util.Util;
 
 /**
@@ -33,6 +35,8 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietService();
     private HoaDonService hoaDonService = new HoaDonService();
     private HangHoaService hangHoaService = new HangHoaService();
+    
+    private TrangChu trangChuReference;
     /**
      * Creates new form frame_ThanhToan
      */
@@ -41,7 +45,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public Frame_ThanhToan(List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang) {
+    public Frame_ThanhToan(List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, TrangChu trangChu) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.danhSachHoaDonChiTiet = danhSachHoaDonChiTiet;
@@ -49,6 +53,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         this.maHoaDon = maHoaDon;
         this.tongSoLuong = tongSoLuong;
         this.tongTienHang = tongTienHang;
+        this.trangChuReference = trangChu;
         hienThiThongTin();
     }
     
@@ -62,7 +67,8 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         lbThanhToan_soDienThoai.setText(khachHang.getSoDienThoai());
         lbThanhToan_tongSoLuongHang.setText(String.valueOf( this.tongSoLuong));
         lbThanhToan_tongTienHang.setText(String.valueOf( this.tongTienHang));
-        
+        lbThanhToan_khachCanTra.setText(lbThanhToan_tongTienHang.getText());
+        btnThanhToan_thanhToan.setVisible(false);
         
     }
     /**
@@ -512,14 +518,27 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfThanhToan_giamGiaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfThanhToan_giamGiaKeyReleased
-        double tienCanTra = this.tongTienHang * (1- Double.parseDouble(tfThanhToan_giamGia.getText())/100);
-        lbThanhToan_khachCanTra.setText(String.valueOf(tienCanTra));
+        try{
+            double tienCanTra = this.tongTienHang * (1- Double.parseDouble(tfThanhToan_giamGia.getText())/100);
+            lbThanhToan_khachCanTra.setText(String.valueOf(tienCanTra));    
+        } catch (Exception err){
+            
+        }
     }//GEN-LAST:event_tfThanhToan_giamGiaKeyReleased
 
     private void tfThanhToan_khachThanhToanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfThanhToan_khachThanhToanKeyReleased
-        double tienThanhToan = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
-        double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
-        tfThanhToan_tienThuaTraKhach.setText(String.valueOf(tienThanhToan - tienCanTra));
+        try{
+            double tienThanhToan = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
+            double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
+            tfThanhToan_tienThuaTraKhach.setText(String.valueOf(tienThanhToan - tienCanTra));
+            if (tienThanhToan >= tienCanTra){
+                btnThanhToan_thanhToan.setVisible(true);
+            } else {
+                btnThanhToan_thanhToan.setVisible(false);
+            }
+        } catch (Exception err){
+            
+        }
     }//GEN-LAST:event_tfThanhToan_khachThanhToanKeyReleased
 
     private void btnThanhToan_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToan_thanhToanActionPerformed
@@ -542,7 +561,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         for (HoaDonChiTiet hoaDonChiTiet: danhSachHoaDonChiTiet){
             try {
                 hoaDonChiTietService.themHoaDonChiTiet(hoaDonChiTiet);
-                hangHoaService.updateSoLuongTonKhoHangHoa(hoaDonChiTiet.getMaHangHoa(), (-1)*hoaDonChiTiet.getSoLuong());
+//                hangHoaService.updateSoLuongTonKhoHangHoa(hoaDonChiTiet.getMaHangHoa(), (-1)*hoaDonChiTiet.getSoLuong());
             } catch (SQLException ex) {
                 Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -554,9 +573,14 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         double tienThua = Double.parseDouble(tfThanhToan_tienThuaTraKhach.getText());
         double giamGia = Double.parseDouble(tfThanhToan_giamGia.getText());
         String ngayGioHienTai = util.localDateParseMethod(LocalDateTime.now());
-        Frame_HoaDon frame_hoaDon = new Frame_HoaDon(ngayGioHienTai, danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua, giamGia);
+        
+        
+        trangChuReference.resetDanhSachHangHoaMain();
+        trangChuReference.hienThiDanhSachHangHoaKhiDatHang();
+        
+        Frame_HoaDon frame_hoaDon = new Frame_HoaDon(ngayGioHienTai, danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua, giamGia, hoaDon);
         frame_hoaDon.setVisible(true);
-        frame_hoaDon.setSize(450, 780);
+        frame_hoaDon.setSize(460, 780);
         frame_hoaDon.setLocation(1070,0);
     }//GEN-LAST:event_btnThanhToan_thanhToanActionPerformed
 
@@ -569,6 +593,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     private void tfThanhToan_giamGiaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfThanhToan_giamGiaFocusLost
         if (tfThanhToan_giamGia.getText().equals("")){
             tfThanhToan_giamGia.setText("0");
+            lbThanhToan_khachCanTra.setText(lbThanhToan_tongTienHang.getText());
         }
     }//GEN-LAST:event_tfThanhToan_giamGiaFocusLost
 

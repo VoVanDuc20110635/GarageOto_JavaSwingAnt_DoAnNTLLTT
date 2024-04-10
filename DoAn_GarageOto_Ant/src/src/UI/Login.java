@@ -206,7 +206,7 @@ public class Login extends javax.swing.JFrame {
         };
 
         
-        mailSender.sendEmail(to, from, host, subject, customerName, items);
+//        mailSender.sendEmail(to, from, host, subject, customerName, items);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
