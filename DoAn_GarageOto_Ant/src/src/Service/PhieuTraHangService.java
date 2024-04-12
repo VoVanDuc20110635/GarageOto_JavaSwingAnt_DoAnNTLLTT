@@ -140,4 +140,5 @@ public class PhieuTraHangService {
         connectorDB.closeConnection();
         return numberOfRows;
     }
+    
 }

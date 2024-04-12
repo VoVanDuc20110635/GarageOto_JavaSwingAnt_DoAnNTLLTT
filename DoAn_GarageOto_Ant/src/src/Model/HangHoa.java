@@ -17,6 +17,7 @@ public class HangHoa {
     private short khachDat;
     private String maNhomHang;
     private NhomHang nhomHang;
+    private double giaThay;
     private String loaiHang;
     private int trangThai;
 
@@ -111,6 +112,14 @@ public class HangHoa {
 
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public double getGiaThay() {
+        return giaThay;
+    }
+
+    public void setGiaThay(double giaThay) {
+        this.giaThay = giaThay;
     }
     
     

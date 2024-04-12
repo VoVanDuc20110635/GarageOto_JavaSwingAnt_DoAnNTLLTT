@@ -48,6 +48,7 @@ public class HangHoaService {
                 hangHoa.setMaNhomHang(resultTable.getString("ma_nhom_hang"));
                 hangHoa.setLoaiHang(resultTable.getString("loai_hang"));
                 hangHoa.setTrangThai(resultTable.getInt("trang_thai"));
+                hangHoa.setGiaThay(resultTable.getDouble("gia_thay"));
                 
             }
             danhSachHangHoa.add(hangHoa);
@@ -74,6 +75,7 @@ public class HangHoaService {
                 hangHoa.setMaNhomHang(resultTable.getString("ma_nhom_hang"));
                 hangHoa.setLoaiHang(resultTable.getString("loai_hang"));
                 hangHoa.setTrangThai(resultTable.getInt("trang_thai"));
+                hangHoa.setGiaThay(resultTable.getDouble("gia_thay"));
             }
         }
         connectorDB.closeConnection();
