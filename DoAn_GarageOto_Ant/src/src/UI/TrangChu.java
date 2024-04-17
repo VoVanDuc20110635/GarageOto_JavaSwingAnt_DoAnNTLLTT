@@ -1929,7 +1929,7 @@ public class TrangChu extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Mã nhập hàng", "Thời gian", "Nhà cung cấp", "Tổng", "Nợ", "Trạng thái"
+                "Mã nhập hàng", "Thời gian", "Nhà cung cấp", "Tổng", "Nợ", "Mã phiếu nhập hàng"
             }
         ));
         tb_danhSachPhieuNhapHang.setRowHeight(30);
@@ -1984,6 +1984,11 @@ public class TrangChu extends javax.swing.JFrame {
         jButton24.setForeground(new java.awt.Color(255, 255, 255));
         jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
         jButton24.setText("Thêm");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         jButton20.setBackground(new java.awt.Color(102, 102, 102));
         jButton20.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -3683,7 +3688,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
         frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang);
         frame_chiTietDonNhapHang.setVisible(true);
-        frame_chiTietDonNhapHang.setSize(1000, 710);
+        frame_chiTietDonNhapHang.setSize(1000, 720);
         frame_chiTietDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
@@ -4719,6 +4724,10 @@ public class TrangChu extends javax.swing.JFrame {
         cb_phuTungCanThay.setSelectedIndex(0);
         tare_noiDungSuaChua.setText("Nhập nội dung cần sửa");
     }//GEN-LAST:event_btnSuaChua_resetActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton24ActionPerformed
     
 
     
@@ -4950,7 +4959,7 @@ public class TrangChu extends javax.swing.JFrame {
             columnData.add(phieuNhapHang.getMaNhaCungCap());
             columnData.add(phieuNhapHang.getTong());
             columnData.add(phieuNhapHang.getNo());
-            columnData.add(phieuNhapHang.getTrangThai());
+            columnData.add(phieuNhapHang.getPhieuNhapHang());
             recordTable.addRow(columnData);
         }
     }

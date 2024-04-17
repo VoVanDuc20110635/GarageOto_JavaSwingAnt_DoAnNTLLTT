@@ -30,6 +30,7 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     private String maKhachHang;
     private String maNhanVien;
     private String maNhaCungCap;
+    private String maPhieuNhapHang;
     
     private PhieuTraHangService phieuTraHangService = new PhieuTraHangService();
     private ChiTietPhieuTraHangService chiTietPhieuTraHangService = new ChiTietPhieuTraHangService();
@@ -52,9 +53,25 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
         this.maNhanVien = maNhanVien;
         initComponents();
         btnTienThanhToanTraHang_traHang.setVisible(false);
-        lbTienThanhToanTraHang_tongTienHang.setText(String.valueOf(tinhTongTienHangTraLai()));
+        this.tongTienHang = tinhTongTienHangTraLai();
+        lbTienThanhToanTraHang_tongTienHang.setText(String.valueOf(this.tongTienHang));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
+    
+    public Frame_TienThanhToanTraHang( String maPhieuNhapHang, String maNhaCungCap, String maNhanVien, JTable tbDanhSachSanPhamTraHang) {
+        this.tbDanhSachSanPhamTraHang = tbDanhSachSanPhamTraHang;
+        this.maPhieuNhapHang = maPhieuNhapHang;
+        this.maNhanVien = maNhanVien;
+        this.maNhaCungCap = maNhaCungCap;
+        initComponents();
+        btnTienThanhToanTraHang_traHang.setVisible(false);
+        this.tongTienHang = tinhTongTienHangTraLai();
+        lbTienThanhToanTraHang_tongTienHang.setText(String.valueOf(this.tongTienHang));
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        
+    }
+    
     
     private void thanhToan(){
         PhieuTraHang phieuTraHang = new PhieuTraHang();
@@ -69,13 +86,23 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
         phieuTraHang.setDaTra(Double.parseDouble(tfTienThanhToanTraHang_khachThanhToan.getText()));
 //        String localDateTimeNow = util.localDateParseMethod(LocalDateTime.now());
         phieuTraHang.setThoiGian(LocalDateTime.now());
-        phieuTraHang.setMaHoaDon(maHoaDon);
+        if (this.maPhieuNhapHang == null){
+            phieuTraHang.setMaHoaDon(maHoaDon);
+        } else {
+            phieuTraHang.setMaPhieuNhapHang(maPhieuNhapHang);
+        }
+        
         phieuTraHang.setMaKhachHang(maKhachHang);
+        phieuTraHang.setMaNhaCungCap(maNhaCungCap);
         phieuTraHang.setMaNhanVien(maNhanVien);
         phieuTraHang.setTrangThai("Đã xử lý");
-        phieuTraHang.setMaChiNhanh("NCC001");
+        phieuTraHang.setMaChiNhanh("CN001");
         try {
-            phieuTraHangService.themPhieuTraHangKhachHang(phieuTraHang);
+            if (this.maPhieuNhapHang == null){
+                phieuTraHangService.themPhieuTraHangKhachHang(phieuTraHang);
+            } else {
+                phieuTraHangService.themPhieuTraHangDonNhapHang(phieuTraHang);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Frame_TienThanhToanTraHang.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,13 +126,12 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     }
     
     public double tinhTongTienHangTraLai(){
-        double tongTienHang = 0;
+        double tongTienTraHang = 0;
         TableModel model = tbDanhSachSanPhamTraHang.getModel();
         for (int i =0; i< model.getRowCount(); i++){
-            tongTienHang += Double.parseDouble(model.getValueAt(i, 2).toString()) * Short.parseShort(model.getValueAt(i, 3).toString());
-            System.out.println(tongTienHang);
+            tongTienTraHang += Double.parseDouble(model.getValueAt(i, 2).toString()) * Short.parseShort(model.getValueAt(i, 3).toString());
         }
-        return tongTienHang;
+        return tongTienTraHang;
     }
     
     /**

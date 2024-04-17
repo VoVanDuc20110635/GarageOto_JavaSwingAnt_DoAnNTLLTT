@@ -40,6 +40,7 @@ public class PhieuTraHangService {
                 phieuTraHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuTraHang.setTrangThai(resultTable.getString("trang_thai"));
                 phieuTraHang.setMaChiNhanh(resultTable.getString("ma_nha_cung_cap"));
+                phieuTraHang.setMaPhieuNhapHang(resultTable.getString("ma_phieu_nhap_hang"));
             danhSachPhieuTraHang.add(phieuTraHang);
         }
         connectorDB.closeConnection();
@@ -65,6 +66,7 @@ public class PhieuTraHangService {
                 phieuTraHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
                 phieuTraHang.setTrangThai(resultTable.getString("trang_thai"));
                 phieuTraHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
+                phieuTraHang.setMaPhieuNhapHang(resultTable.getString("ma_phieu_nhap_hang"));
             }
         }
         connectorDB.closeConnection();
@@ -89,7 +91,7 @@ public class PhieuTraHangService {
     
     public int themPhieuTraHangKhachHang (PhieuTraHang phieuTraHang) throws SQLException{ //   
         try{
-           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_hoa_don, ma_khach_hang, ma_nhan_vien, trang_thai, ma_nha_cung_cap)" +
+           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_hoa_don, ma_khach_hang, ma_nhan_vien, trang_thai, ma_chi_nhanh)" +
                              "values ('%s', %s, %s, '%s' , '%s' , '%s', '%s', '%s', '%s' )",
                 phieuTraHang.getMaPhieuTraHang(),
                 String.valueOf(phieuTraHang.getCanTra()),
@@ -107,6 +109,28 @@ public class PhieuTraHangService {
             return 0;
         }
     }
+    
+    public int themPhieuTraHangDonNhapHang (PhieuTraHang phieuTraHang) throws SQLException{ //   
+        try{
+           String query = String.format("insert into phieu_tra_hang(ma_phieu_tra_hang, can_tra, da_tra, thoi_gian, ma_phieu_nhap_hang, ma_nha_cung_cap, ma_nhan_vien, trang_thai, ma_chi_nhanh)" +
+                             "values ('%s', %s, %s, '%s' , '%s' , '%s', '%s', '%s', '%s' )",
+                phieuTraHang.getMaPhieuTraHang(),
+                String.valueOf(phieuTraHang.getCanTra()),
+                String.valueOf(phieuTraHang.getDaTra()),
+                util.localDateParseMethod( phieuTraHang.getThoiGian()),
+                phieuTraHang.getMaPhieuNhapHang(),
+                phieuTraHang.getMaNhaCungCap(),
+                phieuTraHang.getMaNhanVien(),
+                phieuTraHang.getTrangThai(),
+                phieuTraHang.getMaChiNhanh());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
     
     public int themPhieuTraHangNhaCungCap (PhieuTraHang phieuTraHang) throws SQLException{ //   
         try{

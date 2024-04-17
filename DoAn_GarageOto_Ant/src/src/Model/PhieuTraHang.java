@@ -21,6 +21,7 @@ public class PhieuTraHang {
     private String maKhachHang;
     private String maNhanVien;
     private String maChiNhanh;
+    private String maPhieuNhapHang;
     private HoaDon hoaDon;
     private KhachHang khachHang;
     private NhanVien nhanVien;
@@ -150,6 +151,14 @@ public class PhieuTraHang {
 
     public void setMaChiNhanh(String maChiNhanh) {
         this.maChiNhanh = maChiNhanh;
+    }
+
+    public String getMaPhieuNhapHang() {
+        return maPhieuNhapHang;
+    }
+
+    public void setMaPhieuNhapHang(String maPhieuNhapHang) {
+        this.maPhieuNhapHang = maPhieuNhapHang;
     }
     
     
