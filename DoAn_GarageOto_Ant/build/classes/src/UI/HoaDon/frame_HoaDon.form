@@ -248,8 +248,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel235" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="128" max="32767" attributes="0"/>
+                              <Component id="lbHoadon_maLable" min="-2" pref="131" max="-2" attributes="0"/>
+                              <EmptySpace pref="95" max="32767" attributes="0"/>
                               <Component id="lbHoaDon_maKhachHang" min="-2" pref="151" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           </Group>
@@ -260,7 +260,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel235" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbHoadon_maLable" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbHoaDon_maKhachHang" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -269,7 +269,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel235">
+                    <Component class="javax.swing.JLabel" name="lbHoadon_maLable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -305,8 +305,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel238" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="122" max="32767" attributes="0"/>
+                              <Component id="lbHoadon_tenLable" min="-2" pref="137" max="-2" attributes="0"/>
+                              <EmptySpace pref="87" max="32767" attributes="0"/>
                               <Component id="lbHoaDon_tenKhachHang" min="-2" pref="151" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
@@ -318,7 +318,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbHoaDon_tenKhachHang" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel238" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbHoadon_tenLable" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -335,7 +335,7 @@
                         <Property name="text" type="java.lang.String" value="L&#xea; V&#x103;n Nam"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel238">
+                    <Component class="javax.swing.JLabel" name="lbHoadon_tenLable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -554,7 +554,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel247" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbHoadon_canTraLable" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="81" max="32767" attributes="0"/>
                               <Component id="lbHoaDon_khachCanTra" min="-2" pref="220" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -567,7 +567,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbHoaDon_khachCanTra" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel247" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbHoadon_canTraLable" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -587,7 +587,7 @@
                         <Property name="text" type="java.lang.String" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel247">
+                    <Component class="javax.swing.JLabel" name="lbHoadon_canTraLable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -614,7 +614,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel249" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbHoadon_thanhToanLable" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="146" max="32767" attributes="0"/>
                               <Component id="lbHoaDon_khachThanhToan" min="-2" pref="133" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -627,7 +627,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbHoaDon_khachThanhToan" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel249" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbHoadon_thanhToanLable" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -651,7 +651,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel249">
+                    <Component class="javax.swing.JLabel" name="lbHoadon_thanhToanLable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>
@@ -685,7 +685,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel251" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="lbHoadon_tienThuaLable" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace pref="107" max="32767" attributes="0"/>
                               <Component id="lbHoaDon_tienThua" min="-2" pref="151" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -698,7 +698,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbHoaDon_tienThua" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel251" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbHoadon_tienThuaLable" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           </Group>
@@ -715,7 +715,7 @@
                         <Property name="text" type="java.lang.String" value="0"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel251">
+                    <Component class="javax.swing.JLabel" name="lbHoadon_tienThuaLable">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Times New Roman" size="16" style="0"/>

@@ -218,8 +218,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel105" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="69" max="32767" attributes="0"/>
+                          <Component id="lbThanhToan_ma" min="-2" pref="137" max="-2" attributes="0"/>
+                          <EmptySpace pref="30" max="32767" attributes="0"/>
                           <Component id="lbThanhToan_maKhachHang" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -230,7 +230,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel105" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbThanhToan_ma" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbThanhToan_maKhachHang" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -239,7 +239,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel105">
+                <Component class="javax.swing.JLabel" name="lbThanhToan_ma">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>
@@ -275,8 +275,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel106" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="65" max="32767" attributes="0"/>
+                          <Component id="lbThanhToan_ten" min="-2" pref="132" max="-2" attributes="0"/>
+                          <EmptySpace pref="35" max="32767" attributes="0"/>
                           <Component id="lbThanhToan_tenKhachHang" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -288,7 +288,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbThanhToan_tenKhachHang" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel106" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbThanhToan_ten" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -305,7 +305,7 @@
                     <Property name="text" type="java.lang.String" value="L&#xea; V&#x103;n Nam"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel106">
+                <Component class="javax.swing.JLabel" name="lbThanhToan_ten">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>
@@ -332,8 +332,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel113" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="79" max="32767" attributes="0"/>
+                          <Component id="jLabel113" min="-2" pref="141" max="-2" attributes="0"/>
+                          <EmptySpace pref="26" max="32767" attributes="0"/>
                           <Component id="lbThanhToan_soDienThoai" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -544,8 +544,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel150" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="81" max="32767" attributes="0"/>
+                          <Component id="lbThanhToan_canTra" pref="149" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lbThanhToan_khachCanTra" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -557,7 +557,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbThanhToan_khachCanTra" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel150" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbThanhToan_canTra" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -577,7 +577,7 @@
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel150">
+                <Component class="javax.swing.JLabel" name="lbThanhToan_canTra">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>
@@ -604,8 +604,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel112" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="71" max="32767" attributes="0"/>
+                          <Component id="lbThanhToan_thanhToan" pref="160" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="tfThanhToan_khachThanhToan" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -616,7 +616,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel112" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbThanhToan_thanhToan" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfThanhToan_khachThanhToan" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -625,7 +625,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel112">
+                <Component class="javax.swing.JLabel" name="lbThanhToan_thanhToan">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>
@@ -680,7 +680,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" pref="149" max="32767" attributes="0"/>
+                          <Component id="lbThanhToan_tienThua" pref="149" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="tfThanhToan_tienThuaTraKhach" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -692,7 +692,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel1" max="32767" attributes="0"/>
+                                  <Component id="lbThanhToan_tienThua" max="32767" attributes="0"/>
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -715,7 +715,7 @@
                     <Property name="text" type="java.lang.String" value="0"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="lbThanhToan_tienThua">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>

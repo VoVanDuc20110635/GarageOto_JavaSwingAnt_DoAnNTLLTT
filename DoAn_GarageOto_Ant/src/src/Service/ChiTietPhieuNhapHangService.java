@@ -86,4 +86,29 @@ public class ChiTietPhieuNhapHangService {
             return 0;
         }
     }
+    
+    public int themChiTietPhieuNhapHang (ChiTietPhieuNhapHang chiTietPhieuNhapHang) throws SQLException{ //   
+        try{
+            String tenHangHoa = hangHoaService.hienThiHangHoaTheoMaHangHoa(chiTietPhieuNhapHang.getMaHangHoa()).getTenHangHoa();
+           String query = String.format("insert into chi_tiet_phieu_nhap_hang(ma_chi_tiet_phieu_nhap_hang, gia_nhap, giam_gia, so_luong, tong, ma_hang_hoa, ma_phieu_nhap_hang, ten_hang_hoa)" +
+                             "values ('%s', %s, %s, %s , %s , '%s', '%s', '%s')",
+            chiTietPhieuNhapHang.getMaChiTietPhieuNhapHang(),
+                chiTietPhieuNhapHang.getGia_nhap(),
+                chiTietPhieuNhapHang.getGiam_gia(),
+                chiTietPhieuNhapHang.getSo_luong(),
+                chiTietPhieuNhapHang.getGia_nhap()*(1 - chiTietPhieuNhapHang.getGiam_gia()/100) * chiTietPhieuNhapHang.getSo_luong(),
+                chiTietPhieuNhapHang.getMaHangHoa(),
+                chiTietPhieuNhapHang.getMaPhieuNhapHang(),
+                tenHangHoa);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            query = String.format("update hang_hoa set ton_kho = ton_kho - %s where ma_hang_hoa = '%s'",
+                    chiTietPhieuNhapHang.getSo_luong(), 
+                    chiTietPhieuNhapHang.getMaHangHoa());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
 }

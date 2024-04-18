@@ -32,12 +32,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import src.Model.ChiTietPhieuNhapHang;
 import src.Model.ChiTietPhieuTraHang;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
 import src.Model.NhanVien;
+import src.Model.PhieuNhapHang;
 import src.Model.PhieuTraHang;
 import src.Service.KhachHangService;
 import src.Service.NhaCungCapService;
@@ -221,6 +223,126 @@ public class WritePDF {
             document.add(Chunk.NEWLINE);
 
             Paragraph paraTongThanhToan = new Paragraph(new Phrase("Tổng thành tiền: " + formatter.format(hoaDon.getTongTien()) + "đ", fontBold15));
+            paraTongThanhToan.setIndentationLeft(300);
+
+            document.add(paraTongThanhToan);
+            document.add(Chunk.NEWLINE);
+            document.add(Chunk.NEWLINE);
+
+            Paragraph paragraph = new Paragraph();
+            paragraph.setIndentationLeft(22);
+            paragraph.add(new Chunk("Người lập phiếu", fontBoldItalic15));
+            paragraph.add(new Chunk(createWhiteSpace(30)));
+            paragraph.add(new Chunk("Nhân viên nhận", fontBoldItalic15));
+            paragraph.add(new Chunk(createWhiteSpace(30)));
+            paragraph.add(new Chunk("Khách hàng", fontBoldItalic15));
+
+            Paragraph sign = new Paragraph();
+            sign.setIndentationLeft(23);
+            sign.add(new Chunk("(Ký và ghi rõ họ tên)", fontNormal10));
+            sign.add(new Chunk(createWhiteSpace(30)));
+            sign.add(new Chunk("(Ký và ghi rõ họ tên)", fontNormal10));
+            sign.add(new Chunk(createWhiteSpace(28)));
+            sign.add(new Chunk("(Ký và ghi rõ họ tên)", fontNormal10));
+            document.add(paragraph);
+            document.add(sign);
+
+            document.close();
+            writer.close();
+            openFile(url);
+
+        } catch (DocumentException | FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Lỗi khi ghi file " + url);
+        } catch (SQLException ex) {
+            Logger.getLogger(WritePDF.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    public void writePhieuNhapHang(PhieuNhapHang phieuNhapHang, List<ChiTietPhieuNhapHang> danhSachChiTietPhieuNhapHang, NhaCungCap nhaCungCap) {
+        String url = "";
+        try {
+            fd.setTitle("In phiếu nhập hàng");
+            fd.setLocationRelativeTo(null);
+            url = getFile(phieuNhapHang.getPhieuNhapHang() + "");
+            if (url.equals("nullnull")) {
+                return;
+            }
+            url = url + ".pdf";
+            file = new FileOutputStream(url);
+            document = new Document();
+            PdfWriter writer = PdfWriter.getInstance(document, file);
+            document.open();
+
+            Paragraph company = new Paragraph("Garage oto Lâm Vinh", fontBold15);
+            company.add(new Chunk(createWhiteSpace(20)));
+            Date today = new Date(System.currentTimeMillis());
+            company.add(new Chunk("Thời gian in phiếu: " + formatDate.format(today), fontNormal10));
+            company.setAlignment(Element.ALIGN_LEFT);
+            document.add(company);
+            // Thêm tên công ty vào file PDF
+            document.add(Chunk.NEWLINE);
+            Paragraph header = new Paragraph("PHIẾU NHẬP HÀNG", fontBold25);
+            header.setAlignment(Element.ALIGN_CENTER);
+            document.add(header);
+            
+            // Thêm dòng Paragraph vào file PDF
+
+            Paragraph paragraph1 = new Paragraph("Mã phiếu: " + phieuNhapHang.getPhieuNhapHang(), fontNormal10);
+            String tenKhachHang = nhaCungCap.getTenNhaCungCap();
+            Paragraph paragraph2 = new Paragraph("Nhà cung cấp: " + tenKhachHang, fontNormal10);
+            paragraph2.add(new Chunk(createWhiteSpace(5)));
+            paragraph2.add(new Chunk("-"));
+            paragraph2.add(new Chunk(createWhiteSpace(5)));
+            String diaChi = nhaCungCap.getDiaChi();
+            
+            paragraph2.add(new Chunk(diaChi, fontNormal10));
+
+            NhanVien nhanVien = new NhanVien();
+            nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(phieuNhapHang.getMaNhanVienTao());
+            String ngtao = nhanVien.getTenNhanVien() ;
+            Paragraph paragraph3 = new Paragraph("Người thực hiện: " + ngtao, fontNormal10);
+            paragraph3.add(new Chunk(createWhiteSpace(5)));
+            paragraph3.add(new Chunk("-"));
+            paragraph3.add(new Chunk(createWhiteSpace(5)));
+            paragraph3.add(new Chunk("Mã nhân viên: " + nhanVien.getMaNhanVien(), fontNormal10));
+            Paragraph paragraph4 = new Paragraph("Thời gian nhập: " + util.localDateParseMethod(phieuNhapHang.getThoiGian()), fontNormal10);
+            document.add(paragraph1);
+            document.add(paragraph2);
+            document.add(paragraph3);
+            document.add(paragraph4);
+            document.add(Chunk.NEWLINE);
+            // Thêm table 5 cột vào file PDF
+            PdfPTable table = new PdfPTable(6);
+            table.setWidthPercentage(100);
+            table.setWidths(new float[]{30f, 35f, 20f, 15f, 20f, 20f});
+            PdfPCell cell;
+
+            table.addCell(new PdfPCell(new Phrase("Mã hàng hóa", fontBold15)));
+            table.addCell(new PdfPCell(new Phrase("Tên hàng hóa", fontBold15)));
+            table.addCell(new PdfPCell(new Phrase("Giá nhập", fontBold15)));
+            table.addCell(new PdfPCell(new Phrase("Số lượng", fontBold15)));
+            table.addCell(new PdfPCell(new Phrase("Giảm giá", fontBold15)));
+            table.addCell(new PdfPCell(new Phrase("Tổng", fontBold15)));
+            for (int i = 0; i < 6; i++) {
+                cell = new PdfPCell(new Phrase(""));
+                table.addCell(cell);
+            }
+
+            //Truyen thong tin tung chi tiet vao table
+            for (ChiTietPhieuNhapHang chiTietPhieuNhapHang : danhSachChiTietPhieuNhapHang) {
+                table.addCell(new PdfPCell(new Phrase(chiTietPhieuNhapHang.getMaHangHoa(), fontNormal10)));
+                table.addCell(new PdfPCell(new Phrase(chiTietPhieuNhapHang.getMaHangHoa(), fontNormal10)));
+                table.addCell(new PdfPCell(new Phrase(formatter.format(chiTietPhieuNhapHang.getGia_nhap()) + "đ", fontNormal10)));
+                table.addCell(new PdfPCell(new Phrase(String.valueOf(chiTietPhieuNhapHang.getSo_luong()), fontNormal10)));
+                table.addCell(new PdfPCell(new Phrase(String.valueOf(chiTietPhieuNhapHang.getGiam_gia()), fontNormal10)));
+                table.addCell(new PdfPCell(new Phrase(formatter.format(chiTietPhieuNhapHang.getSo_luong()* chiTietPhieuNhapHang.getGia_nhap()*(1-chiTietPhieuNhapHang.getGiam_gia()/100)) + "đ", fontNormal10)));
+            }
+
+            document.add(table);
+            document.add(Chunk.NEWLINE);
+
+            Paragraph paraTongThanhToan = new Paragraph(new Phrase("Tổng thành tiền: " + formatter.format(phieuNhapHang.getTong()) + "đ", fontBold15));
             paraTongThanhToan.setIndentationLeft(300);
 
             document.add(paraTongThanhToan);

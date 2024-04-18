@@ -14,7 +14,8 @@ public class PhieuNhapHang {
     private String phieuNhapHang;
     private LocalDateTime thoiGian;
     private double tong;
-    private double no;
+    private double giamGia;
+    private double daTra;
     private String trangThai;
     private String maNhaCungCap;
     private String maChiNhanh;
@@ -27,11 +28,11 @@ public class PhieuNhapHang {
     public PhieuNhapHang() {
     }
 
-    public PhieuNhapHang(String phieuNhapHang, LocalDateTime thoiGian, double tong, double no, String trangThai, String maNhaCungCap) {
+    public PhieuNhapHang(String phieuNhapHang, LocalDateTime thoiGian, double tong, double daTra, String trangThai, String maNhaCungCap) {
         this.phieuNhapHang = phieuNhapHang;
         this.thoiGian = thoiGian;
         this.tong = tong;
-        this.no = no;
+        this.daTra = daTra;
         this.trangThai = trangThai;
         this.maNhaCungCap = maNhaCungCap;
     }
@@ -58,14 +59,6 @@ public class PhieuNhapHang {
 
     public void setTong(double tong) {
         this.tong = tong;
-    }
-
-    public double getNo() {
-        return no;
-    }
-
-    public void setNo(double no) {
-        this.no = no;
     }
 
     public String getTrangThai() {
@@ -131,6 +124,22 @@ public class PhieuNhapHang {
 
     public void setTienDaTra(double tienDaTra) {
         this.tienDaTra = tienDaTra;
+    }
+
+    public double getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(double giamGia) {
+        this.giamGia = giamGia;
+    }
+
+    public double getDaTra() {
+        return daTra;
+    }
+
+    public void setDaTra(double daTra) {
+        this.daTra = daTra;
     }
     
     

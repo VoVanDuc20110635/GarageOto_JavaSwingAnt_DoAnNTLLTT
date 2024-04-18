@@ -76,6 +76,7 @@ import src.Service.PhieuSuaChuaService;
 import src.Service.PhieuTraHangService;
 import src.UI.HangHoa.Frame_ThemHangHoa;
 import src.UI.HangHoa.Frame_chiTietHangHoa;
+import src.UI.HangHoa.Frame_taoDonNhapHang;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
 import src.UI.HoaDon.Frame_ThanhToan;
 import src.UI.KhachHang.Frame_ThemKhachHang;
@@ -313,7 +314,7 @@ public class TrangChu extends javax.swing.JFrame {
         jCheckBox11 = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
-        jButton24 = new javax.swing.JButton();
+        btnNhapHang_them = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jPanel32 = new javax.swing.JPanel();
         jPanel110 = new javax.swing.JPanel();
@@ -1923,13 +1924,13 @@ public class TrangChu extends javax.swing.JFrame {
         tb_danhSachPhieuNhapHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tb_danhSachPhieuNhapHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Mã nhập hàng", "Thời gian", "Nhà cung cấp", "Tổng", "Nợ", "Mã phiếu nhập hàng"
+                "Mã nhập hàng", "Thời gian", "Nhà cung cấp", "Tổng", "Mã phiếu nhập hàng"
             }
         ));
         tb_danhSachPhieuNhapHang.setRowHeight(30);
@@ -1979,14 +1980,14 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel70.add(jPanel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 250, 130));
 
-        jButton24.setBackground(new java.awt.Color(0, 204, 0));
-        jButton24.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton24.setForeground(new java.awt.Color(255, 255, 255));
-        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
-        jButton24.setText("Thêm");
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
+        btnNhapHang_them.setBackground(new java.awt.Color(0, 204, 0));
+        btnNhapHang_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhapHang_them.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhapHang_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
+        btnNhapHang_them.setText("Thêm");
+        btnNhapHang_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
+                btnNhapHang_themActionPerformed(evt);
             }
         });
 
@@ -2002,7 +2003,7 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnNhapHang_them, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton20)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2012,7 +2013,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhapHang_them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -4725,9 +4726,12 @@ public class TrangChu extends javax.swing.JFrame {
         tare_noiDungSuaChua.setText("Nhập nội dung cần sửa");
     }//GEN-LAST:event_btnSuaChua_resetActionPerformed
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton24ActionPerformed
+    private void btnNhapHang_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapHang_themActionPerformed
+        Frame_taoDonNhapHang frame_taoDonNhapHang = new Frame_taoDonNhapHang();
+        frame_taoDonNhapHang.setVisible(true);
+        frame_taoDonNhapHang.setSize(1550, 670);
+        frame_taoDonNhapHang.setLocation(0,0);
+    }//GEN-LAST:event_btnNhapHang_themActionPerformed
     
 
     
@@ -4958,7 +4962,6 @@ public class TrangChu extends javax.swing.JFrame {
             columnData.add(util.localDateParseMethod(phieuNhapHang.getThoiGian()));
             columnData.add(phieuNhapHang.getMaNhaCungCap());
             columnData.add(phieuNhapHang.getTong());
-            columnData.add(phieuNhapHang.getNo());
             columnData.add(phieuNhapHang.getPhieuNhapHang());
             recordTable.addRow(columnData);
         }
@@ -5363,6 +5366,7 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     public void hienThiDanhSachHangHoaTaiCombobox(JComboBox<String> comboBox){
         List<HangHoa> danhSachHangHoa = new ArrayList<>();
             try {
@@ -5443,6 +5447,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnKhachHang_import;
     private javax.swing.JButton btnKhachHang_them;
     private javax.swing.JButton btnKhachHoa_xuatFile;
+    private javax.swing.JButton btnNhapHang_them;
     private javax.swing.JButton btnSuaChua_capNhat;
     private javax.swing.JButton btnSuaChua_reset;
     private javax.swing.JButton btnSuaChua_them;
@@ -5480,7 +5485,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;

@@ -11,11 +11,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+import src.Model.ChiTietPhieuNhapHang;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
+import src.Model.NhaCungCap;
+import src.Model.PhieuNhapHang;
 import src.Service.HoaDonService;
 import src.Service.MailSender;
+import src.Service.PhieuNhapHangService;
 import src.UI.TrangChu;
 import src.Util.FullTextTableCellRenderer;
 import src.Util.WritePDF;
@@ -29,6 +33,12 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     private KhachHang khachHang;
     private HoaDon hoaDon;
     private String maHoaDon;
+    
+    private List<ChiTietPhieuNhapHang> danhSachChiTietPhieuNhapHang;
+    private NhaCungCap nhaCungCap;
+    private PhieuNhapHang phieuNhapHang;
+    private String maPhieuNhapHang;
+    
     private int tongSoLuong;
     private double tongTienHang;
     double tienCanTra;
@@ -39,6 +49,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     
     private HoaDonService hoaDonService = new HoaDonService();
     private MailSender mailSender = new MailSender();
+    private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
     /**
      * Creates new form frame_HoaDon
      */
@@ -61,22 +72,70 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         this.ngayHienTai = ngayHienTai;
         this.giamGia = giamGia;
         this.hoaDon = hoaDon;
+        lbHoadon_maLable.setText("Mã khách hàng:");
+        lbHoadon_tenLable.setText("Tên khách hàng: ");
+        lbHoadon_canTraLable.setText("Khách cần trả: ");
+        lbHoadon_thanhToanLable.setText("Khách thanh toán: ");
+        lbHoadon_tienThuaLable.setText("Tiền thừa trả khách");
+        hienThiHoaDon();
+    }
+    
+    public Frame_HoaDon(String ngayHienTai, List<ChiTietPhieuNhapHang> danhSachChiTietPhieuNhapHang, NhaCungCap nhaCungCap, 
+            String maPhieuNhapHang, int tongSoLuong, double tongTienHang, double tienCanTra, double tienKhachTra,
+            double tienThua, double giamGia, PhieuNhapHang phieuNhapHang) {
+        initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.danhSachChiTietPhieuNhapHang = danhSachChiTietPhieuNhapHang;
+        this.nhaCungCap = nhaCungCap;
+        this.maPhieuNhapHang = maPhieuNhapHang;
+        this.tongSoLuong = tongSoLuong;
+        this.tongTienHang = tongTienHang;
+        this.tienCanTra = tienCanTra;
+        this.tienKhachTra = tienKhachTra;
+        this.tienThua = tienThua;
+        this.ngayHienTai = ngayHienTai;
+        this.giamGia = giamGia;
+        this.phieuNhapHang = phieuNhapHang;
+        lbHoadon_maLable.setText("Mã nhà cung cấp:");
+        lbHoadon_tenLable.setText("Tên nhà cung cấp: ");
+        lbHoadon_canTraLable.setText("Cần trả: ");
+        lbHoadon_thanhToanLable.setText("Thanh toán: ");
+        lbHoadon_tienThuaLable.setText("Tiền thừa: ");
         hienThiHoaDon();
     }
     
     private void hienThiHoaDon(){
-        lbHoaDon_giamGia.setText(String.valueOf(this.giamGia));
-        lbHoaDon_khachCanTra.setText(String.valueOf(this.tienCanTra));
-        lbHoaDon_khachThanhToan.setText(String.valueOf(this.tienKhachTra));
-        lbHoaDon_maHoaDon.setText(String.valueOf(this.maHoaDon));
-        lbHoaDon_maKhachHang.setText(String.valueOf(this.khachHang.getMaKhachHang()));
-        lbHoaDon_ngay.setText(String.valueOf(this.ngayHienTai));
-        lbHoaDon_soDienThoai.setText(String.valueOf(this.khachHang.getSoDienThoai()));
-        lbHoaDon_soLuong.setText(String.valueOf(this.tongSoLuong));
-        lbHoaDon_tenKhachHang.setText(String.valueOf(this.khachHang.getTenKhachHang()));
-        lbHoaDon_tienThua.setText(String.valueOf(this.tienThua));
-        lbHoaDon_tongTienHang.setText(String.valueOf(this.tongTienHang));
-        hienThiDanhSachChiTietHoaDon();
+        if (maHoaDon != null && maPhieuNhapHang == null){
+            lbHoaDon_giamGia.setText(String.valueOf(this.giamGia));
+            lbHoaDon_khachCanTra.setText(String.valueOf(this.tienCanTra));
+            lbHoaDon_khachThanhToan.setText(String.valueOf(this.tienKhachTra));
+            lbHoaDon_maHoaDon.setText(String.valueOf(this.maHoaDon));
+            lbHoaDon_maKhachHang.setText(String.valueOf(this.khachHang.getMaKhachHang()));
+            lbHoaDon_ngay.setText(String.valueOf(this.ngayHienTai));
+            lbHoaDon_soDienThoai.setText(String.valueOf(this.khachHang.getSoDienThoai()));
+            lbHoaDon_soLuong.setText(String.valueOf(this.tongSoLuong));
+            lbHoaDon_tenKhachHang.setText(String.valueOf(this.khachHang.getTenKhachHang()));
+            lbHoaDon_tienThua.setText(String.valueOf(this.tienThua));
+            lbHoaDon_tongTienHang.setText(String.valueOf(this.tongTienHang));
+            hienThiDanhSachChiTietHoaDon();
+        } 
+        
+        if (maHoaDon == null && maPhieuNhapHang != null){
+            lbHoaDon_giamGia.setText(String.valueOf(this.giamGia));
+            lbHoaDon_khachCanTra.setText(String.valueOf(this.tienCanTra));
+            lbHoaDon_khachThanhToan.setText(String.valueOf(this.tienKhachTra));
+            lbHoaDon_maHoaDon.setText(String.valueOf(this.maPhieuNhapHang));
+            lbHoaDon_maKhachHang.setText(String.valueOf(this.nhaCungCap.getMaNhaCungCap()));
+            lbHoaDon_ngay.setText(String.valueOf(this.ngayHienTai));
+            lbHoaDon_soDienThoai.setText(String.valueOf(this.nhaCungCap.getSoDienThoai()));
+            lbHoaDon_soLuong.setText(String.valueOf(this.tongSoLuong));
+            lbHoaDon_tenKhachHang.setText(String.valueOf(this.nhaCungCap.getTenNhaCungCap()));
+            lbHoaDon_tienThua.setText(String.valueOf(this.tienThua));
+            lbHoaDon_tongTienHang.setText(String.valueOf(this.tongTienHang));
+            hienThiDanhSachChiTietPhieuNhapHang();
+        } 
+        
+        
     }
     
     void hienThiDanhSachChiTietHoaDon(){
@@ -90,6 +149,21 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             columnData.add(hoaDonChiTiet.getGiaBan());
             columnData.add(hoaDonChiTiet.getSoLuong());
             columnData.add(hoaDonChiTiet.getGiamGia());
+            recordTable.addRow(columnData);
+        }
+    }
+    
+     void hienThiDanhSachChiTietPhieuNhapHang(){
+        tbHoaDon_danhSachChiTietHoaDon.getColumnModel().getColumn(1).setCellRenderer(new FullTextTableCellRenderer());
+        DefaultTableModel recordTable = (DefaultTableModel)tbHoaDon_danhSachChiTietHoaDon.getModel();
+        recordTable.setRowCount(0);
+        for (ChiTietPhieuNhapHang chiTietPhieuNhapHang : danhSachChiTietPhieuNhapHang) {
+            Vector columnData = new Vector();
+            columnData.add(chiTietPhieuNhapHang.getMaHangHoa());
+            columnData.add(chiTietPhieuNhapHang.getTenHangHoa());
+            columnData.add(chiTietPhieuNhapHang.getGia_nhap());
+            columnData.add(chiTietPhieuNhapHang.getSo_luong());
+            columnData.add(chiTietPhieuNhapHang.getGiam_gia());
             recordTable.addRow(columnData);
         }
     }
@@ -113,11 +187,11 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         lbHoaDon_tenNhanVien = new javax.swing.JLabel();
         jPanel177 = new javax.swing.JPanel();
         jPanel200 = new javax.swing.JPanel();
-        jLabel235 = new javax.swing.JLabel();
+        lbHoadon_maLable = new javax.swing.JLabel();
         lbHoaDon_maKhachHang = new javax.swing.JLabel();
         jPanel217 = new javax.swing.JPanel();
         lbHoaDon_tenKhachHang = new javax.swing.JLabel();
-        jLabel238 = new javax.swing.JLabel();
+        lbHoadon_tenLable = new javax.swing.JLabel();
         jPanel218 = new javax.swing.JPanel();
         lbHoaDon_soDienThoai = new javax.swing.JLabel();
         jLabel240 = new javax.swing.JLabel();
@@ -130,13 +204,13 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         jLabel245 = new javax.swing.JLabel();
         jPanel221 = new javax.swing.JPanel();
         lbHoaDon_khachCanTra = new javax.swing.JLabel();
-        jLabel247 = new javax.swing.JLabel();
+        lbHoadon_canTraLable = new javax.swing.JLabel();
         jPanel222 = new javax.swing.JPanel();
         lbHoaDon_khachThanhToan = new javax.swing.JLabel();
-        jLabel249 = new javax.swing.JLabel();
+        lbHoadon_thanhToanLable = new javax.swing.JLabel();
         jPanel223 = new javax.swing.JPanel();
         lbHoaDon_tienThua = new javax.swing.JLabel();
-        jLabel251 = new javax.swing.JLabel();
+        lbHoadon_tienThuaLable = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tbHoaDon_danhSachChiTietHoaDon = new javax.swing.JTable();
         jLabel254 = new javax.swing.JLabel();
@@ -225,8 +299,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
         jPanel200.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel235.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel235.setText("Mã khách hàng:");
+        lbHoadon_maLable.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbHoadon_maLable.setText("Mã khách hàng:");
 
         lbHoaDon_maKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         lbHoaDon_maKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -238,8 +312,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             jPanel200Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel200Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel235)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addComponent(lbHoadon_maLable, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(lbHoaDon_maKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -248,7 +322,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel200Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel200Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel235)
+                    .addComponent(lbHoadon_maLable)
                     .addComponent(lbHoaDon_maKhachHang))
                 .addContainerGap())
         );
@@ -261,8 +335,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         lbHoaDon_tenKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbHoaDon_tenKhachHang.setText("Lê Văn Nam");
 
-        jLabel238.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel238.setText("Tên khách hàng:");
+        lbHoadon_tenLable.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbHoadon_tenLable.setText("Tên khách hàng:");
 
         javax.swing.GroupLayout jPanel217Layout = new javax.swing.GroupLayout(jPanel217);
         jPanel217.setLayout(jPanel217Layout);
@@ -270,8 +344,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             jPanel217Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel217Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel238)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(lbHoadon_tenLable, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(lbHoaDon_tenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -281,7 +355,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel217Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbHoaDon_tenKhachHang)
-                    .addComponent(jLabel238))
+                    .addComponent(lbHoadon_tenLable))
                 .addContainerGap())
         );
 
@@ -398,8 +472,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         lbHoaDon_khachCanTra.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbHoaDon_khachCanTra.setText("0");
 
-        jLabel247.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel247.setText("Khách cần trả");
+        lbHoadon_canTraLable.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbHoadon_canTraLable.setText("Khách cần trả");
 
         javax.swing.GroupLayout jPanel221Layout = new javax.swing.GroupLayout(jPanel221);
         jPanel221.setLayout(jPanel221Layout);
@@ -407,7 +481,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             jPanel221Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel221Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel247)
+                .addComponent(lbHoadon_canTraLable)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(lbHoaDon_khachCanTra, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -418,7 +492,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel221Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbHoaDon_khachCanTra)
-                    .addComponent(jLabel247))
+                    .addComponent(lbHoadon_canTraLable))
                 .addContainerGap())
         );
 
@@ -431,8 +505,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         lbHoaDon_khachThanhToan.setText("0");
         lbHoaDon_khachThanhToan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
-        jLabel249.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel249.setText("Khách thanh toán");
+        lbHoadon_thanhToanLable.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbHoadon_thanhToanLable.setText("Khách thanh toán");
 
         javax.swing.GroupLayout jPanel222Layout = new javax.swing.GroupLayout(jPanel222);
         jPanel222.setLayout(jPanel222Layout);
@@ -440,7 +514,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             jPanel222Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel222Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel249)
+                .addComponent(lbHoadon_thanhToanLable)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addComponent(lbHoaDon_khachThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -451,7 +525,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel222Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbHoaDon_khachThanhToan)
-                    .addComponent(jLabel249))
+                    .addComponent(lbHoadon_thanhToanLable))
                 .addContainerGap())
         );
 
@@ -464,8 +538,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         lbHoaDon_tienThua.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbHoaDon_tienThua.setText("0");
 
-        jLabel251.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel251.setText("Tiền thừa trả khách");
+        lbHoadon_tienThuaLable.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbHoadon_tienThuaLable.setText("Tiền thừa trả khách");
 
         javax.swing.GroupLayout jPanel223Layout = new javax.swing.GroupLayout(jPanel223);
         jPanel223.setLayout(jPanel223Layout);
@@ -473,7 +547,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
             jPanel223Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel223Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel251, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbHoadon_tienThuaLable, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(lbHoaDon_tienThua, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -484,7 +558,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel223Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbHoaDon_tienThua)
-                    .addComponent(jLabel251))
+                    .addComponent(lbHoadon_tienThuaLable))
                 .addGap(54, 54, 54))
         );
 
@@ -561,29 +635,56 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
     private void btnHoaDon_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_inActionPerformed
         WritePDF writePDF = new WritePDF();
-        HoaDon hoaDon = new HoaDon();
-        try {
-            hoaDon = hoaDonService.hienThiHoaDonTheoMaHoadon(this.maHoaDon);
-        } catch (SQLException ex) {
-            Logger.getLogger(Frame_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+        if (lbHoadon_tenLable.getText().toString().equals("khách")){
+            HoaDon hoaDon = new HoaDon();
+            try {
+                hoaDon = hoaDonService.hienThiHoaDonTheoMaHoadon(this.maHoaDon);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            writePDF.writeHoaDon(hoaDon, danhSachHoaDonChiTiet, khachHang);
+        } else {
+            PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
+            try {
+                phieuNhapHang = phieuNhapHangService.layPhieuNhapHangDuaTrenMaPhieuNhapHang(this.maPhieuNhapHang);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_HoaDon.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            writePDF.writePhieuNhapHang(phieuNhapHang, danhSachChiTietPhieuNhapHang, nhaCungCap);
         }
-        writePDF.writeHoaDon(hoaDon, danhSachHoaDonChiTiet, khachHang);
+        
         
     }//GEN-LAST:event_btnHoaDon_inActionPerformed
 
     private void btnHoaDon_guiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_guiMailActionPerformed
-        String to = "2k2lmhtlol@gmail.com";
+        if (lbHoadon_tenLable.getText().toString().equals("khách")){
+            String to = "2k2lmhtlol@gmail.com";
 
-        // Sender's email ID needs to be mentioned
-        String from = "voduc0100@gmail.com";
+            // Sender's email ID needs to be mentioned
+            String from = "voduc0100@gmail.com";
 
-        // Assuming you are sending email from localhost
-        String host = "smtp.gmail.com";
+            // Assuming you are sending email from localhost
+            String host = "smtp.gmail.com";
 
-        // Subject
-        String subject = "This is the Subject Line!";
+            // Subject
+            String subject = "This is the Subject Line!";
+
+            mailSender.sendEmail(to, from, host, subject, hoaDon, danhSachHoaDonChiTiet);
+        } else {
+            String to = "2k2lmhtlol@gmail.com";
+
+            // Sender's email ID needs to be mentioned
+            String from = "voduc0100@gmail.com";
+
+            // Assuming you are sending email from localhost
+            String host = "smtp.gmail.com";
+
+            // Subject
+            String subject = "This is the Subject Line!";
+
+            mailSender.sendEmailPhieuNhapHang(to, from, host, subject, phieuNhapHang,danhSachChiTietPhieuNhapHang);
+        } 
         
-        mailSender.sendEmail(to, from, host, subject, hoaDon, danhSachHoaDonChiTiet);
     }//GEN-LAST:event_btnHoaDon_guiMailActionPerformed
 
     /**
@@ -626,14 +727,9 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     private javax.swing.JButton btnHoaDon_guiMail;
     private javax.swing.JButton btnHoaDon_in;
     private javax.swing.JLabel jLabel233;
-    private javax.swing.JLabel jLabel235;
-    private javax.swing.JLabel jLabel238;
     private javax.swing.JLabel jLabel240;
     private javax.swing.JLabel jLabel242;
     private javax.swing.JLabel jLabel245;
-    private javax.swing.JLabel jLabel247;
-    private javax.swing.JLabel jLabel249;
-    private javax.swing.JLabel jLabel251;
     private javax.swing.JLabel jLabel254;
     private javax.swing.JPanel jPanel174;
     private javax.swing.JPanel jPanel175;
@@ -661,6 +757,11 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     private javax.swing.JLabel lbHoaDon_tenNhanVien;
     private javax.swing.JLabel lbHoaDon_tienThua;
     private javax.swing.JLabel lbHoaDon_tongTienHang;
+    private javax.swing.JLabel lbHoadon_canTraLable;
+    private javax.swing.JLabel lbHoadon_maLable;
+    private javax.swing.JLabel lbHoadon_tenLable;
+    private javax.swing.JLabel lbHoadon_thanhToanLable;
+    private javax.swing.JLabel lbHoadon_tienThuaLable;
     private javax.swing.JTable tbHoaDon_danhSachChiTietHoaDon;
     // End of variables declaration//GEN-END:variables
 }

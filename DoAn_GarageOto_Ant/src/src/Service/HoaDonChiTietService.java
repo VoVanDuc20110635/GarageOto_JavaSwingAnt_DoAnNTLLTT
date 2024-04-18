@@ -61,9 +61,9 @@ public class HoaDonChiTietService {
                 hoaDonChiTiet.getMaHoaDon(),
                 tenHangHoa);
             connectorDB.executeUpdateQueryConnectorDB(query);
-            query = String.format("update hang_hoa set ton_kho = ton_kho - 1 where ma_hang_hoa = '%s'",hoaDonChiTiet.getMaHangHoa());
+            query = String.format("update hang_hoa set ton_kho = ton_kho - %s where ma_hang_hoa = '%s'",hoaDonChiTiet.getSoLuong(), hoaDonChiTiet.getMaHangHoa());
             connectorDB.executeUpdateQueryConnectorDB(query);
-            query = String.format("update hang_hoa set khach_dat = khach_dat + 1 where ma_hang_hoa = '%s'",hoaDonChiTiet.getMaHangHoa());
+            query = String.format("update hang_hoa set khach_dat = khach_dat + %s where ma_hang_hoa = '%s'",hoaDonChiTiet.getSoLuong(),hoaDonChiTiet.getMaHangHoa());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;
