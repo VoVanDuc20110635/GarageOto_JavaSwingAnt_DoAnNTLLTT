@@ -21,6 +21,7 @@ public class NhaCungCap {
     private double tongMua;
     private LocalDateTime ngayTao;
     private String maNhanVien;
+    private String maChiNhanh;
     private NhanVien nhanVien;
 
     public NhaCungCap(String maNhaCungCap, String tenNhaCungCap, String diaChi, String email, String soDienThoai, String maSoThue, LocalDateTime ngayTao, String maNhanVien) {
@@ -123,6 +124,14 @@ public class NhaCungCap {
 
     public void setTongMua(double tongMua) {
         this.tongMua = tongMua;
+    }
+
+    public String getMaChiNhanh() {
+        return maChiNhanh;
+    }
+
+    public void setMaChiNhanh(String maChiNhanh) {
+        this.maChiNhanh = maChiNhanh;
     }
     
     

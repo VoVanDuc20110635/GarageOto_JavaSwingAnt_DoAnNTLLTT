@@ -25,6 +25,7 @@ public class KhachHang {
     private double tongNo;
     private String gioiTinh;
     private String loaiKhach;
+    private String maChiNhanh;
     private String maNhanVien;
     private NhanVien nhanVien;
 
@@ -155,6 +156,14 @@ public class KhachHang {
 
     public void setLoaiKhach(String loaiKhach) {
         this.loaiKhach = loaiKhach;
+    }
+
+    public String getMaChiNhanh() {
+        return maChiNhanh;
+    }
+
+    public void setMaChiNhanh(String maChiNhanh) {
+        this.maChiNhanh = maChiNhanh;
     }
    
     

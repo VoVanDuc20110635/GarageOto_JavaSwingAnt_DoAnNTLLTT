@@ -5,21 +5,38 @@
 package src.UI.NhaCungCap;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
+import src.Model.NhaCungCap;
+import src.Service.NhaCungCapService;
+import src.Util.Util;
 
 /**
  *
  * @author WINDOWS 10
  */
-public class frame_ThemNhaCungCap extends javax.swing.JFrame {
-
+public class Frame_ThemNhaCungCap extends javax.swing.JFrame {
+    private Util util = new Util();
+    private NhaCungCapService nhaCungCapService = new NhaCungCapService();
     /**
      * Creates new form frame_ThemNhaCungCap
      */
-    public frame_ThemNhaCungCap() {
+    public Frame_ThemNhaCungCap() {
         initComponents();
-
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        int soLuongNhaCungCap = 0;
+        try {
+            soLuongNhaCungCap = nhaCungCapService.demSoNhaCungCap();
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ThemNhaCungCap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        soLuongNhaCungCap = soLuongNhaCungCap + 1;
+        tfThemNhaCungCap_ma.setText("NCC0" + soLuongNhaCungCap);
+        tfThemNhaCungCap_ma.setEnabled(false);
     }
 
     /**
@@ -37,46 +54,26 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jPanel86 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
+        btnThemNhaCungCap_luu = new javax.swing.JButton();
         jPanel94 = new javax.swing.JPanel();
         jLabel72 = new javax.swing.JLabel();
-        jTextField31 = new javax.swing.JTextField();
+        tfThemNhaCungCap_ma = new javax.swing.JTextField();
         jPanel95 = new javax.swing.JPanel();
         jLabel79 = new javax.swing.JLabel();
-        jTextField32 = new javax.swing.JTextField();
+        tfThemNhaCungCap_ten = new javax.swing.JTextField();
         jPanel96 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
-        jTextField33 = new javax.swing.JTextField();
+        tfThemNhaCungCap_diaChi = new javax.swing.JTextField();
         jPanel97 = new javax.swing.JPanel();
         jLabel81 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
-        jPanel98 = new javax.swing.JPanel();
-        jLabel82 = new javax.swing.JLabel();
-        jTextField35 = new javax.swing.JTextField();
-        jPanel99 = new javax.swing.JPanel();
-        jLabel83 = new javax.swing.JLabel();
-        jTextField36 = new javax.swing.JTextField();
-        jPanel112 = new javax.swing.JPanel();
-        jLabel85 = new javax.swing.JLabel();
-        jTextField38 = new javax.swing.JTextField();
+        tfThemNhaCungCap_dienThoai = new javax.swing.JTextField();
         jPanel113 = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
-        jTextField39 = new javax.swing.JTextField();
-        jPanel114 = new javax.swing.JPanel();
-        jLabel87 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jPanel115 = new javax.swing.JPanel();
-        jLabel88 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jPanel116 = new javax.swing.JPanel();
-        jLabel89 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        tfThemNhaCungCap_email = new javax.swing.JTextField();
         jPanel128 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
-        jTextField43 = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
-        panelhihi = new javax.swing.JPanel();
+        tfThemNhaCungCap_maSoThue = new javax.swing.JTextField();
+        btnThemNhaCungCap_thoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,13 +124,17 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, 140, 30));
 
-        jButton10.setBackground(new java.awt.Color(0, 102, 255));
-        jButton10.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/save.png"))); // NOI18N
-        jButton10.setText("Lưu");
-        jButton10.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 255)));
-        jPanel88.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 100, 31));
+        btnThemNhaCungCap_luu.setBackground(new java.awt.Color(0, 102, 255));
+        btnThemNhaCungCap_luu.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnThemNhaCungCap_luu.setForeground(new java.awt.Color(255, 255, 255));
+        btnThemNhaCungCap_luu.setText("Lưu");
+        btnThemNhaCungCap_luu.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 255)));
+        btnThemNhaCungCap_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemNhaCungCap_luuActionPerformed(evt);
+            }
+        });
+        jPanel88.add(btnThemNhaCungCap_luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 100, 31));
 
         jPanel94.setBackground(new java.awt.Color(255, 255, 255));
         jPanel94.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -141,8 +142,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel72.setText("Mã nhà cung cấp");
 
-        jTextField31.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField31.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemNhaCungCap_ma.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemNhaCungCap_ma.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel94Layout = new javax.swing.GroupLayout(jPanel94);
         jPanel94.setLayout(jPanel94Layout);
@@ -151,8 +152,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
             .addGroup(jPanel94Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(tfThemNhaCungCap_ma, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel94Layout.setVerticalGroup(
@@ -161,7 +162,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel94Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel72)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemNhaCungCap_ma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -173,8 +174,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel79.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel79.setText("Tên nhà cung cấp");
 
-        jTextField32.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField32.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemNhaCungCap_ten.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemNhaCungCap_ten.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel95Layout = new javax.swing.GroupLayout(jPanel95);
         jPanel95.setLayout(jPanel95Layout);
@@ -184,7 +185,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField32, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addComponent(tfThemNhaCungCap_ten, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel95Layout.setVerticalGroup(
@@ -193,7 +194,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel95Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel79)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemNhaCungCap_ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -205,8 +206,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel80.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel80.setText("Địa chỉ");
 
-        jTextField33.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField33.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemNhaCungCap_diaChi.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemNhaCungCap_diaChi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel96Layout = new javax.swing.GroupLayout(jPanel96);
         jPanel96.setLayout(jPanel96Layout);
@@ -216,7 +217,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField33, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemNhaCungCap_diaChi, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel96Layout.setVerticalGroup(
@@ -225,11 +226,11 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel96Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel80)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemNhaCungCap_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 370, 30));
+        jPanel88.add(jPanel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 370, 30));
 
         jPanel97.setBackground(new java.awt.Color(255, 255, 255));
         jPanel97.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -237,8 +238,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel81.setText("Điện thoại");
 
-        jTextField34.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField34.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemNhaCungCap_dienThoai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemNhaCungCap_dienThoai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel97Layout = new javax.swing.GroupLayout(jPanel97);
         jPanel97.setLayout(jPanel97Layout);
@@ -248,7 +249,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField34, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemNhaCungCap_dienThoai, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel97Layout.setVerticalGroup(
@@ -257,107 +258,11 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel97Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel81)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemNhaCungCap_dienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel88.add(jPanel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 370, 40));
-
-        jPanel98.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel98.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel82.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel82.setText("Khu vực");
-
-        jTextField35.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField35.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel98Layout = new javax.swing.GroupLayout(jPanel98);
-        jPanel98.setLayout(jPanel98Layout);
-        jPanel98Layout.setHorizontalGroup(
-            jPanel98Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel98Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField35, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel98Layout.setVerticalGroup(
-            jPanel98Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel98Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel98Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel82)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 370, 30));
-
-        jPanel99.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel99.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel83.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel83.setText("Phường xã");
-
-        jTextField36.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField36.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel99Layout = new javax.swing.GroupLayout(jPanel99);
-        jPanel99.setLayout(jPanel99Layout);
-        jPanel99Layout.setHorizontalGroup(
-            jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel99Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField36, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel99Layout.setVerticalGroup(
-            jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel99Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel83)
-                    .addComponent(jTextField36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 370, 30));
-
-        jPanel112.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel112.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel85.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel85.setText("Công ty");
-
-        jTextField38.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField38.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel112Layout = new javax.swing.GroupLayout(jPanel112);
-        jPanel112.setLayout(jPanel112Layout);
-        jPanel112Layout.setHorizontalGroup(
-            jPanel112Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel112Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel85, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField38, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel112Layout.setVerticalGroup(
-            jPanel112Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel112Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel112Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel85)
-                    .addComponent(jTextField38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 370, 30));
 
         jPanel113.setBackground(new java.awt.Color(255, 255, 255));
         jPanel113.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -365,8 +270,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel86.setText("Email");
 
-        jTextField39.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField39.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemNhaCungCap_email.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemNhaCungCap_email.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel113Layout = new javax.swing.GroupLayout(jPanel113);
         jPanel113.setLayout(jPanel113Layout);
@@ -376,7 +281,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField39, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemNhaCungCap_email, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel113Layout.setVerticalGroup(
@@ -385,112 +290,11 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel113Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel86)
-                    .addComponent(jTextField39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemNhaCungCap_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 370, 40));
-
-        jPanel114.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel114.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel87.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel87.setText("Sản phẩm cung cấp");
-
-        jComboBox2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sản phẩm 1", "Sản phẩm 2", "Sản phẩm 3" }));
-        jComboBox2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-
-        javax.swing.GroupLayout jPanel114Layout = new javax.swing.GroupLayout(jPanel114);
-        jPanel114.setLayout(jPanel114Layout);
-        jPanel114Layout.setHorizontalGroup(
-            jPanel114Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel114Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel87, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-        );
-        jPanel114Layout.setVerticalGroup(
-            jPanel114Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel114Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel114Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel87)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 410, 40));
-
-        jPanel115.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel115.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel88.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel88.setText("Chi nhánh");
-
-        jLabel70.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel70.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel70.setText("Chi nhánh trung tâm");
-
-        javax.swing.GroupLayout jPanel115Layout = new javax.swing.GroupLayout(jPanel115);
-        jPanel115.setLayout(jPanel115Layout);
-        jPanel115Layout.setHorizontalGroup(
-            jPanel115Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel115Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel70, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel115Layout.setVerticalGroup(
-            jPanel115Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel115Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel115Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel70, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel88, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 370, 40));
-
-        jPanel116.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel116.setPreferredSize(new java.awt.Dimension(450, 100));
-
-        jLabel89.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel89.setText("Ghi chú");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Times New Roman", 2, 16)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Nhập nội dung");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout jPanel116Layout = new javax.swing.GroupLayout(jPanel116);
-        jPanel116.setLayout(jPanel116Layout);
-        jPanel116Layout.setHorizontalGroup(
-            jPanel116Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel116Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel116Layout.setVerticalGroup(
-            jPanel116Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel116Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel116Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel89))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-
-        jPanel88.add(jPanel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 370, 110));
+        jPanel88.add(jPanel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 370, 40));
 
         jPanel128.setBackground(new java.awt.Color(255, 255, 255));
         jPanel128.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -498,8 +302,8 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
         jLabel90.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel90.setText("Mã số thuế");
 
-        jTextField43.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField43.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfThemNhaCungCap_maSoThue.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfThemNhaCungCap_maSoThue.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         javax.swing.GroupLayout jPanel128Layout = new javax.swing.GroupLayout(jPanel128);
         jPanel128.setLayout(jPanel128Layout);
@@ -509,7 +313,7 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField43, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(tfThemNhaCungCap_maSoThue, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel128Layout.setVerticalGroup(
@@ -518,54 +322,51 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel128Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel90)
-                    .addComponent(jTextField43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfThemNhaCungCap_maSoThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel88.add(jPanel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 370, 30));
+        jPanel88.add(jPanel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 370, 30));
 
-        jButton13.setBackground(new java.awt.Color(204, 204, 204));
-        jButton13.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(51, 153, 255));
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ban.png"))); // NOI18N
-        jButton13.setText("Bỏ qua");
-        jButton13.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 255)));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnThemNhaCungCap_thoat.setBackground(new java.awt.Color(153, 153, 153));
+        btnThemNhaCungCap_thoat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnThemNhaCungCap_thoat.setForeground(new java.awt.Color(255, 255, 255));
+        btnThemNhaCungCap_thoat.setText("Bỏ qua");
+        btnThemNhaCungCap_thoat.setBorder(null);
+        btnThemNhaCungCap_thoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                btnThemNhaCungCap_thoatActionPerformed(evt);
             }
         });
-        jPanel88.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 100, 31));
+        jPanel88.add(btnThemNhaCungCap_thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 100, 31));
 
-        panelhihi.setBackground(new java.awt.Color(255, 204, 204));
-        panelhihi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                panelhihiMouseClicked(evt);
-            }
-        });
-        panelhihi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel88.add(panelhihi, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, 390, 90));
-
-        getContentPane().add(jPanel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 833, 490));
+        getContentPane().add(jPanel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 833, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panelhihiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelhihiMouseClicked
-        
-    }//GEN-LAST:event_panelhihiMouseClicked
 //    int a = 0;
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-// them label cho panel sau khi nhan button
-//        for (int i = 1; i <= 2; i++) {
-//            JLabel label = new JLabel("Label " + i);
-//            AbsoluteConstraints constraints = new AbsoluteConstraints(10 + a, i * 30, -1, -1); // Example constraints
-//            panelhihi.add(label, constraints);
-//        }
-//        a = a + 50;
-//        revalidate();
-//        repaint();
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void btnThemNhaCungCap_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhaCungCap_thoatActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnThemNhaCungCap_thoatActionPerformed
+
+    private void btnThemNhaCungCap_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhaCungCap_luuActionPerformed
+        NhaCungCap nhaCungCap = new NhaCungCap();
+        nhaCungCap.setMaNhaCungCap(tfThemNhaCungCap_ma.getText());
+        nhaCungCap.setDiaChi(tfThemNhaCungCap_diaChi.getText());
+        nhaCungCap.setEmail(tfThemNhaCungCap_email.getText());
+        nhaCungCap.setMaNhanVien("NV004");
+        nhaCungCap.setMaSoThue(tfThemNhaCungCap_maSoThue.getText());
+        nhaCungCap.setSoDienThoai(tfThemNhaCungCap_dienThoai.getText());
+        nhaCungCap.setTenNhaCungCap(tfThemNhaCungCap_ten.getText());
+        nhaCungCap.setMaChiNhanh("CN001");
+        nhaCungCap.setNgayTao(LocalDateTime.now());
+        nhaCungCap.setTongMua(0);
+        try {
+            nhaCungCapService.themNhaCungCap(nhaCungCap);
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ThemNhaCungCap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnThemNhaCungCap_luuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -584,49 +385,38 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame_ThemNhaCungCap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frame_ThemNhaCungCap().setVisible(true);
+                new Frame_ThemNhaCungCap().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton btnThemNhaCungCap_luu;
+    private javax.swing.JButton btnThemNhaCungCap_thoat;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel80;
     private javax.swing.JLabel jLabel81;
-    private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel90;
-    private javax.swing.JPanel jPanel112;
     private javax.swing.JPanel jPanel113;
-    private javax.swing.JPanel jPanel114;
-    private javax.swing.JPanel jPanel115;
-    private javax.swing.JPanel jPanel116;
     private javax.swing.JPanel jPanel128;
     private javax.swing.JPanel jPanel86;
     private javax.swing.JPanel jPanel87;
@@ -635,19 +425,11 @@ public class frame_ThemNhaCungCap extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel95;
     private javax.swing.JPanel jPanel96;
     private javax.swing.JPanel jPanel97;
-    private javax.swing.JPanel jPanel98;
-    private javax.swing.JPanel jPanel99;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField36;
-    private javax.swing.JTextField jTextField38;
-    private javax.swing.JTextField jTextField39;
-    private javax.swing.JTextField jTextField43;
-    private javax.swing.JPanel panelhihi;
+    private javax.swing.JTextField tfThemNhaCungCap_diaChi;
+    private javax.swing.JTextField tfThemNhaCungCap_dienThoai;
+    private javax.swing.JTextField tfThemNhaCungCap_email;
+    private javax.swing.JTextField tfThemNhaCungCap_ma;
+    private javax.swing.JTextField tfThemNhaCungCap_maSoThue;
+    private javax.swing.JTextField tfThemNhaCungCap_ten;
     // End of variables declaration//GEN-END:variables
 }

@@ -80,6 +80,9 @@ import src.UI.HangHoa.Frame_taoDonNhapHang;
 import src.UI.HangHoa.frame_ChiTietDonNhapHang;
 import src.UI.HoaDon.Frame_ThanhToan;
 import src.UI.KhachHang.Frame_ThemKhachHang;
+import src.UI.KhachHang.Frame_XemChiTietCapNhatKhachHang;
+import src.UI.NhaCungCap.Frame_ThemNhaCungCap;
+import src.UI.NhaCungCap.Frame_XemChiTietCapNhatNhaCungCap;
 import src.UI.TraHang.Frame_ChiTietPhieuTraHang2;
 import src.Util.AlwaysOpenComboBoxUI;
 import src.Util.ImportFileCSV;
@@ -327,7 +330,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel93 = new javax.swing.JPanel();
         jLabel115 = new javax.swing.JLabel();
         jTextField32 = new javax.swing.JTextField();
-        jTextField47 = new javax.swing.JTextField();
+        tfKhachHang_locTuDong = new javax.swing.JTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
         tb_danhSachKhachHang = new javax.swing.JTable();
         jPanel72 = new javax.swing.JPanel();
@@ -338,12 +341,12 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel73 = new javax.swing.JPanel();
         jPanel94 = new javax.swing.JPanel();
         jLabel116 = new javax.swing.JLabel();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField48 = new javax.swing.JTextField();
+        tfNhaCungCap_locTuDong = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
         tb_danhSachNhaCungCap = new javax.swing.JTable();
         jPanel74 = new javax.swing.JPanel();
-        jButton27 = new javax.swing.JButton();
+        btnNhaCungCap_them = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
         jButton29 = new javax.swing.JButton();
         tabbedPane_nhanVien = new javax.swing.JTabbedPane();
@@ -2116,25 +2119,42 @@ public class TrangChu extends javax.swing.JFrame {
         jTextField32.setBorder(null);
         jPanel93.add(jTextField32, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 90, -1));
 
-        jTextField47.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextField47.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        jPanel93.add(jTextField47, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 270, -1));
+        tfKhachHang_locTuDong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfKhachHang_locTuDong.setForeground(new java.awt.Color(153, 153, 153));
+        tfKhachHang_locTuDong.setText("Tìm tên khách hàng");
+        tfKhachHang_locTuDong.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfKhachHang_locTuDong.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfKhachHang_locTuDongFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfKhachHang_locTuDongFocusLost(evt);
+            }
+        });
+        tfKhachHang_locTuDong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfKhachHang_locTuDongKeyReleased(evt);
+            }
+        });
+        jPanel93.add(tfKhachHang_locTuDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 270, -1));
 
         jPanel71.add(jPanel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 420, 40));
 
         tb_danhSachKhachHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tb_danhSachKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Mã khách hàng", "Tên khách hàng", "Điện thoại", "Nợ hiện tại", "Tổng bán", "Tổng bán trừ trả hàng"
+                "Mã khách hàng", "Tên khách hàng", "Điện thoại", "Email", "Mã số thuế", "Tổng bán"
             }
         ));
         tb_danhSachKhachHang.setRowHeight(30);
+        tb_danhSachKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_danhSachKhachHangMouseClicked(evt);
+            }
+        });
         jScrollPane12.setViewportView(tb_danhSachKhachHang);
 
         jPanel71.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1520, 500));
@@ -2230,39 +2250,60 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel116.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/find.jpg"))); // NOI18N
         jPanel94.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
-        jTextField33.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField33.setText("Lọc tự động");
-        jTextField33.setBorder(null);
-        jPanel94.add(jTextField33, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 90, -1));
+        tfNhaCungCap_locTuDong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfNhaCungCap_locTuDong.setForeground(new java.awt.Color(153, 153, 153));
+        tfNhaCungCap_locTuDong.setText("Tìm tên nhà cung cấp");
+        tfNhaCungCap_locTuDong.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        tfNhaCungCap_locTuDong.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tfNhaCungCap_locTuDongFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfNhaCungCap_locTuDongFocusLost(evt);
+            }
+        });
+        tfNhaCungCap_locTuDong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfNhaCungCap_locTuDongKeyReleased(evt);
+            }
+        });
+        jPanel94.add(tfNhaCungCap_locTuDong, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 270, -1));
 
-        jTextField48.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextField48.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
-        jPanel94.add(jTextField48, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 270, -1));
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel12.setText("Lọc tự động");
+        jPanel94.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jPanel73.add(jPanel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 420, 40));
 
         tb_danhSachNhaCungCap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tb_danhSachNhaCungCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Mã nhà cung cấp", "Tên nhà cung cấp", "Điện thoại", "Email", "Nợ cần trả", "Tổng mua"
+                "Mã nhà cung cấp", "Tên nhà cung cấp", "Điện thoại", "Email", "Mã số thuế", "Tổng mua"
             }
         ));
         tb_danhSachNhaCungCap.setRowHeight(30);
+        tb_danhSachNhaCungCap.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_danhSachNhaCungCapMouseClicked(evt);
+            }
+        });
         jScrollPane13.setViewportView(tb_danhSachNhaCungCap);
 
         jPanel73.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1520, 500));
 
-        jButton27.setBackground(new java.awt.Color(0, 204, 0));
-        jButton27.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton27.setForeground(new java.awt.Color(255, 255, 255));
-        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
-        jButton27.setText("Nhà cung cấp");
+        btnNhaCungCap_them.setBackground(new java.awt.Color(0, 204, 0));
+        btnNhaCungCap_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhaCungCap_them.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhaCungCap_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
+        btnNhaCungCap_them.setText("Nhà cung cấp");
+        btnNhaCungCap_them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhaCungCap_themActionPerformed(evt);
+            }
+        });
 
         jButton28.setBackground(new java.awt.Color(102, 102, 102));
         jButton28.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -2282,7 +2323,7 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel74Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton27)
+                .addComponent(btnNhaCungCap_them)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton29)
                 .addGap(26, 26, 26)
@@ -2294,7 +2335,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel74Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhaCungCap_them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -4732,6 +4773,85 @@ public class TrangChu extends javax.swing.JFrame {
         frame_taoDonNhapHang.setSize(1550, 670);
         frame_taoDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_btnNhapHang_themActionPerformed
+
+    private void tb_danhSachKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachKhachHangMouseClicked
+        int index = tb_danhSachKhachHang.getSelectedRow();
+        TableModel model = tb_danhSachKhachHang.getModel();
+        KhachHang khachHang = new KhachHang();
+        try {
+            khachHang = khachHangService.hienThiKhachHangTheoMaKhachHang(model.getValueAt(index, 0).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Frame_XemChiTietCapNhatKhachHang frame_XemChiTietCapNhatKhachHang = new Frame_XemChiTietCapNhatKhachHang(khachHang);
+        frame_XemChiTietCapNhatKhachHang.setVisible(true);
+        frame_XemChiTietCapNhatKhachHang.setSize(950, 370);
+        frame_XemChiTietCapNhatKhachHang.setLocation(0,0);
+    }//GEN-LAST:event_tb_danhSachKhachHangMouseClicked
+
+    private void tfKhachHang_locTuDongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfKhachHang_locTuDongKeyReleased
+        String query = tfKhachHang_locTuDong.getText().toLowerCase();
+        filterDanhSachKhachHang(query);
+    }//GEN-LAST:event_tfKhachHang_locTuDongKeyReleased
+
+    private void tfKhachHang_locTuDongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfKhachHang_locTuDongFocusGained
+        if (tfKhachHang_locTuDong.getText().equals("Tìm tên khách hàng")){
+            tfKhachHang_locTuDong.setText("");
+            tfKhachHang_locTuDong.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tfKhachHang_locTuDongFocusGained
+
+    private void tfKhachHang_locTuDongFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfKhachHang_locTuDongFocusLost
+        if (tfKhachHang_locTuDong.getText().equals("")){
+            tfKhachHang_locTuDong.setText("Tìm tên khách hàng");
+            tfKhachHang_locTuDong.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tfKhachHang_locTuDongFocusLost
+
+    private void tfNhaCungCap_locTuDongFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNhaCungCap_locTuDongFocusGained
+        if (tfNhaCungCap_locTuDong.getText().equals("Tìm tên nhà cung cấp")){
+            tfNhaCungCap_locTuDong.setText("");
+            tfNhaCungCap_locTuDong.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tfNhaCungCap_locTuDongFocusGained
+
+    private void tfNhaCungCap_locTuDongFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfNhaCungCap_locTuDongFocusLost
+        if (tfNhaCungCap_locTuDong.getText().equals("")){
+            tfNhaCungCap_locTuDong.setText("Tìm tên nhà cung cấp");
+            tfNhaCungCap_locTuDong.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tfNhaCungCap_locTuDongFocusLost
+
+    private void tfNhaCungCap_locTuDongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNhaCungCap_locTuDongKeyReleased
+        String query = tfNhaCungCap_locTuDong.getText().toLowerCase();
+        filterDanhSachNhaCungCap(query);
+    }//GEN-LAST:event_tfNhaCungCap_locTuDongKeyReleased
+
+    private void btnNhaCungCap_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaCungCap_themActionPerformed
+        Frame_ThemNhaCungCap frame_ThemNhaCungCap = new Frame_ThemNhaCungCap();
+        frame_ThemNhaCungCap.setVisible(true);
+        frame_ThemNhaCungCap.setSize(860, 300);
+        frame_ThemNhaCungCap.setLocation(0,0);
+    }//GEN-LAST:event_btnNhaCungCap_themActionPerformed
+
+    private void tb_danhSachNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachNhaCungCapMouseClicked
+        int index = tb_danhSachNhaCungCap.getSelectedRow();
+        TableModel model = tb_danhSachNhaCungCap.getModel();
+        NhaCungCap nhaCungCap = new NhaCungCap();
+        try {
+            nhaCungCap = nhaCungCapService.hienThiNhaCungCapTheoMaNhaCungCap(model.getValueAt(index, 0).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        Frame_XemChiTietCapNhatNhaCungCap frame_XemChiTietCapNhatNhaCungCap = new Frame_XemChiTietCapNhatNhaCungCap(nhaCungCap);
+        frame_XemChiTietCapNhatNhaCungCap.setVisible(true);
+        frame_XemChiTietCapNhatNhaCungCap.setSize(860, 300);
+        frame_XemChiTietCapNhatNhaCungCap.setLocation(0,0);
+    }//GEN-LAST:event_tb_danhSachNhaCungCapMouseClicked
+    
+    
     
 
     
@@ -4876,9 +4996,9 @@ public class TrangChu extends javax.swing.JFrame {
                 columnData.add(khachHang.getMaKhachHang());
                 columnData.add(khachHang.getTenKhachHang());
                 columnData.add(khachHang.getSoDienThoai());
-                columnData.add(khachHang.getTongNo());
+                columnData.add(khachHang.getEmail());
+                columnData.add(khachHang.getMaSoThue());
                 columnData.add(khachHang.getTongBan());
-                columnData.add(khachHang.getTongBan() - phieuTraHangService.tinhTongTienThuDuocSauKhiTraHang(khachHang.getMaKhachHang()));
                 recordTable.addRow(columnData);
             }
         
@@ -4899,7 +5019,7 @@ public class TrangChu extends javax.swing.JFrame {
                 columnData.add(nhaCungCap.getTenNhaCungCap());
                 columnData.add(nhaCungCap.getSoDienThoai());
                 columnData.add(nhaCungCap.getEmail());
-                columnData.add(nhaCungCap.getNoCanTra());
+                columnData.add(nhaCungCap.getMaSoThue());
                 columnData.add((long)(nhaCungCap.getTongMua()));
                 recordTable.addRow(columnData);
             }
@@ -5330,6 +5450,54 @@ public class TrangChu extends javax.swing.JFrame {
         tr.setRowFilter(rowFilter);
     }
     
+    public void filterDanhSachKhachHang(String query){
+        DefaultTableModel model = (DefaultTableModel) tb_danhSachKhachHang.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tb_danhSachKhachHang.setRowSorter(tr);
+        
+        RowFilter<DefaultTableModel, Object> rowFilter = new RowFilter<DefaultTableModel, Object>() {
+            @Override
+            public boolean include(RowFilter.Entry<? extends DefaultTableModel, ? extends Object> entry) {
+                // Get the value in the second column (index 2) of the current row
+                Object value = entry.getValue(1 );
+                if (value != null) {
+                    // Convert the value to lowercase string
+                    String columnValue = value.toString().toLowerCase();
+                    // Check if the column value contains the query string
+                    return columnValue.contains(query.toLowerCase());
+                }
+                return false;
+            }
+        };
+
+        
+        tr.setRowFilter(rowFilter);
+    }
+    
+    public void filterDanhSachNhaCungCap(String query){
+        DefaultTableModel model = (DefaultTableModel) tb_danhSachNhaCungCap.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tb_danhSachNhaCungCap.setRowSorter(tr);
+        
+        RowFilter<DefaultTableModel, Object> rowFilter = new RowFilter<DefaultTableModel, Object>() {
+            @Override
+            public boolean include(RowFilter.Entry<? extends DefaultTableModel, ? extends Object> entry) {
+                // Get the value in the second column (index 2) of the current row
+                Object value = entry.getValue(1 );
+                if (value != null) {
+                    // Convert the value to lowercase string
+                    String columnValue = value.toString().toLowerCase();
+                    // Check if the column value contains the query string
+                    return columnValue.contains(query.toLowerCase());
+                }
+                return false;
+            }
+        };
+
+        
+        tr.setRowFilter(rowFilter);
+    }
+    
     public void filterHoaDon(String query){
         DefaultTableModel model = (DefaultTableModel) tbHoaDon_danhSachHoaDon.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
@@ -5447,6 +5615,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnKhachHang_import;
     private javax.swing.JButton btnKhachHang_them;
     private javax.swing.JButton btnKhachHoa_xuatFile;
+    private javax.swing.JButton btnNhaCungCap_them;
     private javax.swing.JButton btnNhapHang_them;
     private javax.swing.JButton btnSuaChua_capNhat;
     private javax.swing.JButton btnSuaChua_reset;
@@ -5485,7 +5654,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton32;
@@ -5513,6 +5681,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -5694,11 +5863,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
     private javax.swing.JTextField jTextField34;
     private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField47;
-    private javax.swing.JTextField jTextField48;
     private javax.swing.JTextField jTextField49;
     private com.toedter.calendar.JYearChooser jYearChooser2;
     private javax.swing.JLabel lbDatHang_maDonHang;
@@ -5743,6 +5909,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField tfHangHoa_maHangHoa;
     private javax.swing.JTextField tfHangHoa_timTheoTen;
     private javax.swing.JTextField tfHoaDon_timHoaDon;
+    private javax.swing.JTextField tfKhachHang_locTuDong;
+    private javax.swing.JTextField tfNhaCungCap_locTuDong;
     private javax.swing.JTextField tfSuaChua_tenKhachHang;
     private javax.swing.JTextField tfSuaChua_tenKhachHang1;
     private javax.swing.JTextField tfSuaChua_tenPhuTungTimKiem;

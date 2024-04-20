@@ -5,19 +5,19 @@
             <url>src/src/UI/TrangChu.java</url>
             <bookmark id="1">
                 <name/>
-                <line>4148</line>
+                <line>4189</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/HoaDon/Frame_HoaDon.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/NhaCungCap/Frame_XemChiTietCapNhatNhaCungCap.java</file>
             <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/TrangChu.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/HangHoa/Frame_taoDonNhapHang.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/Service/MailSender.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/Util/WritePDF.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/HoaDon/Frame_ThanhToan.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/Service/KhachHangService.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/Service/NhaCungCapService.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/NhaCungCap/Frame_ThemNhaCungCap.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/KhachHang/Frame_ThemKhachHang.java</file>
         </group>
     </open-files>
 </project-private>

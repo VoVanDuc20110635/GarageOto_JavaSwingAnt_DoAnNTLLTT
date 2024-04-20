@@ -43,6 +43,7 @@ public class KhachHangService {
                 khachHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 khachHang.setGioiTinh(resultTable.getString("gioi_tinh"));
                 khachHang.setLoaiKhach(resultTable.getString("loai_khach"));
+                khachHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
             }
             danhSachKhachHang.add(khachHang);
         }
@@ -72,6 +73,7 @@ public class KhachHangService {
                 khachHang.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 khachHang.setGioiTinh(resultTable.getString("gioi_tinh"));
                 khachHang.setLoaiKhach(resultTable.getString("loai_khach"));
+                khachHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
             }
         }
         connectorDB.closeConnection();
@@ -84,8 +86,8 @@ public class KhachHangService {
 //        util.localDateParseMethod(LocalDateTime.now();
         try{
            String query = String.format("insert into khach_hang(ma_khach_hang, dia_chi, email, ma_so_thue, ngay_sinh,"
-                   + "ngay_tao, so_dien_thoai, ten_khach_hang, tong_ban, tong_no, ma_nhan_vien, gioi_tinh) " +
-                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s')",
+                   + "ngay_tao, so_dien_thoai, ten_khach_hang, tong_ban, tong_no, ma_nhan_vien, gioi_tinh, ma_chi_nhanh) " +
+                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s', '%s', '%s')",
                              khachHang.getMaKhachHang(),
                              khachHang.getDiaChi(),
                              khachHang.getEmail(),
@@ -97,7 +99,8 @@ public class KhachHangService {
                              khachHang.getTongBan(),
                              khachHang.getTongNo(),
                              khachHang.getMaNhanVien(),
-                             khachHang.getGioiTinh());
+                             khachHang.getGioiTinh(),
+                             khachHang.getMaChiNhanh());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;
@@ -117,5 +120,25 @@ public class KhachHangService {
         }
         connectorDB.closeConnection();
         return numberOfRows;
+    }
+    public int updateKhachHang (KhachHang khachHang) throws SQLException{ //   
+        try{
+           String query = String.format("update khach_hang set dia_chi='%s', so_dien_thoai='%s', email='%s', ma_so_thue='%s', ten_khach_hang='%s',"
+                   + " gioi_tinh = '%s', loai_khach = '%s', ngay_sinh = '%s' where ma_khach_hang = '%s'",
+                             String.valueOf(khachHang.getDiaChi()),
+                             khachHang.getSoDienThoai(),
+                             khachHang.getEmail(),
+                             khachHang.getMaSoThue(),
+                             khachHang.getTenKhachHang(),
+                             khachHang.getGioiTinh(),
+                             khachHang.getLoaiKhach(),
+                             String.valueOf(khachHang.getNgaySinh()),
+                             khachHang.getMaKhachHang());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
     }
 }

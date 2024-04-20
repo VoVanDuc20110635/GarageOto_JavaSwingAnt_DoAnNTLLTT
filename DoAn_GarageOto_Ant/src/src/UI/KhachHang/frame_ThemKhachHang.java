@@ -34,6 +34,7 @@ public class Frame_ThemKhachHang extends javax.swing.JFrame {
         }
         soLuongKhachHang = soLuongKhachHang + 1;
         tfThemKhachHang_maKhachHang.setText("KH0" + soLuongKhachHang);
+        tfThemKhachHang_maKhachHang.setEnabled(false);
     }
 
     /**
@@ -426,8 +427,13 @@ public class Frame_ThemKhachHang extends javax.swing.JFrame {
         btnThemKhachHang_boQua.setBackground(new java.awt.Color(255, 153, 153));
         btnThemKhachHang_boQua.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnThemKhachHang_boQua.setForeground(new java.awt.Color(255, 255, 255));
-        btnThemKhachHang_boQua.setText("Bỏ qua");
+        btnThemKhachHang_boQua.setText("Thoát");
         btnThemKhachHang_boQua.setBorder(null);
+        btnThemKhachHang_boQua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemKhachHang_boQuaActionPerformed(evt);
+            }
+        });
         jPanel88.add(btnThemKhachHang_boQua, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 300, 100, 31));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -443,11 +449,11 @@ public class Frame_ThemKhachHang extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 490, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel88, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel88, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -466,6 +472,7 @@ public class Frame_ThemKhachHang extends javax.swing.JFrame {
         khachHang.setSoDienThoai(tfThemKhachHang_dienThoai.getText());
         khachHang.setTenKhachHang(tfThemKhachHang_tenKhachHang.getText());
         khachHang.setMaNhanVien("NV004");
+        khachHang.setMaChiNhanh("CN001");
         if (radioThemKhachHang_nam.isSelected()){
             khachHang.setGioiTinh("Nam");
         } else {
@@ -483,6 +490,10 @@ public class Frame_ThemKhachHang extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnThemKhachHang_luuActionPerformed
+
+    private void btnThemKhachHang_boQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachHang_boQuaActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnThemKhachHang_boQuaActionPerformed
 
     /**
      * @param args the command line arguments

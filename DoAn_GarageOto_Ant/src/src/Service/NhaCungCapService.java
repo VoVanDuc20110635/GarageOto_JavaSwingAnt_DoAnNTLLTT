@@ -41,7 +41,6 @@ public class NhaCungCapService {
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 nhaCungCap.setTongMua(Double.parseDouble(resultTable.getString("tong_mua")));
-                nhaCungCap.setNoCanTra(Double.parseDouble(resultTable.getString("no_can_tra")));
             }
             danhSachNhaCungCap.add(nhaCungCap);
         }
@@ -67,12 +66,63 @@ public class NhaCungCapService {
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
                 nhaCungCap.setTongMua(Double.parseDouble(resultTable.getString("tong_mua")));
-                nhaCungCap.setNoCanTra(Double.parseDouble(resultTable.getString("no_can_tra")));
             }
         }
         connectorDB.closeConnection();
         return nhaCungCap;
     }
     
+    
+    public int themNhaCungCap (NhaCungCap nhaCungCap) throws SQLException{ //   
+        try{
+           String query = String.format("insert into nha_cung_cap(ma_nha_cung_cap, dia_chi, email, ma_nhan_vien, ma_so_thue, so_dien_thoai, ten_nha_cung_cap, ma_chi_nhanh, ngay_tao) " +
+                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                    nhaCungCap.getMaNhaCungCap(),
+                    nhaCungCap.getDiaChi(),
+                    nhaCungCap.getEmail(),
+                    nhaCungCap.getMaNhanVien(),
+                    nhaCungCap.getMaSoThue(),
+                    nhaCungCap.getSoDienThoai(),
+                    nhaCungCap.getTenNhaCungCap(),
+                    nhaCungCap.getMaChiNhanh(),
+                    util.localDateParseMethod(nhaCungCap.getNgayTao()));
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int capNhatNhaCungCap (NhaCungCap nhaCungCap) throws SQLException{ //   
+        try{
+           String query = String.format("update nha_cung_cap set dia_chi = '%s', email = '%s', ma_so_thue = '%s', so_dien_thoai = '%s', ten_nha_cung_cap = '%s' where ma_nha_cung_cap = '%s'",
+                    nhaCungCap.getDiaChi(),
+                    nhaCungCap.getEmail(),
+                    nhaCungCap.getMaSoThue(),
+                    nhaCungCap.getSoDienThoai(),
+                    nhaCungCap.getTenNhaCungCap(),
+                    nhaCungCap.getMaNhaCungCap());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int demSoNhaCungCap() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM nha_cung_cap;");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        connectorDB.closeConnection();
+        return numberOfRows;
+    }
     
 }
