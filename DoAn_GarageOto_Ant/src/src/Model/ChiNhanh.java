@@ -13,6 +13,7 @@ public class ChiNhanh {
     private String tenChiNhanh;
     private String diaChi;
     private String trangThai;
+    private String soDienThoai;
 
     public ChiNhanh() {
     }
@@ -54,6 +55,14 @@ public class ChiNhanh {
 
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
     }
     
     

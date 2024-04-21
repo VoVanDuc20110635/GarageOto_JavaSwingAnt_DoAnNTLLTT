@@ -5,19 +5,15 @@
             <url>src/src/UI/TrangChu.java</url>
             <bookmark id="1">
                 <name/>
-                <line>4189</line>
+                <line>4243</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/NhaCungCap/Frame_XemChiTietCapNhatNhaCungCap.java</file>
+            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/NhanVien/Frame_ChiTietNhanVien.java</file>
             <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/TrangChu.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/Service/KhachHangService.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/Service/NhaCungCapService.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/NhaCungCap/Frame_ThemNhaCungCap.java</file>
-            <file>file:/D:/tai_lieu_tren_lop/LapTrinhTienTien/Workspace/DoAnNNLLTT_31_3_2024/GarageOto_JavaSwingAnt_DoAnNTLLTT/DoAn_GarageOto_Ant/src/src/UI/KhachHang/Frame_ThemKhachHang.java</file>
         </group>
     </open-files>
 </project-private>

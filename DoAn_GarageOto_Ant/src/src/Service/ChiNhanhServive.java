@@ -33,6 +33,7 @@ public class ChiNhanhServive {
                 chiNhanh.setDiaChi(resultTable.getString("dia_chi"));
                 chiNhanh.setTenChiNhanh(resultTable.getString("ten_chi_nhanh"));
                 chiNhanh.setTrangThai(resultTable.getString("trang_thai"));
+                chiNhanh.setSoDienThoai(resultTable.getString("so_dien_thoai"));
             }
             danhSachChiNhanh.add(chiNhanh);
         }
@@ -53,9 +54,43 @@ public class ChiNhanhServive {
                 chiNhanh.setDiaChi(resultTable.getString("dia_chi"));
                 chiNhanh.setTenChiNhanh(resultTable.getString("ten_chi_nhanh"));
                 chiNhanh.setTrangThai(resultTable.getString("trang_thai"));
+                chiNhanh.setSoDienThoai(resultTable.getString("so_dien_thoai"));
             }
         }
         connectorDB.closeConnection();
         return chiNhanh;
+    }
+    
+    public int themChiNhanh (ChiNhanh chiNhanh) throws SQLException{ //   
+        try{
+           String query = String.format("insert into chi_nhanh(ma_chi_nhanh, dia_chi, so_dien_thoai, ten_chi_nhanh, trang_thai) " +
+                             "values ('%s', '%s', '%s', '%s', '%s')",
+                            chiNhanh.getMaChiNhanh(),
+                            chiNhanh.getDiaChi(),
+                            chiNhanh.getSoDienThoai(),
+                            chiNhanh.getTenChiNhanh(),
+                            chiNhanh.getTrangThai());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int capNhatChiNhanh (ChiNhanh chiNhanh) throws SQLException{ //   
+        try{
+           String query = String.format("update chi_nhanh set dia_chi = '%s', ten_chi_nhanh = '%s', trang_thai = '%s', so_dien_thoai = '%s' where ma_chi_nhanh = '%s'",
+                            chiNhanh.getDiaChi(),                            
+                            chiNhanh.getTenChiNhanh(),
+                            chiNhanh.getTrangThai(),
+                            chiNhanh.getSoDienThoai(),
+                            chiNhanh.getMaChiNhanh());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
     }
 }
