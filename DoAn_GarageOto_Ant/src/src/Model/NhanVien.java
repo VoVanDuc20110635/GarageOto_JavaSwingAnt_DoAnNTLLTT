@@ -4,6 +4,7 @@
  */
 package src.Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -13,22 +14,24 @@ import java.time.LocalDateTime;
 public class NhanVien {
     private String maNhanVien;
     private String tenNhanVien;
-    private LocalDateTime ngaySinh;
+    private LocalDate ngaySinh;
     private String gioiTinh;
     private String cccd;
     private String chucDanh;
     private String soDienThoai;
-    private LocalDateTime ngayBatDauLamViec;
+    private LocalDate ngayBatDauLamViec;
     private String maChiNhanh;
     private String taoBoiMaNhanVien;
     private String maLichLamViec;
+    private String diaChi;
+    private String maSoThue;
     private double noLuong;
     
     private ChiNhanh chiNhanh;
     private NhanVien taoBoiNhanVien;
     private LichLamViec lichLamViec;
 
-    public NhanVien(String maNhanVien, String tenNhanVien, LocalDateTime ngaySinh, String gioiTinh, String cccd, String chucDanh, String soDienThoai, LocalDateTime ngayBatDauLamViec, String maChiNhanh, String taoBoiMaNhanVien, String maLichLamViec) {
+    public NhanVien(String maNhanVien, String tenNhanVien, LocalDate ngaySinh, String gioiTinh, String cccd, String chucDanh, String soDienThoai, LocalDate ngayBatDauLamViec, String maChiNhanh, String taoBoiMaNhanVien, String maLichLamViec) {
         this.maNhanVien = maNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.ngaySinh = ngaySinh;
@@ -61,11 +64,11 @@ public class NhanVien {
         this.tenNhanVien = tenNhanVien;
     }
 
-    public LocalDateTime getNgaySinh() {
+    public LocalDate getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(LocalDateTime ngaySinh) {
+    public void setNgaySinh(LocalDate ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
@@ -101,11 +104,11 @@ public class NhanVien {
         this.soDienThoai = soDienThoai;
     }
 
-    public LocalDateTime getNgayBatDauLamViec() {
+    public LocalDate getNgayBatDauLamViec() {
         return ngayBatDauLamViec;
     }
 
-    public void setNgayBatDauLamViec(LocalDateTime ngayBatDauLamViec) {
+    public void setNgayBatDauLamViec(LocalDate ngayBatDauLamViec) {
         this.ngayBatDauLamViec = ngayBatDauLamViec;
     }
 
@@ -164,6 +167,22 @@ public class NhanVien {
 
     public void setNoLuong(double noLuong) {
         this.noLuong = noLuong;
+    }
+
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    public String getMaSoThue() {
+        return maSoThue;
+    }
+
+    public void setMaSoThue(String maSoThue) {
+        this.maSoThue = maSoThue;
     }
     
     

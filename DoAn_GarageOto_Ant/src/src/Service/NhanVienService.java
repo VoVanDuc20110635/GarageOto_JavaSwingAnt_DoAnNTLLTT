@@ -36,8 +36,8 @@ public class NhanVienService {
                 nhanVien.setCccd(resultTable.getString("cccd"));
                 nhanVien.setChucDanh(resultTable.getString("chuc_danh"));
                 nhanVien.setGioiTinh(resultTable.getString("gioi_tinh"));
-                nhanVien.setNgayBatDauLamViec(util.localDateParseMethod(resultTable.getString("ngay_bat_dau_lam_viec")));
-                nhanVien.setNgaySinh(util.localDateParseMethod(resultTable.getString("ngay_sinh")));
+                nhanVien.setNgayBatDauLamViec(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau_lam_viec")));
+                nhanVien.setNgaySinh(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_sinh")));
                 nhanVien.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhanVien.setTenNhanVien(resultTable.getString("ten_nhan_vien"));
                 nhanVien.setNoLuong(resultTable.getDouble("no_luong"));
@@ -45,6 +45,8 @@ public class NhanVienService {
                 nhanVien.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 nhanVien.setTaoBoiMaNhanVien(resultTable.getString("tao_boi_ma_nhan_vien"));
                 nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+                nhanVien.setDiaChi(resultTable.getString("dia_chi"));
+                nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
 //                
             }
             danhSachNhanVien.add(nhanVien);
@@ -66,8 +68,8 @@ public class NhanVienService {
                 nhanVien.setCccd(resultTable.getString("cccd"));
                 nhanVien.setChucDanh(resultTable.getString("chuc_danh"));
                 nhanVien.setGioiTinh(resultTable.getString("gioi_tinh"));
-                nhanVien.setNgayBatDauLamViec(util.localDateParseMethod(resultTable.getString("ngay_bat_dau_lam_viec")));
-                nhanVien.setNgaySinh(util.localDateParseMethod(resultTable.getString("ngay_sinh")));
+                nhanVien.setNgayBatDauLamViec(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau_lam_viec")));
+                nhanVien.setNgaySinh(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_sinh")));
                 nhanVien.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhanVien.setTenNhanVien(resultTable.getString("ten_nhan_vien"));
                 nhanVien.setNoLuong(Double.parseDouble(resultTable.getString("no_luong")));
@@ -76,6 +78,8 @@ public class NhanVienService {
                 // vi nhan vien lai la 1-1 voi nhan vien nen lay ma duoc roi, keo bi lap vo hang
                 nhanVien.setTaoBoiMaNhanVien(resultTable.getString("tao_boi_ma_nhan_vien"));
                 nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+                nhanVien.setDiaChi(resultTable.getString("dia_chi"));
+                nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
             }
         }
         connectorDB.closeConnection();

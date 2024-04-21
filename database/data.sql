@@ -139,6 +139,7 @@ CREATE TABLE `chi_nhanh` (
   `dia_chi` varchar(255) DEFAULT NULL,
   `ten_chi_nhanh` varchar(255) DEFAULT NULL,
   `trang_thai` varchar(255) DEFAULT NULL,
+  `so_dien_thoai` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ma_chi_nhanh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -149,7 +150,7 @@ CREATE TABLE `chi_nhanh` (
 
 LOCK TABLES `chi_nhanh` WRITE;
 /*!40000 ALTER TABLE `chi_nhanh` DISABLE KEYS */;
-INSERT INTO `chi_nhanh` VALUES ('CN001','123 ABC Street, District 1, Ho Chi Minh City','Chi Nhánh A','Hoạt động'),('CN002','456 XYZ Street, District 2, Ho Chi Minh City','Chi Nhánh B','Ngừng hoạt động'),('CN003','789 DEF Street, District 3, Ho Chi Minh City','Chi Nhánh C','Ngừng hoạt động');
+INSERT INTO `chi_nhanh` VALUES ('CN001','123 ABC Street, District 1, Ho Chi Minh City','Garage oto Lâm Vinh chi nhánh Hoàng Diệu 2','Hoạt động','0151531867'),('CN002','456 XYZ Street, District 2, Ho Chi Minh City','Chi Nhánh B','Ngừng hoạt động','0869511645'),('CN003','789 DEF Street, District 3, Ho Chi Minh City','Chi Nhánh C','Ngừng hoạt động','0256161658');
 /*!40000 ALTER TABLE `chi_nhanh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,9 +388,12 @@ CREATE TABLE `khach_hang` (
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
   `gioi_tinh` varchar(255) DEFAULT 'Nam',
   `loai_khach` varchar(255) DEFAULT 'Cá nhân',
+  `ma_chi_nhanh` varchar(255) DEFAULT 'CN001',
   PRIMARY KEY (`ma_khach_hang`),
   KEY `FKip8bppn8gjt3u3lescd3k2pi4` (`ma_nhan_vien`),
-  CONSTRAINT `FKip8bppn8gjt3u3lescd3k2pi4` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
+  KEY `khach_hang_chi_nhanh` (`ma_chi_nhanh`),
+  CONSTRAINT `FKip8bppn8gjt3u3lescd3k2pi4` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `khach_hang_chi_nhanh` FOREIGN KEY (`ma_chi_nhanh`) REFERENCES `chi_nhanh` (`ma_chi_nhanh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -399,7 +403,7 @@ CREATE TABLE `khach_hang` (
 
 LOCK TABLES `khach_hang` WRITE;
 /*!40000 ALTER TABLE `khach_hang` DISABLE KEYS */;
-INSERT INTO `khach_hang` VALUES ('KH001','123 Đường ABC, Quận 1, TP.HCM','nguyenvana@example.com','123456789','1990-01-01','2023-01-01 10:00:00.000000','0987654321','Nguyễn Văn An',1500000,0,'NV004','Nam','Cá nhân'),('KH002','456 Đường XYZ, Quận 2, TP.HCM','tranthib@example.com','987654321','1985-05-15','2023-01-02 11:30:00.000000','0123456789','Trần Thị Bình',800000,0,'NV004','Nam','Cá nhân'),('KH003','789 Đường MNO, Quận 3, TP.HCM','levanc@example.com','135792468','1992-03-20','2023-01-03 14:45:00.000000','0987123456','Lê Văn Chiến',2000000,200000,'NV004','Nam','Cá nhân'),('KH004','0123 Đường DEF, Quận 4, TP.HCM','phamthid@example.com','246813579','1988-12-10','2023-01-04 09:15:00.000000','0967123456','Phạm Thị Dương',500000,0,'NV005','Nam','Cá nhân'),('KH005','456 Đường GHI, Quận 5, TP.HCM','hoangvane@example.com','369258147','1995-08-25','2023-01-05 13:20:00.000000','0987654321','Hoàng Văn Én',3000000,300000,'NV005','Nam','Cá nhân'),('KH006','789 Đường KLM, Quận 6, TP.HCM','tranvanf@example.com','975310486','1991-07-05','2023-01-06 08:30:00.000000','0987123456','Trần Văn Phú',1000000,0,'NV004','Nam','Cá nhân'),('KH007','123 Đường NOP, Quận 7, TP.HCM','nguyenthig@example.com','864203951','1987-09-15','2023-01-07 10:45:00.000000','0967123456','Nguyễn Thị Giang',1200000,0,'NV004','Nam','Cá nhân'),('KH008','456 Đường QRS, Quận 8, TP.HCM','phanvanh@example.com','753196482','1994-04-30','2023-01-08 12:00:00.000000','0987654321','Phan Văn Hòa',1800000,150000,'NV005','Nam','Cá nhân'),('KH009','789 Đường TUV, Quận 9, TP.HCM','lythi@example.com','642087513','1989-11-20','2023-01-09 15:10:00.000000','0123456789','Lý Thị Yến',600000,0,'NV005','Nam','Cá nhân'),('KH010','0123 Đường WXY, Quận 10, TP.HCM','dangvank@example.com','531974820','1996-06-10','2023-01-10 09:30:00.000000','0987123456','Đặng Văn Kiên',900000,0,'NV004','Nam','Cá nhân'),('KH011','456 Đường ZAB, Quận 11, TP.HCM','buithil@example.com','420865139','1993-02-05','2023-01-11 14:00:00.000000','0967123456','Bùi Thị Lý',2500000,200000,'NV004','Nam','Cá nhân'),('KH012','123 Đường BCD, Quận 12, TP.HCM','nguyenvanm@example.com','309751824','1990-10-15','2023-01-12 11:20:00.000000','0987654321','Nguyễn Văn Minh',700000,0,'NV005','Nam','Cá nhân'),('KH013','456 Đường EFG, Quận Bình Tân, TP.HCM','tranthin@example.com','198642037','1986-08-20','2023-01-13 10:05:00.000000','0123456789','Trần Thị Như',3500000,300000,'NV004','Nam','Cá nhân'),('KH014','789 Đường HIJ, Quận Bình Chánh, TP.HCM','levano@example.com','087529314','1991-06-01','2023-01-14 08:40:00.000000','0987123456','Lê Văn Ôn',800000,0,'NV005','Nam','Cá nhân'),('KH015','0123 Đường KLM, Quận Thủ Đức, TP.HCM','phamthip@example.com','976420831','1988-04-05','2023-01-15 12:50:00.000000','0967123456','Phạm Thị Phương',2000000,0,'NV005','Nam','Cá nhân'),('KH016','456 Đường NOP, Quận Gò Vấp, TP.HCM','hoangvanq@example.com','865309472','1995-02-25','2023-01-16 09:55:00.000000','0987654321','Hoàng Văn Qúy',1100000,100000,'NV004','Nam','Cá nhân'),('KH017','789 Đường QRS, Quận Phú Nhuận, TP.HCM','tranthir@example.com','753186204','1987-12-10','2023-01-17 14:25:00.000000','0123456789','Trần Thị Riềng',900000,0,'NV004','Nam','Cá nhân'),('KH018','123 Đường TUV, Quận Tân Bình, TP.HCM','nguyenvans@example.com','642097531','1994-10-05','2023-01-18 10:35:00.000000','0967123456','Nguyễn Văn Sang',3000000,250000,'NV005','Nam','Cá nhân'),('KH019','456 Đường WXY, Quận Tân Phú, TP.HCM','phanthit@example.com','531874260','1989-08-15','2023-01-19 11:15:00.000000','0987654321','Phan Thị Thư',400000,0,'NV005','Nam','Cá nhân'),('KH020','789 Đường ZAB, Quận Bình Thạnh, TP.HCM','lyvanu@example.com','420963187','1996-05-30','2023-01-20 13:40:00.000000','0123456789','Lý Văn Uyên',1500000,100000,'NV004','Nam','Cá nhân'),('KH021','84, thôn 1, xã Đạ Oai, huyện Đạ Huoai, tỉnh Lâm Đồng','voduc0100@gmail.com','005615489','2024-04-06','2024-04-02 11:57:35.000000','086990187','Võ Văn Đức',0,0,'NV004','Nam','Cá nhân');
+INSERT INTO `khach_hang` VALUES ('KH001','123 Đường ABC, Quận 1, TP.HCM','nguyenvana@example.com','123456789','1990-01-01','2023-01-01 10:00:00.000000','0987654321','Nguyễn Văn An',1500000,0,'NV004','Nam','Cá nhân','CN001'),('KH002','456 Đường XYZ, Quận 2, TP.HCM','tranthib@example.com','987654321','1985-05-15','2023-01-02 11:30:00.000000','0123456789','Trần Thị Bình',800000,0,'NV004','Nam','Cá nhân','CN001'),('KH003','789 Đường MNO, Quận 3, TP.HCM','levanc@example.com','135792468','1992-03-20','2023-01-03 14:45:00.000000','0987123456','Lê Văn Chiến',2000000,200000,'NV004','Nam','Cá nhân','CN001'),('KH004','0123 Đường DEF, Quận 4, TP.HCM','phamthid@example.com','246813579','2002-12-10','2023-01-04 09:15:00.000000','0967123456','Phạm Thị Dương',500000,0,'NV005','Nữ','Cá nhân','CN001'),('KH005','456 Đường GHI, Quận 5, TP.HCM','hoangvane@example.com','369258147','1995-08-25','2023-01-05 13:20:00.000000','0987654321','Hoàng Văn Én',3000000,300000,'NV005','Nam','Cá nhân','CN001'),('KH006','789 Đường KLM, Quận 6, TP.HCM','tranvanf@example.com','975310486','1991-07-05','2023-01-06 08:30:00.000000','0987123456','Trần Văn Phú',1000000,0,'NV004','Nam','Cá nhân','CN001'),('KH007','123 Đường NOP, Quận 7, TP.HCM','nguyenthig@example.com','864203951','1987-09-15','2023-01-07 10:45:00.000000','0967123456','Nguyễn Thị Giang',1200000,0,'NV004','Nam','Cá nhân','CN001'),('KH008','456 Đường QRS, Quận 8, TP.HCM','phanvanh@example.com','753196482','1994-04-30','2023-01-08 12:00:00.000000','0987654321','Phan Văn Hòa',1800000,150000,'NV005','Nam','Cá nhân','CN001'),('KH009','789 Đường TUV, Quận 9, TP.HCM','lythi@example.com','642087513','1989-11-20','2023-01-09 15:10:00.000000','0123456789','Lý Thị Yến',600000,0,'NV005','Nam','Cá nhân','CN001'),('KH010','0123 Đường WXY, Quận 10, TP.HCM','dangvank@example.com','531974820','1996-06-10','2023-01-10 09:30:00.000000','0987123456','Đặng Văn Kiên',900000,0,'NV004','Nam','Cá nhân','CN001'),('KH011','456 Đường ZAB, Quận 11, TP.HCM','buithil@example.com','420865139','1993-02-05','2023-01-11 14:00:00.000000','0967123456','Bùi Thị Lý',2500000,200000,'NV004','Nam','Cá nhân','CN001'),('KH012','123 Đường BCD, Quận 12, TP.HCM','nguyenvanm@example.com','309751824','1990-10-15','2023-01-12 11:20:00.000000','0987654321','Nguyễn Văn Minh',700000,0,'NV005','Nam','Cá nhân','CN001'),('KH013','456 Đường EFG, Quận Bình Tân, TP.HCM','tranthin@example.com','198642037','1986-08-20','2023-01-13 10:05:00.000000','0123456789','Trần Thị Như',3500000,300000,'NV004','Nam','Cá nhân','CN001'),('KH014','789 Đường HIJ, Quận Bình Chánh, TP.HCM','levano@example.com','087529314','1991-06-01','2023-01-14 08:40:00.000000','0987123456','Lê Văn Ôn',800000,0,'NV005','Nam','Cá nhân','CN001'),('KH015','0123 Đường KLM, Quận Thủ Đức, TP.HCM','phamthip@example.com','976420831','1988-04-05','2023-01-15 12:50:00.000000','0967123456','Phạm Thị Phương',2000000,0,'NV005','Nam','Cá nhân','CN001'),('KH016','456 Đường NOP, Quận Gò Vấp, TP.HCM','hoangvanq@example.com','865309472','1995-02-25','2023-01-16 09:55:00.000000','0987654321','Hoàng Văn Qúy',1100000,100000,'NV004','Nam','Cá nhân','CN001'),('KH017','789 Đường QRS, Quận Phú Nhuận, TP.HCM','tranthir@example.com','753186204','1987-12-10','2023-01-17 14:25:00.000000','0123456789','Trần Thị Riềng',900000,0,'NV004','Nam','Cá nhân','CN001'),('KH018','123 Đường TUV, Quận Tân Bình, TP.HCM','nguyenvans@example.com','642097531','1994-10-05','2023-01-18 10:35:00.000000','0967123456','Nguyễn Văn Sang',3000000,250000,'NV005','Nam','Cá nhân','CN001'),('KH019','456 Đường WXY, Quận Tân Phú, TP.HCM','phanthit@example.com','531874260','1989-08-15','2023-01-19 11:15:00.000000','0987654321','Phan Thị Thư',400000,0,'NV005','Nam','Cá nhân','CN001'),('KH020','789 Đường ZAB, Quận Bình Thạnh, TP.HCM','lyvanu@example.com','420963187','1996-05-30','2023-01-20 13:40:00.000000','0123456789','Lý Văn Uyên',1500000,100000,'NV004','Nam','Cá nhân','CN001'),('KH021','84, thôn 1, xã Đạ Oai, huyện Đạ Huoai, tỉnh Lâm Đồng','voduc0100@gmail.com','005615489','2024-04-06','2024-04-02 11:57:35.000000','086990187','Võ Văn Đức',0,0,'NV004','Nam','Cá nhân','CN001'),('KH022','Thôn 1, xã Đạ Oai, huyện Đạ Huoai, tỉnh Lâm Đồng','dinhphongdaoai@gmail.com','0068415531','2002-04-11','2024-04-20 13:35:34.000000','0869990187','Lê Đình Phong',0,0,'NV004','Nam','Cá nhân','CN001'),('KH023','Tân bình, HCM','duongtanbinh@gmail.com','0164598588','2002-04-18','2024-04-20 15:10:09.000000','0861584658','Dương Triệu Lâm',0,0,'NV004','Nữ','Cá nhân','CN001');
 /*!40000 ALTER TABLE `khach_hang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -499,9 +503,12 @@ CREATE TABLE `nha_cung_cap` (
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
   `no_can_tra` double DEFAULT NULL,
   `tong_mua` double DEFAULT NULL,
+  `ma_chi_nhanh` varchar(255) DEFAULT 'CN001',
   PRIMARY KEY (`ma_nha_cung_cap`),
   KEY `FKf5u7s4s6dmvwrjkxqcx3d3xoa` (`ma_nhan_vien`),
-  CONSTRAINT `FKf5u7s4s6dmvwrjkxqcx3d3xoa` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
+  KEY `nha_cung_cap_chi_nhanh` (`ma_chi_nhanh`),
+  CONSTRAINT `FKf5u7s4s6dmvwrjkxqcx3d3xoa` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `nha_cung_cap_chi_nhanh` FOREIGN KEY (`ma_chi_nhanh`) REFERENCES `chi_nhanh` (`ma_chi_nhanh`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -511,7 +518,7 @@ CREATE TABLE `nha_cung_cap` (
 
 LOCK TABLES `nha_cung_cap` WRITE;
 /*!40000 ALTER TABLE `nha_cung_cap` DISABLE KEYS */;
-INSERT INTO `nha_cung_cap` VALUES ('NCC001','123 Đường ABC, Quận XYZ, Thành phố HCM','abc@company.com','ABC123456','2023-01-01 08:00:00.000000','0123456789','Công ty TNHH ABC','NV004',0,20000000),('NCC002','456 Đường XYZ, Quận ABC, Thành phố Hà Nội','xyz@company.com','XYZ987654','2023-01-02 09:00:00.000000','0987654321','Công ty XYZ Ltd','NV004',200000,52000000),('NCC003','789 Đường MNO, Quận DEF, Thành phố Đà Nẵng','mno@company.com','MNO456789','2023-01-03 10:00:00.000000','0369852147','Công ty MNO','NV005',150000,30000000),('NCC004','101 Đường PQR, Quận GHI, Thành phố Cần Thơ','pqr@company.com','PQR987654','2023-01-04 11:00:00.000000','0246857319','Công ty PQR','NV005',0,15000000),('NCC005','111 Đường STU, Quận KLM, Thành phố Hải Phòng','stu@company.com','STU123456','2023-01-05 12:00:00.000000','0379514682','Công ty STU','NV005',0,60000000);
+INSERT INTO `nha_cung_cap` VALUES ('NCC001','123 Đường ABC, Quận XYZ, Thành phố HCM','abc@company.com','ABC123456','2023-01-01 08:00:00.000000','0123456789','Công ty TNHH ABC','NV004',0,20000000,'CN001'),('NCC002','456 Đường XYZ, Quận ABC, Thành phố Hà Nội','xyz@company.com','0485186538','2023-01-02 09:00:00.000000','0987654321','Công ty XYZ Ltd','NV004',200000,52000000,'CN001'),('NCC003','789 Đường MNO, Quận DEF, Thành phố Đà Nẵng','mno@company.com','MNO456789','2023-01-03 10:00:00.000000','0369852147','Công ty MNO','NV005',150000,30000000,'CN001'),('NCC004','101 Đường PQR, Quận GHI, Thành phố Cần Thơ','pqr@company.com','PQR987654','2023-01-04 11:00:00.000000','0246857319','Công ty PQR','NV005',0,15000000,'CN001'),('NCC005','111 Đường STU, Quận KLM, Thành phố Hải Phòng','stu@company.com','STU123456','2023-01-05 12:00:00.000000','0379514682','Công ty STU','NV005',0,60000000,'CN001'),('NCC06','Dĩ An, Bình Dương','binhlamoto@gmail.com','065464891','2024-04-20 16:52:12.000000','0165164866','Nhà cung cấp công cụ sữa chữa oto Bình Lâm','NV004',NULL,NULL,'CN001');
 /*!40000 ALTER TABLE `nha_cung_cap` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -527,14 +534,16 @@ CREATE TABLE `nhan_vien` (
   `cccd` varchar(255) DEFAULT NULL,
   `chuc_danh` varchar(255) DEFAULT NULL,
   `gioi_tinh` varchar(255) DEFAULT NULL,
-  `ngay_bat_dau_lam_viec` datetime(6) DEFAULT NULL,
-  `ngay_sinh` datetime(6) DEFAULT NULL,
+  `ngay_bat_dau_lam_viec` date DEFAULT NULL,
+  `ngay_sinh` date DEFAULT NULL,
   `so_dien_thoai` varchar(255) DEFAULT NULL,
   `ten_nhan_vien` varchar(255) DEFAULT NULL,
   `ma_chi_nhanh` varchar(255) DEFAULT NULL,
   `tao_boi_ma_nhan_vien` varchar(255) DEFAULT NULL,
   `ma_lich_lam_viec` varchar(255) DEFAULT NULL,
   `no_luong` double DEFAULT NULL,
+  `dia_chi` varchar(255) DEFAULT NULL,
+  `ma_so_thue` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ma_nhan_vien`),
   UNIQUE KEY `UK_ie7b5kt6wc752x7tvm3sj1ja2` (`ma_lich_lam_viec`),
   KEY `FKb11u6kme9duvp5351r3b1d809` (`ma_chi_nhanh`),
@@ -551,7 +560,7 @@ CREATE TABLE `nhan_vien` (
 
 LOCK TABLES `nhan_vien` WRITE;
 /*!40000 ALTER TABLE `nhan_vien` DISABLE KEYS */;
-INSERT INTO `nhan_vien` VALUES ('NV000','068202006801','admin','Nam','2020-01-01 08:00:00.000000','2002-11-02 00:00:00.000000','0869990187','Võ Văn Đức',NULL,NULL,NULL,NULL),('NV001','123456789','Nhân viên sữa chữa','Nam','2020-01-01 08:00:00.000000','1990-01-01 00:00:00.000000','0123456789','Nguyễn Văn Anh','CN001','NV004','LLV001',0),('NV002','234567890','Nhân viên kỹ thuật','Nam','2019-12-15 09:00:00.000000','1992-02-02 00:00:00.000000','0987654321','Trần Luyện','CN001','NV004','LLV002',0),('NV003','345678901','Bảo vệ','Nam','2021-03-10 10:00:00.000000','1995-03-03 00:00:00.000000','0369852147','Phạm Văn Chiêu','CN001','NV004','LLV003',0),('NV004','456789012','Kế toán viên','Nữ','2020-06-20 11:00:00.000000','1988-04-04 00:00:00.000000','0246857319','Hoàng Thị Diệu','CN001','NV000','LLV004',0),('NV005','567890123','Kế toán viên','Nữ','2018-09-05 12:00:00.000000','1993-05-05 00:00:00.000000','0379514682','Tuyết Tuyết Nhi','CN001','NV000','LLV005',0),('NV006','678901234','Nhân viên sữa chữa','Nam','2019-11-30 08:30:00.000000','1997-06-06 00:00:00.000000','0987654321','Lê Điển Tịch','CN001','NV005','LLV006',0),('NV007','789012345','Nhân viên sữa chữa','Nam','2021-01-15 10:45:00.000000','1991-07-07 00:00:00.000000','0369852147','Nguyễn Văn Giang','CN001','NV004','LLV007',1000000),('NV008','890123456','Nhân viên sữa chữa','Nam','2019-07-05 11:15:00.000000','1994-08-08 00:00:00.000000','0246857319','Trần Trúc Huyên','CN001','NV004','LLV008',2000000),('NV009','901234567','Nhân viên sữa chữa','Nam','2022-04-18 13:20:00.000000','1989-09-09 00:00:00.000000','0379514682','Phạm Văn Linh','CN001','NV005','LLV009',0),('NV010','012345678','Nhân viên sữa chữa','Nam','2018-11-25 14:30:00.000000','1996-10-10 00:00:00.000000','0987654321','Võ Tòng','CN001','NV005','LLV010',0);
+INSERT INTO `nhan_vien` VALUES ('NV000','068202006801','admin','Nam','2020-01-01','2002-11-02','0869990187','Võ Văn Đức',NULL,NULL,NULL,NULL,'216 Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức','0616361535'),('NV001','123456789','Nhân viên sữa chữa','Nam','2020-01-01','1990-01-01','0123456789','Nguyễn Văn Anh','CN001','NV004','LLV001',0,'269 Linh Đông, Phường Linh Đông, Quận Thủ Đức','1611512165'),('NV002','234567890','Nhân viên kỹ thuật','Nam','2019-12-15','1992-02-02','0987654321','Trần Luyện','CN001','NV004','LLV002',0,'Chợ Bình Phước, Quốc lộ 13 cũ, Quận Thủ Đức','0513186153'),('NV003','345678901','Bảo vệ','Nam','2021-03-10','1995-03-03','0369852147','Phạm Văn Chiêu','CN001','NV004','LLV003',0,'996 Phạm Văn Đồng, Phường Hiệp Bình Chánh, Quận Thủ Đức','8946513150'),('NV004','456789012','Kế toán viên','Nữ','2020-06-20','1988-04-04','0246857319','Hoàng Thị Diệu','CN001','NV000','LLV004',0,'663 Tô Ngọc Vân, Phường Tam Bình, Quận Thủ Đức','1132511613'),('NV005','567890123','Kế toán viên','Nữ','2018-09-05','1993-05-05','0379514682','Tuyết Tuyết Nhi','CN001','NV000','LLV005',0,'42 Dân Chủ, Phường Bình Thọ, Quận Thủ Đức','0562323287'),('NV006','678901234','Nhân viên sữa chữa','Nam','2019-11-30','1997-06-06','0987654321','Lê Điển Tịch','CN001','NV005','LLV006',0,'27 Thống Nhất, Phường Bình Thọ, Quận Thủ Đức','0321815314'),('NV007','789012345','Nhân viên sữa chữa','Nam','2021-01-15','1991-07-07','0369852147','Nguyễn Văn Giang','CN001','NV004','LLV007',1000000,'17 Quang Trung, Quận Thủ Đức','0231315514'),('NV008','890123456','Nhân viên sữa chữa','Nam','2019-07-05','1994-08-08','0246857319','Trần Trúc Huyên','CN001','NV004','LLV008',2000000,'11 Bác Ái, Quận Thủ Đức','0168644348'),('NV009','901234567','Nhân viên sữa chữa','Nam','2022-04-18','1989-09-09','0379514682','Phạm Văn Linh','CN001','NV005','LLV009',0,'200 Hoàng Diệu 2, Phường Linh Chiểu, Quận Thủ Đức','0131654897'),('NV010','012345678','Nhân viên sữa chữa','Nam','2018-11-25','1996-10-10','0987654321','Võ Tòng','CN001','NV005','LLV010',0,' 46 Cây Keo, Phường Tam Phú, Quận Thủ Đức','1351489645');
 /*!40000 ALTER TABLE `nhan_vien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -839,4 +848,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-18 10:23:20
+-- Dump completed on 2024-04-21 22:07:44

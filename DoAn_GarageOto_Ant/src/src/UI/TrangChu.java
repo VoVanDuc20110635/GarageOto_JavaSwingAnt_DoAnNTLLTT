@@ -4928,11 +4928,17 @@ public class TrangChu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        Frame_ChiTietNhanVien frame_ChiTietNhanVien = new Frame_ChiTietNhanVien(nhanVien);
-        frame_ChiTietNhanVien.setVisible(true);
-        frame_ChiTietNhanVien.setSize(860, 300);
-        frame_ChiTietNhanVien.setLocation(0,0);
+        ChiNhanh chiNhanh;
+        try {
+            chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh("CN001");
+            Frame_ChiTietNhanVien frame_ChiTietNhanVien = new Frame_ChiTietNhanVien(nhanVien, chiNhanh);
+            frame_ChiTietNhanVien.setVisible(true);
+            frame_ChiTietNhanVien.setSize(970, 440);
+            frame_ChiTietNhanVien.setLocation(0,0);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_tb_danhSachNhanVienMouseClicked
     
     
