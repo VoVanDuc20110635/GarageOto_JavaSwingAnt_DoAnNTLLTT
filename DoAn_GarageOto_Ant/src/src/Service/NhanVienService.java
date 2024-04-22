@@ -47,6 +47,7 @@ public class NhanVienService {
                 nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
                 nhanVien.setDiaChi(resultTable.getString("dia_chi"));
                 nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
+                nhanVien.setTrangThai(resultTable.getString("trang_thai"));
 //                
             }
             danhSachNhanVien.add(nhanVien);
@@ -80,9 +81,67 @@ public class NhanVienService {
                 nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
                 nhanVien.setDiaChi(resultTable.getString("dia_chi"));
                 nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
+                nhanVien.setTrangThai(resultTable.getString("trang_thai"));
             }
         }
         connectorDB.closeConnection();
         return nhanVien;
     }
+    
+    public int themNhanVien (NhanVien nhanVien) throws SQLException{ //   
+        try{
+           String query = String.format("insert into nhan_vien (ma_nhan_vien, cccd, chuc_danh, gioi_tinh, ngay_bat_dau_lam_viec, "
+                   + "ngay_sinh, so_dien_thoai, ten_nhan_vien, ma_chi_nhanh, tao_boi_ma_nhan_vien, ma_lich_lam_viec, "
+                   + "no_luong, dia_chi, ma_so_thue, trang_thai) " +
+                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', '%s', '%s')",
+                             nhanVien.getMaNhanVien(),
+                             nhanVien.getCccd(),
+                             nhanVien.getChucDanh(),
+                             nhanVien.getGioiTinh(),
+                             String.valueOf(nhanVien.getNgayBatDauLamViec()),
+                             String.valueOf(nhanVien.getNgaySinh()),
+                             nhanVien.getSoDienThoai(),
+                             nhanVien.getTenNhanVien(),
+                             nhanVien.getMaChiNhanh(),
+                             nhanVien.getTaoBoiMaNhanVien(), 
+                             nhanVien.getMaLichLamViec(),
+                             nhanVien.getNoLuong(),
+                             nhanVien.getDiaChi(),
+                             nhanVien.getMaSoThue(),
+                             nhanVien.getTrangThai());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int capNhatNhanVienTaiTrangThongtinChiTiet (NhanVien nhanVien) throws SQLException{ //   
+        try{
+            System.out.println(nhanVien.getChucDanh());
+           String query = String.format("update nhan_vien set cccd = '%s', chuc_danh = '%s', gioi_tinh = '%s', "
+                   + "ngay_sinh = '%s', so_dien_thoai = '%s', ten_nhan_vien = '%s', ma_chi_nhanh = '%s', "
+                   + "dia_chi = '%s', ma_so_thue = '%s', trang_thai = '%s' where ma_nhan_vien = '%s'",
+                             nhanVien.getCccd(),
+                             nhanVien.getChucDanh(),
+                             nhanVien.getGioiTinh(),
+                             String.valueOf(nhanVien.getNgaySinh()),
+                             nhanVien.getSoDienThoai(),
+                             nhanVien.getTenNhanVien(),
+                             nhanVien.getMaChiNhanh(),
+                             nhanVien.getDiaChi(),
+                             nhanVien.getMaSoThue(),
+                             nhanVien.getTrangThai(),
+                             nhanVien.getMaNhanVien()
+                             );
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+
 }

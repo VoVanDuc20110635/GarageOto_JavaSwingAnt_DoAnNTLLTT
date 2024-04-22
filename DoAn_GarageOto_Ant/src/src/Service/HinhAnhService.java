@@ -98,6 +98,14 @@ public class HinhAnhService {
                              hinhAnh.getTenHinh(),
                              hinhAnh.getMaHangHoa());
            }
+           if (hinhAnh.getMaHangHoa()== null){
+               query = String.format("insert into hinh_anh(ma_hinh_anh, noi_dung, ten_hinh, ma_nhan_vien) " +
+                             "values ('%s', '%s', '%s', '%s')",
+                             hinhAnh.getMaHinhAnh(), 
+                             hinhAnh.getNoiDung(),
+                             hinhAnh.getTenHinh(),
+                             hinhAnh.getMaNhanVien());
+           }
             System.out.println("query them hinh anh: " +  query);
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
@@ -126,6 +134,7 @@ public class HinhAnhService {
            String query = String.format("update hinh_anh set ten_hinh='%s' where ma_hinh_anh='%s'",
                              hinhAnhMoi.getTenHinh(),
                              hinhAnhMoi.getMaHinhAnh());
+            System.out.println(query);
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;

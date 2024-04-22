@@ -3960,6 +3960,7 @@ public class TrangChu extends javax.swing.JFrame {
         BangChamCong bangChamCongNew = new BangChamCong();
         bangChamCongNew.setMaCaLam(cb_bangCongCaLam.getSelectedItem().toString().split(" ")[0]);
         bangChamCongNew.setMaBangChamCong("BC0" + String.valueOf(tongSoBangChamCong + 1));
+        System.out.println(dateChoose_bangCongNgayLam.getDate());
         bangChamCongNew.setNgayLam(util.localDateParseMethodToLocalDate(util.layNgayString(dateChoose_bangCongNgayLam.getDate())));
         bangChamCongNew.setMaNhanVien(cb_bangCongNhanVien.getSelectedItem().toString().split(" ")[0]);
         bangChamCongNew.setTrangThai(cb_bangCongTrangThai.getSelectedItem().toString());
@@ -4933,7 +4934,7 @@ public class TrangChu extends javax.swing.JFrame {
             chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh("CN001");
             Frame_ChiTietNhanVien frame_ChiTietNhanVien = new Frame_ChiTietNhanVien(nhanVien, chiNhanh);
             frame_ChiTietNhanVien.setVisible(true);
-            frame_ChiTietNhanVien.setSize(970, 440);
+            frame_ChiTietNhanVien.setSize(970, 450);
             frame_ChiTietNhanVien.setLocation(0,0);
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);

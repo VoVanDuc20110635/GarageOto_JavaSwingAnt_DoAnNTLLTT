@@ -4,14 +4,32 @@
  */
 package src.UI.NhanVien;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import src.Model.ChiNhanh;
+import src.Model.CongViec;
+import src.Model.HinhAnh;
 import src.Model.NhanVien;
 import src.Service.ChiNhanhServive;
+import src.Service.CongViecService;
+import src.Service.HinhAnhService;
 import src.Service.NhanVienService;
+import src.UI.HangHoa.Frame_ThemHangHoa;
 import src.Util.Util;
 
 /**
@@ -23,6 +41,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private ChiNhanh chiNhanh;
     private NhanVienService nhanVienService = new NhanVienService();
     private ChiNhanhServive chiNhanhService = new ChiNhanhServive();
+    private CongViecService congViecService = new CongViecService();
+    private HinhAnhService hinhAnhService = new HinhAnhService();
+    String destinationFolderPath = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image";
+    private String imageLink = "";
+            
     private Util util = new Util();
     /**
      * Creates new form frame_ThemKhachHang
@@ -32,6 +55,20 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.nhanVien = nhanVien;
         this.chiNhanh = chiNhanh;
+        try {
+            List<ChiNhanh> danhSachChiNhanh = chiNhanhService.hienThiTatCaChiNhanh();
+            cbChiTietNhanVien_chiNhanhLamViec.removeAllItems();
+            for (ChiNhanh chiNhanhItem: danhSachChiNhanh){
+                cbChiTietNhanVien_chiNhanhLamViec.addItem(chiNhanhItem.getMaChiNhanh() + " " + chiNhanhItem.getTenChiNhanh());
+            }
+            List<CongViec> danhSachCongViec = congViecService.hienThiTatCaCongViec();
+            cbChiTietNhanVien_chucDanh.removeAllItems();
+            for (CongViec congViec: danhSachCongViec){
+                cbChiTietNhanVien_chucDanh.addItem(congViec.getMaCongViec() + " " + congViec.getTenCongViec());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
         lbChiTietNhanVien_tenChiNhanh.setText(chiNhanh.getTenChiNhanh());
         tfChiTietNhanVien_ma.setText(nhanVien.getMaNhanVien());
         tfChiTietNhanVien_cccd.setText(nhanVien.getCccd());
@@ -48,10 +85,59 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         dateChooserChiTietNhanVien_ngaySinh.setDate(util.layNgayDate(nhanVien.getNgaySinh().toString()));
         try {
             cbChiTietNhanVien_chiNhanhLamViec.setSelectedItem(chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(nhanVien.getMaChiNhanh()).getTenChiNhanh());
-            cbChiTietNhanVien_chucDanh.setSelectedItem(nhanVien.getChucDanh());
+            CongViec congViec = congViecService.hienThiCongViecTheoMaCongViec(nhanVien.getChucDanh());
+            cbChiTietNhanVien_chucDanh.setSelectedItem(congViec.getMaCongViec() + " " + congViec.getTenCongViec());
         } catch (SQLException ex) {
             Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        HinhAnh hinhAnhNhanVien;
+        try {
+            hinhAnhNhanVien = hinhAnhService.hienThiHinhAnhTheoMaNhanVien(nhanVien.getMaNhanVien());
+            imageLink = hinhAnhNhanVien.getTenHinh();
+            if (imageLink != null ){
+                if (!imageLink.equals("")){
+                    imageLink = destinationFolderPath + "\\" + imageLink;
+                    lbChiTietNhanVien_anh.setIcon(null);
+                    File file;
+                    try {
+                        file = new File(imageLink);
+                        BufferedImage originalImage = ImageIO.read(file);
+                        Image scaledImage = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                        ImageIcon icon = new ImageIcon(scaledImage);
+                        lbChiTietNhanVien_anh.setIcon(icon);
+
+                    } catch (MalformedURLException ex) {
+                        Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        cbChiTietNhanVien_trangThai.setSelectedItem(nhanVien.getTrangThai());
+        lbChiTietNhanVien_tenChiNhanh.setEnabled(false);
+        tfChiTietNhanVien_ma.setEnabled(false);
+        tfChiTietNhanVien_cccd.setEnabled(false);
+        tfChiTietNhanVien_diaChi.setEnabled(false);
+        tfChiTietNhanVien_maSoThue.setEnabled(false);
+        tfChiTietNhanVien_soDienThoai.setEnabled(false);
+        tfChiTietNhanVien_ten.setEnabled(false);
+        radioChiTietNhanVien_nam.setEnabled(false);
+        radioChiTietNhanVien_nu.setEnabled(false);
+        dateChooserChiTietNhanVien_ngaySinh.setEnabled(false);
+        cbChiTietNhanVien_chiNhanhLamViec.setEnabled(false);
+        cbChiTietNhanVien_chucDanh.setEnabled(false);
+        cbChiTietNhanVien_trangThai.setEnabled(false);
+        btnChiTietNhanVien_chonAnh.setEnabled(false);
+        
+        
     }
 
     public Frame_ChiTietNhanVien() {
@@ -76,6 +162,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        btnGroup_gioiTinh = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel89 = new javax.swing.JPanel();
@@ -84,7 +171,8 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         lbChiTietNhanVien_tenChiNhanh = new javax.swing.JLabel();
         jPanel86 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
-        lbChiTietNhanVien_anh = new javax.swing.JPanel();
+        panelAnh = new javax.swing.JPanel();
+        lbChiTietNhanVien_anh = new javax.swing.JLabel();
         btnChiTietNhanVien_ngungLamViec = new javax.swing.JButton();
         jPanel93 = new javax.swing.JPanel();
         jLabel71 = new javax.swing.JLabel();
@@ -117,7 +205,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         tfChiTietNhanVien_maSoThue = new javax.swing.JTextField();
         btnChiTietNhanVien_chonAnh = new javax.swing.JButton();
         btnChiTietNhanVien_capNhat = new javax.swing.JButton();
-        btnChiTietNhanVien_capNhat1 = new javax.swing.JButton();
+        btnChiTietNhanVien_thoat = new javax.swing.JButton();
+        jPanel100 = new javax.swing.JPanel();
+        jLabel84 = new javax.swing.JLabel();
+        cbChiTietNhanVien_trangThai = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -160,8 +251,8 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel90Layout.createSequentialGroup()
                 .addComponent(jLabel73)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbChiTietNhanVien_tenChiNhanh)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(lbChiTietNhanVien_tenChiNhanh, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel90Layout.setVerticalGroup(
             jPanel90Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +264,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel89.add(jPanel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 290, 30));
+        jPanel89.add(jPanel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 390, 30));
 
         jPanel86.setBackground(new java.awt.Color(255, 255, 255));
         jPanel86.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(204, 204, 204)));
@@ -186,18 +277,18 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
         jPanel89.add(jPanel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 6, 150, 30));
 
-        javax.swing.GroupLayout lbChiTietNhanVien_anhLayout = new javax.swing.GroupLayout(lbChiTietNhanVien_anh);
-        lbChiTietNhanVien_anh.setLayout(lbChiTietNhanVien_anhLayout);
-        lbChiTietNhanVien_anhLayout.setHorizontalGroup(
-            lbChiTietNhanVien_anhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelAnhLayout = new javax.swing.GroupLayout(panelAnh);
+        panelAnh.setLayout(panelAnhLayout);
+        panelAnhLayout.setHorizontalGroup(
+            panelAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbChiTietNhanVien_anh, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
-        lbChiTietNhanVien_anhLayout.setVerticalGroup(
-            lbChiTietNhanVien_anhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
+        panelAnhLayout.setVerticalGroup(
+            panelAnhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbChiTietNhanVien_anh, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
 
-        jPanel89.add(lbChiTietNhanVien_anh, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 48, 80, 80));
+        jPanel89.add(panelAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 48, 80, 80));
 
         btnChiTietNhanVien_ngungLamViec.setBackground(new java.awt.Color(255, 0, 0));
         btnChiTietNhanVien_ngungLamViec.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -212,9 +303,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         jLabel71.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel71.setText("Ngày sinh");
 
+        btnGroup_gioiTinh.add(radioChiTietNhanVien_nu);
         radioChiTietNhanVien_nu.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         radioChiTietNhanVien_nu.setText("Nữ");
 
+        btnGroup_gioiTinh.add(radioChiTietNhanVien_nam);
         radioChiTietNhanVien_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         radioChiTietNhanVien_nam.setText("Nam");
 
@@ -245,7 +338,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                     .addGroup(jPanel93Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel71)
                         .addComponent(radioChiTietNhanVien_nam)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel89.add(jPanel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 370, 40));
@@ -380,7 +473,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel97Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel81)
                     .addComponent(tfChiTietNhanVien_soDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel89.add(jPanel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 370, 40));
@@ -446,10 +539,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel99Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel83)
                     .addComponent(cbChiTietNhanVien_chucDanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel89.add(jPanel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 150, 370, 40));
+        jPanel89.add(jPanel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, 370, 40));
 
         jPanel112.setBackground(new java.awt.Color(255, 255, 255));
         jPanel112.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -458,7 +551,6 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         jLabel85.setText("Chi nhánh làm việc");
 
         cbChiTietNhanVien_chiNhanhLamViec.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        cbChiTietNhanVien_chiNhanhLamViec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chi nhánh trung tâm", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel112Layout = new javax.swing.GroupLayout(jPanel112);
         jPanel112.setLayout(jPanel112Layout);
@@ -484,7 +576,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel112Layout.createSequentialGroup()
                     .addGap(5, 5, 5)
                     .addComponent(cbChiTietNhanVien_chiNhanhLamViec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(9, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jPanel89.add(jPanel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 370, 40));
@@ -527,6 +619,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         btnChiTietNhanVien_chonAnh.setForeground(new java.awt.Color(255, 255, 255));
         btnChiTietNhanVien_chonAnh.setText("Chọn ảnh");
         btnChiTietNhanVien_chonAnh.setBorder(null);
+        btnChiTietNhanVien_chonAnh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietNhanVien_chonAnhActionPerformed(evt);
+            }
+        });
         jPanel89.add(btnChiTietNhanVien_chonAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 80, 31));
 
         btnChiTietNhanVien_capNhat.setBackground(new java.awt.Color(0, 204, 0));
@@ -534,19 +631,56 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         btnChiTietNhanVien_capNhat.setForeground(new java.awt.Color(255, 255, 255));
         btnChiTietNhanVien_capNhat.setText("Cập nhật");
         btnChiTietNhanVien_capNhat.setBorder(null);
-        jPanel89.add(btnChiTietNhanVien_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 100, 31));
-
-        btnChiTietNhanVien_capNhat1.setBackground(new java.awt.Color(51, 51, 255));
-        btnChiTietNhanVien_capNhat1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btnChiTietNhanVien_capNhat1.setForeground(new java.awt.Color(255, 255, 255));
-        btnChiTietNhanVien_capNhat1.setText("Thoát");
-        btnChiTietNhanVien_capNhat1.setBorder(null);
-        btnChiTietNhanVien_capNhat1.addActionListener(new java.awt.event.ActionListener() {
+        btnChiTietNhanVien_capNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChiTietNhanVien_capNhat1ActionPerformed(evt);
+                btnChiTietNhanVien_capNhatActionPerformed(evt);
             }
         });
-        jPanel89.add(btnChiTietNhanVien_capNhat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 100, 31));
+        jPanel89.add(btnChiTietNhanVien_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 100, 31));
+
+        btnChiTietNhanVien_thoat.setBackground(new java.awt.Color(51, 51, 255));
+        btnChiTietNhanVien_thoat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnChiTietNhanVien_thoat.setForeground(new java.awt.Color(255, 255, 255));
+        btnChiTietNhanVien_thoat.setText("Thoát");
+        btnChiTietNhanVien_thoat.setBorder(null);
+        btnChiTietNhanVien_thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietNhanVien_thoatActionPerformed(evt);
+            }
+        });
+        jPanel89.add(btnChiTietNhanVien_thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 330, 100, 31));
+
+        jPanel100.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel100.setPreferredSize(new java.awt.Dimension(450, 100));
+
+        jLabel84.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel84.setText("Trạng thái");
+
+        cbChiTietNhanVien_trangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        cbChiTietNhanVien_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang làm việc", "Ngừng làm việc" }));
+
+        javax.swing.GroupLayout jPanel100Layout = new javax.swing.GroupLayout(jPanel100);
+        jPanel100.setLayout(jPanel100Layout);
+        jPanel100Layout.setHorizontalGroup(
+            jPanel100Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel100Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(cbChiTietNhanVien_trangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel100Layout.setVerticalGroup(
+            jPanel100Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel100Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel100Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel84)
+                    .addComponent(cbChiTietNhanVien_trangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel89.add(jPanel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 370, 40));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -775,10 +909,151 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnChiTietNhanVien_capNhat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_capNhat1ActionPerformed
+    private void btnChiTietNhanVien_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_thoatActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnChiTietNhanVien_capNhat1ActionPerformed
+    }//GEN-LAST:event_btnChiTietNhanVien_thoatActionPerformed
 
+    private void btnChiTietNhanVien_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_capNhatActionPerformed
+        if(btnChiTietNhanVien_capNhat.getText().equals("Cập nhật")){
+            btnChiTietNhanVien_capNhat.setText("Lưu");
+            lbChiTietNhanVien_tenChiNhanh.setEnabled(true);
+            tfChiTietNhanVien_cccd.setEnabled(true);
+            tfChiTietNhanVien_diaChi.setEnabled(true);
+            tfChiTietNhanVien_maSoThue.setEnabled(true);
+            tfChiTietNhanVien_soDienThoai.setEnabled(true);
+            tfChiTietNhanVien_ten.setEnabled(true);
+            radioChiTietNhanVien_nam.setEnabled(true);
+            radioChiTietNhanVien_nu.setEnabled(true);
+            dateChooserChiTietNhanVien_ngaySinh.setEnabled(true);
+            cbChiTietNhanVien_chiNhanhLamViec.setEnabled(true);
+            cbChiTietNhanVien_chucDanh.setEnabled(true);
+            cbChiTietNhanVien_trangThai.setEnabled(true);
+            btnChiTietNhanVien_chonAnh.setEnabled(true);
+            
+            
+        } else {
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.setMaNhanVien(tfChiTietNhanVien_ma.getText());
+            nhanVien.setCccd(tfChiTietNhanVien_cccd.getText());
+            nhanVien.setChucDanh(cbChiTietNhanVien_chucDanh.getSelectedItem().toString().split(" ")[0]);
+            if (radioChiTietNhanVien_nam.isSelected()){
+                nhanVien.setGioiTinh("Nam");
+            } else {
+                nhanVien.setGioiTinh("Nữ");
+            }
+            nhanVien.setNgaySinh(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooserChiTietNhanVien_ngaySinh.getDate())));
+            nhanVien.setSoDienThoai(tfChiTietNhanVien_soDienThoai.getText());
+            nhanVien.setTenNhanVien(tfChiTietNhanVien_ten.getText());
+            nhanVien.setTrangThai(cbChiTietNhanVien_trangThai.getSelectedItem().toString());
+            nhanVien.setMaChiNhanh(cbChiTietNhanVien_chiNhanhLamViec.getSelectedItem().toString().split(" ")[0]);
+//            nhanVien.setTaoBoiMaNhanVien("NV004");
+//            nhanVien.setMaLichLamViec("LLV001");
+//            nhanVien.setNoLuong(0);
+            nhanVien.setDiaChi(tfChiTietNhanVien_diaChi.getText());
+            nhanVien.setMaSoThue(tfChiTietNhanVien_maSoThue.getText());
+            try {
+                nhanVienService.capNhatNhanVienTaiTrangThongtinChiTiet(nhanVien);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            if (lbChiTietNhanVien_anh.getIcon() != null){
+                saveImage(imageLink, destinationFolderPath);
+                HinhAnh hinhAnh = new HinhAnh();
+                try {
+                    int temp = hinhAnhService.demSoHinhAnh() + 1;
+                    hinhAnh.setMaHinhAnh("HA0"+ temp);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Frame_ThemHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                hinhAnh.setNoiDung(nhanVien.getTenNhanVien());
+                String[] parts = imageLink.split("\\\\");
+                hinhAnh.setTenHinh(parts[parts.length - 1]);
+                hinhAnh.setMaNhanVien(nhanVien.getMaNhanVien());
+                try {
+                    HinhAnh hinhAnhDb = hinhAnhService.hienThiHinhAnhTheoMaNhanVien(nhanVien.getMaNhanVien());
+                    if (hinhAnhDb.getMaHinhAnh() == null){
+                        hinhAnhService.themHinhAnh(hinhAnh);
+                    } else {
+                        hinhAnh.setMaHinhAnh(hinhAnhDb.getMaHinhAnh());
+                        hinhAnhService.updateHinhAnh(hinhAnh);
+                    }
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(Frame_ThemHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            btnChiTietNhanVien_capNhat.setText("Cập nhật");
+            lbChiTietNhanVien_tenChiNhanh.setEnabled(false);
+            tfChiTietNhanVien_ma.setEnabled(false);
+            tfChiTietNhanVien_cccd.setEnabled(false);
+            tfChiTietNhanVien_diaChi.setEnabled(false);
+            tfChiTietNhanVien_maSoThue.setEnabled(false);
+            tfChiTietNhanVien_soDienThoai.setEnabled(false);
+            tfChiTietNhanVien_ten.setEnabled(false);
+            radioChiTietNhanVien_nam.setEnabled(false);
+            radioChiTietNhanVien_nu.setEnabled(false);
+            dateChooserChiTietNhanVien_ngaySinh.setEnabled(false);
+            cbChiTietNhanVien_chiNhanhLamViec.setEnabled(false);
+            cbChiTietNhanVien_chucDanh.setEnabled(false);
+            cbChiTietNhanVien_trangThai.setEnabled(false);
+            btnChiTietNhanVien_chonAnh.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnChiTietNhanVien_capNhatActionPerformed
+    public void saveImage(String sourceImagePath, String destinationFolderPath) {
+        try {
+            // Create a Path object for the source image
+            Path sourcePath = Paths.get(sourceImagePath);
+
+            // Create a Path object for the destination folder
+            Path destinationFolder = Paths.get(destinationFolderPath);
+
+            // Ensure the destination folder exists, create it if it doesn't
+            Files.createDirectories(destinationFolder);
+
+            // Get the file name of the source image
+            String fileName = sourcePath.getFileName().toString();
+
+            // Create a Path object for the destination image file
+            Path destinationFilePath = destinationFolder.resolve(fileName);
+
+            // Copy the source image file to the destination folder
+            Files.copy(sourcePath, destinationFilePath);
+
+            System.out.println("Image saved successfully to: " + destinationFilePath);
+        } catch (IOException e) {
+            System.err.println("Error saving image: " + e.getMessage());
+        }
+    }
+    private void btnChiTietNhanVien_chonAnhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_chonAnhActionPerformed
+        layTenFile();
+        lbChiTietNhanVien_anh.setIcon(null);
+        File file;
+        try {
+            file = new File(imageLink);
+            BufferedImage originalImage = ImageIO.read(file);
+            Image scaledImage = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(scaledImage);
+            lbChiTietNhanVien_anh.setIcon(icon);
+
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnChiTietNhanVien_chonAnhActionPerformed
+    private void layTenFile(){
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogType(JFileChooser.OPEN_DIALOG);
+        chooser.addChoosableFileFilter(new FileNameExtensionFilter("", "jpg"));
+        chooser.setFileFilter(chooser.getChoosableFileFilters()[1]);
+        int r = chooser.showDialog(this,null);
+        if (r!= JFileChooser.APPROVE_OPTION) return;
+        File file = new File(chooser.getSelectedFile() + chooser.getFileFilter().getDescription());
+        imageLink = file.getPath();
+    }
     /**
      * @param args the command line arguments
      */
@@ -823,13 +1098,15 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiTietNhanVien_capNhat;
-    private javax.swing.JButton btnChiTietNhanVien_capNhat1;
     private javax.swing.JButton btnChiTietNhanVien_chonAnh;
     private javax.swing.JButton btnChiTietNhanVien_ngungLamViec;
+    private javax.swing.JButton btnChiTietNhanVien_thoat;
+    private javax.swing.ButtonGroup btnGroup_gioiTinh;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbChiTietNhanVien_chiNhanhLamViec;
     private javax.swing.JComboBox<String> cbChiTietNhanVien_chucDanh;
+    private javax.swing.JComboBox<String> cbChiTietNhanVien_trangThai;
     private com.toedter.calendar.JDateChooser dateChooserChiTietNhanVien_ngaySinh;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -845,9 +1122,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel100;
     private javax.swing.JPanel jPanel112;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -873,8 +1152,9 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JPanel lbChiTietNhanVien_anh;
+    private javax.swing.JLabel lbChiTietNhanVien_anh;
     private javax.swing.JLabel lbChiTietNhanVien_tenChiNhanh;
+    private javax.swing.JPanel panelAnh;
     private javax.swing.JPanel panelhihi;
     private javax.swing.JRadioButton radioChiTietNhanVien_nam;
     private javax.swing.JRadioButton radioChiTietNhanVien_nu;

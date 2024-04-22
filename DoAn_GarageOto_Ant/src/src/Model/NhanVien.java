@@ -25,6 +25,7 @@ public class NhanVien {
     private String maLichLamViec;
     private String diaChi;
     private String maSoThue;
+    private String trangThai;
     private double noLuong;
     
     private ChiNhanh chiNhanh;
@@ -183,6 +184,14 @@ public class NhanVien {
 
     public void setMaSoThue(String maSoThue) {
         this.maSoThue = maSoThue;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
     }
     
     
