@@ -173,7 +173,6 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         jLabel67 = new javax.swing.JLabel();
         panelAnh = new javax.swing.JPanel();
         lbChiTietNhanVien_anh = new javax.swing.JLabel();
-        btnChiTietNhanVien_ngungLamViec = new javax.swing.JButton();
         jPanel93 = new javax.swing.JPanel();
         jLabel71 = new javax.swing.JLabel();
         radioChiTietNhanVien_nu = new javax.swing.JRadioButton();
@@ -212,9 +211,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -289,13 +290,6 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         );
 
         jPanel89.add(panelAnh, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 48, 80, 80));
-
-        btnChiTietNhanVien_ngungLamViec.setBackground(new java.awt.Color(255, 0, 0));
-        btnChiTietNhanVien_ngungLamViec.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btnChiTietNhanVien_ngungLamViec.setForeground(new java.awt.Color(255, 255, 255));
-        btnChiTietNhanVien_ngungLamViec.setText("Ngừng làm việc");
-        btnChiTietNhanVien_ngungLamViec.setBorder(null);
-        jPanel89.add(btnChiTietNhanVien_ngungLamViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, 130, 31));
 
         jPanel93.setBackground(new java.awt.Color(255, 255, 255));
         jPanel93.setPreferredSize(new java.awt.Dimension(450, 100));
@@ -636,7 +630,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 btnChiTietNhanVien_capNhatActionPerformed(evt);
             }
         });
-        jPanel89.add(btnChiTietNhanVien_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 100, 31));
+        jPanel89.add(btnChiTietNhanVien_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 100, 31));
 
         btnChiTietNhanVien_thoat.setBackground(new java.awt.Color(51, 51, 255));
         btnChiTietNhanVien_thoat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -709,31 +703,13 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Từ ngày", "Đến ngày", "Lặp lại", "Khung giờ làm", "Ghi chú", ""
+                "Ngày bắt đầu", "Ngày kết thúc", "Ca làm", "Trạng thái", "Ghi chú"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
-
-        jButton1.setBackground(new java.awt.Color(0, 204, 0));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Thêm lịch làm việc");
-
-        jButton2.setBackground(new java.awt.Color(255, 153, 153));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Bảng chấm công");
-
-        jButton3.setBackground(new java.awt.Color(0, 51, 204));
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Thiết lập lương");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -741,43 +717,58 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 458, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
                 .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Lịch làm việc", jPanel2);
 
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã lịch làm việc", "Ngày", "Ghi chú", "Số giờ tăng ca", "Trạng thái"
+            }
+        ));
+        jTable5.setRowHeight(30);
+        jScrollPane1.setViewportView(jTable5);
+
+        jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 59, 930, 310));
+
+        jButton4.setBackground(new java.awt.Color(0, 51, 255));
+        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Lịch nghỉ");
+        jPanel7.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
+
+        jButton5.setBackground(new java.awt.Color(255, 153, 153));
+        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Lịch tăng ca");
+        jPanel7.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 30));
+
+        jTabbedPane1.addTab("Lịch nghỉ và lịch tăng ca", jPanel7);
+
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Mã phiếu", "Kỳ làm việc", "Tổng lương", "Đã trả", "Nợ"
+                "Mã phiếu", "Mã lịch làm việc", "Tổng lương", "Đã trả", "Nợ"
             }
         ));
         jScrollPane3.setViewportView(jTable2);
@@ -824,8 +815,8 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(11, 11, 11))
         );
@@ -836,26 +827,20 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Mã bảng lương", "Chế độ lương", "Tiền lương"
+                "Mã bảng lương", "Tiền lương", "Thời gian", "Nội dung"
             }
         ));
         jScrollPane4.setViewportView(jTable3);
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Mã phụ cấp", "Nội dung", "Tiền phụ cấp"
+                "Mã phụ cấp", "Tiền phụ cấp", "Thời gian", "Nội dung"
             }
         ));
         jScrollPane5.setViewportView(jTable4);
@@ -875,10 +860,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addGap(124, 124, 124))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -1099,7 +1084,6 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiTietNhanVien_capNhat;
     private javax.swing.JButton btnChiTietNhanVien_chonAnh;
-    private javax.swing.JButton btnChiTietNhanVien_ngungLamViec;
     private javax.swing.JButton btnChiTietNhanVien_thoat;
     private javax.swing.ButtonGroup btnGroup_gioiTinh;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -1108,9 +1092,8 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbChiTietNhanVien_chucDanh;
     private javax.swing.JComboBox<String> cbChiTietNhanVien_trangThai;
     private com.toedter.calendar.JDateChooser dateChooserChiTietNhanVien_ngaySinh;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel67;
@@ -1133,6 +1116,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel86;
     private javax.swing.JPanel jPanel89;
     private javax.swing.JPanel jPanel90;
@@ -1143,6 +1127,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel97;
     private javax.swing.JPanel jPanel98;
     private javax.swing.JPanel jPanel99;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1152,6 +1137,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JLabel lbChiTietNhanVien_anh;
     private javax.swing.JLabel lbChiTietNhanVien_tenChiNhanh;
     private javax.swing.JPanel panelAnh;

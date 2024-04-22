@@ -58,6 +58,8 @@ CREATE TABLE `bang_luong` (
   `ma_bang_luong` varchar(255) NOT NULL,
   `che_do_luong` varchar(255) DEFAULT NULL,
   `tien_luong` double DEFAULT NULL,
+  `loai` varchar(255) DEFAULT NULL,
+  `noi_dung` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ma_bang_luong`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -68,7 +70,7 @@ CREATE TABLE `bang_luong` (
 
 LOCK TABLES `bang_luong` WRITE;
 /*!40000 ALTER TABLE `bang_luong` DISABLE KEYS */;
-INSERT INTO `bang_luong` VALUES ('BL001','gio',23000),('BL002','ca',100000),('BL003','thang',8000000);
+INSERT INTO `bang_luong` VALUES ('BL001','giờ',23000,'Bảng lương','Thực tập'),('BL002','ca',100000,'Bảng lương','Bán thời gian'),('BL003','tháng',8000000,'Bảng lương','0 năm kinh nghiệm'),('LT005',NULL,1000000,'Lương thưởng','Thưởng tết'),('TC004','tháng',500000,'Trợ cấp','Xăng');
 /*!40000 ALTER TABLE `bang_luong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -441,10 +443,15 @@ DROP TABLE IF EXISTS `lich_lam_viec`;
 CREATE TABLE `lich_lam_viec` (
   `ma_lich_lam_viec` varchar(255) NOT NULL,
   `ghi_chu` varchar(255) DEFAULT NULL,
-  `lap_lai` bit(1) DEFAULT NULL,
+  `nghi_lam` bit(1) DEFAULT NULL,
   `ngay_bat_dau` datetime(6) DEFAULT NULL,
   `ngay_ket_thuc` datetime(6) DEFAULT NULL,
-  PRIMARY KEY (`ma_lich_lam_viec`)
+  `tang_ca` smallint(6) DEFAULT '0',
+  `trang_thai` varchar(255) DEFAULT 'Đang diễn ra',
+  `ma_nhan_vien` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ma_lich_lam_viec`),
+  KEY `ma_nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `lich_lam_viec_ibfk_1` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -454,7 +461,7 @@ CREATE TABLE `lich_lam_viec` (
 
 LOCK TABLES `lich_lam_viec` WRITE;
 /*!40000 ALTER TABLE `lich_lam_viec` DISABLE KEYS */;
-INSERT INTO `lich_lam_viec` VALUES ('LLV000','Ca làm việc thường ngày',_binary '\0','2023-01-10 09:00:00.000000','2023-01-10 18:00:00.000000'),('LLV001','Ca làm việc thường ngày',_binary '\0','2023-01-01 08:00:00.000000','2023-01-01 17:00:00.000000'),('LLV002','Ca làm việc thường ngày',_binary '\0','2023-01-02 09:00:00.000000','2023-01-02 18:00:00.000000'),('LLV003','Ca làm việc thường ngày',_binary '\0','2023-01-03 07:30:00.000000','2023-01-03 16:30:00.000000'),('LLV004','Ca làm việc thường ngày',_binary '\0','2023-01-04 08:30:00.000000','2023-01-04 17:30:00.000000'),('LLV005','Ca làm việc thường ngày',_binary '\0','2023-01-05 08:00:00.000000','2023-01-05 17:00:00.000000'),('LLV006','Ca làm việc thường ngày',_binary '\0','2023-01-06 09:00:00.000000','2023-01-06 18:00:00.000000'),('LLV007','Ca làm việc thường ngày',_binary '\0','2023-01-07 07:30:00.000000','2023-01-07 16:30:00.000000'),('LLV008','Ca làm việc thường ngày',_binary '\0','2023-01-08 08:30:00.000000','2023-01-08 17:30:00.000000'),('LLV009','Ca làm việc thường ngày',_binary '\0','2023-01-09 08:00:00.000000','2023-01-09 17:00:00.000000'),('LLV010','Ca làm việc thường ngày',_binary '\0','2023-01-10 09:00:00.000000','2023-01-10 18:00:00.000000');
+INSERT INTO `lich_lam_viec` VALUES ('LLV000','Ca làm việc thường ngày',_binary '\0','2023-01-10 09:00:00.000000','2023-01-10 18:00:00.000000',0,'Đã trả lương','NV001'),('LLV001','Ca làm việc thường ngày',_binary '\0','2023-01-01 08:00:00.000000','2023-01-01 17:00:00.000000',0,'Đã trả lương','NV001'),('LLV002','Ca làm việc thường ngày',_binary '\0','2023-01-02 09:00:00.000000','2023-01-02 18:00:00.000000',0,'Đã trả lương','NV002'),('LLV003','Ca làm việc thường ngày',_binary '\0','2023-01-03 07:30:00.000000','2023-01-03 16:30:00.000000',0,'Đã trả lương','NV003'),('LLV004','Ca làm việc thường ngày',_binary '\0','2023-01-04 08:30:00.000000','2023-01-04 17:30:00.000000',0,'Đã trả lương','NV004'),('LLV005','Ca làm việc thường ngày',_binary '\0','2023-01-05 08:00:00.000000','2023-01-05 17:00:00.000000',0,'Đã trả lương','NV005'),('LLV006','Ca làm việc thường ngày',_binary '\0','2023-01-06 09:00:00.000000','2023-01-06 18:00:00.000000',0,'Đã trả lương','NV006'),('LLV007','Ca làm việc thường ngày',_binary '\0','2023-01-07 07:30:00.000000','2023-01-07 16:30:00.000000',0,'Đã trả lương','NV007'),('LLV008','Ca làm việc thường ngày',_binary '\0','2023-01-08 08:30:00.000000','2023-01-08 17:30:00.000000',0,'Đã trả lương','NV008'),('LLV009','Ca làm việc thường ngày',_binary '\0','2023-01-09 08:00:00.000000','2023-01-09 17:00:00.000000',0,'Đã trả lương','NV009'),('LLV010','Ca làm việc thường ngày',_binary '\0','2023-01-10 09:00:00.000000','2023-01-10 18:00:00.000000',0,'Đã trả lương','NV010'),('LLV011','Nghỉ quốc khánh',_binary '','2023-09-02 00:00:00.000000',NULL,0,NULL,NULL),('LLV012','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV007'),('LLV013','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV008'),('LLV014','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV009'),('LLV015','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV010'),('LLV016','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV001'),('LLV017','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV002'),('LLV018','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV003'),('LLV019','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV004'),('LLV020','Tăng ca',NULL,'2023-09-03 00:00:00.000000',NULL,2,'Đã trả lương','NV005');
 /*!40000 ALTER TABLE `lich_lam_viec` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -625,16 +632,14 @@ DROP TABLE IF EXISTS `phieu_luong`;
 CREATE TABLE `phieu_luong` (
   `ma_phieu` varchar(255) NOT NULL,
   `da_tra` double DEFAULT NULL,
-  `giam_luong` double DEFAULT NULL,
-  `ky_viec_lam` varchar(255) DEFAULT NULL,
-  `luong_cung` double DEFAULT NULL,
-  `luong_thuong` double DEFAULT NULL,
   `tong_luong` double DEFAULT NULL,
-  `trang_thai` varchar(255) DEFAULT NULL,
   `ma_nhan_vien` varchar(255) DEFAULT NULL,
+  `ma_lich_lam_viec` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ma_phieu`),
   KEY `FKkyki8e54dldtd24dvumhr67yc` (`ma_nhan_vien`),
-  CONSTRAINT `FKkyki8e54dldtd24dvumhr67yc` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`)
+  KEY `ma_lich_lam_viec` (`ma_lich_lam_viec`),
+  CONSTRAINT `FKkyki8e54dldtd24dvumhr67yc` FOREIGN KEY (`ma_nhan_vien`) REFERENCES `nhan_vien` (`ma_nhan_vien`),
+  CONSTRAINT `phieu_luong_ibfk_1` FOREIGN KEY (`ma_lich_lam_viec`) REFERENCES `lich_lam_viec` (`ma_lich_lam_viec`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -644,8 +649,39 @@ CREATE TABLE `phieu_luong` (
 
 LOCK TABLES `phieu_luong` WRITE;
 /*!40000 ALTER TABLE `phieu_luong` DISABLE KEYS */;
-INSERT INTO `phieu_luong` VALUES ('PL001',5000000,0,'Tháng 01/2024',5000000,2000000,7000000,'Đã thanh toán','NV001'),('PL002',5000000,0,'Tháng 02/2024',5000000,2500000,7500000,'Đã thanh toán','NV001'),('PL003',5000000,0,'Tháng 03/2024',5000000,3000000,8000000,'Chưa thanh toán','NV002'),('PL004',5000000,0,'Tháng 04/2024',5000000,2000000,7000000,'Chưa thanh toán','NV002'),('PL005',5000000,0,'Tháng 05/2024',5000000,3500000,8500000,'Chưa thanh toán','NV003'),('PL006',5000000,0,'Tháng 06/2024',5000000,2500000,7500000,'Chưa thanh toán','NV003'),('PL007',5000000,0,'Tháng 07/2024',5000000,3000000,8000000,'Chưa thanh toán','NV004'),('PL008',5000000,0,'Tháng 08/2024',5000000,2000000,7000000,'Chưa thanh toán','NV004'),('PL009',5000000,0,'Tháng 09/2024',5000000,3500000,8500000,'Chưa thanh toán','NV005'),('PL010',5000000,0,'Tháng 10/2024',5000000,2500000,7500000,'Chưa thanh toán','NV005'),('PL011',5000000,0,'Tháng 11/2024',5000000,3000000,8000000,'Chưa thanh toán','NV006'),('PL012',5000000,0,'Tháng 12/2024',5000000,2000000,7000000,'Chưa thanh toán','NV006'),('PL013',5000000,0,'Tháng 01/2025',5000000,3500000,8500000,'Chưa thanh toán','NV007'),('PL014',5000000,0,'Tháng 02/2025',5000000,2500000,7500000,'Chưa thanh toán','NV007'),('PL015',5000000,0,'Tháng 03/2025',5000000,3000000,8000000,'Chưa thanh toán','NV008'),('PL016',5000000,0,'Tháng 04/2025',5000000,2000000,7000000,'Chưa thanh toán','NV008'),('PL017',5000000,0,'Tháng 05/2025',5000000,3500000,8500000,'Chưa thanh toán','NV009'),('PL018',5000000,0,'Tháng 06/2025',5000000,2500000,7500000,'Chưa thanh toán','NV009'),('PL019',5000000,0,'Tháng 07/2025',5000000,3000000,8000000,'Chưa thanh toán','NV010'),('PL020',5000000,0,'Tháng 08/2025',5000000,2000000,7000000,'Chưa thanh toán','NV010');
+INSERT INTO `phieu_luong` VALUES ('PL001',5000000,7000000,'NV001','LLV000'),('PL002',5000000,7500000,'NV001','LLV001'),('PL003',5000000,8000000,'NV002','LLV002'),('PL004',5000000,7000000,'NV002','LLV003'),('PL005',5000000,8500000,'NV003','LLV004'),('PL006',5000000,7500000,'NV003','LLV005'),('PL007',5000000,8000000,'NV004','LLV006'),('PL008',5000000,7000000,'NV004','LLV007'),('PL009',5000000,8500000,'NV005','LLV008'),('PL010',5000000,7500000,'NV005','LLV009'),('PL011',5000000,8000000,'NV006','LLV010'),('PL012',5000000,7000000,'NV006','LLV011'),('PL013',5000000,8500000,'NV007','LLV012'),('PL014',5000000,7500000,'NV007','LLV013'),('PL015',5000000,8000000,'NV008','LLV014'),('PL016',5000000,7000000,'NV008','LLV015'),('PL017',5000000,8500000,'NV009','LLV016'),('PL018',5000000,7500000,'NV009','LLV017'),('PL019',5000000,8000000,'NV010','LLV018'),('PL020',5000000,7000000,'NV010','LLV019');
 /*!40000 ALTER TABLE `phieu_luong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phieu_luong_cac_loai_luong`
+--
+
+DROP TABLE IF EXISTS `phieu_luong_cac_loai_luong`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `phieu_luong_cac_loai_luong` (
+  `ma` varchar(255) NOT NULL,
+  `ma_phieu_luong` varchar(255) DEFAULT NULL,
+  `ma_lich_lam_viec` varchar(255) DEFAULT NULL,
+  `ma_bang_luong` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ma`),
+  KEY `ma_phieu_luong` (`ma_phieu_luong`),
+  KEY `ma_lich_lam_viec` (`ma_lich_lam_viec`),
+  KEY `ma_bang_luong` (`ma_bang_luong`),
+  CONSTRAINT `phieu_luong_cac_loai_luong_ibfk_1` FOREIGN KEY (`ma_phieu_luong`) REFERENCES `phieu_luong` (`ma_phieu`),
+  CONSTRAINT `phieu_luong_cac_loai_luong_ibfk_2` FOREIGN KEY (`ma_lich_lam_viec`) REFERENCES `lich_lam_viec` (`ma_lich_lam_viec`),
+  CONSTRAINT `phieu_luong_cac_loai_luong_ibfk_3` FOREIGN KEY (`ma_bang_luong`) REFERENCES `bang_luong` (`ma_bang_luong`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phieu_luong_cac_loai_luong`
+--
+
+LOCK TABLES `phieu_luong_cac_loai_luong` WRITE;
+/*!40000 ALTER TABLE `phieu_luong_cac_loai_luong` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phieu_luong_cac_loai_luong` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -875,4 +911,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-22 10:23:07
+-- Dump completed on 2024-04-22 17:00:21
