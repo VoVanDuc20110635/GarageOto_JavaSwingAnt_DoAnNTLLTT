@@ -4,33 +4,19 @@
  */
 package src.Model;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author WINDOWS 10
  */
 public class PhieuLuong {
     private String maPhieu;
-    private String kyViecLam;
     private double daTra;
-    private double luongCung;
-    private double giamLuong;
-    private double luongThuong;
     private double tongLuong;
-    private String trangThai;
+    private LocalDateTime ngayIn;
+    private String maNhanVienIn;
     private String maNhanVien;
-    private NhanVien nhanVien;
-
-    public PhieuLuong(String maPhieu, String kyViecLam, double daTra, double luongCung, double giamLuong, double luongThuong, double tongLuong, String trangThai, String maNhanVien) {
-        this.maPhieu = maPhieu;
-        this.kyViecLam = kyViecLam;
-        this.daTra = daTra;
-        this.luongCung = luongCung;
-        this.giamLuong = giamLuong;
-        this.luongThuong = luongThuong;
-        this.tongLuong = tongLuong;
-        this.trangThai = trangThai;
-        this.maNhanVien = maNhanVien;
-    }
 
     public PhieuLuong() {
     }
@@ -43,44 +29,12 @@ public class PhieuLuong {
         this.maPhieu = maPhieu;
     }
 
-    public String getKyViecLam() {
-        return kyViecLam;
-    }
-
-    public void setKyViecLam(String kyViecLam) {
-        this.kyViecLam = kyViecLam;
-    }
-
     public double getDaTra() {
         return daTra;
     }
 
     public void setDaTra(double daTra) {
         this.daTra = daTra;
-    }
-
-    public double getLuongCung() {
-        return luongCung;
-    }
-
-    public void setLuongCung(double luongCung) {
-        this.luongCung = luongCung;
-    }
-
-    public double getGiamLuong() {
-        return giamLuong;
-    }
-
-    public void setGiamLuong(double giamLuong) {
-        this.giamLuong = giamLuong;
-    }
-
-    public double getLuongThuong() {
-        return luongThuong;
-    }
-
-    public void setLuongThuong(double luongThuong) {
-        this.luongThuong = luongThuong;
     }
 
     public double getTongLuong() {
@@ -91,12 +45,20 @@ public class PhieuLuong {
         this.tongLuong = tongLuong;
     }
 
-    public String getTrangThai() {
-        return trangThai;
+    public LocalDateTime getNgayIn() {
+        return ngayIn;
     }
 
-    public void setTrangThai(String trangThai) {
-        this.trangThai = trangThai;
+    public void setNgayIn(LocalDateTime ngayIn) {
+        this.ngayIn = ngayIn;
+    }
+
+    public String getMaNhanVienIn() {
+        return maNhanVienIn;
+    }
+
+    public void setMaNhanVienIn(String maNhanVienIn) {
+        this.maNhanVienIn = maNhanVienIn;
     }
 
     public String getMaNhanVien() {
@@ -107,12 +69,5 @@ public class PhieuLuong {
         this.maNhanVien = maNhanVien;
     }
 
-    public NhanVien getNhanVien() {
-        return nhanVien;
-    }
-
-    public void setNhanVien(NhanVien nhanVien) {
-        this.nhanVien = nhanVien;
-    }
-    
+     
 }

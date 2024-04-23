@@ -13,7 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -21,14 +23,28 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import src.Model.BangLuong;
+import src.Model.BangLuongNhanVien;
+import src.Model.CaLam;
 import src.Model.ChiNhanh;
 import src.Model.CongViec;
 import src.Model.HinhAnh;
+import src.Model.LichLamViec;
+import src.Model.LichLamViecCaLam;
 import src.Model.NhanVien;
+import src.Model.PhieuLuong;
+import src.Model.PhieuNhapHang;
+import src.Service.BangLuongNhanVienService;
+import src.Service.BangLuongService;
+import src.Service.CaLamService;
 import src.Service.ChiNhanhServive;
 import src.Service.CongViecService;
 import src.Service.HinhAnhService;
+import src.Service.LichLamViecCaLamService;
+import src.Service.LichLamViecService;
 import src.Service.NhanVienService;
+import src.Service.PhieuLuongService;
 import src.UI.HangHoa.Frame_ThemHangHoa;
 import src.Util.Util;
 
@@ -43,6 +59,13 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private ChiNhanhServive chiNhanhService = new ChiNhanhServive();
     private CongViecService congViecService = new CongViecService();
     private HinhAnhService hinhAnhService = new HinhAnhService();
+    
+    private LichLamViecService lichLamViecService = new LichLamViecService();
+    private BangLuongService bangLuongService = new BangLuongService();
+    private PhieuLuongService phieuLuongService = new PhieuLuongService();
+    private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
+    private LichLamViecCaLamService  lichLamViecCaLamService = new LichLamViecCaLamService();
+    private CaLamService caLamService = new CaLamService();
     String destinationFolderPath = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image";
     private String imageLink = "";
             
@@ -163,7 +186,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         btnGroup_gioiTinh = new javax.swing.ButtonGroup();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedPane_chiTietNhanVien = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel89 = new javax.swing.JPanel();
         jPanel90 = new javax.swing.JPanel();
@@ -210,27 +233,33 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         cbChiTietNhanVien_trangThai = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbChiTietNhanVien_lichLamViec = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        tbChiTietNhanVien_lichTangCa = new javax.swing.JTable();
+        btnChiTietNhanVien_lichNghi = new javax.swing.JButton();
+        btnChiTietNhanVien_lichTangCa = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbChiTietNhanVien_phieuLuong = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tbChiTietNhanVien_bangLuong = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tbChiTietNhanVien_phuCap = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabbedPane_chiTietNhanVien.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbedPane_chiTietNhanVienStateChanged(evt);
+            }
+        });
 
         jPanel89.setBackground(new java.awt.Color(255, 255, 255));
         jPanel89.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -697,11 +726,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Thông tin", jPanel1);
+        tabbedPane_chiTietNhanVien.addTab("Thông tin", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbChiTietNhanVien_lichLamViec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -709,7 +738,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 "Ngày bắt đầu", "Ngày kết thúc", "Ca làm", "Trạng thái", "Ghi chú"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tbChiTietNhanVien_lichLamViec);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -728,13 +757,13 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Lịch làm việc", jPanel2);
+        tabbedPane_chiTietNhanVien.addTab("Lịch làm việc", jPanel2);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tbChiTietNhanVien_lichTangCa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tbChiTietNhanVien_lichTangCa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -742,36 +771,46 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 "Mã lịch làm việc", "Ngày", "Ghi chú", "Số giờ tăng ca", "Trạng thái"
             }
         ));
-        jTable5.setRowHeight(30);
-        jScrollPane1.setViewportView(jTable5);
+        tbChiTietNhanVien_lichTangCa.setRowHeight(30);
+        jScrollPane1.setViewportView(tbChiTietNhanVien_lichTangCa);
 
         jPanel7.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 59, 930, 310));
 
-        jButton4.setBackground(new java.awt.Color(0, 51, 255));
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Lịch nghỉ");
-        jPanel7.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
+        btnChiTietNhanVien_lichNghi.setBackground(new java.awt.Color(0, 51, 255));
+        btnChiTietNhanVien_lichNghi.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnChiTietNhanVien_lichNghi.setForeground(new java.awt.Color(255, 255, 255));
+        btnChiTietNhanVien_lichNghi.setText("Lịch nghỉ");
+        btnChiTietNhanVien_lichNghi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietNhanVien_lichNghiActionPerformed(evt);
+            }
+        });
+        jPanel7.add(btnChiTietNhanVien_lichNghi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
 
-        jButton5.setBackground(new java.awt.Color(255, 153, 153));
-        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Lịch tăng ca");
-        jPanel7.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 30));
+        btnChiTietNhanVien_lichTangCa.setBackground(new java.awt.Color(255, 153, 153));
+        btnChiTietNhanVien_lichTangCa.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnChiTietNhanVien_lichTangCa.setForeground(new java.awt.Color(255, 255, 255));
+        btnChiTietNhanVien_lichTangCa.setText("Lịch tăng ca");
+        btnChiTietNhanVien_lichTangCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChiTietNhanVien_lichTangCaActionPerformed(evt);
+            }
+        });
+        jPanel7.add(btnChiTietNhanVien_lichTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 30));
 
-        jTabbedPane1.addTab("Lịch nghỉ và lịch tăng ca", jPanel7);
+        tabbedPane_chiTietNhanVien.addTab("Lịch nghỉ và lịch tăng ca", jPanel7);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbChiTietNhanVien_phieuLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã phiếu", "Mã lịch làm việc", "Tổng lương", "Đã trả", "Nợ"
+                "Mã phiếu", "Ngày in", "Tổng lương", "Đã trả", "Nợ", "Nhân viên tạo"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tbChiTietNhanVien_phieuLuong);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel2.setText("Tổng nợ:");
@@ -821,29 +860,29 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 .addGap(11, 11, 11))
         );
 
-        jTabbedPane1.addTab("Phiếu lương", jPanel4);
+        tabbedPane_chiTietNhanVien.addTab("Phiếu lương", jPanel4);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tbChiTietNhanVien_bangLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã bảng lương", "Tiền lương", "Thời gian", "Nội dung"
+                "Mã bảng lương", "Tiền lương", "Chế độ lương", "Nội dung"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(tbChiTietNhanVien_bangLuong);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tbChiTietNhanVien_phuCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã phụ cấp", "Tiền phụ cấp", "Thời gian", "Nội dung"
+                "Mã phụ cấp", "Tiền phụ cấp", "Chế độ lương", "Nội dung"
             }
         ));
-        jScrollPane5.setViewportView(jTable4);
+        jScrollPane5.setViewportView(tbChiTietNhanVien_phuCap);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -887,9 +926,9 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane1.addTab("Bảng lương", jPanel3);
+        tabbedPane_chiTietNhanVien.addTab("Bảng lương", jPanel3);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 4, 950, 410));
+        getContentPane().add(tabbedPane_chiTietNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 4, 950, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1029,6 +1068,149 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnChiTietNhanVien_chonAnhActionPerformed
+
+    private void tabbedPane_chiTietNhanVienStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPane_chiTietNhanVienStateChanged
+        int index = tabbedPane_chiTietNhanVien.getSelectedIndex();
+        if (index == 1){
+            try {
+                List<LichLamViec> danhSachLichLamViec = lichLamViecService.hienThiLichLamViecTheoMaNhanVien(nhanVien.getMaNhanVien());
+                for (LichLamViec lichLamViec: danhSachLichLamViec){
+                    List<LichLamViecCaLam> danhSachLamViecCaLam = lichLamViecCaLamService.hienThiTatCaLichLamViecCaLamTheoMaLichLamViec(lichLamViec.getMaLichLamViec());
+                    for (LichLamViecCaLam lichLamViecCaLam: danhSachLamViecCaLam){
+                        lichLamViec.getDanhSachCaLam().add(caLamService.hienThiCaLamTheoMaCaLam(lichLamViecCaLam.getMaCaLam()));
+                    }
+                }
+                DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichLamViec.getModel();
+                recordTable.setRowCount(0);
+                for (LichLamViec lichLamViec : danhSachLichLamViec){
+                    Vector columnData = new Vector();
+                    columnData.add(String.valueOf(lichLamViec.getNgayBatDau()));
+                    columnData.add(String.valueOf(lichLamViec.getNgayKetThuc()));
+                    String danhSachTenCaLam = "";
+                    for (int i =0; i< lichLamViec.getDanhSachCaLam().size(); i++){
+                        danhSachTenCaLam += lichLamViec.getDanhSachCaLam().get(i).getTenCaLam();
+                        if (i != lichLamViec.getDanhSachCaLam().size()-1){
+                            danhSachTenCaLam += ", ";
+                        }
+                    }
+                    columnData.add(danhSachTenCaLam);
+                    columnData.add(lichLamViec.getTrangThai());
+                    columnData.add(lichLamViec.getGhiChu());
+                    recordTable.addRow(columnData);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (index == 2){
+            try {
+                List<LichLamViec> danhSachLichNghi = lichLamViecService.hienThiLichNghiTheoMaNhanVien(nhanVien.getMaNhanVien());
+                List<LichLamViec> danhSachLichTangCa = lichLamViecService.hienThiLichTangCaTheoMaNhanVien(nhanVien.getMaNhanVien());
+                DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichTangCa.getModel();
+                recordTable.setRowCount(0);
+                for (LichLamViec lichLamViec : danhSachLichNghi){
+                    Vector columnData = new Vector();
+                    columnData.add(String.valueOf(lichLamViec.getMaLichLamViec()));
+                    columnData.add(String.valueOf(lichLamViec.getNgayBatDau()));
+                    columnData.add(lichLamViec.getGhiChu());
+                    columnData.add("");
+                    columnData.add(lichLamViec.getTrangThai());
+                    recordTable.addRow(columnData);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (index == 3){
+            try {
+                List<PhieuLuong> danhSachPhieuLuong = phieuLuongService.hienThiPhieuLuongTheoMaNhanVien(nhanVien.getMaNhanVien());
+                DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_phieuLuong.getModel();
+                recordTable.setRowCount(0);
+                for (PhieuLuong phieuLuong : danhSachPhieuLuong){
+                    Vector columnData = new Vector();
+                    columnData.add(phieuLuong.getMaPhieu());
+                    columnData.add(util.localDateParseMethod(phieuLuong.getNgayIn()));
+                    columnData.add(phieuLuong.getTongLuong());
+                    columnData.add(phieuLuong.getDaTra());
+                    columnData.add(phieuLuong.getTongLuong() - phieuLuong.getDaTra());
+                    columnData.add(nhanVienService.hienThiNhanVienTheoMaNhanVien(phieuLuong.getMaNhanVienIn()).getTenNhanVien());
+                    recordTable.addRow(columnData);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (index == 4){
+            List<BangLuong> danhSachBangLuong =  new ArrayList<>();
+            try {
+                List<BangLuongNhanVien> danhSachBangLuongNhanVien  = bangLuongNhanVienService.hienThiBangLuongNhanVienTheoMaNhanVien(nhanVien.getMaNhanVien());
+                for (BangLuongNhanVien bangLuongNhanVien : danhSachBangLuongNhanVien){
+                    BangLuong bangLuong = bangLuongService.hienThiBangLuongTheoMaBangLuong(bangLuongNhanVien.getMaBangLuong());
+                    danhSachBangLuong.add(bangLuong);
+                }
+                DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_bangLuong.getModel();
+                DefaultTableModel recordTable2 = (DefaultTableModel)tbChiTietNhanVien_phuCap.getModel();        
+                recordTable.setRowCount(0);
+                recordTable2.setRowCount(0);
+                for (BangLuong bangLuong: danhSachBangLuong){
+                    if (bangLuong.getMaBangLuong().contains("BL")){
+                        Vector columnData = new Vector();
+                        columnData.add(bangLuong.getMaBangLuong());
+                        columnData.add(bangLuong.getTienLuong());
+                        columnData.add(bangLuong.getCheDoLuong());
+                        columnData.add(bangLuong.getNoiDung());
+                        recordTable.addRow(columnData);
+                    }
+                    if (!bangLuong.getMaBangLuong().contains("BL")){
+                        Vector columnData = new Vector();
+                        columnData.add(bangLuong.getMaBangLuong());
+                        columnData.add(bangLuong.getTienLuong());
+                        columnData.add(bangLuong.getCheDoLuong());
+                        columnData.add(bangLuong.getNoiDung());
+                        recordTable2.addRow(columnData);
+                    }
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_tabbedPane_chiTietNhanVienStateChanged
+
+    private void btnChiTietNhanVien_lichNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_lichNghiActionPerformed
+        try {
+            List<LichLamViec> danhSachLichNghi = lichLamViecService.hienThiLichNghiTheoMaNhanVien(nhanVien.getMaNhanVien());
+            DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichTangCa.getModel();
+            recordTable.setRowCount(0);
+            for (LichLamViec lichLamViec : danhSachLichNghi){
+                Vector columnData = new Vector();
+                columnData.add(String.valueOf(lichLamViec.getMaLichLamViec()));
+                columnData.add(String.valueOf(lichLamViec.getNgayBatDau()));
+                columnData.add(lichLamViec.getGhiChu());
+                columnData.add("");
+                columnData.add(lichLamViec.getTrangThai());
+                recordTable.addRow(columnData);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnChiTietNhanVien_lichNghiActionPerformed
+
+    private void btnChiTietNhanVien_lichTangCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_lichTangCaActionPerformed
+        try {
+            List<LichLamViec> danhSachLichTangCa = lichLamViecService.hienThiLichTangCaTheoMaNhanVien(nhanVien.getMaNhanVien());
+            DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichTangCa.getModel();
+            recordTable.setRowCount(0);
+            for (LichLamViec lichLamViec : danhSachLichTangCa){
+                Vector columnData = new Vector();
+                columnData.add(String.valueOf(lichLamViec.getMaLichLamViec()));
+                columnData.add(String.valueOf(lichLamViec.getNgayBatDau()));
+                columnData.add(lichLamViec.getGhiChu());
+                columnData.add(lichLamViec.getTangCa());
+                columnData.add(lichLamViec.getTrangThai());
+                recordTable.addRow(columnData);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ChiTietNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnChiTietNhanVien_lichTangCaActionPerformed
     private void layTenFile(){
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogType(JFileChooser.OPEN_DIALOG);
@@ -1084,6 +1266,8 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChiTietNhanVien_capNhat;
     private javax.swing.JButton btnChiTietNhanVien_chonAnh;
+    private javax.swing.JButton btnChiTietNhanVien_lichNghi;
+    private javax.swing.JButton btnChiTietNhanVien_lichTangCa;
     private javax.swing.JButton btnChiTietNhanVien_thoat;
     private javax.swing.ButtonGroup btnGroup_gioiTinh;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -1092,8 +1276,6 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbChiTietNhanVien_chucDanh;
     private javax.swing.JComboBox<String> cbChiTietNhanVien_trangThai;
     private com.toedter.calendar.JDateChooser dateChooserChiTietNhanVien_ngaySinh;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel67;
@@ -1132,18 +1314,18 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JLabel lbChiTietNhanVien_anh;
     private javax.swing.JLabel lbChiTietNhanVien_tenChiNhanh;
     private javax.swing.JPanel panelAnh;
     private javax.swing.JPanel panelhihi;
     private javax.swing.JRadioButton radioChiTietNhanVien_nam;
     private javax.swing.JRadioButton radioChiTietNhanVien_nu;
+    private javax.swing.JTabbedPane tabbedPane_chiTietNhanVien;
+    private javax.swing.JTable tbChiTietNhanVien_bangLuong;
+    private javax.swing.JTable tbChiTietNhanVien_lichLamViec;
+    private javax.swing.JTable tbChiTietNhanVien_lichTangCa;
+    private javax.swing.JTable tbChiTietNhanVien_phieuLuong;
+    private javax.swing.JTable tbChiTietNhanVien_phuCap;
     private javax.swing.JTextField tfChiTietNhanVien_cccd;
     private javax.swing.JTextField tfChiTietNhanVien_diaChi;
     private javax.swing.JTextField tfChiTietNhanVien_ma;

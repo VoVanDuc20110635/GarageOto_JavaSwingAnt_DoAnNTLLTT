@@ -9,8 +9,10 @@ package src.Model;
  * @author WINDOWS 10
  */
 public class LichLamViecCaLam {
+    private String ma;
     private String maLichLamViec;
     private String maCaLam;
+    private boolean hoanThanh;
 
     public LichLamViecCaLam() {
     }
@@ -34,6 +36,22 @@ public class LichLamViecCaLam {
 
     public void setMaCaLam(String maCaLam) {
         this.maCaLam = maCaLam;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public boolean isHoanThanh() {
+        return hoanThanh;
+    }
+
+    public void setHoanThanh(boolean hoanThanh) {
+        this.hoanThanh = hoanThanh;
     }
     
     

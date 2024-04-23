@@ -4,7 +4,9 @@
  */
 package src.Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -12,20 +14,16 @@ import java.time.LocalDateTime;
  */
 public class LichLamViec {
     private String maLichLamViec;
-    private LocalDateTime ngayBatDau;
-    private LocalDateTime ngayKetThuc;
-    private boolean lapLai;
+    private LocalDate ngayBatDau;
+    private LocalDate ngayKetThuc;
+    private boolean nghiLam;
     private String ghiChu;
+    private short tangCa;
+    private String trangThai;
+    private String maNhanVien;
+    private List<CaLam> danhSachCaLam;
 
     public LichLamViec() {
-    }
-
-    public LichLamViec(String maLichLamViec, LocalDateTime ngayBatDau, LocalDateTime ngayKetThuc, boolean lapLai, String ghiChu) {
-        this.maLichLamViec = maLichLamViec;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.lapLai = lapLai;
-        this.ghiChu = ghiChu;
     }
 
     public String getMaLichLamViec() {
@@ -36,28 +34,28 @@ public class LichLamViec {
         this.maLichLamViec = maLichLamViec;
     }
 
-    public LocalDateTime getNgayBatDau() {
+    public LocalDate getNgayBatDau() {
         return ngayBatDau;
     }
 
-    public void setNgayBatDau(LocalDateTime ngayBatDau) {
+    public void setNgayBatDau(LocalDate ngayBatDau) {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public LocalDateTime getNgayKetThuc() {
+    public LocalDate getNgayKetThuc() {
         return ngayKetThuc;
     }
 
-    public void setNgayKetThuc(LocalDateTime ngayKetThuc) {
+    public void setNgayKetThuc(LocalDate ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public boolean isLapLai() {
-        return lapLai;
+    public boolean isNghiLam() {
+        return nghiLam;
     }
 
-    public void setLapLai(boolean lapLai) {
-        this.lapLai = lapLai;
+    public void setNghiLam(boolean nghiLam) {
+        this.nghiLam = nghiLam;
     }
 
     public String getGhiChu() {
@@ -67,7 +65,41 @@ public class LichLamViec {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
+
+    public short getTangCa() {
+        return tangCa;
+    }
+
+    public void setTangCa(short tangCa) {
+        this.tangCa = tangCa;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public String getMaNhanVien() {
+        return maNhanVien;
+    }
+
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
+    }
+
+    public List<CaLam> getDanhSachCaLam() {
+        return danhSachCaLam;
+    }
+
+    public void setDanhSachCaLam(List<CaLam> danhSachCaLam) {
+        this.danhSachCaLam = danhSachCaLam;
+    }
+
     
-    
+
+        
     
 }

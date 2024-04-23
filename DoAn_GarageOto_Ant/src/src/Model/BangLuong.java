@@ -12,19 +12,13 @@ public class BangLuong {
     private String maBangLuong;
     private String cheDoLuong;
     private double tienLuong;
-    private double phuCap;
-    private double tongLuong;
-
+    private String loai;
+    private String noiDung;
+    private String trangThai;
+    
     public BangLuong() {
     }
-
-    public BangLuong(String maBangLuong, String cheDoLuong, double tienLuong, double phuCap, double tongLuong) {
-        this.maBangLuong = maBangLuong;
-        this.cheDoLuong = cheDoLuong;
-        this.tienLuong = tienLuong;
-        this.phuCap = phuCap;
-        this.tongLuong = tongLuong;
-    }
+    
 
     public String getMaBangLuong() {
         return maBangLuong;
@@ -50,21 +44,31 @@ public class BangLuong {
         this.tienLuong = tienLuong;
     }
 
-    public double getPhuCap() {
-        return phuCap;
+    public String getLoai() {
+        return loai;
     }
 
-    public void setPhuCap(double phuCap) {
-        this.phuCap = phuCap;
+    public void setLoai(String loai) {
+        this.loai = loai;
     }
 
-    public double getTongLuong() {
-        return tongLuong;
+    public String getNoiDung() {
+        return noiDung;
     }
 
-    public void setTongLuong(double tongLuong) {
-        this.tongLuong = tongLuong;
+    public void setNoiDung(String noiDung) {
+        this.noiDung = noiDung;
     }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+
     
     
 }

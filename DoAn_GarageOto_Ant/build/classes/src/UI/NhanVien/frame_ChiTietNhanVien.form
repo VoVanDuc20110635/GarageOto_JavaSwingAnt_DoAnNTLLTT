@@ -33,7 +33,10 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+    <Container class="javax.swing.JTabbedPane" name="tabbedPane_chiTietNhanVien">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tabbedPane_chiTietNhanVienStateChanged"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="5" y="4" width="950" height="410"/>
@@ -1033,7 +1036,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tbChiTietNhanVien_lichLamViec">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="0">
@@ -1080,7 +1083,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable5">
+                <Component class="javax.swing.JTable" name="tbChiTietNhanVien_lichTangCa">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="16" style="0"/>
@@ -1099,7 +1102,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="btnChiTietNhanVien_lichNghi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="33" red="0" type="rgb"/>
@@ -1112,13 +1115,16 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="L&#x1ecb;ch ngh&#x1ec9;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChiTietNhanVien_lichNghiActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="10" y="10" width="-1" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="btnChiTietNhanVien_lichTangCa">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="ff" type="rgb"/>
@@ -1131,6 +1137,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="L&#x1ecb;ch t&#x103;ng ca"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChiTietNhanVien_lichTangCaActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="120" y="10" width="-1" height="30"/>
@@ -1186,15 +1195,16 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable2">
+                <Component class="javax.swing.JTable" name="tbChiTietNhanVien_phieuLuong">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
+                      <Table columnCount="6" rowCount="0">
                         <Column editable="true" title="M&#xe3; phi&#x1ebf;u" type="java.lang.Object"/>
-                        <Column editable="true" title="M&#xe3; l&#x1ecb;ch l&#xe0;m vi&#x1ec7;c" type="java.lang.Object"/>
+                        <Column editable="true" title="Ng&#xe0;y in" type="java.lang.Object"/>
                         <Column editable="true" title="T&#x1ed5;ng l&#x1b0;&#x1a1;ng" type="java.lang.Object"/>
                         <Column editable="true" title="&#x110;&#xe3; tr&#x1ea3;" type="java.lang.Object"/>
                         <Column editable="true" title="N&#x1ee3;" type="java.lang.Object"/>
+                        <Column editable="true" title="Nh&#xe2;n vi&#xea;n t&#x1ea1;o" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -1325,13 +1335,13 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable3">
+                    <Component class="javax.swing.JTable" name="tbChiTietNhanVien_bangLuong">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
                             <Column editable="true" title="M&#xe3; b&#x1ea3;ng l&#x1b0;&#x1a1;ng" type="java.lang.Object"/>
                             <Column editable="true" title="Ti&#x1ec1;n l&#x1b0;&#x1a1;ng" type="java.lang.Object"/>
-                            <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
+                            <Column editable="true" title="Ch&#x1ebf; &#x111;&#x1ed9; l&#x1b0;&#x1a1;ng" type="java.lang.Object"/>
                             <Column editable="true" title="N&#x1ed9;i dung" type="java.lang.Object"/>
                           </Table>
                         </Property>
@@ -1346,13 +1356,13 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable4">
+                    <Component class="javax.swing.JTable" name="tbChiTietNhanVien_phuCap">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="0">
                             <Column editable="true" title="M&#xe3; ph&#x1ee5; c&#x1ea5;p" type="java.lang.Object"/>
                             <Column editable="true" title="Ti&#x1ec1;n ph&#x1ee5; c&#x1ea5;p" type="java.lang.Object"/>
-                            <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
+                            <Column editable="true" title="Ch&#x1ebf; &#x111;&#x1ed9; l&#x1b0;&#x1a1;ng" type="java.lang.Object"/>
                             <Column editable="true" title="N&#x1ed9;i dung" type="java.lang.Object"/>
                           </Table>
                         </Property>
