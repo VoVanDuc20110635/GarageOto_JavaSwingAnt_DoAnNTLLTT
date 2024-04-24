@@ -22,7 +22,7 @@ public class NhanVien {
     private LocalDate ngayBatDauLamViec;
     private String maChiNhanh;
     private String taoBoiMaNhanVien;
-    private String maLichLamViec;
+    
     private String diaChi;
     private String maSoThue;
     private String trangThai;
@@ -32,19 +32,7 @@ public class NhanVien {
     private NhanVien taoBoiNhanVien;
     private LichLamViec lichLamViec;
 
-    public NhanVien(String maNhanVien, String tenNhanVien, LocalDate ngaySinh, String gioiTinh, String cccd, String chucDanh, String soDienThoai, LocalDate ngayBatDauLamViec, String maChiNhanh, String taoBoiMaNhanVien, String maLichLamViec) {
-        this.maNhanVien = maNhanVien;
-        this.tenNhanVien = tenNhanVien;
-        this.ngaySinh = ngaySinh;
-        this.gioiTinh = gioiTinh;
-        this.cccd = cccd;
-        this.chucDanh = chucDanh;
-        this.soDienThoai = soDienThoai;
-        this.ngayBatDauLamViec = ngayBatDauLamViec;
-        this.maChiNhanh = maChiNhanh;
-        this.taoBoiMaNhanVien = taoBoiMaNhanVien;
-        this.maLichLamViec = maLichLamViec;
-    }
+    
 
     public NhanVien() {
     }
@@ -128,14 +116,6 @@ public class NhanVien {
 
     public void setTaoBoiMaNhanVien(String taoBoiMaNhanVien) {
         this.taoBoiMaNhanVien = taoBoiMaNhanVien;
-    }
-
-    public String getMaLichLamViec() {
-        return maLichLamViec;
-    }
-
-    public void setMaLichLamViec(String maLichLamViec) {
-        this.maLichLamViec = maLichLamViec;
     }
 
     public ChiNhanh getChiNhanh() {

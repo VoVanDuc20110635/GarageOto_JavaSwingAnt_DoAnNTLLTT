@@ -3681,22 +3681,17 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                                   <Component id="btnNhanVienChiNhanh_taiLai" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="156" max="32767" attributes="0"/>
-                                  <Component id="jButton32" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="btnNhanVienChiNhanh_themChiNhanh" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="btnNhanVienChiNhanh_themNhanVien" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jButton34" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jButton33" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
-                                      <Component id="jButton36" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="406" max="32767" attributes="0"/>
-                                  </Group>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3705,25 +3700,19 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton32" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="btnNhanVienChiNhanh_themNhanVien" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jButton33" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jButton34" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="btnNhanVienChiNhanh_taiLai" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="btnNhanVienChiNhanh_themChiNhanh" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton36" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="jButton32">
+                        <Component class="javax.swing.JButton" name="btnNhanVienChiNhanh_themNhanVien">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -3734,13 +3723,10 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/plus2.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n"/>
+                            <Property name="text" type="java.lang.String" value="Th&#xea;m nh&#xe2;n vi&#xea;n"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton32ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienChiNhanh_themNhanVienActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="jButton33">
@@ -3753,9 +3739,6 @@
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/exportFile.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t file"/>
                           </Properties>
@@ -3770,9 +3753,6 @@
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/import.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Import"/>
                           </Properties>
@@ -3794,7 +3774,7 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienChiNhanh_taiLaiActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton36">
+                        <Component class="javax.swing.JButton" name="btnNhanVienChiNhanh_themChiNhanh">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="0" green="cc" red="0" type="rgb"/>
@@ -3805,11 +3785,11 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/plus2.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Chi nh&#xe1;nh"/>
+                            <Property name="text" type="java.lang.String" value="Th&#xea;m chi nh&#xe1;nh"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienChiNhanh_themChiNhanhActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

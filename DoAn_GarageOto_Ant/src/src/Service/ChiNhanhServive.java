@@ -93,4 +93,17 @@ public class ChiNhanhServive {
             return 0;
         }
     }
+    public int demSoChiNhanh() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM chi_nhanh;");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        connectorDB.closeConnection();
+        return numberOfRows;
+    }
 }

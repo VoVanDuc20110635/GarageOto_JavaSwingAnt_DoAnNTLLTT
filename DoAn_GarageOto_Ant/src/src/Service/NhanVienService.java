@@ -44,7 +44,7 @@ public class NhanVienService {
                 
                 nhanVien.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 nhanVien.setTaoBoiMaNhanVien(resultTable.getString("tao_boi_ma_nhan_vien"));
-                nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+                
                 nhanVien.setDiaChi(resultTable.getString("dia_chi"));
                 nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
                 nhanVien.setTrangThai(resultTable.getString("trang_thai"));
@@ -78,7 +78,7 @@ public class NhanVienService {
                 nhanVien.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
                 // vi nhan vien lai la 1-1 voi nhan vien nen lay ma duoc roi, keo bi lap vo hang
                 nhanVien.setTaoBoiMaNhanVien(resultTable.getString("tao_boi_ma_nhan_vien"));
-                nhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+                
                 nhanVien.setDiaChi(resultTable.getString("dia_chi"));
                 nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
                 nhanVien.setTrangThai(resultTable.getString("trang_thai"));
@@ -91,9 +91,9 @@ public class NhanVienService {
     public int themNhanVien (NhanVien nhanVien) throws SQLException{ //   
         try{
            String query = String.format("insert into nhan_vien (ma_nhan_vien, cccd, chuc_danh, gioi_tinh, ngay_bat_dau_lam_viec, "
-                   + "ngay_sinh, so_dien_thoai, ten_nhan_vien, ma_chi_nhanh, tao_boi_ma_nhan_vien, ma_lich_lam_viec, "
+                   + "ngay_sinh, so_dien_thoai, ten_nhan_vien, ma_chi_nhanh, tao_boi_ma_nhan_vien, "
                    + "no_luong, dia_chi, ma_so_thue, trang_thai) " +
-                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', '%s', '%s')",
+                             "values ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %s, '%s', '%s', '%s')",
                              nhanVien.getMaNhanVien(),
                              nhanVien.getCccd(),
                              nhanVien.getChucDanh(),
@@ -104,7 +104,7 @@ public class NhanVienService {
                              nhanVien.getTenNhanVien(),
                              nhanVien.getMaChiNhanh(),
                              nhanVien.getTaoBoiMaNhanVien(), 
-                             nhanVien.getMaLichLamViec(),
+                             
                              nhanVien.getNoLuong(),
                              nhanVien.getDiaChi(),
                              nhanVien.getMaSoThue(),
@@ -143,5 +143,17 @@ public class NhanVienService {
         }
     }
     
-
+    public int demSoNhanVien() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM nhan_vien;");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        connectorDB.closeConnection();
+        return numberOfRows;
+    }
 }

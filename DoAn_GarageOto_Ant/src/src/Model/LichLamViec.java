@@ -6,6 +6,7 @@ package src.Model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,7 @@ public class LichLamViec {
     private List<CaLam> danhSachCaLam;
 
     public LichLamViec() {
+        danhSachCaLam = new ArrayList<>();
     }
 
     public String getMaLichLamViec() {

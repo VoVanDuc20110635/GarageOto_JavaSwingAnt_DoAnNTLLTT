@@ -24,6 +24,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import src.Model.BangLuong;
 import src.Model.BangLuongNhanVien;
 import src.Model.CaLam;
@@ -68,7 +70,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private CaLamService caLamService = new CaLamService();
     String destinationFolderPath = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image";
     private String imageLink = "";
-            
+    List<TableColumn> originalColumns = new ArrayList<>();
     private Util util = new Util();
     /**
      * Creates new form frame_ThemKhachHang
@@ -160,7 +162,11 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         cbChiTietNhanVien_trangThai.setEnabled(false);
         btnChiTietNhanVien_chonAnh.setEnabled(false);
         
-        
+        if (originalColumns.isEmpty()) {
+            for (int i = 0; i < tbChiTietNhanVien_lichTangCa.getColumnCount(); i++) {
+                originalColumns.add(tbChiTietNhanVien_lichTangCa.getColumnModel().getColumn(i));
+            }
+        }
     }
 
     public Frame_ChiTietNhanVien() {
@@ -239,6 +245,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         tbChiTietNhanVien_lichTangCa = new javax.swing.JTable();
         btnChiTietNhanVien_lichNghi = new javax.swing.JButton();
         btnChiTietNhanVien_lichTangCa = new javax.swing.JButton();
+        lbChiTietNhanVien_lichNghiTangCa = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbChiTietNhanVien_phieuLuong = new javax.swing.JTable();
@@ -730,6 +737,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        tbChiTietNhanVien_lichLamViec.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbChiTietNhanVien_lichLamViec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -738,6 +746,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 "Ngày bắt đầu", "Ngày kết thúc", "Ca làm", "Trạng thái", "Ghi chú"
             }
         ));
+        tbChiTietNhanVien_lichLamViec.setRowHeight(30);
         jScrollPane2.setViewportView(tbChiTietNhanVien_lichLamViec);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -798,10 +807,14 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         });
         jPanel7.add(btnChiTietNhanVien_lichTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 30));
 
+        lbChiTietNhanVien_lichNghiTangCa.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jPanel7.add(lbChiTietNhanVien_lichNghiTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 260, 30));
+
         tabbedPane_chiTietNhanVien.addTab("Lịch nghỉ và lịch tăng ca", jPanel7);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        tbChiTietNhanVien_phieuLuong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbChiTietNhanVien_phieuLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -810,6 +823,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 "Mã phiếu", "Ngày in", "Tổng lương", "Đã trả", "Nợ", "Nhân viên tạo"
             }
         ));
+        tbChiTietNhanVien_phieuLuong.setRowHeight(30);
         jScrollPane3.setViewportView(tbChiTietNhanVien_phieuLuong);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -864,6 +878,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
+        tbChiTietNhanVien_bangLuong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbChiTietNhanVien_bangLuong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -872,8 +887,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 "Mã bảng lương", "Tiền lương", "Chế độ lương", "Nội dung"
             }
         ));
+        tbChiTietNhanVien_bangLuong.setRowHeight(30);
         jScrollPane4.setViewportView(tbChiTietNhanVien_bangLuong);
 
+        tbChiTietNhanVien_phuCap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbChiTietNhanVien_phuCap.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -882,6 +899,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
                 "Mã phụ cấp", "Tiền phụ cấp", "Chế độ lương", "Nội dung"
             }
         ));
+        tbChiTietNhanVien_phuCap.setRowHeight(30);
         jScrollPane5.setViewportView(tbChiTietNhanVien_phuCap);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -1068,9 +1086,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnChiTietNhanVien_chonAnhActionPerformed
-
+    
     private void tabbedPane_chiTietNhanVienStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPane_chiTietNhanVienStateChanged
         int index = tabbedPane_chiTietNhanVien.getSelectedIndex();
+        
         if (index == 1){
             try {
                 List<LichLamViec> danhSachLichLamViec = lichLamViecService.hienThiLichLamViecTheoMaNhanVien(nhanVien.getMaNhanVien());
@@ -1103,9 +1122,14 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
             }
         } else if (index == 2){
             try {
+                lbChiTietNhanVien_lichNghiTangCa.setText("Danh sách ngày nghỉ làm");
                 List<LichLamViec> danhSachLichNghi = lichLamViecService.hienThiLichNghiTheoMaNhanVien(nhanVien.getMaNhanVien());
-                List<LichLamViec> danhSachLichTangCa = lichLamViecService.hienThiLichTangCaTheoMaNhanVien(nhanVien.getMaNhanVien());
                 DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichTangCa.getModel();
+                if (tbChiTietNhanVien_lichTangCa.getColumnModel().getColumnCount() > 4) {
+                    TableColumnModel columnModel = tbChiTietNhanVien_lichTangCa.getColumnModel();
+                    columnModel.removeColumn(columnModel.getColumn(3)); // Remove 4th column
+                    columnModel.removeColumn(columnModel.getColumn(2)); // Remove 3rd column
+                }
                 recordTable.setRowCount(0);
                 for (LichLamViec lichLamViec : danhSachLichNghi){
                     Vector columnData = new Vector();
@@ -1176,7 +1200,13 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
     private void btnChiTietNhanVien_lichNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_lichNghiActionPerformed
         try {
+            lbChiTietNhanVien_lichNghiTangCa.setText("Danh sách ngày nghỉ làm");
             List<LichLamViec> danhSachLichNghi = lichLamViecService.hienThiLichNghiTheoMaNhanVien(nhanVien.getMaNhanVien());
+            if (tbChiTietNhanVien_lichTangCa.getColumnModel().getColumnCount() > 4) {
+                TableColumnModel columnModel = tbChiTietNhanVien_lichTangCa.getColumnModel();
+                columnModel.removeColumn(columnModel.getColumn(3)); // Remove 4th column
+                columnModel.removeColumn(columnModel.getColumn(2)); // Remove 3rd column
+            }
             DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichTangCa.getModel();
             recordTable.setRowCount(0);
             for (LichLamViec lichLamViec : danhSachLichNghi){
@@ -1195,6 +1225,14 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
 
     private void btnChiTietNhanVien_lichTangCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_lichTangCaActionPerformed
         try {
+            lbChiTietNhanVien_lichNghiTangCa.setText("Danh sách ngày tăng ca");
+            TableColumnModel columnModel = tbChiTietNhanVien_lichTangCa.getColumnModel();
+            while (columnModel.getColumnCount() > 0) {
+                columnModel.removeColumn(columnModel.getColumn(0));
+            }
+            for (TableColumn column : originalColumns) {
+                columnModel.addColumn(column);
+            }
             List<LichLamViec> danhSachLichTangCa = lichLamViecService.hienThiLichTangCaTheoMaNhanVien(nhanVien.getMaNhanVien());
             DefaultTableModel recordTable = (DefaultTableModel)tbChiTietNhanVien_lichTangCa.getModel();
             recordTable.setRowCount(0);
@@ -1315,6 +1353,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lbChiTietNhanVien_anh;
+    private javax.swing.JLabel lbChiTietNhanVien_lichNghiTangCa;
     private javax.swing.JLabel lbChiTietNhanVien_tenChiNhanh;
     private javax.swing.JPanel panelAnh;
     private javax.swing.JPanel panelhihi;

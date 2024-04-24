@@ -55,7 +55,7 @@ public class LichLamViecService {
         return danhSachLichLamViec;
     }
     public List<LichLamViec> hienThiLichNghiTheoMaNhanVien (String maNhanVien) throws SQLException{ //
-        String query = String.format("select * from lich_lam_viec where ma_nhan_vien = '%s' and nghi_lam = true", maNhanVien);
+        String query = String.format("select * from lich_lam_viec where (ma_nhan_vien = '%s' or ma_nhan_vien = 'NV000') and nghi_lam = true", maNhanVien);
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         List<LichLamViec> danhSachLichLamViec = new ArrayList<>();
@@ -66,6 +66,7 @@ public class LichLamViecService {
             lichLamViec.setNghiLam(Boolean.parseBoolean(resultTable.getString("nghi_lam")));
             lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau")));
             lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_ket_thuc")));
+            lichLamViec.setTrangThai(resultTable.getString("trang_thai"));
             danhSachLichLamViec.add(lichLamViec);
         }
         connectorDB.closeConnection();
@@ -84,6 +85,7 @@ public class LichLamViecService {
             lichLamViec.setNghiLam(Boolean.parseBoolean(resultTable.getString("nghi_lam")));
             lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau")));
             lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_ket_thuc")));
+            lichLamViec.setTrangThai(resultTable.getString("trang_thai"));
             danhSachLichLamViec.add(lichLamViec);
         }
         connectorDB.closeConnection();
