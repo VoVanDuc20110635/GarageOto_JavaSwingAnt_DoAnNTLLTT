@@ -48,6 +48,7 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import src.Model.BangChamCong;
+import src.Model.BangLuong;
 import src.Model.CaLam;
 import src.Model.ChiNhanh;
 import src.Model.HangHoa;
@@ -495,7 +496,11 @@ public class TrangChu extends javax.swing.JFrame {
         lbLichLamViec_Ma = new javax.swing.JLabel();
         btnLichLamViec_themPhuCap = new javax.swing.JButton();
         btnLichLamViec_capNhatLichTangCa = new javax.swing.JButton();
+        btnLichLamViec_huyBo = new javax.swing.JButton();
         btnLichLamViec_lamMoi = new javax.swing.JButton();
+        jPanel56 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        cbLichLamViec_caLamDaChon = new javax.swing.JComboBox<>();
         btnLichLamViec_capNhatCaLam = new javax.swing.JButton();
         jScrollPane20 = new javax.swing.JScrollPane();
         tbLichLamViec_danhSachChiNhanh = new javax.swing.JTable();
@@ -1508,6 +1513,11 @@ public class TrangChu extends javax.swing.JFrame {
         jButton19.setForeground(new java.awt.Color(255, 255, 255));
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
         jButton19.setText("Trả hàng");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -3310,8 +3320,8 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel25.setText("Ghi chú");
 
         tareLichLamViec_ghiChu.setColumns(20);
+        tareLichLamViec_ghiChu.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tareLichLamViec_ghiChu.setRows(5);
-        tareLichLamViec_ghiChu.setPreferredSize(new java.awt.Dimension(190, 80));
         jScrollPane15.setViewportView(tareLichLamViec_ghiChu);
 
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
@@ -3332,11 +3342,11 @@ public class TrangChu extends javax.swing.JFrame {
                 .addComponent(jLabel25)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel41Layout.createSequentialGroup()
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel44.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 350, -1));
+        jPanel44.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 350, 90));
 
         jPanel42.setBackground(new java.awt.Color(242, 249, 255));
 
@@ -3396,7 +3406,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel44.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 350, 350, -1));
+        jPanel44.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 350, -1));
 
         jPanel48.setBackground(new java.awt.Color(242, 249, 255));
         jPanel48.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)));
@@ -3607,7 +3617,12 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_luu.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_luu.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_luu.setText("Lưu");
-        jPanel44.add(btnLichLamViec_luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 510, -1, 30));
+        btnLichLamViec_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_luuActionPerformed(evt);
+            }
+        });
+        jPanel44.add(btnLichLamViec_luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 530, -1, 30));
 
         jPanel51.setBackground(new java.awt.Color(242, 249, 255));
 
@@ -3646,7 +3661,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel43.setText("Trạng thái");
 
         cbLichLamViec_trangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        cbLichLamViec_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chưa trả lương", "Đã trả lương" }));
+        cbLichLamViec_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Đang diễn ra", "Đã trả lương" }));
 
         javax.swing.GroupLayout jPanel52Layout = new javax.swing.GroupLayout(jPanel52);
         jPanel52.setLayout(jPanel52Layout);
@@ -3677,6 +3692,11 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel44.setText("Ca làm");
 
         cbLichLamViec_caLam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        cbLichLamViec_caLam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLichLamViec_caLamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
         jPanel53.setLayout(jPanel53Layout);
@@ -3685,7 +3705,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel53Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(cbLichLamViec_caLam, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -3745,11 +3765,62 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_capNhatLichTangCa.setText("Cập nhật");
         jPanel44.add(btnLichLamViec_capNhatLichTangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, -1, 30));
 
+        btnLichLamViec_huyBo.setBackground(new java.awt.Color(255, 0, 0));
+        btnLichLamViec_huyBo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnLichLamViec_huyBo.setForeground(new java.awt.Color(255, 255, 255));
+        btnLichLamViec_huyBo.setText("Hủy");
+        btnLichLamViec_huyBo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_huyBoActionPerformed(evt);
+            }
+        });
+        jPanel44.add(btnLichLamViec_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 530, -1, 30));
+
         btnLichLamViec_lamMoi.setBackground(new java.awt.Color(255, 51, 102));
         btnLichLamViec_lamMoi.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_lamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_lamMoi.setText("Làm mới");
-        jPanel44.add(btnLichLamViec_lamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 510, -1, 30));
+        btnLichLamViec_lamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_lamMoiActionPerformed(evt);
+            }
+        });
+        jPanel44.add(btnLichLamViec_lamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 530, -1, 30));
+
+        jPanel56.setBackground(new java.awt.Color(242, 249, 255));
+
+        jLabel46.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel46.setText("Ca làm đã chọn");
+
+        cbLichLamViec_caLamDaChon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        cbLichLamViec_caLamDaChon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLichLamViec_caLamDaChonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel56Layout = new javax.swing.GroupLayout(jPanel56);
+        jPanel56.setLayout(jPanel56Layout);
+        jPanel56Layout.setHorizontalGroup(
+            jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel56Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(cbLichLamViec_caLamDaChon, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel56Layout.setVerticalGroup(
+            jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel56Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(jPanel56Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel46)
+                    .addComponent(cbLichLamViec_caLamDaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel44.add(jPanel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 320, -1));
 
         jPanel40.add(jPanel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 1030, 570));
 
@@ -4621,7 +4692,7 @@ public class TrangChu extends javax.swing.JFrame {
             hienThiDanhSachChiNhanhLichLamViec();
             lbLichLamViec_maNhanVien.setText("");
             hienThiThemLichLamViec(false, false, false);
-            
+            hienThiDanhSachCaLamCombobox(cbLichLamViec_caLam);
         }
     }//GEN-LAST:event_tabbedPane_nhanVienStateChanged
 
@@ -4632,15 +4703,37 @@ public class TrangChu extends javax.swing.JFrame {
         cbLichLamViec_bangLuong.setEnabled(them);
         cbLichLamViec_caLam.setEnabled(them);
         cbLichLamViec_trangThai.setEnabled(them);
+        cbLichLamViec_caLamDaChon.setEnabled(them);
         tfLichLamViec_soGioTangCa.setEnabled(them);
         tareLichLamViec_ghiChu.setEnabled(them);
-        btnLichLamViec_lamMoi.setEnabled(them);
+        btnLichLamViec_huyBo.setEnabled(them);
         btnLichLamViec_luu.setEnabled(them);
         if(lichLamViec == true){
             tfLichLamViec_soGioTangCa.setEnabled(false);
         }
         if (lichTangCa == true){
             cbLichLamViec_caLam.setEnabled(false);
+        }
+        if (them == true){
+            btnLichLamViec_capNhatLichLamViec.setEnabled(false);
+            btnLichLamViec_capNhatLichTangCa.setEnabled(false);
+            btnLichLamViec_lapPhieuLuong.setEnabled(false);
+            btnLichLamViec_themLichLamViec.setEnabled(false);
+            btnLichLamViec_themLichTangCa.setEnabled(false);
+            btnLichLamViec_themPhuCap.setEnabled(false);
+            btnLichLamViec_huyBo.setEnabled(true);
+            btnLichLamViec_lamMoi.setEnabled(true);
+            btnLichLamViec_luu.setEnabled(true);
+        } else {
+            btnLichLamViec_capNhatLichLamViec.setEnabled(true);
+            btnLichLamViec_capNhatLichTangCa.setEnabled(true);
+            btnLichLamViec_lapPhieuLuong.setEnabled(true);
+            btnLichLamViec_themLichLamViec.setEnabled(true);
+            btnLichLamViec_themLichTangCa.setEnabled(true);
+            btnLichLamViec_themPhuCap.setEnabled(true);
+            btnLichLamViec_huyBo.setEnabled(false);
+            btnLichLamViec_lamMoi.setEnabled(false);
+            btnLichLamViec_luu.setEnabled(false);
         }
     }
     
@@ -5793,11 +5886,105 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnLichLamViec_themLichLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themLichLamViecActionPerformed
         hienThiThemLichLamViec(true, true, false);
+        try {
+            int soLichLamViec = lichLamViecService.demSoLichLamViec();
+            lbLichLamViec_Ma.setText("LLV0" + String.valueOf(soLichLamViec + 1));
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnLichLamViec_themLichLamViecActionPerformed
 
     private void btnLichLamViec_themLichTangCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themLichTangCaActionPerformed
         hienThiThemLichLamViec(true, false, true);
+        try {
+            int soLichLamViec = lichLamViecService.demSoLichLamViec();
+            lbLichLamViec_Ma.setText("LLV0" + String.valueOf(soLichLamViec + 1));
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLichLamViec_themLichTangCaActionPerformed
+
+    private void btnLichLamViec_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_luuActionPerformed
+        // them lich lam viec
+        if (!tfLichLamViec_soGioTangCa.isEnabled()){
+            LichLamViec lichLamViec = new LichLamViec();
+            lichLamViec.setMaLichLamViec(lbLichLamViec_Ma.getText());
+            lichLamViec.setMaLichLamViec(tareLichLamViec_ghiChu.getText());
+            lichLamViec.setNghiLam(false);
+            lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(String.valueOf(dateChooserLichLamViec_ngayBatDau.getDate())));
+            lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(String.valueOf(dateChooserLichLamViec_ngayKetThuc.getDate())));
+            lichLamViec.setTangCa(Short.parseShort("0"));
+            lichLamViec.setTrangThai("Đang diễn ra");
+            lichLamViec.setMaNhanVien(lbLichLamViec_maNhanVien.getText());
+            try {
+                lichLamViecService.themLichLamViec(lichLamViec);
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {   // them lich tang ca
+            LichLamViec lichLamViec = new LichLamViec();
+            lichLamViec.setMaLichLamViec(lbLichLamViec_Ma.getText());
+            lichLamViec.setMaLichLamViec(tareLichLamViec_ghiChu.getText());
+            lichLamViec.setNghiLam(false);
+            lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(String.valueOf(dateChooserLichLamViec_ngayBatDau.getDate())));
+            lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(String.valueOf(dateChooserLichLamViec_ngayKetThuc.getDate())));
+            lichLamViec.setTangCa(Short.parseShort(tfLichLamViec_soGioTangCa.getText()));
+            lichLamViec.setTrangThai("Đang diễn ra");
+            lichLamViec.setMaNhanVien(lbLichLamViec_maNhanVien.getText());
+            try {
+                lichLamViecService.themLichLamViec(lichLamViec);
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnLichLamViec_luuActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton19ActionPerformed
+    boolean actionPerformedCaLamDaChonEnabled = true;
+    private void cbLichLamViec_caLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLichLamViec_caLamActionPerformed
+        try{
+            if (cbLichLamViec_caLam.getSelectedItem().toString().equals("")){
+                return;
+            }
+            
+            for (int i=0; i < cbLichLamViec_caLamDaChon.getItemCount(); i++){
+                if (cbLichLamViec_caLamDaChon.getItemAt(i).toString().equals(cbLichLamViec_caLam.getSelectedItem().toString())){
+                    return;
+                }
+            }
+            actionPerformedCaLamDaChonEnabled = false;
+            cbLichLamViec_caLamDaChon.addItem(cbLichLamViec_caLam.getSelectedItem().toString());
+            actionPerformedCaLamDaChonEnabled = true;
+        } catch (Exception err){
+            
+        }
+    }//GEN-LAST:event_cbLichLamViec_caLamActionPerformed
+
+    private void cbLichLamViec_caLamDaChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLichLamViec_caLamDaChonActionPerformed
+        if (actionPerformedCaLamDaChonEnabled){
+            cbLichLamViec_caLamDaChon.removeItemAt(cbLichLamViec_caLamDaChon.getSelectedIndex());
+        }
+    }//GEN-LAST:event_cbLichLamViec_caLamDaChonActionPerformed
+
+    private void btnLichLamViec_lamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_lamMoiActionPerformed
+        dateChooserLichLamViec_ngayBatDau.setDate(null);
+        dateChooserLichLamViec_ngayKetThuc.setDate(null);
+        cbLichLamViec_bangLuong.setSelectedIndex(-1);
+        actionPerformedCaLamDaChonEnabled = false;
+        cbLichLamViec_caLam.setSelectedIndex(-1);
+        actionPerformedCaLamDaChonEnabled = true;
+        cbLichLamViec_trangThai.setSelectedIndex(-1);
+        cbLichLamViec_caLamDaChon.setSelectedIndex(-1);
+        tfLichLamViec_soGioTangCa.setText("");
+        tareLichLamViec_ghiChu.setText("");
+    }//GEN-LAST:event_btnLichLamViec_lamMoiActionPerformed
+
+    private void btnLichLamViec_huyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_huyBoActionPerformed
+        hienThiThemLichLamViec(false, false, false);
+    }//GEN-LAST:event_btnLichLamViec_huyBoActionPerformed
     
     
     public void filterDanhSachNhanVien(String query){
@@ -6595,6 +6782,32 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }
     
+    public void hienThiDanhSachCaLamCombobox(JComboBox<String> comboBox){
+        try {
+            comboBox.removeAllItems();
+            comboBox.addItem("");
+            List<CaLam> danhSachCaLam = caLamService.hienThiTatCaCaLam();
+            for (CaLam caLam : danhSachCaLam){
+                comboBox.addItem(caLam.getMaCaLam() + " " + caLam.getTenCaLam());
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void hienThiDanhSachBangLuongCombobox(JComboBox<String> comboBox){
+        try {
+            comboBox.removeAllItems();
+            comboBox.addItem("");
+            List<BangLuong> danhSachBangLuong = bangLuongService.hienThiBangLuong();
+            for (BangLuong bangLuong : danhSachBangLuong){
+                comboBox.addItem(bangLuong.getMaBangLuong() + " " + bangLuong.getNoiDung());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -6651,6 +6864,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnLichLamViec_capNhatCaLam;
     private javax.swing.JButton btnLichLamViec_capNhatLichLamViec;
     private javax.swing.JButton btnLichLamViec_capNhatLichTangCa;
+    private javax.swing.JButton btnLichLamViec_huyBo;
     private javax.swing.JButton btnLichLamViec_lamMoi;
     private javax.swing.JButton btnLichLamViec_lapPhieuLuong;
     private javax.swing.JButton btnLichLamViec_lichNghiViec;
@@ -6684,6 +6898,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbHoaDon_nguoiTao;
     private javax.swing.JComboBox<String> cbLichLamViec_bangLuong;
     private javax.swing.JComboBox<String> cbLichLamViec_caLam;
+    private javax.swing.JComboBox<String> cbLichLamViec_caLamDaChon;
     private javax.swing.JComboBox<String> cbLichLamViec_trangThai;
     private javax.swing.JComboBox<String> cbSuaChua_danhSachKhachHang;
     private javax.swing.JComboBox<String> cbSuaChua_phuTungDaChon;
@@ -6774,6 +6989,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
@@ -6886,6 +7102,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
+    private javax.swing.JPanel jPanel56;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel63;
     private javax.swing.JPanel jPanel65;
