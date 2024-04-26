@@ -31,7 +31,7 @@ public class BangLuongNhanVienService {
             bangLuongNhanVien.setMaPhieuLuong(resultTable.getString("ma_phieu_luong"));
             bangLuongNhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
             bangLuongNhanVien.setMa_nhan_vien(resultTable.getString("ma_nhan_vien"));
-            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
+//            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
         }
         connectorDB.closeConnection();
         return bangLuongNhanVien;
@@ -39,7 +39,7 @@ public class BangLuongNhanVienService {
     
     public BangLuongNhanVien hienThiBangLuongNhanVienTheoLichLamViec(String maLichLamViec) throws SQLException{
         String query = String.format("select * from bang_luong_nhan_vien where ma_lich_lam_viec = '%s'", maLichLamViec) ;
-        
+        System.out.println(query);
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         BangLuongNhanVien bangLuongNhanVien = new BangLuongNhanVien();
@@ -49,7 +49,7 @@ public class BangLuongNhanVienService {
             bangLuongNhanVien.setMaPhieuLuong(resultTable.getString("ma_phieu_luong"));
             bangLuongNhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
             bangLuongNhanVien.setMa_nhan_vien(resultTable.getString("ma_nhan_vien"));
-            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
+//            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
         }
         connectorDB.closeConnection();
         return bangLuongNhanVien;
@@ -68,7 +68,7 @@ public class BangLuongNhanVienService {
             bangLuongNhanVien.setMaPhieuLuong(resultTable.getString("ma_phieu_luong"));
             bangLuongNhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
             bangLuongNhanVien.setMa_nhan_vien(resultTable.getString("ma_nhan_vien"));
-            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
+//            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
             danhSachBangLuongNhanVien.add(bangLuongNhanVien);
         }
         connectorDB.closeConnection();
@@ -91,12 +91,23 @@ public class BangLuongNhanVienService {
     
     public int themBangLuongNhanVien (BangLuongNhanVien bangLuongNhanVien) throws SQLException{ //   
         try{
-           String query = String.format("insert into bang_luong_nhan_vien(ma, ma_bang_luong, ma_phieu_luong, ma_lich_lam_viec) " +
+           String query = String.format("insert into bang_luong_nhan_vien(ma, ma_bang_luong, ma_lich_lam_viec, ma_nhan_vien) " +
                              "values ('%s', '%s', '%s', '%s')",
                              bangLuongNhanVien.getMa(),
                              bangLuongNhanVien.getMaBangLuong(),
-                             bangLuongNhanVien.getMaPhieuLuong(),
-                             bangLuongNhanVien.getMaLichLamViec());
+                             bangLuongNhanVien.getMaLichLamViec(),
+                             bangLuongNhanVien.getMa_nhan_vien());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int xoaBangLuongNhanVien (String maLichLamViec) throws SQLException{ //   
+        try{
+           String query = String.format("delete from bang_luong_nhan_vien where ma_lich_lam_viec = '%s' and ma_phieu_luong is NULL ", maLichLamViec) ;
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;
