@@ -94,6 +94,7 @@ import src.UI.KhachHang.Frame_ThemKhachHang;
 import src.UI.KhachHang.Frame_XemChiTietCapNhatKhachHang;
 import src.UI.NhaCungCap.Frame_ThemNhaCungCap;
 import src.UI.NhaCungCap.Frame_XemChiTietCapNhatNhaCungCap;
+import src.UI.NhanVien.Frame_BangLuong;
 import src.UI.NhanVien.Frame_ChiTietNhanVien;
 import src.UI.NhanVien.Frame_ThemNhanVien;
 import src.UI.TraHang.Frame_ChiTietPhieuTraHang2;
@@ -3266,7 +3267,15 @@ public class TrangChu extends javax.swing.JFrame {
             new String [] {
                 "Mã nhân viên", "Tên nhân viên", "CMND/CCCD"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbLichLamViec_danhSachNhanVien.setRowHeight(30);
         tbLichLamViec_danhSachNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3280,14 +3289,19 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_themBangLuong.setBackground(new java.awt.Color(0, 204, 51));
         btnLichLamViec_themBangLuong.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_themBangLuong.setForeground(new java.awt.Color(255, 255, 255));
-        btnLichLamViec_themBangLuong.setText("Thêm bảng lương");
+        btnLichLamViec_themBangLuong.setText("Bảng lương");
+        btnLichLamViec_themBangLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_themBangLuongActionPerformed(evt);
+            }
+        });
         jPanel40.add(btnLichLamViec_themBangLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
 
         btnLichLamViec_lichNghiViec.setBackground(new java.awt.Color(0, 204, 204));
         btnLichLamViec_lichNghiViec.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_lichNghiViec.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_lichNghiViec.setText("Lịch nghỉ việc");
-        jPanel40.add(btnLichLamViec_lichNghiViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, -1, -1));
+        jPanel40.add(btnLichLamViec_lichNghiViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
 
         jPanel44.setBackground(new java.awt.Color(242, 249, 255));
         jPanel44.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -3554,7 +3568,15 @@ public class TrangChu extends javax.swing.JFrame {
             new String [] {
                 "Mã", "Ngày bắt đầu", "Ngày kết thúc", "Ca làm", "Trạng thái", "Ghi chú"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbLichLamViec_lichLamViec.setRowHeight(30);
         tbLichLamViec_lichLamViec.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3577,7 +3599,15 @@ public class TrangChu extends javax.swing.JFrame {
             new String [] {
                 "Mã lịch làm việc", "Ngày", "Ghi chú", "Số giờ tăng ca", "Trạng thái"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbLichLamViec_lichTangCa.setRowHeight(30);
         tbLichLamViec_lichTangCa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -3861,7 +3891,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_capNhatCaLam.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_capNhatCaLam.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_capNhatCaLam.setText("Cập nhật ca làm");
-        jPanel40.add(btnLichLamViec_capNhatCaLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
+        jPanel40.add(btnLichLamViec_capNhatCaLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
         tbLichLamViec_danhSachChiNhanh.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbLichLamViec_danhSachChiNhanh.setModel(new javax.swing.table.DefaultTableModel(
@@ -6225,6 +6255,13 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tbLichLamViec_lichTangCaMouseClicked
+
+    private void btnLichLamViec_themBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themBangLuongActionPerformed
+        Frame_BangLuong frame_BangLuong = new Frame_BangLuong();
+        frame_BangLuong.setVisible(true);
+        frame_BangLuong.setSize(875, 435);
+        frame_BangLuong.setLocation(0,0);
+    }//GEN-LAST:event_btnLichLamViec_themBangLuongActionPerformed
     
     
     public void filterDanhSachNhanVien(String query){

@@ -75,13 +75,14 @@ public class BangLuongService {
     
     public int capNhatBangLuong (BangLuong bangLuong) throws SQLException{ //   
         try{
-           String query = String.format("update bang_luong set che_do_luong = '%s', tien_luong = %s, loai = '%s', noi_dung = '%s', trang_thai = '%s', where ma_bang_luong = '%s' ",
+           String query = String.format("update bang_luong set che_do_luong = '%s', tien_luong = %s, loai = '%s', noi_dung = '%s', trang_thai = '%s' where ma_bang_luong = '%s' ",
                              bangLuong.getCheDoLuong(),
                              String.valueOf(bangLuong.getTienLuong()),
                              bangLuong.getLoai(),
                              bangLuong.getNoiDung(),
                              bangLuong.getTrangThai(),
                              bangLuong.getMaBangLuong());
+            System.out.println(query);
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;
