@@ -447,6 +447,7 @@ public class Frame_BangLuong extends javax.swing.JFrame {
                 } catch (Exception err){
                     lbError.setText("Nhập tiền lương sai định dạng!");
                     lbError.setForeground(Color.red);
+                    return;
                 }
                 
                 BangLuong bangLuong = new BangLuong();
@@ -483,6 +484,7 @@ public class Frame_BangLuong extends javax.swing.JFrame {
                 } catch (Exception err){
                     lbError.setText("Nhập tiền lương sai định dạng!");
                     lbError.setForeground(Color.red);
+                    return;
                 }
                 BangLuong bangLuong = new BangLuong();
                 bangLuong.setMaBangLuong(lbMaBangLuong.getText());

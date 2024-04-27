@@ -95,6 +95,7 @@ import src.UI.KhachHang.Frame_XemChiTietCapNhatKhachHang;
 import src.UI.NhaCungCap.Frame_ThemNhaCungCap;
 import src.UI.NhaCungCap.Frame_XemChiTietCapNhatNhaCungCap;
 import src.UI.NhanVien.Frame_BangLuong;
+import src.UI.NhanVien.Frame_CaLam;
 import src.UI.NhanVien.Frame_ChiTietNhanVien;
 import src.UI.NhanVien.Frame_ThemNhanVien;
 import src.UI.TraHang.Frame_ChiTietPhieuTraHang2;
@@ -3891,6 +3892,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_capNhatCaLam.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_capNhatCaLam.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_capNhatCaLam.setText("Cập nhật ca làm");
+        btnLichLamViec_capNhatCaLam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_capNhatCaLamActionPerformed(evt);
+            }
+        });
         jPanel40.add(btnLichLamViec_capNhatCaLam, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
         tbLichLamViec_danhSachChiNhanh.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -6262,6 +6268,13 @@ public class TrangChu extends javax.swing.JFrame {
         frame_BangLuong.setSize(875, 435);
         frame_BangLuong.setLocation(0,0);
     }//GEN-LAST:event_btnLichLamViec_themBangLuongActionPerformed
+
+    private void btnLichLamViec_capNhatCaLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_capNhatCaLamActionPerformed
+        Frame_CaLam frame_CaLam = new Frame_CaLam();
+        frame_CaLam.setVisible(true);
+        frame_CaLam.setSize(875, 435);
+        frame_CaLam.setLocation(0,0);
+    }//GEN-LAST:event_btnLichLamViec_capNhatCaLamActionPerformed
     
     
     public void filterDanhSachNhanVien(String query){

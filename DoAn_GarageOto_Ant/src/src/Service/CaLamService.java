@@ -59,4 +59,49 @@ public class CaLamService {
         connectorDB.closeConnection();
         return caLam;
     }
+    public int demSoCaLam() throws SQLException{
+        String query = String.format("SELECT COUNT(*) AS row_count FROM ca_lam;");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        int numberOfRows  = 0;
+        while(resultTable.next()){
+            numberOfRows = resultTable.getInt("row_count");
+        }
+        connectorDB.closeConnection();
+        return numberOfRows;
+    }
+    
+    public int themCaLam (CaLam caLam) throws SQLException{ //   
+        try{
+           String query = String.format("insert into ca_lam(ma_ca_lam, ten_ca_lam, thoi_gian_bat_dau, thoi_gian_ket_thuc) " +
+                             "values ('%s', '%s', '%s', '%s')",
+                             caLam.getMaCaLam(),
+                             caLam.getTenCaLam(),
+                             String.valueOf(caLam.getThoiGianBatDau()),
+                             String.valueOf(caLam.getThoiGianKetThuc()));
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public int capNhatCaLam (CaLam caLam) throws SQLException{ //   
+        try{
+           String query = String.format("update ca_lam set ten_ca_lam = '%s', thoi_gian_bat_dau = '%s', thoi_gian_ket_thuc = '%s' where ma_ca_lam = '%s'",
+                             caLam.getTenCaLam(),
+                             String.valueOf(caLam.getThoiGianBatDau()),
+                             String.valueOf(caLam.getThoiGianKetThuc()),
+                             caLam.getMaCaLam());
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
 }
+

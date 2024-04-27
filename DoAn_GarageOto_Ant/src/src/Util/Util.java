@@ -71,4 +71,12 @@ public class Util {
         String formattedNgayLam = ngayLam.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         return formattedNgayLam;
     }
+    
+    public String parseLocalTimeToString(LocalTime localTime){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        // Format the LocalTime instance into a string
+        String formattedTime = localTime.format(formatter);
+        return formattedTime;
+    }
 }
