@@ -4,6 +4,8 @@
  */
 package src.Model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author WINDOWS 10
@@ -14,6 +16,7 @@ public class BangLuongNhanVien {
     private String maPhieuLuong;
     private String maLichLamViec;
     private boolean daXuLy;
+    private LocalDate thoiGian;
     private String ma_nhan_vien;
 
     public BangLuongNhanVien() {
@@ -65,6 +68,14 @@ public class BangLuongNhanVien {
 
     public void setMa_nhan_vien(String ma_nhan_vien) {
         this.ma_nhan_vien = ma_nhan_vien;
+    }
+
+    public LocalDate getThoiGian() {
+        return thoiGian;
+    }
+
+    public void setThoiGian(LocalDate thoiGian) {
+        this.thoiGian = thoiGian;
     }
 
     

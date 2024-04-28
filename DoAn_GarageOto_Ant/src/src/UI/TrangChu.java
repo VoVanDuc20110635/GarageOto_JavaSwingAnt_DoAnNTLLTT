@@ -97,7 +97,10 @@ import src.UI.NhaCungCap.Frame_XemChiTietCapNhatNhaCungCap;
 import src.UI.NhanVien.Frame_BangLuong;
 import src.UI.NhanVien.Frame_CaLam;
 import src.UI.NhanVien.Frame_ChiTietNhanVien;
+import src.UI.NhanVien.Frame_LapPhieuLuong;
+import src.UI.NhanVien.Frame_LichNghi;
 import src.UI.NhanVien.Frame_ThemNhanVien;
+import src.UI.NhanVien.Frame_TroCap;
 import src.UI.TraHang.Frame_ChiTietPhieuTraHang2;
 import src.Util.AlwaysOpenComboBoxUI;
 import src.Util.ImportFileCSV;
@@ -3302,6 +3305,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_lichNghiViec.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_lichNghiViec.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_lichNghiViec.setText("Lịch nghỉ việc");
+        btnLichLamViec_lichNghiViec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_lichNghiViecActionPerformed(evt);
+            }
+        });
         jPanel40.add(btnLichLamViec_lichNghiViec, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, -1, -1));
 
         jPanel44.setBackground(new java.awt.Color(242, 249, 255));
@@ -3816,6 +3824,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnLichLamViec_themPhuCap.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLichLamViec_themPhuCap.setForeground(new java.awt.Color(255, 255, 255));
         btnLichLamViec_themPhuCap.setText("Thêm phụ cấp");
+        btnLichLamViec_themPhuCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLichLamViec_themPhuCapActionPerformed(evt);
+            }
+        });
         jPanel44.add(btnLichLamViec_themPhuCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 150, -1));
 
         btnLichLamViec_capNhatLichTangCa.setBackground(new java.awt.Color(51, 51, 255));
@@ -4767,6 +4780,8 @@ public class TrangChu extends javax.swing.JFrame {
             btnLichLamViec_capNhatLichTangCa.setEnabled(false);
             btnLichLamViec_themLichLamViec.setEnabled(false);
             btnLichLamViec_themLichTangCa.setEnabled(false);
+            btnLichLamViec_themPhuCap.setEnabled(false);
+            btnLichLamViec_lapPhieuLuong.setEnabled(false);
             
         }
     }//GEN-LAST:event_tabbedPane_nhanVienStateChanged
@@ -5890,7 +5905,8 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfLichLamViec_locTuDongKeyReleased
 
     private void tbLichLamViec_danhSachNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLichLamViec_danhSachNhanVienMouseClicked
-        
+        btnLichLamViec_themPhuCap.setEnabled(true);
+        btnLichLamViec_lapPhieuLuong.setEnabled(true);
         int index = tbLichLamViec_danhSachNhanVien.getSelectedRow();
         TableModel model = tbLichLamViec_danhSachNhanVien.getModel();
         String maNhanVien = model.getValueAt(index, 0).toString();
@@ -5963,7 +5979,16 @@ public class TrangChu extends javax.swing.JFrame {
     }
     
     private void btnLichLamViec_lapPhieuLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_lapPhieuLuongActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            NhanVien nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(lbLichLamViec_maNhanVien.getText());
+            Frame_LapPhieuLuong frame_LapPhieuLuong = new Frame_LapPhieuLuong(nhanVien);
+            frame_LapPhieuLuong.setVisible(true);
+            frame_LapPhieuLuong.setSize(880, 640);
+            frame_LapPhieuLuong.setLocation(0,0);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLichLamViec_lapPhieuLuongActionPerformed
 
     private void tb_danhSachChiNhanh1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachChiNhanh1MouseClicked
@@ -6275,6 +6300,25 @@ public class TrangChu extends javax.swing.JFrame {
         frame_CaLam.setSize(875, 435);
         frame_CaLam.setLocation(0,0);
     }//GEN-LAST:event_btnLichLamViec_capNhatCaLamActionPerformed
+
+    private void btnLichLamViec_lichNghiViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_lichNghiViecActionPerformed
+        Frame_LichNghi frame_LichNghi = new Frame_LichNghi();
+        frame_LichNghi.setVisible(true);
+        frame_LichNghi.setSize(875, 435);
+        frame_LichNghi.setLocation(0,0);
+    }//GEN-LAST:event_btnLichLamViec_lichNghiViecActionPerformed
+
+    private void btnLichLamViec_themPhuCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themPhuCapActionPerformed
+        try {
+            NhanVien nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(lbLichLamViec_maNhanVien.getText());
+            Frame_TroCap frame_TroCap = new Frame_TroCap(nhanVien);
+            frame_TroCap.setVisible(true);
+            frame_TroCap.setSize(875, 435);
+            frame_TroCap.setLocation(0,0);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnLichLamViec_themPhuCapActionPerformed
     
     
     public void filterDanhSachNhanVien(String query){

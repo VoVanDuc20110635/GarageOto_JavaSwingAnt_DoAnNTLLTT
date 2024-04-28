@@ -98,6 +98,25 @@ public class LichLamViecService {
         return danhSachLichLamViec;
     }
     
+    public List<LichLamViec> hienThiLichNghi () throws SQLException{ //
+        String query = String.format("select * from lich_lam_viec where nghi_lam = true");
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        List<LichLamViec> danhSachLichLamViec = new ArrayList<>();
+        while(resultTable.next()){
+            LichLamViec lichLamViec = new LichLamViec();
+            lichLamViec.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+            lichLamViec.setGhiChu(resultTable.getString("ghi_chu"));
+            lichLamViec.setNghiLam(Boolean.parseBoolean(resultTable.getString("nghi_lam")));
+            lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau")));
+            lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_ket_thuc")));
+            lichLamViec.setTrangThai(resultTable.getString("trang_thai"));
+            danhSachLichLamViec.add(lichLamViec);
+        }
+        connectorDB.closeConnection();
+        return danhSachLichLamViec;
+    }
+    
     public List<LichLamViec> hienThiLichTangCaTheoMaNhanVien (String maNhanVien) throws SQLException{ //
         String query = String.format("select * from lich_lam_viec where ma_nhan_vien = '%s' and tang_ca != 0", maNhanVien);
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
@@ -191,4 +210,73 @@ public class LichLamViecService {
             return 0;
         }
     }
+    
+    public int capNhatLichNghiViec (LichLamViec lichLamViec) throws SQLException{ //   
+        try{
+           String query = String.format("update lich_lam_viec set ghi_chu  = '%s', ngay_bat_dau  = '%s', ngay_ket_thuc  = '%s' where ma_lich_lam_viec = '%s' ",
+                   lichLamViec.getGhiChu(),
+                   String.valueOf(lichLamViec.getNgayBatDau()),
+                   String.valueOf(lichLamViec.getNgayKetThuc()),
+                   lichLamViec.getMaLichLamViec()
+                   );
+            System.out.println(query);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public List<LichLamViec> timKiemLichNghiViec (int month, int year) throws SQLException{ //   
+        try{
+           String query = String.format("select * from lich_lam_viec where extract(year from ngay_bat_dau) = %s and extract(month from ngay_bat_dau) = %s",
+                   month, year
+                   );
+            ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+            ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+            List<LichLamViec> danhSachLamViec = new ArrayList<>();
+            
+            while(resultTable.next()){
+            LichLamViec lichLamViec = new LichLamViec();
+            lichLamViec.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+            lichLamViec.setGhiChu(resultTable.getString("ghi_chu"));
+            lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau")));
+            lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_ket_thuc")));
+            danhSachLamViec.add(lichLamViec);
+            }
+            connectorDB.closeConnection();
+            return danhSachLamViec;
+        } catch (Exception err){
+            return new ArrayList<>();
+        }
+        
+    }
+    
+    public List<LichLamViec> timKiemLichTangCa (int month, int year) throws SQLException{ //   
+        try{
+           String query = String.format("select * from lich_lam_viec where extract(year from ngay_bat_dau) = %s and extract(month from ngay_bat_dau) = %s and tang_ca > 0",
+                   month, year
+                   );
+            ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+            ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+            List<LichLamViec> danhSachLamViec = new ArrayList<>();
+            
+            while(resultTable.next()){
+            LichLamViec lichLamViec = new LichLamViec();
+            lichLamViec.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+            lichLamViec.setGhiChu(resultTable.getString("ghi_chu"));
+            lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau")));
+            lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_ket_thuc")));
+            danhSachLamViec.add(lichLamViec);
+            }
+            connectorDB.closeConnection();
+            return danhSachLamViec;
+        } catch (Exception err){
+            return new ArrayList<>();
+        }
+        
+    }
+    
+    
 }

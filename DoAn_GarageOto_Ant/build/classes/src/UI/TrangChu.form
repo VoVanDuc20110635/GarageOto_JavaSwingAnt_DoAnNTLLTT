@@ -5238,6 +5238,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="L&#x1ecb;ch ngh&#x1ec9; vi&#x1ec7;c"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLichLamViec_lichNghiViecActionPerformed"/>
+                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="750" y="10" width="-1" height="-1"/>
@@ -6215,6 +6218,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m ph&#x1ee5; c&#x1ea5;p"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLichLamViec_themPhuCapActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="870" y="0" width="150" height="-1"/>
