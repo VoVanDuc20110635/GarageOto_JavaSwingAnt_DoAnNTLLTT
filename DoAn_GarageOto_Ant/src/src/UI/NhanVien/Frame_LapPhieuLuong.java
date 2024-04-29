@@ -59,6 +59,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         lbThoiGianBatDau.setText("");
         lbThoiGianKetThuc.setText("");
         lbTienLuong.setText("");
+        btnLapPhieuLuong.setEnabled(false);
     }
 
     public NhanVien getNhanVien() {
@@ -643,7 +644,9 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLapPhieuLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapPhieuLuongActionPerformed
-        Frame_PhieuLuong frame_PhieuLuong = new Frame_PhieuLuong(lichLamViecMain, danhSachLichTangCaMain, danhSachTroCapMain, nhanVien);
+        int month = monthChooser.getMonth() + 1;
+        int year = yearChooser.getYear();
+        Frame_PhieuLuong frame_PhieuLuong = new Frame_PhieuLuong(lichLamViecMain, danhSachLichTangCaMain, danhSachTroCapMain, nhanVien, month, year);
         frame_PhieuLuong.setVisible(true);
         frame_PhieuLuong.setSize(630, 210);
         frame_PhieuLuong.setLocation(0,0);
@@ -656,6 +659,11 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         hienThiThongTinLichLamViec(month, year, nhanVien.getMaNhanVien());
         hienThiLichTangCa(month, year, nhanVien.getMaNhanVien());
         hienThiLichTroCap(month, year, nhanVien.getMaNhanVien());
+        if (lbTrangThai.getText().equals("Chưa trả")){
+            btnLapPhieuLuong.setEnabled(true);
+        } else {
+            btnLapPhieuLuong.setEnabled(false);
+        }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void hienThiThongTinLichLamViec (int month, int year, String maNhanVien){
@@ -683,7 +691,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
                 }
             }
             lbCaLam.setText(danhSachTenCaLam);
-            if (bangLuongNhanVien.isDaXuLy() == true){
+            if (bangLuongNhanVien.getMaPhieuLuong() != null){
                 lbTrangThai.setText("Đã trả");
             } else {
                 lbTrangThai.setText("Chưa trả");

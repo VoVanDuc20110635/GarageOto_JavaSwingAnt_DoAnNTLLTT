@@ -266,6 +266,7 @@ public class LichLamViecService {
                 LichLamViec lichLamViec = new LichLamViec();
                 lichLamViec.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
                 lichLamViec.setGhiChu(resultTable.getString("ghi_chu"));
+                lichLamViec.setTangCa(resultTable.getShort("tang_ca"));
                 lichLamViec.setNgayBatDau(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau")));
                 lichLamViec.setNgayKetThuc(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_ket_thuc")));
                 danhSachLamViec.add(lichLamViec);

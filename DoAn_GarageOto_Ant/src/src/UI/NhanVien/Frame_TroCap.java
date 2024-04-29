@@ -6,6 +6,7 @@ package src.UI.NhanVien;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -22,6 +23,7 @@ import src.Model.NhanVien;
 import src.Service.BangLuongNhanVienService;
 import src.Service.BangLuongService;
 import src.UI.TrangChu;
+import src.Util.Util;
 
 /**
  *
@@ -31,6 +33,7 @@ public class Frame_TroCap extends javax.swing.JFrame {
     private BangLuongService bangLuongService = new BangLuongService();
     private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
     private NhanVien nhanVien;
+    private Util util = new Util();
     /**
      * Creates new form Frame_BangLuong
      */
@@ -370,6 +373,7 @@ public class Frame_TroCap extends javax.swing.JFrame {
                 bangLuongNhanVien.setMa("BLNV0" + String.valueOf(soBangLuongNhanVien + 1));
                 bangLuongNhanVien.setMaBangLuong(cbTroCap.getSelectedItem().toString().split(" ")[0]);
                 bangLuongNhanVien.setMa_nhan_vien(nhanVien.getMaNhanVien());
+                bangLuongNhanVien.setThoiGian(LocalDate.now());
                 bangLuongNhanVienService.themTroCapNhanVien(bangLuongNhanVien);
                 btnXoa.setEnabled(true);
                 btnThem.setText("Thêm");

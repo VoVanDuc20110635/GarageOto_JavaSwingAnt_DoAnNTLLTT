@@ -81,7 +81,7 @@ public class BangLuongNhanVienService {
     }
     
     public List<BangLuongNhanVien> hienThiTroCapBangLuongNhanVienTheoMaNhanVien(int month, int year, String maNhanVien) throws SQLException{
-        String query = String.format("select * from bang_luong_nhan_vien where ma_bang_luong not like '%%BL%%' and ma_nhan_vien = '%s' and extract(month from thoi_gian) = %s and extract(year from thoi_gian) = %s ", maNhanVien, month , year) ;
+        String query = String.format("select * from bang_luong_nhan_vien where ma_bang_luong not like '%%BL%%' and ma_bang_luong not like '%%TCa%%' and ma_nhan_vien = '%s' and extract(month from thoi_gian) = %s and extract(year from thoi_gian) = %s ", maNhanVien, month , year) ;
         
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -185,6 +185,30 @@ public class BangLuongNhanVienService {
             return 0;
         }
     }
+    
+    public int themPhieuLuongLichLamViecBangLuongNhanVien (String maPhieuLuong, String maLichLamViec) throws SQLException{ //   
+        try{
+           String query = String.format("update bang_luong_nhan_vien set ma_phieu_luong = '%s' where ma_lich_lam_viec = '%s' " ,
+                             maPhieuLuong, maLichLamViec);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    public int themPhieuLuongTroCapBangLuongNhanVien (String maPhieuLuong, String maTroCap, String maNhanVien, int month, int year) throws SQLException{ //   
+        try{
+           String query = String.format("update bang_luong_nhan_vien set ma_phieu_luong = '%s' where ma_bang_luong = '%s' and ma_nhan_vien = '%s' and extract(month from thoi_gian) = %s and extract(year from thoi_gian) = %s  " ,
+                             maPhieuLuong, maTroCap, maNhanVien, month, year);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
     
     public List<BangLuongNhanVien> hienThiBangLuongNhanVienTheoMaNhanVienVaThoiGian(String maNhanVien, int thang, int nam) throws SQLException{
         String query = String.format("select * from bang_luong_nhan_vien where ma_nhan_vien = '%s' and extract(year from thoi_gian) = %s and extract(month from thoi_gian) = %s", 

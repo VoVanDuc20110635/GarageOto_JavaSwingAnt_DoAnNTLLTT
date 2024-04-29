@@ -11,9 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import src.Model.BangLuong;
+import src.Model.BangLuongNhanVien;
 import src.Model.LichLamViec;
 import src.Model.NhanVien;
+import src.Model.PhieuLuong;
 import src.Service.BangLuongNhanVienService;
+import src.Service.BangLuongService;
 import src.Service.LichLamViecService;
 import src.Service.PhieuLuongService;
 import src.Util.Util;
@@ -27,11 +30,14 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
     private List<LichLamViec> danhSachLichTangCa;
     private List<BangLuong> danhSachTroCap;
     private NhanVien nhanVien;
+    private int thang;
+    private int nam;
     
     private Util util = new Util();
     private LichLamViecService lichLamViecService = new LichLamViecService();
     private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
     private PhieuLuongService phieuLuongService = new PhieuLuongService();
+    private BangLuongService bangLuongService = new BangLuongService();
     
     /**
      * Creates new form Frame_PhieuLuong
@@ -40,11 +46,13 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
         initComponents();
     }
 
-    Frame_PhieuLuong(LichLamViec lichLamViecMain, List<LichLamViec> danhSachLichTangCaMain, List<BangLuong> danhSachTroCapMain, NhanVien nhanVien) {
+    Frame_PhieuLuong(LichLamViec lichLamViecMain, List<LichLamViec> danhSachLichTangCaMain, List<BangLuong> danhSachTroCapMain, NhanVien nhanVien, int month, int year) {
         this.lichLamViec = lichLamViecMain;
         this.danhSachLichTangCa = danhSachLichTangCaMain;
         this.danhSachTroCap = danhSachTroCapMain;
         this.nhanVien = nhanVien;
+        this.thang = month;
+        this.nam = year;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         int soPhieuLuong = 0;
@@ -56,8 +64,33 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
         lbMaPhieuLuong.setText("PL0" + String.valueOf(soPhieuLuong + 1));
         lbNhanVien.setText(nhanVien.getMaNhanVien() + " " + nhanVien.getTenNhanVien());
         lbNgayIn.setText(util.localDateParseMethod(LocalDateTime.now()));
+        lbTongLuong.setText(String.valueOf(tongTienPhieuLuong()));
     }
 
+    private double tongTienPhieuLuong(){
+        try {
+            double tongTienLuong = 0;
+            // tinh tong tien luong cung
+            BangLuongNhanVien bangLuongNhanVienLichLamViec = bangLuongNhanVienService.hienThiBangLuongNhanVienTheoLichLamViec(lichLamViec.getMaLichLamViec());
+            BangLuong bangLuongLichLamViec = bangLuongService.hienThiBangLuongTheoMaBangLuong(bangLuongNhanVienLichLamViec.getMaBangLuong());
+            tongTienLuong += bangLuongLichLamViec.getTienLuong();
+            
+            // tinh tien tang ca
+            for (LichLamViec lichTangCa : danhSachLichTangCa){
+                tongTienLuong += lichTangCa.getBangLuong().getTienLuong() * lichTangCa.getTangCa();
+            }
+            
+            // tinh tien phu cap
+            for (BangLuong troCap: danhSachTroCap){
+                tongTienLuong += troCap.getTienLuong();
+            }
+            return tongTienLuong;
+        } catch (SQLException ex) {
+            return 0;
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,12 +118,10 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
         lbNguoiTao = new javax.swing.JLabel();
         btnThoat = new javax.swing.JButton();
         btnLapPhieuLuong = new javax.swing.JButton();
-        btnIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(242, 249, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -120,8 +151,6 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 279, -1));
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -149,8 +178,6 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
                     .addComponent(lbTongLuong))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -180,8 +207,6 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
-
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -209,8 +234,6 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
                     .addComponent(lbNhanVien))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -240,25 +263,67 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 280, -1));
-
         btnThoat.setBackground(new java.awt.Color(255, 51, 0));
         btnThoat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setText("Thoát");
-        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, -1, -1));
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         btnLapPhieuLuong.setBackground(new java.awt.Color(0, 204, 51));
         btnLapPhieuLuong.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnLapPhieuLuong.setForeground(new java.awt.Color(255, 255, 255));
         btnLapPhieuLuong.setText("Lập phiếu lương");
-        jPanel1.add(btnLapPhieuLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
+        btnLapPhieuLuong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLapPhieuLuongActionPerformed(evt);
+            }
+        });
 
-        btnIn.setBackground(new java.awt.Color(0, 102, 255));
-        btnIn.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btnIn.setForeground(new java.awt.Color(255, 255, 255));
-        btnIn.setText("In");
-        jPanel1.add(btnIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(375, 375, 375)
+                .addComponent(btnLapPhieuLuong)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnThoat))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThoat)
+                    .addComponent(btnLapPhieuLuong)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -268,11 +333,49 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnLapPhieuLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapPhieuLuongActionPerformed
+        try {
+            int soPhieuLuong = phieuLuongService.demSoPhieuLuong();
+            PhieuLuong phieuLuong = new PhieuLuong();
+            phieuLuong.setMaPhieu("PL0" + String.valueOf(soPhieuLuong + 1));
+            phieuLuong.setDaTra(tongTienPhieuLuong());
+            phieuLuong.setTongLuong(tongTienPhieuLuong());
+            phieuLuong.setMaNhanVienIn("NV000");
+            phieuLuong.setMaNhanVien(lbNhanVien.getText().toString().split(" ")[0]);
+            phieuLuong.setNgayIn(LocalDateTime.now());
+            
+            phieuLuongService.themPhieuLuong(phieuLuong);
+            
+            // thanh toan luong cho lich lam viec cung
+            bangLuongNhanVienService.themPhieuLuongLichLamViecBangLuongNhanVien(phieuLuong.getMaPhieu(), lichLamViec.getMaLichLamViec());
+            
+            // thanh toan luong cho lich tang ca
+            for (LichLamViec lichLamViecItem : danhSachLichTangCa){
+                bangLuongNhanVienService.themPhieuLuongLichLamViecBangLuongNhanVien(phieuLuong.getMaPhieu(), lichLamViecItem.getMaLichLamViec());
+            }
+                
+            // thanh toan luong cho tro cap
+            for (BangLuong troCap : danhSachTroCap){
+                bangLuongNhanVienService.themPhieuLuongTroCapBangLuongNhanVien(phieuLuong.getMaPhieu(), troCap.getMaBangLuong(), nhanVien.getMaNhanVien(), thang, nam);
+            }
+            
+            btnLapPhieuLuong.setEnabled(false);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_PhieuLuong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnLapPhieuLuongActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,7 +413,6 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIn;
     private javax.swing.JButton btnLapPhieuLuong;
     private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
