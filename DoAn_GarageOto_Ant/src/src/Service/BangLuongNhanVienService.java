@@ -79,6 +79,27 @@ public class BangLuongNhanVienService {
         connectorDB.closeConnection();
         return danhSachBangLuongNhanVien;
     }
+    
+    public List<BangLuongNhanVien> hienThiTroCapBangLuongNhanVienTheoMaNhanVien(int month, int year, String maNhanVien) throws SQLException{
+        String query = String.format("select * from bang_luong_nhan_vien where ma_bang_luong not like '%%BL%%' and ma_nhan_vien = '%s' and extract(month from thoi_gian) = %s and extract(year from thoi_gian) = %s ", maNhanVien, month , year) ;
+        
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        List<BangLuongNhanVien> danhSachBangLuongNhanVien = new ArrayList<>();
+        while(resultTable.next()){
+            BangLuongNhanVien bangLuongNhanVien = new BangLuongNhanVien();
+            bangLuongNhanVien.setMa(resultTable.getString("ma"));
+            bangLuongNhanVien.setMaBangLuong(resultTable.getString("ma_bang_luong"));
+            bangLuongNhanVien.setMaPhieuLuong(resultTable.getString("ma_phieu_luong"));
+            bangLuongNhanVien.setMaLichLamViec(resultTable.getString("ma_lich_lam_viec"));
+            bangLuongNhanVien.setMa_nhan_vien(resultTable.getString("ma_nhan_vien"));
+            bangLuongNhanVien.setThoiGian(util.localDateParseMethodToLocalDate(resultTable.getString("thoi_gian")));
+//            bangLuongNhanVien.setDaXuLy(resultTable.getBoolean("da_xu_ly"));
+            danhSachBangLuongNhanVien.add(bangLuongNhanVien);
+        }
+        connectorDB.closeConnection();
+        return danhSachBangLuongNhanVien;
+    }
      
     public int demSoBangLuongNhanVien() throws SQLException{
         String query = String.format("SELECT COUNT(*) AS row_count FROM bang_luong_nhan_vien;");

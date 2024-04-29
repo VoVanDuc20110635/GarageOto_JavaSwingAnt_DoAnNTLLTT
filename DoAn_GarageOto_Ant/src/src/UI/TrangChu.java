@@ -5984,7 +5984,7 @@ public class TrangChu extends javax.swing.JFrame {
             NhanVien nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(lbLichLamViec_maNhanVien.getText());
             Frame_LapPhieuLuong frame_LapPhieuLuong = new Frame_LapPhieuLuong(nhanVien);
             frame_LapPhieuLuong.setVisible(true);
-            frame_LapPhieuLuong.setSize(880, 640);
+            frame_LapPhieuLuong.setSize(1135, 640);
             frame_LapPhieuLuong.setLocation(0,0);
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);

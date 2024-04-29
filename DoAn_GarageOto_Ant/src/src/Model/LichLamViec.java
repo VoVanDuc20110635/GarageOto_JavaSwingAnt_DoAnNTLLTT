@@ -23,6 +23,9 @@ public class LichLamViec {
     private String trangThai;
     private String maNhanVien;
     private List<CaLam> danhSachCaLam;
+    
+    private BangLuong bangLuong;
+    private boolean daThanhToan;
 
     public LichLamViec() {
         danhSachCaLam = new ArrayList<>();
@@ -100,8 +103,24 @@ public class LichLamViec {
         this.danhSachCaLam = danhSachCaLam;
     }
 
-    
+    public BangLuong getBangLuong() {
+        return bangLuong;
+    }
 
+    public void setBangLuong(BangLuong bangLuong) {
+        this.bangLuong = bangLuong;
+    }
+
+    public boolean isDaThanhToan() {
+        return daThanhToan;
+    }
+
+    public void setDaThanhToan(boolean daThanhToan) {
+        this.daThanhToan = daThanhToan;
+    }
+
+    
+    
         
     
 }
