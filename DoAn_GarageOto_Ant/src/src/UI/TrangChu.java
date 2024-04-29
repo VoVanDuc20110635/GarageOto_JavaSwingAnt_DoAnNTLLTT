@@ -512,9 +512,223 @@ public class TrangChu extends javax.swing.JFrame {
         jScrollPane20 = new javax.swing.JScrollPane();
         tbLichLamViec_danhSachChiNhanh = new javax.swing.JTable();
         jPanel49 = new javax.swing.JPanel();
+        jPanel57 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jPanel58 = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jPanel112 = new javax.swing.JPanel();
+        jLabel48 = new javax.swing.JLabel();
+        jCheckBox75 = new javax.swing.JCheckBox();
+        jCheckBox76 = new javax.swing.JCheckBox();
+        jCheckBox77 = new javax.swing.JCheckBox();
+        jCheckBox78 = new javax.swing.JCheckBox();
+        jCheckBox79 = new javax.swing.JCheckBox();
+        jCheckBox80 = new javax.swing.JCheckBox();
+        jPanel113 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        jCheckBox81 = new javax.swing.JCheckBox();
+        jCheckBox82 = new javax.swing.JCheckBox();
+        jCheckBox83 = new javax.swing.JCheckBox();
+        jCheckBox84 = new javax.swing.JCheckBox();
+        jCheckBox85 = new javax.swing.JCheckBox();
+        jCheckBox86 = new javax.swing.JCheckBox();
+        jPanel114 = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        jCheckBox87 = new javax.swing.JCheckBox();
+        jCheckBox88 = new javax.swing.JCheckBox();
+        jCheckBox89 = new javax.swing.JCheckBox();
+        jCheckBox90 = new javax.swing.JCheckBox();
+        jCheckBox91 = new javax.swing.JCheckBox();
+        jCheckBox92 = new javax.swing.JCheckBox();
+        jPanel115 = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
+        jCheckBox93 = new javax.swing.JCheckBox();
+        jCheckBox94 = new javax.swing.JCheckBox();
+        jCheckBox95 = new javax.swing.JCheckBox();
+        jCheckBox96 = new javax.swing.JCheckBox();
+        jCheckBox97 = new javax.swing.JCheckBox();
+        jCheckBox98 = new javax.swing.JCheckBox();
+        jPanel116 = new javax.swing.JPanel();
+        jLabel54 = new javax.swing.JLabel();
+        jCheckBox99 = new javax.swing.JCheckBox();
+        jCheckBox100 = new javax.swing.JCheckBox();
+        jCheckBox101 = new javax.swing.JCheckBox();
+        jCheckBox102 = new javax.swing.JCheckBox();
+        jCheckBox103 = new javax.swing.JCheckBox();
+        jCheckBox104 = new javax.swing.JCheckBox();
+        jPanel117 = new javax.swing.JPanel();
+        jLabel103 = new javax.swing.JLabel();
+        jCheckBox105 = new javax.swing.JCheckBox();
+        jCheckBox106 = new javax.swing.JCheckBox();
+        jCheckBox107 = new javax.swing.JCheckBox();
+        jCheckBox108 = new javax.swing.JCheckBox();
+        jCheckBox109 = new javax.swing.JCheckBox();
+        jCheckBox110 = new javax.swing.JCheckBox();
+        jPanel118 = new javax.swing.JPanel();
+        jLabel104 = new javax.swing.JLabel();
+        jCheckBox111 = new javax.swing.JCheckBox();
+        jCheckBox112 = new javax.swing.JCheckBox();
+        jCheckBox113 = new javax.swing.JCheckBox();
+        jCheckBox114 = new javax.swing.JCheckBox();
+        jCheckBox115 = new javax.swing.JCheckBox();
+        jCheckBox116 = new javax.swing.JCheckBox();
+        jPanel119 = new javax.swing.JPanel();
+        jLabel105 = new javax.swing.JLabel();
+        jCheckBox117 = new javax.swing.JCheckBox();
+        jCheckBox118 = new javax.swing.JCheckBox();
+        jCheckBox119 = new javax.swing.JCheckBox();
+        jCheckBox120 = new javax.swing.JCheckBox();
+        jCheckBox121 = new javax.swing.JCheckBox();
+        jCheckBox122 = new javax.swing.JCheckBox();
+        jPanel105 = new javax.swing.JPanel();
+        jLabel99 = new javax.swing.JLabel();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox59 = new javax.swing.JCheckBox();
+        jCheckBox60 = new javax.swing.JCheckBox();
+        jCheckBox61 = new javax.swing.JCheckBox();
+        jCheckBox62 = new javax.swing.JCheckBox();
+        jCheckBox63 = new javax.swing.JCheckBox();
+        jPanel120 = new javax.swing.JPanel();
+        jLabel106 = new javax.swing.JLabel();
+        jCheckBox123 = new javax.swing.JCheckBox();
+        jCheckBox124 = new javax.swing.JCheckBox();
+        jCheckBox125 = new javax.swing.JCheckBox();
+        jCheckBox126 = new javax.swing.JCheckBox();
+        jCheckBox127 = new javax.swing.JCheckBox();
+        jCheckBox128 = new javax.swing.JCheckBox();
+        jPanel121 = new javax.swing.JPanel();
+        jLabel107 = new javax.swing.JLabel();
+        jCheckBox129 = new javax.swing.JCheckBox();
+        jCheckBox130 = new javax.swing.JCheckBox();
+        jCheckBox131 = new javax.swing.JCheckBox();
+        jCheckBox132 = new javax.swing.JCheckBox();
+        jCheckBox133 = new javax.swing.JCheckBox();
+        jCheckBox134 = new javax.swing.JCheckBox();
+        jPanel122 = new javax.swing.JPanel();
+        jLabel108 = new javax.swing.JLabel();
+        jCheckBox135 = new javax.swing.JCheckBox();
+        jCheckBox136 = new javax.swing.JCheckBox();
+        jCheckBox137 = new javax.swing.JCheckBox();
+        jCheckBox138 = new javax.swing.JCheckBox();
+        jCheckBox139 = new javax.swing.JCheckBox();
+        jCheckBox140 = new javax.swing.JCheckBox();
+        jPanel123 = new javax.swing.JPanel();
+        jLabel119 = new javax.swing.JLabel();
+        jCheckBox141 = new javax.swing.JCheckBox();
+        jCheckBox142 = new javax.swing.JCheckBox();
+        jCheckBox143 = new javax.swing.JCheckBox();
+        jCheckBox144 = new javax.swing.JCheckBox();
+        jCheckBox145 = new javax.swing.JCheckBox();
+        jCheckBox146 = new javax.swing.JCheckBox();
+        jPanel129 = new javax.swing.JPanel();
+        jLabel120 = new javax.swing.JLabel();
+        jCheckBox147 = new javax.swing.JCheckBox();
+        jCheckBox148 = new javax.swing.JCheckBox();
+        jCheckBox149 = new javax.swing.JCheckBox();
+        jCheckBox150 = new javax.swing.JCheckBox();
+        jCheckBox151 = new javax.swing.JCheckBox();
+        jCheckBox152 = new javax.swing.JCheckBox();
+        jPanel130 = new javax.swing.JPanel();
+        jLabel121 = new javax.swing.JLabel();
+        jCheckBox153 = new javax.swing.JCheckBox();
+        jCheckBox154 = new javax.swing.JCheckBox();
+        jCheckBox155 = new javax.swing.JCheckBox();
+        jCheckBox156 = new javax.swing.JCheckBox();
+        jCheckBox157 = new javax.swing.JCheckBox();
+        jCheckBox158 = new javax.swing.JCheckBox();
         jPanel55 = new javax.swing.JPanel();
-        jScrollPane19 = new javax.swing.JScrollPane();
-        tb_danhSachChiNhanh1 = new javax.swing.JTable();
+        jPanel59 = new javax.swing.JPanel();
+        jLabel47 = new javax.swing.JLabel();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jPanel60 = new javax.swing.JPanel();
+        jLabel65 = new javax.swing.JLabel();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox25 = new javax.swing.JCheckBox();
+        jCheckBox26 = new javax.swing.JCheckBox();
+        jCheckBox27 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jPanel61 = new javax.swing.JPanel();
+        jLabel66 = new javax.swing.JLabel();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox31 = new javax.swing.JCheckBox();
+        jCheckBox32 = new javax.swing.JCheckBox();
+        jCheckBox33 = new javax.swing.JCheckBox();
+        jPanel62 = new javax.swing.JPanel();
+        jLabel73 = new javax.swing.JLabel();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox34 = new javax.swing.JCheckBox();
+        jCheckBox35 = new javax.swing.JCheckBox();
+        jCheckBox36 = new javax.swing.JCheckBox();
+        jCheckBox37 = new javax.swing.JCheckBox();
+        jCheckBox38 = new javax.swing.JCheckBox();
+        jPanel64 = new javax.swing.JPanel();
+        jLabel74 = new javax.swing.JLabel();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox39 = new javax.swing.JCheckBox();
+        jCheckBox40 = new javax.swing.JCheckBox();
+        jCheckBox41 = new javax.swing.JCheckBox();
+        jCheckBox42 = new javax.swing.JCheckBox();
+        jCheckBox43 = new javax.swing.JCheckBox();
+        jPanel100 = new javax.swing.JPanel();
+        jLabel96 = new javax.swing.JLabel();
+        jCheckBox7 = new javax.swing.JCheckBox();
+        jCheckBox44 = new javax.swing.JCheckBox();
+        jCheckBox45 = new javax.swing.JCheckBox();
+        jCheckBox46 = new javax.swing.JCheckBox();
+        jCheckBox47 = new javax.swing.JCheckBox();
+        jCheckBox48 = new javax.swing.JCheckBox();
+        jPanel101 = new javax.swing.JPanel();
+        jLabel97 = new javax.swing.JLabel();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jCheckBox49 = new javax.swing.JCheckBox();
+        jCheckBox50 = new javax.swing.JCheckBox();
+        jCheckBox51 = new javax.swing.JCheckBox();
+        jCheckBox52 = new javax.swing.JCheckBox();
+        jCheckBox53 = new javax.swing.JCheckBox();
+        jPanel104 = new javax.swing.JPanel();
+        jLabel98 = new javax.swing.JLabel();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox54 = new javax.swing.JCheckBox();
+        jCheckBox55 = new javax.swing.JCheckBox();
+        jCheckBox56 = new javax.swing.JCheckBox();
+        jCheckBox57 = new javax.swing.JCheckBox();
+        jCheckBox58 = new javax.swing.JCheckBox();
+        jPanel108 = new javax.swing.JPanel();
+        jLabel100 = new javax.swing.JLabel();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox64 = new javax.swing.JCheckBox();
+        jCheckBox65 = new javax.swing.JCheckBox();
+        jCheckBox66 = new javax.swing.JCheckBox();
+        jCheckBox67 = new javax.swing.JCheckBox();
+        jCheckBox68 = new javax.swing.JCheckBox();
+        jPanel110 = new javax.swing.JPanel();
+        jLabel102 = new javax.swing.JLabel();
+        jCheckBox69 = new javax.swing.JCheckBox();
+        jCheckBox70 = new javax.swing.JCheckBox();
+        jCheckBox71 = new javax.swing.JCheckBox();
+        jCheckBox72 = new javax.swing.JCheckBox();
+        jCheckBox73 = new javax.swing.JCheckBox();
+        jCheckBox74 = new javax.swing.JCheckBox();
         jPanel27 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -573,9 +787,10 @@ public class TrangChu extends javax.swing.JFrame {
         jYearChooser2 = new com.toedter.calendar.JYearChooser();
         jRadioButton12 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
+        jPanel51 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(242, 249, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -616,11 +831,14 @@ public class TrangChu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 0, 210, 60));
 
+        tabbedPane_trangChu.setBackground(new java.awt.Color(242, 249, 255));
         tabbedPane_trangChu.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPane_trangChuStateChanged(evt);
             }
         });
+
+        jPanel26.setBackground(new java.awt.Color(242, 249, 255));
 
         jPanel29.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -898,12 +1116,14 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabbedPane_trangChu.addTab("Hàng hóa", jPanel26);
 
+        tabPane_giaoDich.setBackground(new java.awt.Color(242, 249, 255));
         tabPane_giaoDich.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabPane_giaoDichStateChanged(evt);
             }
         });
 
+        jPanel9.setBackground(new java.awt.Color(242, 249, 255));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel65.setBackground(new java.awt.Color(0, 153, 255));
@@ -971,6 +1191,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel9.add(jPanel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1520, 50));
 
+        jPanel85.setBackground(new java.awt.Color(242, 249, 255));
         jPanel85.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbDatHang_danhSachHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -1288,6 +1509,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabPane_giaoDich.addTab("Đặt hàng", jPanel9);
 
+        jPanel8.setBackground(new java.awt.Color(242, 249, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel91.setBackground(new java.awt.Color(255, 255, 255));
@@ -1487,7 +1709,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabPane_giaoDich.addTab("Hóa đơn", jPanel8);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(242, 249, 255));
 
         tbTraHang_danhSachPhieuTraHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbTraHang_danhSachPhieuTraHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -1555,7 +1777,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabPane_giaoDich.addTab("Trả hàng", jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(242, 249, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tb_danhSachPhieuSuaChua.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -1621,7 +1843,7 @@ public class TrangChu extends javax.swing.JFrame {
         });
         jPanel6.add(btnSuaChua_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(1390, 130, 121, 35));
 
-        jPanel63.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel63.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel6.setText("Số điện thoại:");
@@ -1636,7 +1858,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel63Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(lbSuaChua_soDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
         );
@@ -1650,9 +1872,9 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jPanel6.add(jPanel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel6.add(jPanel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 380, -1));
 
-        jPanel66.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel66.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel52.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel52.setText("Nhân viên:");
@@ -1669,7 +1891,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addComponent(jLabel52)
                 .addGap(18, 18, 18)
                 .addComponent(cb_nhanVienSuaChua, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel66Layout.setVerticalGroup(
             jPanel66Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1681,9 +1903,9 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        jPanel6.add(jPanel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 320, 40));
+        jPanel6.add(jPanel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 380, 40));
 
-        jPanel67.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel67.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel53.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel53.setText("Nội dung sửa chữa:");
@@ -1716,7 +1938,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel6.add(jPanel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 470, 140));
 
-        jPanel69.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel69.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel56.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel56.setText("Loại xe:");
@@ -1747,7 +1969,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel6.add(jPanel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 470, 40));
 
-        jPanel68.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel68.setBackground(new java.awt.Color(242, 249, 255));
 
         cb_phuTungCanThay.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cb_phuTungCanThay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Phuộc xe", "Item 2", "Item 3", "Item 4" }));
@@ -1764,7 +1986,7 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jPanel111.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel111.setBackground(new java.awt.Color(242, 249, 255));
         jPanel111.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbSuaChua_chiMucKhachHang2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -1828,7 +2050,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel6.add(jPanel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 470, 140));
 
-        jPanel109.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel109.setBackground(new java.awt.Color(242, 249, 255));
         jPanel109.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbSuaChua_chiMucKhachHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -1910,6 +2132,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel70.setBackground(new java.awt.Color(242, 249, 255));
         jPanel70.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel92.setBackground(new java.awt.Color(255, 255, 255));
@@ -2083,6 +2306,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel70.add(jPanel128, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 250, 130));
 
+        jPanel7.setBackground(new java.awt.Color(242, 249, 255));
+
         btnNhapHang_them.setBackground(new java.awt.Color(0, 204, 0));
         btnNhapHang_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnNhapHang_them.setForeground(new java.awt.Color(255, 255, 255));
@@ -2161,12 +2386,16 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabbedPane_trangChu.addTab("Giao dịch", tabPane_giaoDich);
 
+        tabbedPane_doiTac.setBackground(new java.awt.Color(242, 249, 255));
         tabbedPane_doiTac.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPane_doiTacStateChanged(evt);
             }
         });
 
+        jPanel11.setBackground(new java.awt.Color(242, 249, 255));
+
+        jPanel71.setBackground(new java.awt.Color(242, 249, 255));
         jPanel71.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel93.setBackground(new java.awt.Color(255, 255, 255));
@@ -2220,6 +2449,8 @@ public class TrangChu extends javax.swing.JFrame {
         jScrollPane12.setViewportView(tb_danhSachKhachHang);
 
         jPanel71.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1520, 500));
+
+        jPanel72.setBackground(new java.awt.Color(242, 249, 255));
 
         btnKhachHang_them.setBackground(new java.awt.Color(0, 204, 0));
         btnKhachHang_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -2303,6 +2534,9 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabbedPane_doiTac.addTab("Khách hàng", jPanel11);
 
+        jPanel12.setBackground(new java.awt.Color(242, 249, 255));
+
+        jPanel73.setBackground(new java.awt.Color(242, 249, 255));
         jPanel73.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel94.setBackground(new java.awt.Color(255, 255, 255));
@@ -2430,12 +2664,16 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabbedPane_trangChu.addTab("Đối tác", tabbedPane_doiTac);
 
+        tabbedPane_nhanVien.setBackground(new java.awt.Color(242, 249, 255));
         tabbedPane_nhanVien.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPane_nhanVienStateChanged(evt);
             }
         });
 
+        jPanel23.setBackground(new java.awt.Color(242, 249, 255));
+
+        jPanel75.setBackground(new java.awt.Color(242, 249, 255));
         jPanel75.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNhanVienChiNhanh_themNhanVien.setBackground(new java.awt.Color(0, 204, 0));
@@ -2564,6 +2802,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel75.add(jPanel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 420, 40));
 
+        jPanel87.setBackground(new java.awt.Color(242, 249, 255));
+
         jLabel55.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel55.setText("Danh sách nhân viên");
         jLabel55.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -2610,6 +2850,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel20.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         jPanel75.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jPanel39.setBackground(new java.awt.Color(242, 249, 255));
         jPanel39.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNhanVienChiNhanh_xemChiTiet.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -2654,6 +2895,7 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabbedPane_nhanVien.addTab("Nhân viên/ Chi nhánh", jPanel23);
 
+        jPanel24.setBackground(new java.awt.Color(242, 249, 255));
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tb_danhSachBangChamCong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -2901,6 +3143,8 @@ public class TrangChu extends javax.swing.JFrame {
         );
 
         jPanel24.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 83, 262, -1));
+
+        jPanel25.setBackground(new java.awt.Color(242, 249, 255));
 
         btnChamCong_timKiem.setBackground(new java.awt.Color(0, 153, 153));
         btnChamCong_timKiem.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -3933,35 +4177,443 @@ public class TrangChu extends javax.swing.JFrame {
 
         tabbedPane_nhanVien.addTab("Lịch làm việc", jPanel40);
 
-        javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
-        jPanel49.setLayout(jPanel49Layout);
-        jPanel49Layout.setHorizontalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1540, Short.MAX_VALUE)
+        jPanel49.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel49.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel57.setBackground(new java.awt.Color(242, 249, 255));
+
+        jLabel30.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel30.setText("Danh mục chức năng");
+
+        jLabel32.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel32.setText("Xem");
+
+        jLabel33.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel33.setText("Thêm");
+
+        jLabel34.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel34.setText("Cập nhật");
+
+        jLabel36.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel36.setText("Import");
+
+        jLabel39.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel39.setText("Export");
+        jLabel39.setToolTipText("");
+
+        jLabel40.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel40.setText("Gửi mail");
+        jLabel40.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel57Layout = new javax.swing.GroupLayout(jPanel57);
+        jPanel57.setLayout(jPanel57Layout);
+        jPanel57Layout.setHorizontalGroup(
+            jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel57Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel30)
+                .addGap(147, 147, 147)
+                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(170, 170, 170)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(158, 158, 158)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141)
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(136, 136, 136)
+                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
-        jPanel49Layout.setVerticalGroup(
-            jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+        jPanel57Layout.setVerticalGroup(
+            jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel57Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel57Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel40))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel49.add(jPanel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+
+        jPanel58.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel58.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel41.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel41.setText("Quản lý bảng chấm công");
+        jPanel58.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel58.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel58.add(jCheckBox18, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel58.add(jCheckBox17, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel58.add(jCheckBox16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel58.add(jCheckBox15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel58.add(jCheckBox14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, -1, -1));
+
+        jPanel112.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel112.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel48.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel48.setText("Quản lý bảng chấm công");
+        jPanel112.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel112.add(jCheckBox75, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel112.add(jCheckBox76, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel112.add(jCheckBox77, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel112.add(jCheckBox78, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel112.add(jCheckBox79, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel112.add(jCheckBox80, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, -1, -1));
+
+        jPanel113.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel113.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel49.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel49.setText("Quản lý bảng chấm công");
+        jPanel113.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel113.add(jCheckBox81, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel113.add(jCheckBox82, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel113.add(jCheckBox83, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel113.add(jCheckBox84, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel113.add(jCheckBox85, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel113.add(jCheckBox86, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
+
+        jPanel114.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel114.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel50.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel50.setText("Quản lý bảng chấm công");
+        jPanel114.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel114.add(jCheckBox87, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel114.add(jCheckBox88, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel114.add(jCheckBox89, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel114.add(jCheckBox90, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel114.add(jCheckBox91, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel114.add(jCheckBox92, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
+
+        jPanel115.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel115.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel51.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel51.setText("Quản lý bảng chấm công");
+        jPanel115.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel115.add(jCheckBox93, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel115.add(jCheckBox94, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel115.add(jCheckBox95, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel115.add(jCheckBox96, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel115.add(jCheckBox97, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel115.add(jCheckBox98, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+
+        jPanel116.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel116.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel54.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel54.setText("Quản lý bảng chấm công");
+        jPanel116.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel116.add(jCheckBox99, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel116.add(jCheckBox100, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel116.add(jCheckBox101, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel116.add(jCheckBox102, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel116.add(jCheckBox103, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel116.add(jCheckBox104, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, -1, -1));
+
+        jPanel117.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel117.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel103.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel103.setText("Quản lý bảng chấm công");
+        jPanel117.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel117.add(jCheckBox105, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel117.add(jCheckBox106, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel117.add(jCheckBox107, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel117.add(jCheckBox108, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel117.add(jCheckBox109, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel117.add(jCheckBox110, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel117, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
+
+        jPanel118.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel118.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel104.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel104.setText("Quản lý bảng chấm công");
+        jPanel118.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel118.add(jCheckBox111, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel118.add(jCheckBox112, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel118.add(jCheckBox113, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel118.add(jCheckBox114, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel118.add(jCheckBox115, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel118.add(jCheckBox116, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel118, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, -1, -1));
+
+        jPanel119.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel119.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel105.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel105.setText("Quản lý bảng chấm công");
+        jPanel119.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel119.add(jCheckBox117, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel119.add(jCheckBox118, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel119.add(jCheckBox119, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel119.add(jCheckBox120, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel119.add(jCheckBox121, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel119.add(jCheckBox122, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
+
+        jPanel105.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel105.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel99.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel99.setText("Quản lý bảng chấm công");
+        jPanel105.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel105.add(jCheckBox10, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel105.add(jCheckBox59, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel105.add(jCheckBox60, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel105.add(jCheckBox61, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel105.add(jCheckBox62, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel105.add(jCheckBox63, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
+
+        jPanel120.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel120.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel106.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel106.setText("Quản lý bảng chấm công");
+        jPanel120.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel120.add(jCheckBox123, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel120.add(jCheckBox124, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel120.add(jCheckBox125, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel120.add(jCheckBox126, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel120.add(jCheckBox127, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel120.add(jCheckBox128, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, -1));
+
+        jPanel121.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel121.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel107.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel107.setText("Quản lý bảng chấm công");
+        jPanel121.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel121.add(jCheckBox129, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel121.add(jCheckBox130, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel121.add(jCheckBox131, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel121.add(jCheckBox132, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel121.add(jCheckBox133, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel121.add(jCheckBox134, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, -1, -1));
+
+        jPanel122.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel122.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel108.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel108.setText("Quản lý bảng chấm công");
+        jPanel122.add(jLabel108, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel122.add(jCheckBox135, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel122.add(jCheckBox136, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel122.add(jCheckBox137, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel122.add(jCheckBox138, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel122.add(jCheckBox139, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel122.add(jCheckBox140, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel122, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, -1));
+
+        jPanel123.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel123.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel119.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel119.setText("Quản lý bảng chấm công");
+        jPanel123.add(jLabel119, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel123.add(jCheckBox141, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel123.add(jCheckBox142, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel123.add(jCheckBox143, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel123.add(jCheckBox144, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel123.add(jCheckBox145, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel123.add(jCheckBox146, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel123, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
+
+        jPanel129.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel129.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel120.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel120.setText("Quản lý bảng chấm công");
+        jPanel129.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel129.add(jCheckBox147, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel129.add(jCheckBox148, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel129.add(jCheckBox149, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel129.add(jCheckBox150, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel129.add(jCheckBox151, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel129.add(jCheckBox152, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel129, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, -1));
+
+        jPanel130.setBackground(new java.awt.Color(172, 234, 255));
+        jPanel130.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel121.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel121.setText("Quản lý bảng chấm công");
+        jPanel130.add(jLabel121, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel130.add(jCheckBox153, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel130.add(jCheckBox154, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel130.add(jCheckBox155, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel130.add(jCheckBox156, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel130.add(jCheckBox157, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel130.add(jCheckBox158, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel49.add(jPanel130, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, -1, -1));
 
         tabbedPane_nhanVien.addTab("Phân quyền", jPanel49);
 
-        tb_danhSachChiNhanh1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        tb_danhSachChiNhanh1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jPanel59.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel59.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-            },
-            new String [] {
-                "Mã chi nhánh", "Tên chi nhánh"
-            }
-        ));
-        tb_danhSachChiNhanh1.setRowHeight(30);
-        tb_danhSachChiNhanh1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tb_danhSachChiNhanh1MouseClicked(evt);
-            }
-        });
-        jScrollPane19.setViewportView(tb_danhSachChiNhanh1);
+        jLabel47.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel47.setText("Quản lý bảng chấm công");
+        jPanel59.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel59.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel59.add(jCheckBox19, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel59.add(jCheckBox20, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel59.add(jCheckBox21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel59.add(jCheckBox22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel59.add(jCheckBox23, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel60.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel60.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel65.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel65.setText("Quản lý bảng chấm công");
+        jPanel60.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel60.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel60.add(jCheckBox24, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel60.add(jCheckBox25, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel60.add(jCheckBox26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel60.add(jCheckBox27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel60.add(jCheckBox28, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel61.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel61.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel66.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel66.setText("Quản lý bảng chấm công");
+        jPanel61.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel61.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel61.add(jCheckBox29, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel61.add(jCheckBox30, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel61.add(jCheckBox31, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel61.add(jCheckBox32, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel61.add(jCheckBox33, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel62.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel62.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel73.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel73.setText("Quản lý bảng chấm công");
+        jPanel62.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel62.add(jCheckBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel62.add(jCheckBox34, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel62.add(jCheckBox35, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel62.add(jCheckBox36, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel62.add(jCheckBox37, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel62.add(jCheckBox38, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel64.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel64.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel74.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel74.setText("Quản lý bảng chấm công");
+        jPanel64.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel64.add(jCheckBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel64.add(jCheckBox39, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel64.add(jCheckBox40, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel64.add(jCheckBox41, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel64.add(jCheckBox42, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel64.add(jCheckBox43, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel100.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel100.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel96.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel96.setText("Quản lý bảng chấm công");
+        jPanel100.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel100.add(jCheckBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel100.add(jCheckBox44, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel100.add(jCheckBox45, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel100.add(jCheckBox46, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel100.add(jCheckBox47, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel100.add(jCheckBox48, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel101.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel101.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel97.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel97.setText("Quản lý bảng chấm công");
+        jPanel101.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel101.add(jCheckBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel101.add(jCheckBox49, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel101.add(jCheckBox50, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel101.add(jCheckBox51, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel101.add(jCheckBox52, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel101.add(jCheckBox53, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel104.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel104.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel98.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel98.setText("Quản lý bảng chấm công");
+        jPanel104.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel104.add(jCheckBox9, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel104.add(jCheckBox54, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel104.add(jCheckBox55, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel104.add(jCheckBox56, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel104.add(jCheckBox57, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel104.add(jCheckBox58, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel108.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel108.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel100.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel100.setText("Quản lý bảng chấm công");
+        jPanel108.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel108.add(jCheckBox13, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel108.add(jCheckBox64, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel108.add(jCheckBox65, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel108.add(jCheckBox66, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel108.add(jCheckBox67, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel108.add(jCheckBox68, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
+
+        jPanel110.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel110.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel102.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel102.setText("Quản lý bảng chấm công");
+        jPanel110.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
+        jPanel110.add(jCheckBox69, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
+        jPanel110.add(jCheckBox70, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
+        jPanel110.add(jCheckBox71, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
+        jPanel110.add(jCheckBox72, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
+        jPanel110.add(jCheckBox73, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
+        jPanel110.add(jCheckBox74, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
         jPanel55.setLayout(jPanel55Layout);
@@ -3969,26 +4621,54 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1540, Short.MAX_VALUE)
             .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
-                    .addContainerGap(10, Short.MAX_VALUE)
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1078, Short.MAX_VALUE)))
+                .addGroup(jPanel55Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel59, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel60, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel61, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel64, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel104, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel108, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel110, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap()))
         );
         jPanel55Layout.setVerticalGroup(
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 630, Short.MAX_VALUE)
             .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel55Layout.createSequentialGroup()
-                    .addContainerGap(260, Short.MAX_VALUE)
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(260, Short.MAX_VALUE)))
+                .addGroup(jPanel55Layout.createSequentialGroup()
+                    .addGap(174, 174, 174)
+                    .addComponent(jPanel59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(142, 142, 142)))
         );
 
         tabbedPane_nhanVien.addTab("tab5", jPanel55);
 
         tabbedPane_trangChu.addTab("Nhân sự", tabbedPane_nhanVien);
 
-        jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel27.setBackground(new java.awt.Color(242, 249, 255));
 
         jPanel35.setBackground(new java.awt.Color(255, 255, 255));
         jPanel35.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
@@ -4315,6 +4995,8 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(421, Short.MAX_VALUE))
         );
 
+        jPanel28.setBackground(new java.awt.Color(242, 249, 255));
+
         jLabel67.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel67.setText("Tìm kiếm");
 
@@ -4560,6 +5242,21 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Screenshot 2024-02-26 152859.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 50));
         jLabel4.getAccessibleContext().setAccessibleName("m");
+
+        jPanel51.setBackground(new java.awt.Color(242, 249, 255));
+
+        javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
+        jPanel51.setLayout(jPanel51Layout);
+        jPanel51Layout.setHorizontalGroup(
+            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1550, Short.MAX_VALUE)
+        );
+        jPanel51Layout.setVerticalGroup(
+            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1550, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -5991,10 +6688,6 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLichLamViec_lapPhieuLuongActionPerformed
 
-    private void tb_danhSachChiNhanh1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachChiNhanh1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tb_danhSachChiNhanh1MouseClicked
-
     private void tbLichLamViec_danhSachChiNhanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbLichLamViec_danhSachChiNhanhMouseClicked
         int index = tbLichLamViec_danhSachChiNhanh.getSelectedRow();
         TableModel model = tbLichLamViec_danhSachChiNhanh.getModel();
@@ -7262,8 +7955,164 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton29;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox100;
+    private javax.swing.JCheckBox jCheckBox101;
+    private javax.swing.JCheckBox jCheckBox102;
+    private javax.swing.JCheckBox jCheckBox103;
+    private javax.swing.JCheckBox jCheckBox104;
+    private javax.swing.JCheckBox jCheckBox105;
+    private javax.swing.JCheckBox jCheckBox106;
+    private javax.swing.JCheckBox jCheckBox107;
+    private javax.swing.JCheckBox jCheckBox108;
+    private javax.swing.JCheckBox jCheckBox109;
     private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox110;
+    private javax.swing.JCheckBox jCheckBox111;
+    private javax.swing.JCheckBox jCheckBox112;
+    private javax.swing.JCheckBox jCheckBox113;
+    private javax.swing.JCheckBox jCheckBox114;
+    private javax.swing.JCheckBox jCheckBox115;
+    private javax.swing.JCheckBox jCheckBox116;
+    private javax.swing.JCheckBox jCheckBox117;
+    private javax.swing.JCheckBox jCheckBox118;
+    private javax.swing.JCheckBox jCheckBox119;
     private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox120;
+    private javax.swing.JCheckBox jCheckBox121;
+    private javax.swing.JCheckBox jCheckBox122;
+    private javax.swing.JCheckBox jCheckBox123;
+    private javax.swing.JCheckBox jCheckBox124;
+    private javax.swing.JCheckBox jCheckBox125;
+    private javax.swing.JCheckBox jCheckBox126;
+    private javax.swing.JCheckBox jCheckBox127;
+    private javax.swing.JCheckBox jCheckBox128;
+    private javax.swing.JCheckBox jCheckBox129;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox130;
+    private javax.swing.JCheckBox jCheckBox131;
+    private javax.swing.JCheckBox jCheckBox132;
+    private javax.swing.JCheckBox jCheckBox133;
+    private javax.swing.JCheckBox jCheckBox134;
+    private javax.swing.JCheckBox jCheckBox135;
+    private javax.swing.JCheckBox jCheckBox136;
+    private javax.swing.JCheckBox jCheckBox137;
+    private javax.swing.JCheckBox jCheckBox138;
+    private javax.swing.JCheckBox jCheckBox139;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox140;
+    private javax.swing.JCheckBox jCheckBox141;
+    private javax.swing.JCheckBox jCheckBox142;
+    private javax.swing.JCheckBox jCheckBox143;
+    private javax.swing.JCheckBox jCheckBox144;
+    private javax.swing.JCheckBox jCheckBox145;
+    private javax.swing.JCheckBox jCheckBox146;
+    private javax.swing.JCheckBox jCheckBox147;
+    private javax.swing.JCheckBox jCheckBox148;
+    private javax.swing.JCheckBox jCheckBox149;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox150;
+    private javax.swing.JCheckBox jCheckBox151;
+    private javax.swing.JCheckBox jCheckBox152;
+    private javax.swing.JCheckBox jCheckBox153;
+    private javax.swing.JCheckBox jCheckBox154;
+    private javax.swing.JCheckBox jCheckBox155;
+    private javax.swing.JCheckBox jCheckBox156;
+    private javax.swing.JCheckBox jCheckBox157;
+    private javax.swing.JCheckBox jCheckBox158;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox25;
+    private javax.swing.JCheckBox jCheckBox26;
+    private javax.swing.JCheckBox jCheckBox27;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox29;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox30;
+    private javax.swing.JCheckBox jCheckBox31;
+    private javax.swing.JCheckBox jCheckBox32;
+    private javax.swing.JCheckBox jCheckBox33;
+    private javax.swing.JCheckBox jCheckBox34;
+    private javax.swing.JCheckBox jCheckBox35;
+    private javax.swing.JCheckBox jCheckBox36;
+    private javax.swing.JCheckBox jCheckBox37;
+    private javax.swing.JCheckBox jCheckBox38;
+    private javax.swing.JCheckBox jCheckBox39;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox40;
+    private javax.swing.JCheckBox jCheckBox41;
+    private javax.swing.JCheckBox jCheckBox42;
+    private javax.swing.JCheckBox jCheckBox43;
+    private javax.swing.JCheckBox jCheckBox44;
+    private javax.swing.JCheckBox jCheckBox45;
+    private javax.swing.JCheckBox jCheckBox46;
+    private javax.swing.JCheckBox jCheckBox47;
+    private javax.swing.JCheckBox jCheckBox48;
+    private javax.swing.JCheckBox jCheckBox49;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox50;
+    private javax.swing.JCheckBox jCheckBox51;
+    private javax.swing.JCheckBox jCheckBox52;
+    private javax.swing.JCheckBox jCheckBox53;
+    private javax.swing.JCheckBox jCheckBox54;
+    private javax.swing.JCheckBox jCheckBox55;
+    private javax.swing.JCheckBox jCheckBox56;
+    private javax.swing.JCheckBox jCheckBox57;
+    private javax.swing.JCheckBox jCheckBox58;
+    private javax.swing.JCheckBox jCheckBox59;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox60;
+    private javax.swing.JCheckBox jCheckBox61;
+    private javax.swing.JCheckBox jCheckBox62;
+    private javax.swing.JCheckBox jCheckBox63;
+    private javax.swing.JCheckBox jCheckBox64;
+    private javax.swing.JCheckBox jCheckBox65;
+    private javax.swing.JCheckBox jCheckBox66;
+    private javax.swing.JCheckBox jCheckBox67;
+    private javax.swing.JCheckBox jCheckBox68;
+    private javax.swing.JCheckBox jCheckBox69;
+    private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox70;
+    private javax.swing.JCheckBox jCheckBox71;
+    private javax.swing.JCheckBox jCheckBox72;
+    private javax.swing.JCheckBox jCheckBox73;
+    private javax.swing.JCheckBox jCheckBox74;
+    private javax.swing.JCheckBox jCheckBox75;
+    private javax.swing.JCheckBox jCheckBox76;
+    private javax.swing.JCheckBox jCheckBox77;
+    private javax.swing.JCheckBox jCheckBox78;
+    private javax.swing.JCheckBox jCheckBox79;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox80;
+    private javax.swing.JCheckBox jCheckBox81;
+    private javax.swing.JCheckBox jCheckBox82;
+    private javax.swing.JCheckBox jCheckBox83;
+    private javax.swing.JCheckBox jCheckBox84;
+    private javax.swing.JCheckBox jCheckBox85;
+    private javax.swing.JCheckBox jCheckBox86;
+    private javax.swing.JCheckBox jCheckBox87;
+    private javax.swing.JCheckBox jCheckBox88;
+    private javax.swing.JCheckBox jCheckBox89;
+    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JCheckBox jCheckBox90;
+    private javax.swing.JCheckBox jCheckBox91;
+    private javax.swing.JCheckBox jCheckBox92;
+    private javax.swing.JCheckBox jCheckBox93;
+    private javax.swing.JCheckBox jCheckBox94;
+    private javax.swing.JCheckBox jCheckBox95;
+    private javax.swing.JCheckBox jCheckBox96;
+    private javax.swing.JCheckBox jCheckBox97;
+    private javax.swing.JCheckBox jCheckBox98;
+    private javax.swing.JCheckBox jCheckBox99;
     private javax.swing.JComboBox<String> jComboBox8;
     private com.toedter.calendar.JDateChooser jDateChooser10;
     private com.toedter.calendar.JDateChooser jDateChooser11;
@@ -7272,7 +8121,15 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
@@ -7284,7 +8141,10 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
+    private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel120;
+    private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -7313,22 +8173,36 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel299;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel304;
     private javax.swing.JLabel jLabel305;
     private javax.swing.JLabel jLabel306;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
@@ -7340,6 +8214,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
@@ -7347,6 +8223,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
@@ -7370,23 +8248,47 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private com.toedter.calendar.JMonthChooser jMonthChooser2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel100;
+    private javax.swing.JPanel jPanel101;
     private javax.swing.JPanel jPanel102;
     private javax.swing.JPanel jPanel103;
+    private javax.swing.JPanel jPanel104;
+    private javax.swing.JPanel jPanel105;
     private javax.swing.JPanel jPanel106;
     private javax.swing.JPanel jPanel107;
+    private javax.swing.JPanel jPanel108;
     private javax.swing.JPanel jPanel109;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel110;
     private javax.swing.JPanel jPanel111;
+    private javax.swing.JPanel jPanel112;
+    private javax.swing.JPanel jPanel113;
+    private javax.swing.JPanel jPanel114;
+    private javax.swing.JPanel jPanel115;
+    private javax.swing.JPanel jPanel116;
+    private javax.swing.JPanel jPanel117;
+    private javax.swing.JPanel jPanel118;
+    private javax.swing.JPanel jPanel119;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel120;
+    private javax.swing.JPanel jPanel121;
+    private javax.swing.JPanel jPanel122;
+    private javax.swing.JPanel jPanel123;
     private javax.swing.JPanel jPanel124;
     private javax.swing.JPanel jPanel125;
     private javax.swing.JPanel jPanel126;
     private javax.swing.JPanel jPanel127;
     private javax.swing.JPanel jPanel128;
+    private javax.swing.JPanel jPanel129;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel130;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -7433,13 +8335,21 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel50;
+    private javax.swing.JPanel jPanel51;
     private javax.swing.JPanel jPanel52;
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
     private javax.swing.JPanel jPanel55;
     private javax.swing.JPanel jPanel56;
+    private javax.swing.JPanel jPanel57;
+    private javax.swing.JPanel jPanel58;
+    private javax.swing.JPanel jPanel59;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel60;
+    private javax.swing.JPanel jPanel61;
+    private javax.swing.JPanel jPanel62;
     private javax.swing.JPanel jPanel63;
+    private javax.swing.JPanel jPanel64;
     private javax.swing.JPanel jPanel65;
     private javax.swing.JPanel jPanel66;
     private javax.swing.JPanel jPanel67;
@@ -7492,7 +8402,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
-    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane3;
@@ -7544,7 +8453,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTable tbTraHang_danhSachPhieuTraHang;
     private javax.swing.JTable tb_danhSachBangChamCong;
     private javax.swing.JTable tb_danhSachChiNhanh;
-    private javax.swing.JTable tb_danhSachChiNhanh1;
     private javax.swing.JTable tb_danhSachHangHoa;
     private javax.swing.JTable tb_danhSachKhachHang;
     private javax.swing.JTable tb_danhSachNhaCungCap;
