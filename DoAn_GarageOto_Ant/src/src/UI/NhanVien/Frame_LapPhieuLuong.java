@@ -37,6 +37,10 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private LichLamViecService lichLamViecService = new LichLamViecService();
     private LichLamViecCaLamService lichLamViecCaLamService = new LichLamViecCaLamService();
     private NhanVien nhanVien;
+    
+    private LichLamViec lichLamViecMain = new LichLamViec();
+    private List<LichLamViec> danhSachLichTangCaMain = new ArrayList<>();
+    private List<BangLuong> danhSachTroCapMain = new ArrayList<>();
     /**
      * Creates new form Frame_BangLuong
      */
@@ -639,7 +643,10 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLapPhieuLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapPhieuLuongActionPerformed
-        
+        Frame_PhieuLuong frame_PhieuLuong = new Frame_PhieuLuong(lichLamViecMain, danhSachLichTangCaMain, danhSachTroCapMain, nhanVien);
+        frame_PhieuLuong.setVisible(true);
+        frame_PhieuLuong.setSize(630, 210);
+        frame_PhieuLuong.setLocation(0,0);
         
     }//GEN-LAST:event_btnLapPhieuLuongActionPerformed
 
@@ -654,6 +661,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private void hienThiThongTinLichLamViec (int month, int year, String maNhanVien){
         try {
             LichLamViec lichLamViec = lichLamViecService.timKiemLichNghiViec(month, year, nhanVien.getMaNhanVien());
+            lichLamViecMain = lichLamViec;
             BangLuongNhanVien bangLuongNhanVien = bangLuongNhanVienService.hienThiBangLuongNhanVienTheoLichLamViec(lichLamViec.getMaLichLamViec());
             BangLuong bangLuong  = bangLuongService.hienThiBangLuongTheoMaBangLuong(bangLuongNhanVien.getMaBangLuong());
             lbMaLichLamViec.setText(lichLamViec.getMaLichLamViec());
@@ -687,8 +695,8 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     
     private void hienThiLichTangCa (int month, int year, String maNhanVien){
         try {
-            List<LichLamViec> danhSachLichLamViec = lichLamViecService.timKiemLichTangCa(month, year, nhanVien.getMaNhanVien());
-            for (LichLamViec lichLamViec : danhSachLichLamViec){
+            List<LichLamViec> danhSachLichTangCa = lichLamViecService.timKiemLichTangCa(month, year, nhanVien.getMaNhanVien());
+            for (LichLamViec lichLamViec : danhSachLichTangCa){
                 BangLuongNhanVien bangLuongNhanVien = bangLuongNhanVienService.hienThiBangLuongNhanVienTheoLichLamViec(lichLamViec.getMaLichLamViec());
                 if (bangLuongNhanVien.getMaPhieuLuong() == null){
                     lichLamViec.setDaThanhToan(false);
@@ -698,10 +706,11 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
                 BangLuong bangLuong = bangLuongService.hienThiBangLuongTheoMaBangLuong(bangLuongNhanVien.getMaBangLuong());
                 lichLamViec.setBangLuong(bangLuong);
             }
+            danhSachLichTangCaMain = danhSachLichTangCa;
             
             DefaultTableModel recordTable = (DefaultTableModel)tbLichTangCa.getModel();
             recordTable.setRowCount(0);
-            for (LichLamViec lichLamViec : danhSachLichLamViec){
+            for (LichLamViec lichLamViec : danhSachLichTangCa){
                 Vector columnData = new Vector();
                 columnData.add(lichLamViec.getMaLichLamViec());
                 columnData.add(String.valueOf(lichLamViec.getNgayBatDau()));
@@ -733,6 +742,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
                 BangLuong bangLuong = bangLuongService.hienThiBangLuongTheoMaBangLuong(bangLuongNhanVien.getMaBangLuong());
                 danhSachBangLuong.add(bangLuong);
             }
+            danhSachTroCapMain = danhSachBangLuong;
             DefaultTableModel recordTable = (DefaultTableModel)tbPhuCap.getModel();        
             recordTable.setRowCount(0);
             for (int i =0; i < danhSachBangLuong.size(); i++){
