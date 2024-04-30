@@ -79,4 +79,12 @@ public class Util {
         String formattedTime = localTime.format(formatter);
         return formattedTime;
     }
+    
+    public boolean kiemTraTonTaiChuoi(String parentString, String subString){
+        if (parentString.contains(subString)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

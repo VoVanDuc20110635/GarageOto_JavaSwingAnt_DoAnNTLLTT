@@ -4,7 +4,9 @@
  */
 package src.UI;
 
+import src.Model.NhanVien;
 import src.Service.MailSender;
+import src.Service.NhanVienService;
 
 /**
  *
@@ -12,6 +14,7 @@ import src.Service.MailSender;
  */
 public class Login extends javax.swing.JFrame {
     private MailSender mailSender = new MailSender();
+    private NhanVienService nhanVienService = new NhanVienService();
     /**
      * Creates new form Login
      */
@@ -35,12 +38,13 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        tfLoginTenTaiKhoan = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        tfLoginMatKhau = new javax.swing.JPasswordField();
+        tfLoginLogin = new javax.swing.JButton();
+        lbThongBao = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jTextArea1 = new javax.swing.JTextArea();
@@ -88,11 +92,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel5.setPreferredSize(new java.awt.Dimension(300, 165));
+        jPanel5.setPreferredSize(new java.awt.Dimension(300, 180));
 
         jPanel7.setPreferredSize(new java.awt.Dimension(250, 51));
         jPanel7.setLayout(new java.awt.BorderLayout());
-        jPanel7.add(jTextField1, java.awt.BorderLayout.SOUTH);
+        jPanel7.add(tfLoginTenTaiKhoan, java.awt.BorderLayout.SOUTH);
 
         jLabel3.setText("Username");
         jPanel7.add(jLabel3, java.awt.BorderLayout.CENTER);
@@ -104,19 +108,22 @@ public class Login extends javax.swing.JFrame {
 
         jLabel4.setText("Password");
         jPanel8.add(jLabel4, java.awt.BorderLayout.CENTER);
-        jPanel8.add(jPasswordField1, java.awt.BorderLayout.PAGE_END);
+        jPanel8.add(tfLoginMatKhau, java.awt.BorderLayout.PAGE_END);
 
         jPanel5.add(jPanel8);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.setPreferredSize(new java.awt.Dimension(250, 30));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        tfLoginLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tfLoginLogin.setText("Login");
+        tfLoginLogin.setPreferredSize(new java.awt.Dimension(250, 30));
+        tfLoginLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                tfLoginLoginActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1);
+        jPanel5.add(tfLoginLogin);
+
+        lbThongBao.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jPanel5.add(lbThongBao);
 
         jPanel1.add(jPanel5);
 
@@ -181,33 +188,18 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String to = "2k2lmhtlol@gmail.com";
-
-        // Sender's email ID needs to be mentioned
-        String from = "voduc0100@gmail.com";
-
-        // Assuming you are sending email from localhost
-        String host = "smtp.gmail.com";
-
-        // Subject
-        String subject = "This is the Subject Line!";
-
-        // Mail text
-//        String text = "This is the actual message";
-
-        String customerName = "John Doe";
-
-        // Items
-        String[][] items = {
-            {"Oil Change", "1", "$50.00", "$50.00"},
-            {"Air Filter", "2", "$15.00", "$30.00"},
-            // Add more items as necessary
-        };
-
-        
-//        mailSender.sendEmail(to, from, host, subject, customerName, items);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void tfLoginLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginLoginActionPerformed
+        NhanVien nhanVien = nhanVienService.dangNhap(tfLoginTenTaiKhoan.getText(), tfLoginMatKhau.getText());
+        if (nhanVien.getMaNhanVien() == null){
+            lbThongBao.setText("Sai tài khoản hoặc mật khẩu");
+            return;
+        }
+        TrangChu trangChu = new TrangChu(nhanVien);
+        trangChu.setVisible(true);
+        trangChu.setSize(1580, 805);
+        trangChu.setLocation(0,0);
+        this.dispose();
+    }//GEN-LAST:event_tfLoginLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,7 +237,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -260,8 +251,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbThongBao;
+    private javax.swing.JButton tfLoginLogin;
+    private javax.swing.JPasswordField tfLoginMatKhau;
+    private javax.swing.JTextField tfLoginTenTaiKhoan;
     // End of variables declaration//GEN-END:variables
 }

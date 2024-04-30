@@ -28,6 +28,10 @@ public class NhanVien {
     private String trangThai;
     private double noLuong;
     
+    private String phanQuyen;
+    private String tenTaiKhoan;
+    private String matKhau;
+    
     private ChiNhanh chiNhanh;
     private NhanVien taoBoiNhanVien;
     private LichLamViec lichLamViec;
@@ -172,6 +176,30 @@ public class NhanVien {
 
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public String getPhanQuyen() {
+        return phanQuyen;
+    }
+
+    public void setPhanQuyen(String phanQuyen) {
+        this.phanQuyen = phanQuyen;
+    }
+
+    public String getTenTaiKhoan() {
+        return tenTaiKhoan;
+    }
+
+    public void setTenTaiKhoan(String tenTaiKhoan) {
+        this.tenTaiKhoan = tenTaiKhoan;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
     
     

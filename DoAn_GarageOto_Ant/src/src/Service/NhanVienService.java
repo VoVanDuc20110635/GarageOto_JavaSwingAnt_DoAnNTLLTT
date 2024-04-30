@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import src.ConnectDB.ConnectorDB;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import src.Util.Util;
 /**
  *
@@ -48,6 +50,10 @@ public class NhanVienService {
                 nhanVien.setDiaChi(resultTable.getString("dia_chi"));
                 nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
                 nhanVien.setTrangThai(resultTable.getString("trang_thai"));
+                
+                nhanVien.setPhanQuyen(resultTable.getString("phan_quyen"));
+                nhanVien.setTenTaiKhoan(resultTable.getString("ten_tai_khoan"));
+                nhanVien.setMatKhau(resultTable.getString("mat_khau"));
 //                
             }
             danhSachNhanVien.add(nhanVien);
@@ -82,6 +88,10 @@ public class NhanVienService {
                 nhanVien.setDiaChi(resultTable.getString("dia_chi"));
                 nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
                 nhanVien.setTrangThai(resultTable.getString("trang_thai"));
+                
+                nhanVien.setPhanQuyen(resultTable.getString("phan_quyen"));
+                nhanVien.setTenTaiKhoan(resultTable.getString("ten_tai_khoan"));
+                nhanVien.setMatKhau(resultTable.getString("mat_khau"));
             }
         }
         connectorDB.closeConnection();
@@ -155,5 +165,59 @@ public class NhanVienService {
         }
         connectorDB.closeConnection();
         return numberOfRows;
+    }
+    
+    public int capNhatNhanVienXacThucPhanQuyen (String maNhanVien, String tenTaiKhoan, String matKhau, String phanQuyen) throws SQLException{ //   
+        try{
+            String query = String.format("update nhan_vien set ten_tai_khoan = '%s', mat_khau = '%s', phan_quyen = '%s' where ma_nhan_vien = '%s'",
+                             tenTaiKhoan, matKhau, phanQuyen, maNhanVien
+                             );
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
+    
+    public NhanVien dangNhap(String tenTaiKhoan, String matKhau){
+        try {
+            String query = String.format("select * from nhan_vien where ten_tai_khoan = '%s' and mat_khau = '%s'", tenTaiKhoan, matKhau);
+            ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+            ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+            int q = resultSetMetaData.getColumnCount();
+            int i;
+            NhanVien nhanVien = new NhanVien();
+            while(resultTable.next()){
+                for (i= 1; i <= q; i++){
+                    nhanVien.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+                    nhanVien.setCccd(resultTable.getString("cccd"));
+                    nhanVien.setChucDanh(resultTable.getString("chuc_danh"));
+                    nhanVien.setGioiTinh(resultTable.getString("gioi_tinh"));
+                    nhanVien.setNgayBatDauLamViec(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_bat_dau_lam_viec")));
+                    nhanVien.setNgaySinh(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_sinh")));
+                    nhanVien.setSoDienThoai(resultTable.getString("so_dien_thoai"));
+                    nhanVien.setTenNhanVien(resultTable.getString("ten_nhan_vien"));
+                    nhanVien.setNoLuong(Double.parseDouble(resultTable.getString("no_luong")));
+                    
+                    nhanVien.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
+                    // vi nhan vien lai la 1-1 voi nhan vien nen lay ma duoc roi, keo bi lap vo hang
+                    nhanVien.setTaoBoiMaNhanVien(resultTable.getString("tao_boi_ma_nhan_vien"));
+                    
+                    nhanVien.setDiaChi(resultTable.getString("dia_chi"));
+                    nhanVien.setMaSoThue(resultTable.getString("ma_so_thue"));
+                    nhanVien.setTrangThai(resultTable.getString("trang_thai"));
+                    
+                    nhanVien.setPhanQuyen(resultTable.getString("phan_quyen"));
+                    nhanVien.setTenTaiKhoan(resultTable.getString("ten_tai_khoan"));
+                    nhanVien.setMatKhau(resultTable.getString("mat_khau"));
+                }
+            }
+            connectorDB.closeConnection();
+            return nhanVien;
+        } catch (SQLException ex) {
+            return new NhanVien();
+        }
+        
     }
 }
