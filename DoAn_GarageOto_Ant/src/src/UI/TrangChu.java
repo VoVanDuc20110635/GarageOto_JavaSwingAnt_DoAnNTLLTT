@@ -7417,6 +7417,10 @@ public class TrangChu extends javax.swing.JFrame {
             tfPhanQuyen_matKhau.setText(nhanVien.getMatKhau());
             tfPhanQuyen_tenTenKhoan.setText(nhanVien.getTenTaiKhoan());
             String tokenPhanQuyen = nhanVien.getPhanQuyen();
+            if (tokenPhanQuyen == null){
+                tokenPhanQuyen = "";
+            }
+            System.out.println(tokenPhanQuyen + ".");
             hienThiQuyenTaiKhoan(tokenPhanQuyen);
             
             
@@ -7432,6 +7436,7 @@ public class TrangChu extends javax.swing.JFrame {
         try {
             String tokenPhanQuyen = getTokenPhanQuyen();
             nhanVienService.capNhatNhanVienXacThucPhanQuyen(cbPhanQuyen_nhanVien.getSelectedItem().toString().split(" ")[0], tfPhanQuyen_tenTenKhoan.getText(), tfPhanQuyen_matKhau.getText(), tokenPhanQuyen);
+            nhanVienDangNhap = nhanVienService.hienThiNhanVienTheoMaNhanVien(nhanVienDangNhap.getMaNhanVien());
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -7680,12 +7685,14 @@ public class TrangChu extends javax.swing.JFrame {
         setSelectCheckBox(checkBoxPhanQuyen_kiemKhoMail,tokenPhanQuyen, " 16.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_datHang,tokenPhanQuyen, " 17 ");
-        setSelectCheckBox(checkBoxPhanQuyen_datHang,tokenPhanQuyen, " 18 ");
+        setSelectCheckBox(checkBoxPhanQuyen_phanQuyen,tokenPhanQuyen, " 18 ");
     }
     
     private void setSelectCheckBox(JCheckBox checkBox, String tokenPhanQuyen, String quyen){
         if (util.kiemTraTonTaiChuoi(tokenPhanQuyen, quyen)){
             checkBox.setSelected(true);
+        } else {
+            checkBox.setSelected(false);
         }
     }
     
