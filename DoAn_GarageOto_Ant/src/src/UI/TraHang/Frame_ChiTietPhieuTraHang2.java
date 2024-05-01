@@ -11,6 +11,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -52,7 +53,7 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
     private PhieuTraHangService phieuTraHangService = new PhieuTraHangService();
     private MailSender mailSender = new MailSender();
     private Util util = new Util();
-    
+    private NhanVien nhanVienDangNhap;
     
     
     
@@ -67,8 +68,9 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
         this.phieuTraHang = phieuTraHang;
     }
 
-    public Frame_ChiTietPhieuTraHang2(PhieuTraHang phieuTraHang) {
+    public Frame_ChiTietPhieuTraHang2(PhieuTraHang phieuTraHang, NhanVien nhanVienDangNhap) {
         this.phieuTraHang = phieuTraHang;
+        this.nhanVienDangNhap = nhanVienDangNhap;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         try {
@@ -199,29 +201,27 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
         });
         jPanel239.add(btnChiTietPhieuTraHang_guiMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, -1, -1));
 
-        btnChiTietPhieuTraHang_in.setBackground(new java.awt.Color(51, 204, 0));
+        btnChiTietPhieuTraHang_in.setBackground(new java.awt.Color(255, 102, 102));
         btnChiTietPhieuTraHang_in.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnChiTietPhieuTraHang_in.setForeground(new java.awt.Color(255, 255, 255));
-        btnChiTietPhieuTraHang_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         btnChiTietPhieuTraHang_in.setText("In");
         btnChiTietPhieuTraHang_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietPhieuTraHang_inActionPerformed(evt);
             }
         });
-        jPanel239.add(btnChiTietPhieuTraHang_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
+        jPanel239.add(btnChiTietPhieuTraHang_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 510, -1, -1));
 
         btnChiTietPhieuTraHang_huyBo.setBackground(new java.awt.Color(255, 51, 51));
         btnChiTietPhieuTraHang_huyBo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnChiTietPhieuTraHang_huyBo.setForeground(new java.awt.Color(255, 255, 255));
-        btnChiTietPhieuTraHang_huyBo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cancel.png"))); // NOI18N
         btnChiTietPhieuTraHang_huyBo.setText("Hủy bỏ");
         btnChiTietPhieuTraHang_huyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChiTietPhieuTraHang_huyBoActionPerformed(evt);
             }
         });
-        jPanel239.add(btnChiTietPhieuTraHang_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, -1, -1));
+        jPanel239.add(btnChiTietPhieuTraHang_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 510, -1, -1));
 
         jPanel241.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -579,6 +579,10 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietPhieuTraHang_huyBoActionPerformed
 
     private void btnChiTietPhieuTraHang_guiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietPhieuTraHang_guiMailActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.6 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền gửi phiếu trả hàng qua Email!");
+                return;
+            }
         String to = "2k2lmhtlol@gmail.com";
 
         // Sender's email ID needs to be mentioned
@@ -594,6 +598,10 @@ public class Frame_ChiTietPhieuTraHang2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietPhieuTraHang_guiMailActionPerformed
 
     private void btnChiTietPhieuTraHang_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietPhieuTraHang_inActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền in phiếu trả hàng!");
+                return;
+            }
         WritePDF writePDF = new WritePDF();
         writePDF.writePhieuTraHang(phieuTraHang, danhSachChiTietPhieuTraHang);
     }//GEN-LAST:event_btnChiTietPhieuTraHang_inActionPerformed

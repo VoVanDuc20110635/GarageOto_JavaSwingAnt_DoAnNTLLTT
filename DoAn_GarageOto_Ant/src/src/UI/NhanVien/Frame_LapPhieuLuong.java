@@ -12,6 +12,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import src.Model.BangLuong;
@@ -25,6 +26,7 @@ import src.Service.CaLamService;
 import src.Service.LichLamViecCaLamService;
 import src.Service.LichLamViecService;
 import src.UI.TrangChu;
+import src.Util.Util;
 
 /**
  *
@@ -41,11 +43,15 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private LichLamViec lichLamViecMain = new LichLamViec();
     private List<LichLamViec> danhSachLichTangCaMain = new ArrayList<>();
     private List<BangLuong> danhSachTroCapMain = new ArrayList<>();
+    
+    private NhanVien nhanVienDangNhap;
+    private Util util = new Util();
     /**
      * Creates new form Frame_BangLuong
      */
-    public Frame_LapPhieuLuong(NhanVien nhanVien) {
+    public Frame_LapPhieuLuong(NhanVien nhanVien, NhanVien nhanVienDangNhap) {
         initComponents();
+        this.nhanVienDangNhap = nhanVienDangNhap;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.nhanVien = nhanVien;
         lbMaNhanVien.setText(nhanVien.getMaNhanVien());
@@ -644,6 +650,10 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLapPhieuLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapPhieuLuongActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 11.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền lập phiếu lương!");
+                return;
+            }
         int month = monthChooser.getMonth() + 1;
         int year = yearChooser.getYear();
         Frame_PhieuLuong frame_PhieuLuong = new Frame_PhieuLuong(lichLamViecMain, danhSachLichTangCaMain, danhSachTroCapMain, nhanVien, month, year);
@@ -654,6 +664,10 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLapPhieuLuongActionPerformed
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 11.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin phiếu lương!");
+                return;
+            }
         int month = monthChooser.getMonth() + 1;
         int year = yearChooser.getYear();
         hienThiThongTinLichLamViec(month, year, nhanVien.getMaNhanVien());

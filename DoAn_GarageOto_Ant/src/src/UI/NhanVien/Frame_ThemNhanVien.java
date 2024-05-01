@@ -68,11 +68,13 @@ public class Frame_ThemNhanVien extends javax.swing.JFrame {
     private String imageLink = "";
     List<TableColumn> originalColumns = new ArrayList<>();
     private Util util = new Util();
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_ThemKhachHang
      */
-    public Frame_ThemNhanVien(ChiNhanh chiNhanh) {
+    public Frame_ThemNhanVien(ChiNhanh chiNhanh, NhanVien nhanVienDangNhap) {
         initComponents();
+        this.nhanVienDangNhap = nhanVienDangNhap;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.chiNhanh = chiNhanh;
         try {
@@ -647,7 +649,7 @@ public class Frame_ThemNhanVien extends javax.swing.JFrame {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
         Date date = new Date();  
         nhanVien.setNgayBatDauLamViec(util.localDateParseMethodToLocalDate(String.valueOf(formatter.format(date))));
-            nhanVien.setTaoBoiMaNhanVien("NV004");
+            nhanVien.setTaoBoiMaNhanVien(nhanVienDangNhap.getMaNhanVien());
             nhanVien.setNoLuong(0);
         nhanVien.setDiaChi(tfChiTietNhanVien_diaChi.getText());
         nhanVien.setMaSoThue(tfChiTietNhanVien_maSoThue.getText());

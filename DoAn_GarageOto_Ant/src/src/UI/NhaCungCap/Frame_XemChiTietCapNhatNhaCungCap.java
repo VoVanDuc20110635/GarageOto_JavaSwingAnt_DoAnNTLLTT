@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Service.NhaCungCapService;
 import src.Util.Util;
 
@@ -23,12 +24,15 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
     private Util util = new Util();
     private NhaCungCapService nhaCungCapService = new NhaCungCapService();
     private NhaCungCap nhaCungCap;
+    
+    private NhanVien nhanVienDangNhap;
 
     /**
      * Creates new form frame_ThemNhaCungCap
      */
-    public Frame_XemChiTietCapNhatNhaCungCap(NhaCungCap nhaCungCap) {
+    public Frame_XemChiTietCapNhatNhaCungCap(NhaCungCap nhaCungCap, NhanVien nhanVien) {
         initComponents();
+        this.nhanVienDangNhap = nhanVien;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.nhaCungCap = nhaCungCap;
         tfThemNhaCungCap_diaChi.setEnabled(false);
@@ -97,10 +101,10 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel88.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel88.setBackground(new java.awt.Color(242, 249, 255));
         jPanel88.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel87.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel87.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel68.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel68.setForeground(new java.awt.Color(153, 153, 153));
@@ -132,7 +136,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 290, 30));
 
-        jPanel86.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel86.setBackground(new java.awt.Color(242, 249, 255));
         jPanel86.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, new java.awt.Color(204, 204, 204)));
         jPanel86.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -155,7 +159,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
         });
         jPanel88.add(btnThemNhaCungCap_luu, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 100, 31));
 
-        jPanel94.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel94.setBackground(new java.awt.Color(242, 249, 255));
         jPanel94.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -187,7 +191,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 370, 30));
 
-        jPanel95.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel95.setBackground(new java.awt.Color(242, 249, 255));
         jPanel95.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jLabel79.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -219,7 +223,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 370, 30));
 
-        jPanel96.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel96.setBackground(new java.awt.Color(242, 249, 255));
         jPanel96.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jLabel80.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -251,7 +255,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 370, 30));
 
-        jPanel97.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel97.setBackground(new java.awt.Color(242, 249, 255));
         jPanel97.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jLabel81.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -283,7 +287,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 370, 40));
 
-        jPanel113.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel113.setBackground(new java.awt.Color(242, 249, 255));
         jPanel113.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jLabel86.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -315,7 +319,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
 
         jPanel88.add(jPanel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 370, 40));
 
-        jPanel128.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel128.setBackground(new java.awt.Color(242, 249, 255));
         jPanel128.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jLabel90.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -359,7 +363,7 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
         });
         jPanel88.add(btnThemNhaCungCap_thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 100, 31));
 
-        getContentPane().add(jPanel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 833, 260));
+        getContentPane().add(jPanel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 850, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -369,6 +373,10 @@ public class Frame_XemChiTietCapNhatNhaCungCap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemNhaCungCap_thoatActionPerformed
 
     private void btnThemNhaCungCap_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhaCungCap_luuActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật thông tin nhà cung cấp!");
+                return;
+            }
         if (btnThemNhaCungCap_luu.getText().equals("Cập nhật")){
             btnThemNhaCungCap_luu.setText("Lưu");
             tfThemNhaCungCap_diaChi.setEnabled(true);

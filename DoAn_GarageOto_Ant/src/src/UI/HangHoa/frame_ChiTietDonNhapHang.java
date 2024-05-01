@@ -36,6 +36,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import src.Model.ChiTietPhieuNhapHang;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Model.PhieuNhapHang;
 import src.Service.ChiTietPhieuNhapHangService;
 import src.Service.NhaCungCapService;
@@ -55,6 +56,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     private Util util = new Util();
     int soLuongSanPhamTra = 0;
     double donGiaSanPhamTra = 0;
+    private NhanVien nhanVienDangNhap;
     public PhieuNhapHang getPhieuNhapHang() {
         return phieuNhapHang;
     }
@@ -94,8 +96,9 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         getContentPane().setBackground(Color.WHITE);
     }
 
-    public frame_ChiTietDonNhapHang(PhieuNhapHang phieuNhapHang) {
+    public frame_ChiTietDonNhapHang(PhieuNhapHang phieuNhapHang, NhanVien nhanVienDangNhap) {
         this.phieuNhapHang = phieuNhapHang;
+        this.nhanVienDangNhap = nhanVienDangNhap;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         hienThiThongTinPhieuNhapHang();
@@ -204,16 +207,15 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         btn_huyBo.setBackground(new java.awt.Color(255, 51, 51));
         btn_huyBo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btn_huyBo.setForeground(new java.awt.Color(255, 255, 255));
-        btn_huyBo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cancel.png"))); // NOI18N
         btn_huyBo.setText("Hủy bỏ");
         btn_huyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_huyBoActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 640, -1, -1));
+        jPanel1.add(btn_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 640, -1, -1));
 
-        btnChiTietDonNhapHang_capNhat_TraHang.setBackground(new java.awt.Color(51, 204, 0));
+        btnChiTietDonNhapHang_capNhat_TraHang.setBackground(new java.awt.Color(0, 51, 255));
         btnChiTietDonNhapHang_capNhat_TraHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnChiTietDonNhapHang_capNhat_TraHang.setForeground(new java.awt.Color(255, 255, 255));
         btnChiTietDonNhapHang_capNhat_TraHang.setText("Cập nhật");
@@ -222,19 +224,18 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
                 btnChiTietDonNhapHang_capNhat_TraHangActionPerformed(evt);
             }
         });
-        jPanel1.add(btnChiTietDonNhapHang_capNhat_TraHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 640, -1, -1));
+        jPanel1.add(btnChiTietDonNhapHang_capNhat_TraHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 640, -1, -1));
 
-        btn_in.setBackground(new java.awt.Color(51, 204, 0));
+        btn_in.setBackground(new java.awt.Color(255, 153, 153));
         btn_in.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btn_in.setForeground(new java.awt.Color(255, 255, 255));
-        btn_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         btn_in.setText("In");
         btn_in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_inActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 640, -1, -1));
+        jPanel1.add(btn_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 640, -1, -1));
 
         panel_ChiTietDonNhapHang.setBackground(new java.awt.Color(255, 255, 255));
         panel_ChiTietDonNhapHang.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -836,6 +837,10 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_huyBoActionPerformed
 
     private void btnChiTietDonNhapHang_capNhat_TraHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietDonNhapHang_capNhat_TraHangActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 12.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật phiếu nhập hàng!");
+                return;
+            }
         if (btnChiTietDonNhapHang_capNhat_TraHang.getText().equals("Cập nhật")){
             PhieuNhapHang phieuNhapHangUpdate = new PhieuNhapHang();
             phieuNhapHangUpdate.setPhieuNhapHang(lb_maNhapHang.getText());
@@ -861,6 +866,10 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietDonNhapHang_capNhat_TraHangActionPerformed
 
     private void btn_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 12.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền in phiếu nhập hàng!");
+                return;
+            }
         try{
             panel_ChiTietDonNhapHang.setBackground(Color.WHITE);
             BufferedImage bi = new BufferedImage(panel_ChiTietDonNhapHang.getWidth(), panel_ChiTietDonNhapHang.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -1004,7 +1013,11 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     }//GEN-LAST:event_tbChiTietDonNhapHang_traHangMouseClicked
 
     private void btnChiTietDonNhapHang_luuTraHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietDonNhapHang_luuTraHangActionPerformed
-        Frame_TienThanhToanTraHang frame_TienThanhToanTraHang = new Frame_TienThanhToanTraHang( phieuNhapHang.getPhieuNhapHang(), phieuNhapHang.getMaNhaCungCap() , "NV004", tbChiTietDonNhapHang_traHang );
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền trả hàng!");
+                return;
+            }
+        Frame_TienThanhToanTraHang frame_TienThanhToanTraHang = new Frame_TienThanhToanTraHang( phieuNhapHang.getPhieuNhapHang(), phieuNhapHang.getMaNhaCungCap() , nhanVienDangNhap.getMaNhanVien(), tbChiTietDonNhapHang_traHang, nhanVienDangNhap );
         frame_TienThanhToanTraHang.setVisible(true);
         frame_TienThanhToanTraHang.setSize(365, 200);
         frame_TienThanhToanTraHang.setLocation(400,200);

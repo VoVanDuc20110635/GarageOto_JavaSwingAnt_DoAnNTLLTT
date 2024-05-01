@@ -11,8 +11,11 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
+import src.Model.ChiNhanh;
 import src.Model.ChiTietPhieuTraHang;
+import src.Model.NhanVien;
 import src.Model.PhieuTraHang;
+import src.Service.ChiNhanhServive;
 import src.Service.ChiTietPhieuTraHangService;
 import src.Service.HangHoaService;
 import src.Service.PhieuTraHangService;
@@ -31,10 +34,12 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     private String maNhanVien;
     private String maNhaCungCap;
     private String maPhieuNhapHang;
+    private NhanVien nhanVienDangNhap;
     
     private PhieuTraHangService phieuTraHangService = new PhieuTraHangService();
     private ChiTietPhieuTraHangService chiTietPhieuTraHangService = new ChiTietPhieuTraHangService();
     private HangHoaService hangHoaService = new HangHoaService();
+    private ChiNhanhServive chiNhanhServive = new ChiNhanhServive();
     private Util util = new Util();
     /**
      * Creates new form TienThanhToanTraHang
@@ -58,11 +63,12 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
-    public Frame_TienThanhToanTraHang( String maPhieuNhapHang, String maNhaCungCap, String maNhanVien, JTable tbDanhSachSanPhamTraHang) {
+    public Frame_TienThanhToanTraHang( String maPhieuNhapHang, String maNhaCungCap, String maNhanVien, JTable tbDanhSachSanPhamTraHang, NhanVien nhanVienDangNhap) {
         this.tbDanhSachSanPhamTraHang = tbDanhSachSanPhamTraHang;
         this.maPhieuNhapHang = maPhieuNhapHang;
         this.maNhanVien = maNhanVien;
         this.maNhaCungCap = maNhaCungCap;
+        this.nhanVienDangNhap = nhanVienDangNhap;
         initComponents();
         btnTienThanhToanTraHang_traHang.setVisible(false);
         this.tongTienHang = tinhTongTienHangTraLai();
@@ -74,54 +80,59 @@ public class Frame_TienThanhToanTraHang extends javax.swing.JFrame {
     
     
     private void thanhToan(){
-        PhieuTraHang phieuTraHang = new PhieuTraHang();
-        int tongSoPhieuTraHang = 0;
         try {
-            tongSoPhieuTraHang = phieuTraHangService.demSoPhieuTraHang() + 1;
-        } catch (SQLException ex) {
-            Logger.getLogger(Frame_HoaDonChiTiet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        phieuTraHang.setMaPhieuTraHang("PTH0" + tongSoPhieuTraHang);
-        phieuTraHang.setCanTra(Double.parseDouble(lbTienThanhToanTraHang_tongTienHang.getText()));
-        phieuTraHang.setDaTra(Double.parseDouble(tfTienThanhToanTraHang_khachThanhToan.getText()));
-//        String localDateTimeNow = util.localDateParseMethod(LocalDateTime.now());
-        phieuTraHang.setThoiGian(LocalDateTime.now());
-        if (this.maPhieuNhapHang == null){
-            phieuTraHang.setMaHoaDon(maHoaDon);
-        } else {
-            phieuTraHang.setMaPhieuNhapHang(maPhieuNhapHang);
-        }
-        
-        phieuTraHang.setMaKhachHang(maKhachHang);
-        phieuTraHang.setMaNhaCungCap(maNhaCungCap);
-        phieuTraHang.setMaNhanVien(maNhanVien);
-        phieuTraHang.setTrangThai("Đã xử lý");
-        phieuTraHang.setMaChiNhanh("CN001");
-        try {
-            if (this.maPhieuNhapHang == null){
-                phieuTraHangService.themPhieuTraHangKhachHang(phieuTraHang);
-            } else {
-                phieuTraHangService.themPhieuTraHangDonNhapHang(phieuTraHang);
+            PhieuTraHang phieuTraHang = new PhieuTraHang();
+            int tongSoPhieuTraHang = 0;
+            try {
+                tongSoPhieuTraHang = phieuTraHangService.demSoPhieuTraHang() + 1;
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_HoaDonChiTiet.class.getName()).log(Level.SEVERE, null, ex);
             }
+            phieuTraHang.setMaPhieuTraHang("PTH0" + tongSoPhieuTraHang);
+            phieuTraHang.setCanTra(Double.parseDouble(lbTienThanhToanTraHang_tongTienHang.getText()));
+            phieuTraHang.setDaTra(Double.parseDouble(tfTienThanhToanTraHang_khachThanhToan.getText()));
+//        String localDateTimeNow = util.localDateParseMethod(LocalDateTime.now());
+phieuTraHang.setThoiGian(LocalDateTime.now());
+if (this.maPhieuNhapHang == null){
+    phieuTraHang.setMaHoaDon(maHoaDon);
+} else {
+    phieuTraHang.setMaPhieuNhapHang(maPhieuNhapHang);
+}
+
+phieuTraHang.setMaKhachHang(maKhachHang);
+phieuTraHang.setMaNhaCungCap(maNhaCungCap);
+phieuTraHang.setMaNhanVien(maNhanVien);
+phieuTraHang.setTrangThai("Đã xử lý");
+ChiNhanh chiNhanh = chiNhanhServive.hienThiChiNhanhTheoMaChiNhanh(nhanVienDangNhap.getMaNhanVien());
+phieuTraHang.setMaChiNhanh(chiNhanh.getMaChiNhanh());
+try {
+    if (this.maPhieuNhapHang == null){
+        phieuTraHangService.themPhieuTraHangKhachHang(phieuTraHang);
+    } else {
+        phieuTraHangService.themPhieuTraHangDonNhapHang(phieuTraHang);
+    }
+} catch (SQLException ex) {
+    Logger.getLogger(Frame_TienThanhToanTraHang.class.getName()).log(Level.SEVERE, null, ex);
+}
+TableModel model = tbDanhSachSanPhamTraHang.getModel();
+for (int i =0 ; i < model.getRowCount(); i++){
+    try {
+        ChiTietPhieuTraHang chiTietPhieuTraHang = new ChiTietPhieuTraHang();
+        int j = i + 1;
+        chiTietPhieuTraHang.setMaChiTietPhieuTraHang(phieuTraHang.getMaPhieuTraHang() + "CTPTH" + j);
+        chiTietPhieuTraHang.setGiaTraHang(Double.parseDouble(model.getValueAt(i, 2).toString()));
+        chiTietPhieuTraHang.setSoLuong(Short.parseShort(model.getValueAt(i, 3).toString()));
+        chiTietPhieuTraHang.setThanhTien(Double.parseDouble(model.getValueAt(i, 2).toString()) * Short.parseShort(model.getValueAt(i, 3).toString()) );
+        chiTietPhieuTraHang.setMaHangHoa(model.getValueAt(i, 0).toString());
+        chiTietPhieuTraHang.setTenHangHoa(model.getValueAt(i, 1).toString());
+        chiTietPhieuTraHang.setMaPhieuTraHang(phieuTraHang.getMaPhieuTraHang());
+        chiTietPhieuTraHangService.themChiTietPhieuTraHang(chiTietPhieuTraHang);
+    } catch (SQLException ex) {
+        Logger.getLogger(Frame_TienThanhToanTraHang.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
         } catch (SQLException ex) {
             Logger.getLogger(Frame_TienThanhToanTraHang.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        TableModel model = tbDanhSachSanPhamTraHang.getModel();
-        for (int i =0 ; i < model.getRowCount(); i++){
-            try {
-                ChiTietPhieuTraHang chiTietPhieuTraHang = new ChiTietPhieuTraHang();
-                int j = i + 1;
-                chiTietPhieuTraHang.setMaChiTietPhieuTraHang(phieuTraHang.getMaPhieuTraHang() + "CTPTH" + j);
-                chiTietPhieuTraHang.setGiaTraHang(Double.parseDouble(model.getValueAt(i, 2).toString()));
-                chiTietPhieuTraHang.setSoLuong(Short.parseShort(model.getValueAt(i, 3).toString()));
-                chiTietPhieuTraHang.setThanhTien(Double.parseDouble(model.getValueAt(i, 2).toString()) * Short.parseShort(model.getValueAt(i, 3).toString()) );
-                chiTietPhieuTraHang.setMaHangHoa(model.getValueAt(i, 0).toString());
-                chiTietPhieuTraHang.setTenHangHoa(model.getValueAt(i, 1).toString());
-                chiTietPhieuTraHang.setMaPhieuTraHang(phieuTraHang.getMaPhieuTraHang());
-                chiTietPhieuTraHangService.themChiTietPhieuTraHang(chiTietPhieuTraHang);
-            } catch (SQLException ex) {
-                Logger.getLogger(Frame_TienThanhToanTraHang.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }
     

@@ -22,6 +22,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -72,14 +73,17 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     private String imageLink = "";
     List<TableColumn> originalColumns = new ArrayList<>();
     private Util util = new Util();
+    
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_ThemKhachHang
      */
-    public Frame_ChiTietNhanVien(NhanVien nhanVien, ChiNhanh chiNhanh) {
+    public Frame_ChiTietNhanVien(NhanVien nhanVien, ChiNhanh chiNhanh, NhanVien nhanVienDangNhap) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.nhanVien = nhanVien;
         this.chiNhanh = chiNhanh;
+        this.nhanVienDangNhap = nhanVienDangNhap;
         try {
             List<ChiNhanh> danhSachChiNhanh = chiNhanhService.hienThiTatCaChiNhanh();
             cbChiTietNhanVien_chiNhanhLamViec.removeAllItems();
@@ -262,6 +266,7 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabbedPane_chiTietNhanVien.setBackground(new java.awt.Color(242, 249, 255));
         tabbedPane_chiTietNhanVien.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPane_chiTietNhanVienStateChanged(evt);
@@ -956,6 +961,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietNhanVien_thoatActionPerformed
 
     private void btnChiTietNhanVien_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_capNhatActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật thông tin nhân viên!");
+                return;
+            }
         if(btnChiTietNhanVien_capNhat.getText().equals("Cập nhật")){
             btnChiTietNhanVien_capNhat.setText("Lưu");
             lbChiTietNhanVien_tenChiNhanh.setEnabled(true);
@@ -1199,6 +1208,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_tabbedPane_chiTietNhanVienStateChanged
 
     private void btnChiTietNhanVien_lichNghiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_lichNghiActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem lịch nghỉ của nhân viên!");
+                return;
+            }
         try {
             lbChiTietNhanVien_lichNghiTangCa.setText("Danh sách ngày nghỉ làm");
             List<LichLamViec> danhSachLichNghi = lichLamViecService.hienThiLichNghiTheoMaNhanVien(nhanVien.getMaNhanVien());
@@ -1224,6 +1237,10 @@ public class Frame_ChiTietNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietNhanVien_lichNghiActionPerformed
 
     private void btnChiTietNhanVien_lichTangCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietNhanVien_lichTangCaActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem lịch tăng ca của nhân viên!");
+                return;
+            }
         try {
             lbChiTietNhanVien_lichNghiTangCa.setText("Danh sách ngày tăng ca");
             TableColumnModel columnModel = tbChiTietNhanVien_lichTangCa.getColumnModel();

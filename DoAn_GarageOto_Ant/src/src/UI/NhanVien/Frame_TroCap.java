@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import src.Model.BangLuong;
@@ -34,6 +35,7 @@ public class Frame_TroCap extends javax.swing.JFrame {
     private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
     private NhanVien nhanVien;
     private Util util = new Util();
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form Frame_BangLuong
      */
@@ -45,8 +47,9 @@ public class Frame_TroCap extends javax.swing.JFrame {
         setEnabel(false);
     }
 
-    public Frame_TroCap(NhanVien nhanVien) {
+    public Frame_TroCap(NhanVien nhanVien, NhanVien nhanVienDangNhap) {
         this.nhanVien = nhanVien;
+        this.nhanVienDangNhap = nhanVienDangNhap;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         hienThiDanhSachBangLuong();
@@ -362,6 +365,10 @@ public class Frame_TroCap extends javax.swing.JFrame {
 
     
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 15.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm phụ cấp!");
+                return;
+            }
         try {
             if (btnThem.getText().equals("Thêm")){
                 btnXoa.setEnabled(false);
@@ -389,6 +396,10 @@ public class Frame_TroCap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 15.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật phụ cấp cho nhân viên!");
+                return;
+            }
         try {
             if (lbMaPhuCap.getText().equals("")){
                 return;

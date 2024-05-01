@@ -143,7 +143,7 @@ public class TrangChu extends javax.swing.JFrame {
     private List<String> danhSachLinkAnhHangHoa1th = new ArrayList<>();
     private List<KhachHang> danhSachKhachHangMain = new ArrayList<>();
     private List<NhanVien> danhSachNhanVienMain = new ArrayList<>();
-    private NhanVien nhanVien;
+    private NhanVien nhanVienDangNhap;
     
     private Util util = new Util();
 
@@ -151,7 +151,7 @@ public class TrangChu extends javax.swing.JFrame {
     }
     
     public TrangChu(NhanVien nhanVien) {
-        this.nhanVien = nhanVien;
+        this.nhanVienDangNhap = nhanVien;
         getContentPane().setBackground(Color.white);
         initComponents();
         setSize(1550,975);
@@ -173,12 +173,12 @@ public class TrangChu extends javax.swing.JFrame {
     }
 
     public void hienThiThongTinNhanVienDangNhap(){
-        lbTrangChu_tenNguoiDung.setText(nhanVien.getMaNhanVien() + " " + nhanVien.getTenNhanVien());
+        lbTrangChu_tenNguoiDung.setText(nhanVienDangNhap.getMaNhanVien() + " " + nhanVienDangNhap.getTenNhanVien());
         HinhAnh hinhAnhNhanVien;
         String destinationFolderPath = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image";
         String imageLink = "";
         try {
-            hinhAnhNhanVien = hinhAnhService.hienThiHinhAnhTheoMaNhanVien(nhanVien.getMaNhanVien());
+            hinhAnhNhanVien = hinhAnhService.hienThiHinhAnhTheoMaNhanVien(nhanVienDangNhap.getMaNhanVien());
             imageLink = hinhAnhNhanVien.getTenHinh();
             if (imageLink != null ){
                 if (!imageLink.equals("")){
@@ -321,8 +321,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbTraHang_danhSachPhieuTraHang = new javax.swing.JTable();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        btnPhieuTraHang_exportFile = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tb_danhSachPhieuSuaChua = new javax.swing.JTable();
@@ -384,7 +383,7 @@ public class TrangChu extends javax.swing.JFrame {
         jCheckBox12 = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         btnNhapHang_them = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
+        btnPhieuNhapHang_export = new javax.swing.JButton();
         jPanel32 = new javax.swing.JPanel();
         tabbedPane_doiTac = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
@@ -409,8 +408,8 @@ public class TrangChu extends javax.swing.JFrame {
         tb_danhSachNhaCungCap = new javax.swing.JTable();
         jPanel74 = new javax.swing.JPanel();
         btnNhaCungCap_them = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
+        btnNhaCungCap_xuatFile = new javax.swing.JButton();
+        btnNhacungCap_import = new javax.swing.JButton();
         tabbedPane_nhanVien = new javax.swing.JTabbedPane();
         jPanel23 = new javax.swing.JPanel();
         jPanel75 = new javax.swing.JPanel();
@@ -621,7 +620,6 @@ public class TrangChu extends javax.swing.JFrame {
         checkBoxPhanQuyen_lichLamViecCapNhat = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_lichLamViecImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_lichLamViecExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_lichLamViecEmail = new javax.swing.JCheckBox();
         jPanel105 = new javax.swing.JPanel();
         jLabel99 = new javax.swing.JLabel();
         checkBoxPhanQuyen_nhaCungCapXem = new javax.swing.JCheckBox();
@@ -629,45 +627,31 @@ public class TrangChu extends javax.swing.JFrame {
         checkBoxPhanQuyen_nhaCungCapCapNhat = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_nhaCungCapImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_nhaCungCapExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_nhaCungCapMail = new javax.swing.JCheckBox();
         jPanel120 = new javax.swing.JPanel();
         jLabel106 = new javax.swing.JLabel();
         checkBoxPhanQuyen_nhanVienXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_nhanVienThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_nhanVienCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_nhanVienImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_nhanVienExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_nhanVienMail = new javax.swing.JCheckBox();
         jPanel121 = new javax.swing.JPanel();
         jLabel107 = new javax.swing.JLabel();
         checkBoxPhanQuyen_phieuLuongXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuLuongThem = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuLuongCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuLuongImport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuLuongExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuLuongMail = new javax.swing.JCheckBox();
         jPanel122 = new javax.swing.JPanel();
         jLabel108 = new javax.swing.JLabel();
         checkBoxPhanQuyen_phieuNhapHangXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuNhapHangThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuNhapHangCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuNhapHangImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuNhapHangExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuNhapHangMail = new javax.swing.JCheckBox();
         jPanel123 = new javax.swing.JPanel();
         jLabel119 = new javax.swing.JLabel();
         checkBoxPhanQuyen_phieuSuaChuaXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuSuaChuaThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuSuaChuaCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuSuaChuaImport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuSuaChuaExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuSuaChuaMail = new javax.swing.JCheckBox();
         jPanel129 = new javax.swing.JPanel();
         jLabel120 = new javax.swing.JLabel();
         checkBoxPhanQuyen_phieuTraHangXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuTraHangThem = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuTraHangCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_phieuTraHangImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuTraHangExport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_phieuTraHangMail = new javax.swing.JCheckBox();
         jPanel130 = new javax.swing.JPanel();
@@ -689,6 +673,8 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel132 = new javax.swing.JPanel();
         jLabel125 = new javax.swing.JLabel();
         checkBoxPhanQuyen_datHang = new javax.swing.JCheckBox();
+        jLabel126 = new javax.swing.JLabel();
+        checkBoxPhanQuyen_phanQuyen = new javax.swing.JCheckBox();
         jPanel55 = new javax.swing.JPanel();
         jPanel59 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
@@ -1795,20 +1781,13 @@ public class TrangChu extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tbTraHang_danhSachPhieuTraHang);
 
-        jButton18.setBackground(new java.awt.Color(0, 204, 0));
-        jButton18.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
-        jButton18.setText("Xuất file");
-
-        jButton19.setBackground(new java.awt.Color(0, 204, 0));
-        jButton19.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton19.setForeground(new java.awt.Color(255, 255, 255));
-        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
-        jButton19.setText("Trả hàng");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        btnPhieuTraHang_exportFile.setBackground(new java.awt.Color(0, 204, 0));
+        btnPhieuTraHang_exportFile.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnPhieuTraHang_exportFile.setForeground(new java.awt.Color(255, 255, 255));
+        btnPhieuTraHang_exportFile.setText("Xuất file");
+        btnPhieuTraHang_exportFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                btnPhieuTraHang_exportFileActionPerformed(evt);
             }
         });
 
@@ -1821,19 +1800,15 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1528, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton19)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton18)))
+                        .addGap(0, 1440, Short.MAX_VALUE)
+                        .addComponent(btnPhieuTraHang_exportFile)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton18)
-                    .addComponent(jButton19))
+                .addComponent(btnPhieuTraHang_exportFile)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 545, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -1874,7 +1849,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnSuaChua_them.setBackground(new java.awt.Color(0, 204, 0));
         btnSuaChua_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnSuaChua_them.setForeground(new java.awt.Color(255, 255, 255));
-        btnSuaChua_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
         btnSuaChua_them.setText("Thêm");
         btnSuaChua_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1886,7 +1860,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnSuaChua_capNhat.setBackground(new java.awt.Color(0, 102, 255));
         btnSuaChua_capNhat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnSuaChua_capNhat.setForeground(new java.awt.Color(255, 255, 255));
-        btnSuaChua_capNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         btnSuaChua_capNhat.setText("Cập nhật");
         btnSuaChua_capNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1898,7 +1871,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnSuaChua_reset.setBackground(new java.awt.Color(255, 102, 102));
         btnSuaChua_reset.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnSuaChua_reset.setForeground(new java.awt.Color(255, 255, 255));
-        btnSuaChua_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/return2.png"))); // NOI18N
         btnSuaChua_reset.setText("Reset");
         btnSuaChua_reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2375,7 +2347,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnNhapHang_them.setBackground(new java.awt.Color(0, 204, 0));
         btnNhapHang_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnNhapHang_them.setForeground(new java.awt.Color(255, 255, 255));
-        btnNhapHang_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
         btnNhapHang_them.setText("Thêm");
         btnNhapHang_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2383,11 +2354,15 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jButton20.setBackground(new java.awt.Color(102, 102, 102));
-        jButton20.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton20.setForeground(new java.awt.Color(255, 255, 255));
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
-        jButton20.setText("Xuất file");
+        btnPhieuNhapHang_export.setBackground(new java.awt.Color(102, 102, 102));
+        btnPhieuNhapHang_export.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnPhieuNhapHang_export.setForeground(new java.awt.Color(255, 255, 255));
+        btnPhieuNhapHang_export.setText("Xuất file");
+        btnPhieuNhapHang_export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPhieuNhapHang_exportActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -2397,7 +2372,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnNhapHang_them, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton20)
+                .addComponent(btnPhieuNhapHang_export)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -2406,7 +2381,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNhapHang_them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPhieuNhapHang_export, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2651,40 +2626,49 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel73.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1520, 500));
 
+        jPanel74.setBackground(new java.awt.Color(242, 249, 255));
+
         btnNhaCungCap_them.setBackground(new java.awt.Color(0, 204, 0));
         btnNhaCungCap_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnNhaCungCap_them.setForeground(new java.awt.Color(255, 255, 255));
-        btnNhaCungCap_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
-        btnNhaCungCap_them.setText("Nhà cung cấp");
+        btnNhaCungCap_them.setText("Thêm nhà cung cấp");
         btnNhaCungCap_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNhaCungCap_themActionPerformed(evt);
             }
         });
 
-        jButton28.setBackground(new java.awt.Color(102, 102, 102));
-        jButton28.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton28.setForeground(new java.awt.Color(255, 255, 255));
-        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
-        jButton28.setText("Xuất file");
+        btnNhaCungCap_xuatFile.setBackground(new java.awt.Color(102, 102, 102));
+        btnNhaCungCap_xuatFile.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhaCungCap_xuatFile.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhaCungCap_xuatFile.setText("Xuất file");
+        btnNhaCungCap_xuatFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhaCungCap_xuatFileActionPerformed(evt);
+            }
+        });
 
-        jButton29.setBackground(new java.awt.Color(0, 204, 0));
-        jButton29.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton29.setForeground(new java.awt.Color(255, 255, 255));
-        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/import.png"))); // NOI18N
-        jButton29.setText("Import");
+        btnNhacungCap_import.setBackground(new java.awt.Color(0, 204, 0));
+        btnNhacungCap_import.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhacungCap_import.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhacungCap_import.setText("Import");
+        btnNhacungCap_import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhacungCap_importActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel74Layout = new javax.swing.GroupLayout(jPanel74);
         jPanel74.setLayout(jPanel74Layout);
         jPanel74Layout.setHorizontalGroup(
             jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel74Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(btnNhaCungCap_them)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton29)
-                .addGap(26, 26, 26)
-                .addComponent(jButton28)
+                .addGap(28, 28, 28)
+                .addComponent(btnNhacungCap_import)
+                .addGap(27, 27, 27)
+                .addComponent(btnNhaCungCap_xuatFile)
                 .addContainerGap())
         );
         jPanel74Layout.setVerticalGroup(
@@ -2693,8 +2677,8 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel74Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNhaCungCap_them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNhaCungCap_xuatFile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhacungCap_import, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2753,6 +2737,11 @@ public class TrangChu extends javax.swing.JFrame {
         btnNhanVienChiNhanh_exportNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnNhanVienChiNhanh_exportNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVienChiNhanh_exportNhanVien.setText("Xuất file nhân viên");
+        btnNhanVienChiNhanh_exportNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienChiNhanh_exportNhanVienActionPerformed(evt);
+            }
+        });
 
         btnNhanVienChiNhanh_importChiNhanh.setBackground(new java.awt.Color(0, 204, 204));
         btnNhanVienChiNhanh_importChiNhanh.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -4423,7 +4412,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel119.add(checkBoxPhanQuyen_lichLamViecCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
         jPanel119.add(checkBoxPhanQuyen_lichLamViecImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel119.add(checkBoxPhanQuyen_lichLamViecExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel119.add(checkBoxPhanQuyen_lichLamViecEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel105.setBackground(new java.awt.Color(172, 234, 255));
         jPanel105.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4436,7 +4424,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel105.add(checkBoxPhanQuyen_nhaCungCapCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
         jPanel105.add(checkBoxPhanQuyen_nhaCungCapImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel105.add(checkBoxPhanQuyen_nhaCungCapExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel105.add(checkBoxPhanQuyen_nhaCungCapMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel120.setBackground(new java.awt.Color(242, 249, 255));
         jPanel120.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4447,9 +4434,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel120.add(checkBoxPhanQuyen_nhanVienXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel120.add(checkBoxPhanQuyen_nhanVienThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel120.add(checkBoxPhanQuyen_nhanVienCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel120.add(checkBoxPhanQuyen_nhanVienImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel120.add(checkBoxPhanQuyen_nhanVienExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel120.add(checkBoxPhanQuyen_nhanVienMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel121.setBackground(new java.awt.Color(172, 234, 255));
         jPanel121.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4459,10 +4444,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel121.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
         jPanel121.add(checkBoxPhanQuyen_phieuLuongXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel121.add(checkBoxPhanQuyen_phieuLuongThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
-        jPanel121.add(checkBoxPhanQuyen_phieuLuongCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel121.add(checkBoxPhanQuyen_phieuLuongImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
-        jPanel121.add(checkBoxPhanQuyen_phieuLuongExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel121.add(checkBoxPhanQuyen_phieuLuongMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel122.setBackground(new java.awt.Color(242, 249, 255));
         jPanel122.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4474,9 +4455,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel122.add(checkBoxPhanQuyen_phieuNhapHangXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel122.add(checkBoxPhanQuyen_phieuNhapHangThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel122.add(checkBoxPhanQuyen_phieuNhapHangCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel122.add(checkBoxPhanQuyen_phieuNhapHangImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel122.add(checkBoxPhanQuyen_phieuNhapHangExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel122.add(checkBoxPhanQuyen_phieuNhapHangMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel123.setBackground(new java.awt.Color(172, 234, 255));
         jPanel123.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4487,9 +4466,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel123.add(checkBoxPhanQuyen_phieuSuaChuaXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel123.add(checkBoxPhanQuyen_phieuSuaChuaThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel123.add(checkBoxPhanQuyen_phieuSuaChuaCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel123.add(checkBoxPhanQuyen_phieuSuaChuaImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
-        jPanel123.add(checkBoxPhanQuyen_phieuSuaChuaExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel123.add(checkBoxPhanQuyen_phieuSuaChuaMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel129.setBackground(new java.awt.Color(242, 249, 255));
         jPanel129.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4499,8 +4475,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel129.add(jLabel120, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 6, -1, -1));
         jPanel129.add(checkBoxPhanQuyen_phieuTraHangXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel129.add(checkBoxPhanQuyen_phieuTraHangThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
-        jPanel129.add(checkBoxPhanQuyen_phieuTraHangCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel129.add(checkBoxPhanQuyen_phieuTraHangImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel129.add(checkBoxPhanQuyen_phieuTraHangExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
         jPanel129.add(checkBoxPhanQuyen_phieuTraHangMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
@@ -4594,6 +4568,9 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel125.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel125.setText("(17) Đặt hàng");
 
+        jLabel126.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel126.setText("(18) Phân quyền");
+
         javax.swing.GroupLayout jPanel132Layout = new javax.swing.GroupLayout(jPanel132);
         jPanel132.setLayout(jPanel132Layout);
         jPanel132Layout.setHorizontalGroup(
@@ -4601,17 +4578,23 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel132Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel125)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(checkBoxPhanQuyen_datHang)
-                .addGap(1359, 1359, 1359))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel126)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(checkBoxPhanQuyen_phanQuyen)
+                .addContainerGap())
         );
         jPanel132Layout.setVerticalGroup(
             jPanel132Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel132Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(jPanel132Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkBoxPhanQuyen_datHang)
-                    .addComponent(jLabel125)))
+                    .addComponent(checkBoxPhanQuyen_phanQuyen)
+                    .addComponent(jLabel126)
+                    .addComponent(jLabel125)
+                    .addComponent(checkBoxPhanQuyen_datHang, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
@@ -5471,7 +5454,7 @@ public class TrangChu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHangHoa_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_themActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.2 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.2 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm hàng hóa!");
                 return;
             }
@@ -5489,6 +5472,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDatHang_themKhachHangActionPerformed
 
     private void tb_danhSachPhieuNhapHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachPhieuNhapHangMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 12.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết phiếu nhập hàng!");
+                return;
+            }
         int index = tb_danhSachPhieuNhapHang.getSelectedRow();
         TableModel model = tb_danhSachPhieuNhapHang.getModel();
         PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
@@ -5503,16 +5490,17 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTong(Double.parseDouble(model.getValueAt(index, 3).toString()));
 //        phieuNhapHang.setNo(Double.parseDouble(model.getValueAt(index, 4).toString()));
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
-        frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang);
+        frame_ChiTietDonNhapHang frame_chiTietDonNhapHang = new frame_ChiTietDonNhapHang(phieuNhapHang, nhanVienDangNhap);
         frame_chiTietDonNhapHang.setVisible(true);
         frame_chiTietDonNhapHang.setSize(1000, 720);
         frame_chiTietDonNhapHang.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachPhieuNhapHangMouseClicked
 
     private void tabPane_giaoDichStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPane_giaoDichStateChanged
+        
         int selectedIndex = tabPane_giaoDich.getSelectedIndex();
         if (selectedIndex == 1 && tabbedPane_trangChu.getSelectedIndex() == 1) { // Change 1 to the index of your specific tab
-            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.")){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý hóa đơn!");
                 return;
             }
@@ -5520,9 +5508,17 @@ public class TrangChu extends javax.swing.JFrame {
             hienThiDanhSachNhanVienCombobox(cbHoaDon_nguoiTao);
         } 
         if (selectedIndex == 2 && tabbedPane_trangChu.getSelectedIndex() == 1){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý phiếu trả hàng!");
+                return;
+            }
             hienThiDanhSachPhieuTraHang();
         }
         if (selectedIndex == 3 && tabbedPane_trangChu.getSelectedIndex() == 1){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 13.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý sữa chữa!");
+                return;
+            }
             List<LoaiXe> danhSachLoaiXe = new ArrayList<>();
             try {
                 danhSachLoaiXe = loaiXeService.hienThiTatCaLoaiXe();
@@ -5575,6 +5571,10 @@ public class TrangChu extends javax.swing.JFrame {
             btnSuaChua_reset.setVisible(false);
         }
         if (selectedIndex == 4){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 12.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý phiếu nhập hàng!");
+                return;
+            }
             try {
                 hienThiDanhSachPhieuNhapHang();
             } catch (SQLException ex) {
@@ -5584,6 +5584,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tabPane_giaoDichStateChanged
 
     private void tb_danhSachPhieuSuaChuaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachPhieuSuaChuaMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 13.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập xem chi tiết phiếu sữa chữa!");
+                return;
+            }
         int index = tb_danhSachPhieuSuaChua.getSelectedRow();
         TableModel model = tb_danhSachPhieuSuaChua.getModel();
         lbSuaChua_soDienThoai.setText(model.getValueAt(index, 1).toString());
@@ -5627,7 +5631,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_danhSachPhieuSuaChuaMouseClicked
 
     private void tabbedPane_doiTacStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPane_doiTacStateChanged
-        
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý nhà cung cấp!");
+                return;
+            }
         int selectedIndex = tabbedPane_doiTac.getSelectedIndex();
         int selectedIndexMain = tabbedPane_trangChu.getSelectedIndex();
         if (selectedIndex == 0 && selectedIndexMain == 2) { // Change 1 to the index of your specific tab
@@ -5643,15 +5650,19 @@ public class TrangChu extends javax.swing.JFrame {
         int selectedTab = tabbedPane_trangChu.getSelectedIndex();
         
         if (selectedTab == 3 && tabbedPane_nhanVien.getSelectedIndex() == 0){
-            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.")){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 4.")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý chi nhánh!");
+                return;
+            }
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý nhân viên!");
                 return;
             }
             hienThiDanhSachNhanVien();
             hienThiDanhSachChiNhanh();
         }
         if (selectedTab == 1 && tabPane_giaoDich.getSelectedIndex() == 0){
-             if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 17 ")){
+             if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 17 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền đặt hàng ,thanh toán!");
                 return;
             }
@@ -5667,7 +5678,7 @@ public class TrangChu extends javax.swing.JFrame {
             
         }
         if (selectedTab == 2 && tabbedPane_doiTac.getSelectedIndex() == 0){
-            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.")){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 7.")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập trang quản lý khách hàng!");
                 return;
             }
@@ -5679,7 +5690,7 @@ public class TrangChu extends javax.swing.JFrame {
         
         int selectedTab = tabbedPane_nhanVien.getSelectedIndex();
         if (selectedTab == 1 && tabbedPane_trangChu.getSelectedIndex() == 3 ){
-            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.")){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 1.")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào bảng chấm công!");
                 return;
             }
@@ -5707,6 +5718,10 @@ public class TrangChu extends javax.swing.JFrame {
 //            
         }
         if (selectedTab == 2 && tabbedPane_trangChu.getSelectedIndex() == 3){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 8.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý lịch làm việc!");
+                return;
+            }
             hienThiDanhSachNhanVienLichLamViec();
             hienThiDanhSachChiNhanhLichLamViec();
             lbLichLamViec_maNhanVien.setText("");
@@ -5723,6 +5738,10 @@ public class TrangChu extends javax.swing.JFrame {
         }
         
         if (selectedTab == 3){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 18 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý phân quyền nhân viên!");
+                return;
+            }
             hienThiDanhSachNhanVienCombobox(cbPhanQuyen_nhanVien);
             
         }
@@ -5810,7 +5829,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_bangCongResetActionPerformed
 
     private void btn_bangCongCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongCapNhatActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.3 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 1.3 ")){
             JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật bảng chấm công!");
             return;
         }
@@ -5828,7 +5847,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_bangCongCapNhatActionPerformed
 
     private void btn_bangCongThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongThemActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.2 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 1.2 ")){
             JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm bảng chấm công!");
             return;
         }
@@ -5848,7 +5867,7 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnChamCong_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamCong_timKiemActionPerformed
         try {
-            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.1 ")){
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 1.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào xem bảng chấm công!");
                 return;
             }
@@ -5889,7 +5908,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChamCong_timKiemActionPerformed
 
     private void btnChamCong_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamCong_taiLaiActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 1.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem bảng chấm công!");
                 return;
             }
@@ -5934,7 +5953,7 @@ public class TrangChu extends javax.swing.JFrame {
     List<String> inputs = new ArrayList<>();
 
     private void btnHangHoa_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_timKiemActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hàng hóa!");
                 return;
             }
@@ -5960,7 +5979,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHangHoa_timKiemActionPerformed
 
     private void btnHangHoa_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_taiLaiActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hàng hóa!");
                 return;
             }
@@ -6035,7 +6054,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfHangHoa_timTheoTenActionPerformed
 
     private void tb_danhSachHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachHangHoaMouseClicked
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết hàng hóa!");
                 return;
             }
@@ -6048,7 +6067,7 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Frame_chiTietHangHoa frame_chiTietHangHoa = new Frame_chiTietHangHoa(hangHoa, this.nhanVien);
+        Frame_chiTietHangHoa frame_chiTietHangHoa = new Frame_chiTietHangHoa(hangHoa, this.nhanVienDangNhap);
         frame_chiTietHangHoa.setVisible(true);
         frame_chiTietHangHoa.setSize(1320, 560);
         frame_chiTietHangHoa.setLocation(0,0);
@@ -6153,11 +6172,11 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDatHang_timHangHoaFocusLost
 
     private void btnKhachHang_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang_themActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.2 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 7.2 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm khách hàng!");
                 return;
             }
-        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang(this.nhanVien);
+        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang(this.nhanVienDangNhap);
         frame_themKhachHang.setVisible(true);
         frame_themKhachHang.setSize(950, 400);
         frame_themKhachHang.setLocation(0,0);
@@ -6227,7 +6246,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_cbDatHang_danhSachKhachHangActionPerformed
 
     private void btnDatHang_datHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_datHangActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 17 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 17 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền đặt hàng!");
                 return;
             }
@@ -6254,14 +6273,14 @@ public class TrangChu extends javax.swing.JFrame {
         }
         int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText().toString());
         double tongTienHang = Double.parseDouble(tfDatHang_tongTienHang.getText().toString());
-        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, trangChuInstance, this.nhanVien);
+        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, trangChuInstance, this.nhanVienDangNhap);
         frame_thanhToan.setVisible(true);
         frame_thanhToan.setSize(360, 650);
         frame_thanhToan.setLocation(1170,0);
     }//GEN-LAST:event_btnDatHang_datHangActionPerformed
 
     private void btnKhachHoa_xuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHoa_xuatFileActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.5 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 7.5 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền export file khách hàng!");
                 return;
             }
@@ -6298,7 +6317,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfHoaDon_timHoaDonKeyReleased
 
     private void btnHoaDon_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_taiLaiActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hóa đơn!");
                 return;
             }
@@ -6306,7 +6325,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDon_taiLaiActionPerformed
 
     private void btnHoaDon_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_timKiemActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hóa đơn!");
                 return;
             }
@@ -6371,7 +6390,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_cbHoaDon_nguoiTaoActionPerformed
 
     private void tbHoaDon_danhSachHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHoaDon_danhSachHoaDonMouseClicked
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết hóa đơn!");
                 return;
             }
@@ -6391,13 +6410,17 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
         String tenNhanVien = model.getValueAt(index, 3).toString();
         String tenDoiTac = model.getValueAt(index, 4).toString();
-        Frame_HoaDonChiTiet frame_hoaDonChiTiet = new Frame_HoaDonChiTiet(hoaDon, tenNhanVien, tenDoiTac, this.nhanVien);
+        Frame_HoaDonChiTiet frame_hoaDonChiTiet = new Frame_HoaDonChiTiet(hoaDon, tenNhanVien, tenDoiTac, this.nhanVienDangNhap);
         frame_hoaDonChiTiet.setVisible(true);
         frame_hoaDonChiTiet.setSize(1075, 620);
         frame_hoaDonChiTiet.setLocation(0,0);
     }//GEN-LAST:event_tbHoaDon_danhSachHoaDonMouseClicked
 
     private void tbTraHang_danhSachPhieuTraHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTraHang_danhSachPhieuTraHangMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết phiếu trả hàng!");
+                return;
+            }
         int index = tbTraHang_danhSachPhieuTraHang.getSelectedRow();
         TableModel model = tbTraHang_danhSachPhieuTraHang.getModel();
         PhieuTraHang phieuTraHang = new PhieuTraHang();
@@ -6406,13 +6429,17 @@ public class TrangChu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Frame_ChiTietPhieuTraHang2 frame_chiTietPhieuTraHang = new Frame_ChiTietPhieuTraHang2(phieuTraHang);
+        Frame_ChiTietPhieuTraHang2 frame_chiTietPhieuTraHang = new Frame_ChiTietPhieuTraHang2(phieuTraHang, nhanVienDangNhap);
         frame_chiTietPhieuTraHang.setVisible(true);
         frame_chiTietPhieuTraHang.setSize(1070, 600);
         frame_chiTietPhieuTraHang.setLocation(0,0);
     }//GEN-LAST:event_tbTraHang_danhSachPhieuTraHangMouseClicked
 
     private void btnSuaChua_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaChua_themActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 13.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm phiếu sữa chữa!");
+                return;
+            }
         if (btnSuaChua_them.getText().equals("Thêm")){
             btnSuaChua_them.setText("Lưu");
             lbSuaChua_tongTien.setText("0");
@@ -6626,6 +6653,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_cbSuaChua_phuTungDaChonActionPerformed
 
     private void btnSuaChua_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaChua_capNhatActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 13.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật phiếu sữa chữa!");
+                return;
+            }
         if (btnSuaChua_capNhat.getText().equals("Cập nhật")){
             btnSuaChua_capNhat.setText("Lưu");
             cbSuaChua_phuTungDaChon.setEnabled(true);
@@ -6693,6 +6724,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSuaChua_resetActionPerformed
 
     private void btnNhapHang_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapHang_themActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 12.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm phiếu nhập hàng!");
+                return;
+            }
         Frame_taoDonNhapHang frame_taoDonNhapHang = new Frame_taoDonNhapHang();
         frame_taoDonNhapHang.setVisible(true);
         frame_taoDonNhapHang.setSize(1550, 670);
@@ -6700,7 +6735,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhapHang_themActionPerformed
 
     private void tb_danhSachKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachKhachHangMouseClicked
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 7.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết khách hàng!");
                 return;
             }
@@ -6713,7 +6748,7 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Frame_XemChiTietCapNhatKhachHang frame_XemChiTietCapNhatKhachHang = new Frame_XemChiTietCapNhatKhachHang(khachHang, this.nhanVien);
+        Frame_XemChiTietCapNhatKhachHang frame_XemChiTietCapNhatKhachHang = new Frame_XemChiTietCapNhatKhachHang(khachHang, this.nhanVienDangNhap);
         frame_XemChiTietCapNhatKhachHang.setVisible(true);
         frame_XemChiTietCapNhatKhachHang.setSize(950, 370);
         frame_XemChiTietCapNhatKhachHang.setLocation(0,0);
@@ -6758,6 +6793,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNhaCungCap_locTuDongKeyReleased
 
     private void btnNhaCungCap_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaCungCap_themActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm nhà cung cấp!");
+                return;
+            }
         Frame_ThemNhaCungCap frame_ThemNhaCungCap = new Frame_ThemNhaCungCap();
         frame_ThemNhaCungCap.setVisible(true);
         frame_ThemNhaCungCap.setSize(860, 300);
@@ -6765,6 +6804,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhaCungCap_themActionPerformed
 
     private void tb_danhSachNhaCungCapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachNhaCungCapMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết nhà cung cấp!");
+                return;
+            }
         int index = tb_danhSachNhaCungCap.getSelectedRow();
         TableModel model = tb_danhSachNhaCungCap.getModel();
         NhaCungCap nhaCungCap = new NhaCungCap();
@@ -6774,17 +6817,21 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Frame_XemChiTietCapNhatNhaCungCap frame_XemChiTietCapNhatNhaCungCap = new Frame_XemChiTietCapNhatNhaCungCap(nhaCungCap);
+        Frame_XemChiTietCapNhatNhaCungCap frame_XemChiTietCapNhatNhaCungCap = new Frame_XemChiTietCapNhatNhaCungCap(nhaCungCap, nhanVienDangNhap);
         frame_XemChiTietCapNhatNhaCungCap.setVisible(true);
         frame_XemChiTietCapNhatNhaCungCap.setSize(860, 300);
         frame_XemChiTietCapNhatNhaCungCap.setLocation(0,0);
     }//GEN-LAST:event_tb_danhSachNhaCungCapMouseClicked
 
     private void btnNhanVienChiNhanh_themNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_themNhanVienActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm nhân viên!");
+                return;
+            }
         ChiNhanh chiNhanh = new ChiNhanh();
         try {
-            chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh("CN001");
-            Frame_ThemNhanVien frame_ThemNhanVien = new Frame_ThemNhanVien(chiNhanh);
+            chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(nhanVienDangNhap.getMaChiNhanh());
+            Frame_ThemNhanVien frame_ThemNhanVien = new Frame_ThemNhanVien(chiNhanh, nhanVienDangNhap);
             frame_ThemNhanVien.setVisible(true);
             frame_ThemNhanVien.setSize(965, 460);
             frame_ThemNhanVien.setLocation(0,0);
@@ -6837,13 +6884,13 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnNhanVienChiNhanh_xemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_xemChiTietActionPerformed
         
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 1.1 ")){
             JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết chi nhánh!");
             return;
         }
         try {
             ChiNhanh chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(lbNhanVienChiNhanh_ma.getText());
-            Frame_XemChiTietCapNhatChiNhanh frame_XemChiTietCapNhatchiNhanh = new Frame_XemChiTietCapNhatChiNhanh(chiNhanh, this.nhanVien);
+            Frame_XemChiTietCapNhatChiNhanh frame_XemChiTietCapNhatchiNhanh = new Frame_XemChiTietCapNhatChiNhanh(chiNhanh, this.nhanVienDangNhap);
             frame_XemChiTietCapNhatchiNhanh.setVisible(true);
             frame_XemChiTietCapNhatchiNhanh.setSize(860, 290);
             frame_XemChiTietCapNhatchiNhanh.setLocation(0,0);
@@ -6853,7 +6900,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienChiNhanh_xemChiTietActionPerformed
 
     private void btnNhanVienChiNhanh_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_taiLaiActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.1 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 4.1 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xem trang chi nhánh!");
                 return;
             }
@@ -6862,6 +6909,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienChiNhanh_taiLaiActionPerformed
 
     private void tb_danhSachNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachNhanVienMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết nhân viên!");
+                return;
+            }
         int index = tb_danhSachNhanVien.getSelectedRow();
         TableModel model = tb_danhSachNhanVien.getModel();
         NhanVien nhanVien = new NhanVien();
@@ -6873,7 +6924,7 @@ public class TrangChu extends javax.swing.JFrame {
         ChiNhanh chiNhanh;
         try {
             chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh("CN001");
-            Frame_ChiTietNhanVien frame_ChiTietNhanVien = new Frame_ChiTietNhanVien(nhanVien, chiNhanh);
+            Frame_ChiTietNhanVien frame_ChiTietNhanVien = new Frame_ChiTietNhanVien(nhanVien, chiNhanh, nhanVienDangNhap);
             frame_ChiTietNhanVien.setVisible(true);
             frame_ChiTietNhanVien.setSize(970, 450);
             frame_ChiTietNhanVien.setLocation(0,0);
@@ -6884,11 +6935,11 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_danhSachNhanVienMouseClicked
 
     private void btnNhanVienChiNhanh_themChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_themChiNhanhActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.2 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 4.2 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm chi nhánh!");
                 return;
             }
-        Frame_ThemChiNhanh frame_ThemChiNhanh = new Frame_ThemChiNhanh(this.nhanVien);
+        Frame_ThemChiNhanh frame_ThemChiNhanh = new Frame_ThemChiNhanh(this.nhanVienDangNhap);
         frame_ThemChiNhanh.setVisible(true);
         frame_ThemChiNhanh.setSize(860, 290);
         frame_ThemChiNhanh.setLocation(0,0);
@@ -6988,10 +7039,13 @@ public class TrangChu extends javax.swing.JFrame {
     }
     
     private void btnLichLamViec_lapPhieuLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_lapPhieuLuongActionPerformed
-
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 11.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý phiếu lương!");
+                return;
+            }
         try {
             NhanVien nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(lbLichLamViec_maNhanVien.getText());
-            Frame_LapPhieuLuong frame_LapPhieuLuong = new Frame_LapPhieuLuong(nhanVien);
+            Frame_LapPhieuLuong frame_LapPhieuLuong = new Frame_LapPhieuLuong(nhanVien, nhanVienDangNhap);
             frame_LapPhieuLuong.setVisible(true);
             frame_LapPhieuLuong.setSize(1135, 640);
             frame_LapPhieuLuong.setLocation(0,0);
@@ -7020,6 +7074,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tbLichLamViec_danhSachChiNhanhMouseClicked
 
     private void btnLichLamViec_themLichLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themLichLamViecActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 8.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm lịch làm việc!");
+                return;
+            }
         hienThiThemLichLamViec(true, true, false);
         lamMoiInputLichLamViec();
         capNhatLichLamViec = false;
@@ -7034,6 +7092,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLichLamViec_themLichLamViecActionPerformed
 
     private void btnLichLamViec_themLichTangCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themLichTangCaActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 8.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm lịch tăng ca!");
+                return;
+            }
         hienThiThemLichLamViec(true, false, true);
         lamMoiInputLichLamViec();
         capNhatLichLamViec = false;
@@ -7152,10 +7214,6 @@ public class TrangChu extends javax.swing.JFrame {
         lbLichLamViec_thongBao.setForeground(Color.green);
         capNhatLichLamViec = false;
     }//GEN-LAST:event_btnLichLamViec_luuActionPerformed
-
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton19ActionPerformed
     boolean actionPerformedCaLamDaChonEnabled = true;
     private void cbLichLamViec_caLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLichLamViec_caLamActionPerformed
         try{
@@ -7253,11 +7311,19 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tbLichLamViec_lichLamViecMouseClicked
     private boolean capNhatLichLamViec = false;
     private void btnLichLamViec_capNhatLichLamViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_capNhatLichLamViecActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 8.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật lịch làm việc!");
+                return;
+            }
         hienThiThemLichLamViec(true, true, false);
         capNhatLichLamViec = true;
     }//GEN-LAST:event_btnLichLamViec_capNhatLichLamViecActionPerformed
 
     private void btnLichLamViec_capNhatLichTangCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_capNhatLichTangCaActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 8.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật lịch tăng ca!");
+                return;
+            }
         hienThiThemLichLamViec(true, false, true);
         capNhatLichLamViec = true;
     }//GEN-LAST:event_btnLichLamViec_capNhatLichTangCaActionPerformed
@@ -7293,28 +7359,32 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tbLichLamViec_lichTangCaMouseClicked
 
     private void btnLichLamViec_themBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themBangLuongActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 2.")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 2.")){
             JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào bảng lương!");
             return;
         }
-        Frame_BangLuong frame_BangLuong = new Frame_BangLuong(this.nhanVien);
+        Frame_BangLuong frame_BangLuong = new Frame_BangLuong(this.nhanVienDangNhap);
         frame_BangLuong.setVisible(true);
         frame_BangLuong.setSize(875, 435);
         frame_BangLuong.setLocation(0,0);
     }//GEN-LAST:event_btnLichLamViec_themBangLuongActionPerformed
 
     private void btnLichLamViec_capNhatCaLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_capNhatCaLamActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 3.")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 3.")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào bảng ca làm!");
                 return;
             }
-        Frame_CaLam frame_CaLam = new Frame_CaLam(this.nhanVien);
+        Frame_CaLam frame_CaLam = new Frame_CaLam(this.nhanVienDangNhap);
         frame_CaLam.setVisible(true);
         frame_CaLam.setSize(875, 435);
         frame_CaLam.setLocation(0,0);
     }//GEN-LAST:event_btnLichLamViec_capNhatCaLamActionPerformed
 
     private void btnLichLamViec_lichNghiViecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_lichNghiViecActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 8.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm lịch nghỉ!");
+                return;
+            }
         Frame_LichNghi frame_LichNghi = new Frame_LichNghi();
         frame_LichNghi.setVisible(true);
         frame_LichNghi.setSize(875, 435);
@@ -7322,9 +7392,13 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLichLamViec_lichNghiViecActionPerformed
 
     private void btnLichLamViec_themPhuCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themPhuCapActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 15.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập trang quản lý phụ cấp!");
+                return;
+            }
         try {
             NhanVien nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(lbLichLamViec_maNhanVien.getText());
-            Frame_TroCap frame_TroCap = new Frame_TroCap(nhanVien);
+            Frame_TroCap frame_TroCap = new Frame_TroCap(nhanVien, nhanVienDangNhap);
             frame_TroCap.setVisible(true);
             frame_TroCap.setSize(875, 435);
             frame_TroCap.setLocation(0,0);
@@ -7365,32 +7439,67 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPhanQuyen_capNhatActionPerformed
 
     private void btnNhanVienChiNhanh_importChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_importChiNhanhActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.4 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 4.4 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền import file chinh nhánh!");
                 return;
             }
     }//GEN-LAST:event_btnNhanVienChiNhanh_importChiNhanhActionPerformed
 
     private void btnNhanVienChiNhanh_exportChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_exportChiNhanhActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.5 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 4.5 ")){
             JOptionPane.showMessageDialog(this, "Bạn không có quyền export file chinh nhánh!");
             return;
         }
     }//GEN-LAST:event_btnNhanVienChiNhanh_exportChiNhanhActionPerformed
 
     private void btnHangHoa_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_importActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.4 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.4 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền import file hàng hóa!");
                 return;
             }
     }//GEN-LAST:event_btnHangHoa_importActionPerformed
 
     private void btnHangHoa_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_exportActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.5 ")){
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.5 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền export file hàng hóa!");
                 return;
             }
     }//GEN-LAST:event_btnHangHoa_exportActionPerformed
+
+    private void btnNhacungCap_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhacungCap_importActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.4 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền import file nhà cung cấp!");
+                return;
+            }
+    }//GEN-LAST:event_btnNhacungCap_importActionPerformed
+
+    private void btnNhaCungCap_xuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaCungCap_xuatFileActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xuất file danh sách nhà cung cấp!");
+                return;
+            }
+    }//GEN-LAST:event_btnNhaCungCap_xuatFileActionPerformed
+
+    private void btnNhanVienChiNhanh_exportNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_exportNhanVienActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 10.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xuất file danh sách nhân viên!");
+                return;
+            }
+    }//GEN-LAST:event_btnNhanVienChiNhanh_exportNhanVienActionPerformed
+
+    private void btnPhieuNhapHang_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuNhapHang_exportActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 12.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền export file phiếu nhập hàng!");
+                return;
+            }
+    }//GEN-LAST:event_btnPhieuNhapHang_exportActionPerformed
+
+    private void btnPhieuTraHang_exportFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuTraHang_exportFileActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền export file danh sách phiếu trả hàng!");
+                return;
+            }
+    }//GEN-LAST:event_btnPhieuTraHang_exportFileActionPerformed
     
     private String getTokenPhanQuyen(){
         String token = " ";
@@ -7436,47 +7545,32 @@ public class TrangChu extends javax.swing.JFrame {
         if(checkBoxPhanQuyen_lichLamViecCapNhat.isSelected()){ token = token + "8.3 ";}
         if(checkBoxPhanQuyen_lichLamViecImport.isSelected()){ token = token + "8.4 ";}
         if(checkBoxPhanQuyen_lichLamViecExport.isSelected()){ token = token + "8.5 ";}
-        if(checkBoxPhanQuyen_lichLamViecEmail.isSelected()){ token = token + "8.6 ";}
         
         if(checkBoxPhanQuyen_nhaCungCapXem.isSelected()){ token = token + "9.1 ";}
         if(checkBoxPhanQuyen_nhaCungCapThem.isSelected()){ token = token + "9.2 ";}
         if(checkBoxPhanQuyen_nhaCungCapCapNhat.isSelected()){ token = token + "9.3 ";}
         if(checkBoxPhanQuyen_nhaCungCapImport.isSelected()){ token = token + "9.4 ";}
         if(checkBoxPhanQuyen_nhaCungCapExport.isSelected()){ token = token + "9.5 ";}
-        if(checkBoxPhanQuyen_nhaCungCapMail.isSelected()){ token = token + "9.6 ";}
         
         if(checkBoxPhanQuyen_nhanVienXem.isSelected()){ token = token + "10.1 ";}
         if(checkBoxPhanQuyen_nhanVienThem.isSelected()){ token = token + "10.2 ";}
         if(checkBoxPhanQuyen_nhanVienCapNhat.isSelected()){ token = token + "10.3 ";}
-        if(checkBoxPhanQuyen_nhanVienImport.isSelected()){ token = token + "10.4 ";}
         if(checkBoxPhanQuyen_nhanVienExport.isSelected()){ token = token + "10.5 ";}
-        if(checkBoxPhanQuyen_nhanVienMail.isSelected()){ token = token + "10.6 ";}
         
         if(checkBoxPhanQuyen_phieuLuongXem.isSelected()){ token = token + "11.1 ";}
         if(checkBoxPhanQuyen_phieuLuongThem.isSelected()){ token = token + "11.2 ";}
-        if(checkBoxPhanQuyen_phieuLuongCapNhat.isSelected()){ token = token + "11.3 ";}
-        if(checkBoxPhanQuyen_phieuLuongImport.isSelected()){ token = token + "11.4 ";}
-        if(checkBoxPhanQuyen_phieuLuongExport.isSelected()){ token = token + "11.5 ";}
-        if(checkBoxPhanQuyen_phieuLuongMail.isSelected()){ token = token + "11.6 ";}
         
         if(checkBoxPhanQuyen_phieuNhapHangXem.isSelected()){ token = token + "12.1 ";}
         if(checkBoxPhanQuyen_phieuNhapHangThem.isSelected()){ token = token + "12.2 ";}
         if(checkBoxPhanQuyen_phieuNhapHangCapNhat.isSelected()){ token = token + "12.3 ";}
-        if(checkBoxPhanQuyen_phieuNhapHangImport.isSelected()){ token = token + "12.4 ";}
         if(checkBoxPhanQuyen_phieuNhapHangExport.isSelected()){ token = token + "12.5 ";}
-        if(checkBoxPhanQuyen_phieuNhapHangMail.isSelected()){ token = token + "12.6 ";}
         
         if(checkBoxPhanQuyen_phieuSuaChuaXem.isSelected()){ token = token + "13.1 ";}
         if(checkBoxPhanQuyen_phieuSuaChuaThem.isSelected()){ token = token + "13.2 ";}
         if(checkBoxPhanQuyen_phieuSuaChuaCapNhat.isSelected()){ token = token + "13.3 ";}
-        if(checkBoxPhanQuyen_phieuSuaChuaImport.isSelected()){ token = token + "13.4 ";}
-        if(checkBoxPhanQuyen_phieuSuaChuaExport.isSelected()){ token = token + "13.5 ";}
-        if(checkBoxPhanQuyen_phieuSuaChuaMail.isSelected()){ token = token + "13.6 ";}
         
         if(checkBoxPhanQuyen_phieuTraHangXem.isSelected()){ token = token + "14.1 ";}
         if(checkBoxPhanQuyen_phieuTraHangThem.isSelected()){ token = token + "14.2 ";}
-        if(checkBoxPhanQuyen_phieuTraHangCapNhat.isSelected()){ token = token + "14.3 ";}
-        if(checkBoxPhanQuyen_phieuTraHangImport.isSelected()){ token = token + "14.4 ";}
         if(checkBoxPhanQuyen_phieuTraHangExport.isSelected()){ token = token + "14.5 ";}
         if(checkBoxPhanQuyen_phieuTraHangMail.isSelected()){ token = token + "14.6 ";}
         
@@ -7495,6 +7589,7 @@ public class TrangChu extends javax.swing.JFrame {
         if(checkBoxPhanQuyen_kiemKhoMail.isSelected()){ token = token + "16.6 ";}
         
         if(checkBoxPhanQuyen_datHang.isSelected()){ token = token + "17 ";}
+        if(checkBoxPhanQuyen_phanQuyen.isSelected()){ token = token + "18 ";}
         
         return token;
     }
@@ -7541,47 +7636,32 @@ public class TrangChu extends javax.swing.JFrame {
         setSelectCheckBox(checkBoxPhanQuyen_lichLamViecCapNhat,tokenPhanQuyen, " 8.3 ");
         setSelectCheckBox(checkBoxPhanQuyen_lichLamViecImport,tokenPhanQuyen, " 8.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_lichLamViecExport,tokenPhanQuyen, " 8.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_lichLamViecEmail,tokenPhanQuyen, " 8.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_nhaCungCapXem,tokenPhanQuyen, " 9.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhaCungCapThem,tokenPhanQuyen, " 9.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhaCungCapCapNhat,tokenPhanQuyen, " 9.3 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhaCungCapImport,tokenPhanQuyen, " 9.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhaCungCapExport,tokenPhanQuyen, " 9.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_nhaCungCapMail,tokenPhanQuyen, " 9.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_nhanVienXem,tokenPhanQuyen, " 10.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhanVienThem,tokenPhanQuyen, " 10.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhanVienCapNhat,tokenPhanQuyen, " 10.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_nhanVienImport,tokenPhanQuyen, " 10.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_nhanVienExport,tokenPhanQuyen, " 10.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_nhanVienMail,tokenPhanQuyen, " 10.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_phieuLuongXem,tokenPhanQuyen, " 11.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuLuongThem,tokenPhanQuyen, " 11.2 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuLuongCapNhat,tokenPhanQuyen, " 11.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuLuongImport,tokenPhanQuyen, " 11.4 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuLuongExport,tokenPhanQuyen, " 11.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuLuongMail,tokenPhanQuyen, " 11.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_phieuNhapHangXem,tokenPhanQuyen, " 12.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuNhapHangThem,tokenPhanQuyen, " 12.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuNhapHangCapNhat,tokenPhanQuyen, " 12.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuNhapHangImport,tokenPhanQuyen, " 12.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuNhapHangExport,tokenPhanQuyen, " 12.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuNhapHangMail,tokenPhanQuyen, " 12.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_phieuSuaChuaXem,tokenPhanQuyen, " 13.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuSuaChuaThem,tokenPhanQuyen, " 13.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuSuaChuaCapNhat,tokenPhanQuyen, " 13.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuSuaChuaImport,tokenPhanQuyen, " 13.4 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuSuaChuaExport,tokenPhanQuyen, " 13.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuSuaChuaMail,tokenPhanQuyen, " 13.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_phieuTraHangXem,tokenPhanQuyen, " 14.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuTraHangThem,tokenPhanQuyen, " 14.2 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuTraHangCapNhat,tokenPhanQuyen, " 14.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_phieuTraHangImport,tokenPhanQuyen, " 14.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuTraHangExport,tokenPhanQuyen, " 14.5 ");
         setSelectCheckBox(checkBoxPhanQuyen_phieuTraHangMail,tokenPhanQuyen, " 14.6 ");
         
@@ -7600,6 +7680,7 @@ public class TrangChu extends javax.swing.JFrame {
         setSelectCheckBox(checkBoxPhanQuyen_kiemKhoMail,tokenPhanQuyen, " 16.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_datHang,tokenPhanQuyen, " 17 ");
+        setSelectCheckBox(checkBoxPhanQuyen_datHang,tokenPhanQuyen, " 18 ");
     }
     
     private void setSelectCheckBox(JCheckBox checkBox, String tokenPhanQuyen, String quyen){
@@ -8503,6 +8584,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnLichLamViec_themLichTangCa;
     private javax.swing.JButton btnLichLamViec_themPhuCap;
     private javax.swing.JButton btnNhaCungCap_them;
+    private javax.swing.JButton btnNhaCungCap_xuatFile;
+    private javax.swing.JButton btnNhacungCap_import;
     private javax.swing.JButton btnNhanVienChiNhanh_exportChiNhanh;
     private javax.swing.JButton btnNhanVienChiNhanh_exportNhanVien;
     private javax.swing.JButton btnNhanVienChiNhanh_importChiNhanh;
@@ -8512,6 +8595,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVienChiNhanh_xemChiTiet;
     private javax.swing.JButton btnNhapHang_them;
     private javax.swing.JButton btnPhanQuyen_capNhat;
+    private javax.swing.JButton btnPhieuNhapHang_export;
+    private javax.swing.JButton btnPhieuTraHang_exportFile;
     private javax.swing.JButton btnSuaChua_capNhat;
     private javax.swing.JButton btnSuaChua_reset;
     private javax.swing.JButton btnSuaChua_them;
@@ -8579,7 +8664,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxPhanQuyen_kiemKhoThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_kiemKhoXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_lichLamViecCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_lichLamViecEmail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_lichLamViecExport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_lichLamViecImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_lichLamViecThem;
@@ -8587,36 +8671,23 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhaCungCapCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhaCungCapExport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhaCungCapImport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_nhaCungCapMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhaCungCapThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhaCungCapXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhanVienCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhanVienExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_nhanVienImport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_nhanVienMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhanVienThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_nhanVienXem;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuLuongCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuLuongExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuLuongImport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuLuongMail;
+    private javax.swing.JCheckBox checkBoxPhanQuyen_phanQuyen;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuLuongThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuLuongXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuNhapHangCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuNhapHangExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuNhapHangImport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuNhapHangMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuNhapHangThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuNhapHangXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuSuaChuaCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuSuaChuaExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuSuaChuaImport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuSuaChuaMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuSuaChuaThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuSuaChuaXem;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuTraHangCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuTraHangExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_phieuTraHangImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuTraHangMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuTraHangThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_phieuTraHangXem;
@@ -8635,11 +8706,6 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateChooserLichLamViec_ngayBatDau;
     private com.toedter.calendar.JDateChooser dateChooserLichLamViec_ngayKetThuc;
     private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox13;
@@ -8738,6 +8804,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
+    private javax.swing.JLabel jLabel126;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
