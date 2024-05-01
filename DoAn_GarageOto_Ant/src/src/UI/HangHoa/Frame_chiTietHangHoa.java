@@ -23,11 +23,13 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import src.Model.ChiTietPhieuNhapHang;
 import src.Model.HangHoa;
 import src.Model.HinhAnh;
+import src.Model.NhanVien;
 import src.Model.NhomHang;
 import src.Model.TheKho;
 import src.Service.HangHoaService;
@@ -57,6 +59,9 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private NhanVienService nhanVienService = new NhanVienService();
     private KhachHangService khachHangService = new KhachHangService();
     private NhaCungCapService nhaCungCapService = new NhaCungCapService();
+    
+    private NhanVien nhanVienDangNhap;
+    
     private Util util = new Util();
     List<String> danhSachLinkHinhAnh = new ArrayList<>();
     List<String> danhSachLinkMoiHinhAnh = new ArrayList<>();
@@ -88,8 +93,9 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         this.hangHoa = hangHoa;
     }
 
-    public Frame_chiTietHangHoa(HangHoa hangHoa) {
+    public Frame_chiTietHangHoa(HangHoa hangHoa, NhanVien nhanVien) {
         this.hangHoa = hangHoa;
+        this.nhanVienDangNhap = nhanVien;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         try {
@@ -259,13 +265,14 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel45.setBackground(new java.awt.Color(209, 202, 202));
         jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tabbedPaneChiTietHangHoa_theKho.setBackground(new java.awt.Color(242, 249, 255));
         tabbedPaneChiTietHangHoa_theKho.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPaneChiTietHangHoa_theKhoStateChanged(evt);
             }
         });
 
-        jPanel38.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel38.setBackground(new java.awt.Color(242, 249, 255));
         jPanel38.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbChiTietHangHoa_tenHangHoa.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -285,6 +292,8 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         );
 
         jPanel38.add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 281));
+
+        jPanel41.setBackground(new java.awt.Color(242, 249, 255));
 
         lbChiTietHinhAnh_hinhAnh2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -324,14 +333,17 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
 
         jPanel38.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, 280));
 
-        jPanel42.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel42.setBackground(new java.awt.Color(242, 249, 255));
         jPanel42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel43.setBackground(new java.awt.Color(255, 255, 255));
         jPanel43.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel38.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel38.setText("Khách đặt:");
 
+        tfChiTietHangHang_khachDat.setBackground(null);
+        tfChiTietHangHang_khachDat.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_khachDat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_khachDat.setEnabled(false);
         tfChiTietHangHang_khachDat.addActionListener(new java.awt.event.ActionListener() {
@@ -366,8 +378,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel52.setBackground(new java.awt.Color(255, 255, 255));
         jPanel52.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel40.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel40.setText("Dịch vụ liên quan:");
 
+        cbChiTietHangHang_dichVuLienQuan.setBackground(null);
+        cbChiTietHangHang_dichVuLienQuan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cbChiTietHangHang_dichVuLienQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         cbChiTietHangHang_dichVuLienQuan.setEnabled(false);
 
@@ -379,7 +394,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel40)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbChiTietHangHang_dichVuLienQuan, 0, 262, Short.MAX_VALUE)
+                .addComponent(cbChiTietHangHang_dichVuLienQuan, 0, 240, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel52Layout.setVerticalGroup(
@@ -397,8 +412,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel53.setBackground(new java.awt.Color(255, 255, 255));
         jPanel53.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel41.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel41.setText("Tên hàng hóa:");
 
+        tfChiTietHangHang_tenHangHoa.setBackground(null);
+        tfChiTietHangHang_tenHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_tenHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_tenHangHoa.setEnabled(false);
 
@@ -410,7 +428,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel41)
                 .addGap(34, 34, 34)
-                .addComponent(tfChiTietHangHang_tenHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addComponent(tfChiTietHangHang_tenHangHoa, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel53Layout.setVerticalGroup(
@@ -428,8 +446,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel54.setBackground(new java.awt.Color(255, 255, 255));
         jPanel54.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel42.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel42.setText("Loại hàng:");
 
+        tfChiTietHangHang_loaiHang.setBackground(null);
+        tfChiTietHangHang_loaiHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_loaiHang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_loaiHang.setEnabled(false);
 
@@ -459,8 +480,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel57.setBackground(new java.awt.Color(255, 255, 255));
         jPanel57.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel45.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel45.setText("Giá bán:");
 
+        tfChiTietHangHang_giaBan.setBackground(null);
+        tfChiTietHangHang_giaBan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_giaBan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_giaBan.setEnabled(false);
         tfChiTietHangHang_giaBan.addActionListener(new java.awt.event.ActionListener() {
@@ -495,8 +519,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel58.setBackground(new java.awt.Color(255, 255, 255));
         jPanel58.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel46.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel46.setText("Giá vốn:");
 
+        tfChiTietHangHang_giaVon.setBackground(null);
+        tfChiTietHangHang_giaVon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_giaVon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_giaVon.setEnabled(false);
         tfChiTietHangHang_giaVon.addActionListener(new java.awt.event.ActionListener() {
@@ -531,8 +558,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel59.setBackground(new java.awt.Color(255, 255, 255));
         jPanel59.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel47.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel47.setText("Tồn kho:");
 
+        tfChiTietHangHang_tonKho.setBackground(null);
+        tfChiTietHangHang_tonKho.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_tonKho.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_tonKho.setEnabled(false);
         tfChiTietHangHang_tonKho.addActionListener(new java.awt.event.ActionListener() {
@@ -567,8 +597,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel60.setBackground(new java.awt.Color(255, 255, 255));
         jPanel60.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel48.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel48.setText("Mã hàng:");
 
+        tfChiTietHangHang_maHangHoa.setBackground(null);
+        tfChiTietHangHang_maHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_maHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_maHangHoa.setEnabled(false);
 
@@ -620,8 +653,11 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel55.setBackground(new java.awt.Color(255, 255, 255));
         jPanel55.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
+        jLabel43.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel43.setText("Trạng thái:");
 
+        cbChiTietHangHang_trangThai.setBackground(null);
+        cbChiTietHangHang_trangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cbChiTietHangHang_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn bán", "Ngưng bán" }));
         cbChiTietHangHang_trangThai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         cbChiTietHangHang_trangThai.setEnabled(false);
@@ -633,7 +669,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             .addGroup(jPanel55Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel43)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(cbChiTietHangHang_trangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -660,26 +696,26 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         });
         jPanel42.add(btnChiTietHangHoa_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
 
-        panelChiTietHangHoa_error.setBackground(new java.awt.Color(255, 255, 255));
-
-        lbChiTietHangHoa_error.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        lbChiTietHangHoa_error.setForeground(new java.awt.Color(255, 255, 255));
-        lbChiTietHangHoa_error.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        panelChiTietHangHoa_error.setBackground(new java.awt.Color(242, 249, 255));
 
         javax.swing.GroupLayout panelChiTietHangHoa_errorLayout = new javax.swing.GroupLayout(panelChiTietHangHoa_error);
         panelChiTietHangHoa_error.setLayout(panelChiTietHangHoa_errorLayout);
         panelChiTietHangHoa_errorLayout.setHorizontalGroup(
             panelChiTietHangHoa_errorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbChiTietHangHoa_error, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
         panelChiTietHangHoa_errorLayout.setVerticalGroup(
             panelChiTietHangHoa_errorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChiTietHangHoa_errorLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbChiTietHangHoa_error, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
         jPanel42.add(panelChiTietHangHoa_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 350, 30));
+
+        lbChiTietHangHoa_error.setBackground(new java.awt.Color(242, 249, 255));
+        lbChiTietHangHoa_error.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbChiTietHangHoa_error.setForeground(new java.awt.Color(255, 255, 255));
+        lbChiTietHangHoa_error.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jPanel42.add(lbChiTietHangHoa_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 350, 30));
 
         jPanel38.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 870, 440));
 
@@ -709,7 +745,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
 
         tabbedPaneChiTietHangHoa_theKho.addTab("Thông tin", jPanel38);
 
-        jPanel39.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel39.setBackground(new java.awt.Color(242, 249, 255));
 
         tbChiTietHangHoa_theKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -820,7 +856,10 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietHangHoa_huyBoActionPerformed
 
     private void btnChiTietHangHoa_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietHangHoa_capNhatActionPerformed
-
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật hàng hóa!");
+                return;
+            }
         if (btnChiTietHangHoa_capNhat.getText().equals("Cập nhật")){
 //            tfChiTietHangHang_maHangHoa.setEnabled(true);
             tfChiTietHangHang_tenHangHoa.setEnabled(true);
@@ -893,6 +932,10 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChiTietHangHoa_capNhatActionPerformed
 
     private void btnChiTietHangHoa_ngungKinhDoanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietHangHoa_ngungKinhDoanhActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 5.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật hàng hóa!");
+                return;
+            }
         try {
             hangHoaService.updateTrangThaiHangHoa(tfChiTietHangHang_maHangHoa.getText(), 0);
             cbChiTietHangHang_trangThai.setSelectedItem("Ngưng bán");

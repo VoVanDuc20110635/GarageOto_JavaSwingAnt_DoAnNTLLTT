@@ -39,6 +39,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
@@ -157,11 +158,10 @@ public class TrangChu extends javax.swing.JFrame {
         setLocation(0,0);
         hienThiThongTinNhanVienDangNhap();
         try {
-            hienThiDanhSachPhieuNhapHang();
-        } catch (SQLException ex) {
-            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
+            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý hàng hóa!");
+                return;
+            }
                 hienThiDanhSachHangHoa();
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -255,11 +255,12 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnHangHoa_them = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnHangHoa_import = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_danhSachHangHoa = new javax.swing.JTable();
         btnHangHoa_timKiem = new javax.swing.JButton();
         btnHangHoa_taiLai = new javax.swing.JButton();
+        btnHangHoa_export = new javax.swing.JButton();
         tabPane_giaoDich = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jPanel65 = new javax.swing.JPanel();
@@ -415,10 +416,11 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel75 = new javax.swing.JPanel();
         jPanel76 = new javax.swing.JPanel();
         btnNhanVienChiNhanh_themNhanVien = new javax.swing.JButton();
-        jButton33 = new javax.swing.JButton();
-        jButton34 = new javax.swing.JButton();
+        btnNhanVienChiNhanh_exportNhanVien = new javax.swing.JButton();
+        btnNhanVienChiNhanh_importChiNhanh = new javax.swing.JButton();
         btnNhanVienChiNhanh_taiLai = new javax.swing.JButton();
         btnNhanVienChiNhanh_themChiNhanh = new javax.swing.JButton();
+        btnNhanVienChiNhanh_exportChiNhanh = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         tb_danhSachChiNhanh = new javax.swing.JTable();
         jPanel95 = new javax.swing.JPanel();
@@ -574,25 +576,16 @@ public class TrangChu extends javax.swing.JFrame {
         checkBoxPhanQuyen_bangChamCongXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_bangChamCongThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_bangChamCongCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_bangChamCongImport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_bangChamCongExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_bangChamCongEmail = new javax.swing.JCheckBox();
         jPanel113 = new javax.swing.JPanel();
         jLabel49 = new javax.swing.JLabel();
         checkBoxPhanQuyen_bangLuongXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_bangLuongThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_bangLuongCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_bangLuongImport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_bangLuongExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_bangLuongEmail = new javax.swing.JCheckBox();
         jPanel114 = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         checkBoxPhanQuyen_caLamXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_caLamThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_caLamCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_caLamImport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_caLamExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_caLamEmail = new javax.swing.JCheckBox();
         jPanel115 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         checkBoxPhanQuyen_chiNhanhXem = new javax.swing.JCheckBox();
@@ -600,7 +593,6 @@ public class TrangChu extends javax.swing.JFrame {
         checkBoxPhanQuyen_chiNhanhCapNhat = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_chiNhanhImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_chiNhanhExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_chiNhanhEmail = new javax.swing.JCheckBox();
         jPanel116 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         checkBoxPhanQuyen_hangHoaXem = new javax.swing.JCheckBox();
@@ -608,13 +600,11 @@ public class TrangChu extends javax.swing.JFrame {
         checkBoxPhanQuyen_hangHoaCapNhat = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_hangHoaImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_hangHoaExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_hangHoaMail = new javax.swing.JCheckBox();
         jPanel117 = new javax.swing.JPanel();
         jLabel103 = new javax.swing.JLabel();
         checkBoxPhanQuyen_hoaDonXem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_hoaDonThem = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_hoaDonCapNhat = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_hoaDonImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_hoaDonExport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_hoaDonMail = new javax.swing.JCheckBox();
         jPanel118 = new javax.swing.JPanel();
@@ -624,7 +614,6 @@ public class TrangChu extends javax.swing.JFrame {
         checkBoxPhanQuyen_khachHangCapNhat = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_khachHangImport = new javax.swing.JCheckBox();
         checkBoxPhanQuyen_khachHangExport = new javax.swing.JCheckBox();
-        checkBoxPhanQuyen_khachHangEmail = new javax.swing.JCheckBox();
         jPanel119 = new javax.swing.JPanel();
         jLabel105 = new javax.swing.JLabel();
         checkBoxPhanQuyen_lichLamViecXem = new javax.swing.JCheckBox();
@@ -697,6 +686,9 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel124 = new javax.swing.JLabel();
         tfPhanQuyen_matKhau = new javax.swing.JTextField();
         btnPhanQuyen_capNhat = new javax.swing.JButton();
+        jPanel132 = new javax.swing.JPanel();
+        jLabel125 = new javax.swing.JLabel();
+        checkBoxPhanQuyen_datHang = new javax.swing.JCheckBox();
         jPanel55 = new javax.swing.JPanel();
         jPanel59 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
@@ -1070,10 +1062,15 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Import");
+        btnHangHoa_import.setBackground(new java.awt.Color(255, 102, 102));
+        btnHangHoa_import.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnHangHoa_import.setForeground(new java.awt.Color(255, 255, 255));
+        btnHangHoa_import.setText("Import");
+        btnHangHoa_import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHangHoa_importActionPerformed(evt);
+            }
+        });
 
         tb_danhSachHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tb_danhSachHangHoa.setModel(new javax.swing.table.DefaultTableModel(
@@ -1115,6 +1112,16 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnHangHoa_export.setBackground(new java.awt.Color(0, 0, 255));
+        btnHangHoa_export.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnHangHoa_export.setForeground(new java.awt.Color(255, 255, 255));
+        btnHangHoa_export.setText("Export");
+        btnHangHoa_export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHangHoa_exportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
         jPanel26Layout.setHorizontalGroup(
@@ -1133,8 +1140,11 @@ public class TrangChu extends javax.swing.JFrame {
                         .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnHangHoa_them)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHangHoa_import, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHangHoa_export, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1310, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
@@ -1146,7 +1156,8 @@ public class TrangChu extends javax.swing.JFrame {
                     .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnHangHoa_them, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnHangHoa_import, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnHangHoa_export, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnHangHoa_timKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1717,6 +1728,8 @@ public class TrangChu extends javax.swing.JFrame {
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         jButton17.setText("Xuất file");
         jPanel8.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(1410, 590, -1, -1));
+
+        jPanel34.setBackground(new java.awt.Color(242, 249, 255));
 
         btnHoaDon_taiLai.setBackground(new java.awt.Color(255, 153, 153));
         btnHoaDon_taiLai.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -2506,7 +2519,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnKhachHang_them.setBackground(new java.awt.Color(0, 204, 0));
         btnKhachHang_them.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnKhachHang_them.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang_them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/plus2.png"))); // NOI18N
         btnKhachHang_them.setText("Khách hàng");
         btnKhachHang_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2517,7 +2529,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnKhachHoa_xuatFile.setBackground(new java.awt.Color(102, 102, 102));
         btnKhachHoa_xuatFile.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnKhachHoa_xuatFile.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHoa_xuatFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         btnKhachHoa_xuatFile.setText("Xuất file");
         btnKhachHoa_xuatFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2528,7 +2539,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnKhachHang_import.setBackground(new java.awt.Color(102, 102, 102));
         btnKhachHang_import.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnKhachHang_import.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang_import.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         btnKhachHang_import.setText("Import");
         btnKhachHang_import.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2541,9 +2551,9 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel72Layout.setHorizontalGroup(
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel72Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(88, Short.MAX_VALUE)
                 .addComponent(btnKhachHang_them)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(btnKhachHang_import)
                 .addGap(27, 27, 27)
                 .addComponent(btnKhachHoa_xuatFile)
@@ -2727,7 +2737,9 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel75.setBackground(new java.awt.Color(242, 249, 255));
         jPanel75.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnNhanVienChiNhanh_themNhanVien.setBackground(new java.awt.Color(0, 204, 0));
+        jPanel76.setBackground(new java.awt.Color(242, 249, 255));
+
+        btnNhanVienChiNhanh_themNhanVien.setBackground(new java.awt.Color(0, 51, 255));
         btnNhanVienChiNhanh_themNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnNhanVienChiNhanh_themNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVienChiNhanh_themNhanVien.setText("Thêm nhân viên");
@@ -2737,17 +2749,22 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        jButton33.setBackground(new java.awt.Color(102, 102, 102));
-        jButton33.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton33.setForeground(new java.awt.Color(255, 255, 255));
-        jButton33.setText("Xuất file");
+        btnNhanVienChiNhanh_exportNhanVien.setBackground(new java.awt.Color(102, 102, 102));
+        btnNhanVienChiNhanh_exportNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhanVienChiNhanh_exportNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhanVienChiNhanh_exportNhanVien.setText("Xuất file nhân viên");
 
-        jButton34.setBackground(new java.awt.Color(0, 204, 0));
-        jButton34.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton34.setForeground(new java.awt.Color(255, 255, 255));
-        jButton34.setText("Import");
+        btnNhanVienChiNhanh_importChiNhanh.setBackground(new java.awt.Color(0, 204, 204));
+        btnNhanVienChiNhanh_importChiNhanh.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhanVienChiNhanh_importChiNhanh.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhanVienChiNhanh_importChiNhanh.setText("Import chi nhánh");
+        btnNhanVienChiNhanh_importChiNhanh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienChiNhanh_importChiNhanhActionPerformed(evt);
+            }
+        });
 
-        btnNhanVienChiNhanh_taiLai.setBackground(new java.awt.Color(0, 204, 0));
+        btnNhanVienChiNhanh_taiLai.setBackground(new java.awt.Color(255, 102, 102));
         btnNhanVienChiNhanh_taiLai.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnNhanVienChiNhanh_taiLai.setForeground(new java.awt.Color(255, 255, 255));
         btnNhanVienChiNhanh_taiLai.setText("Tải lại");
@@ -2767,21 +2784,33 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnNhanVienChiNhanh_exportChiNhanh.setBackground(new java.awt.Color(102, 102, 102));
+        btnNhanVienChiNhanh_exportChiNhanh.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhanVienChiNhanh_exportChiNhanh.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhanVienChiNhanh_exportChiNhanh.setText("Xuất file chi nhánh");
+        btnNhanVienChiNhanh_exportChiNhanh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienChiNhanh_exportChiNhanhActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel76Layout = new javax.swing.GroupLayout(jPanel76);
         jPanel76.setLayout(jPanel76Layout);
         jPanel76Layout.setHorizontalGroup(
             jPanel76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel76Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(btnNhanVienChiNhanh_taiLai)
-                .addGap(78, 78, 78)
+                .addGap(18, 18, 18)
                 .addComponent(btnNhanVienChiNhanh_themChiNhanh)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(btnNhanVienChiNhanh_themNhanVien)
-                .addGap(26, 26, 26)
-                .addComponent(jButton34)
-                .addGap(26, 26, 26)
-                .addComponent(jButton33)
+                .addGap(18, 18, 18)
+                .addComponent(btnNhanVienChiNhanh_importChiNhanh)
+                .addGap(18, 18, 18)
+                .addComponent(btnNhanVienChiNhanh_exportChiNhanh)
+                .addGap(18, 18, 18)
+                .addComponent(btnNhanVienChiNhanh_exportNhanVien)
                 .addContainerGap())
         );
         jPanel76Layout.setVerticalGroup(
@@ -2790,14 +2819,15 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNhanVienChiNhanh_themNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhanVienChiNhanh_exportNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhanVienChiNhanh_importChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNhanVienChiNhanh_taiLai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNhanVienChiNhanh_themChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNhanVienChiNhanh_themChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhanVienChiNhanh_exportChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel75.add(jPanel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 700, 40));
+        jPanel75.add(jPanel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 930, 40));
 
         tb_danhSachChiNhanh.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tb_danhSachChiNhanh.setModel(new javax.swing.table.DefaultTableModel(
@@ -4313,9 +4343,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel112.add(checkBoxPhanQuyen_bangChamCongXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel112.add(checkBoxPhanQuyen_bangChamCongThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel112.add(checkBoxPhanQuyen_bangChamCongCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel112.add(checkBoxPhanQuyen_bangChamCongImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
-        jPanel112.add(checkBoxPhanQuyen_bangChamCongExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel112.add(checkBoxPhanQuyen_bangChamCongEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel113.setBackground(new java.awt.Color(242, 249, 255));
         jPanel113.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4326,9 +4353,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel113.add(checkBoxPhanQuyen_bangLuongXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel113.add(checkBoxPhanQuyen_bangLuongThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel113.add(checkBoxPhanQuyen_bangLuongCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel113.add(checkBoxPhanQuyen_bangLuongImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
-        jPanel113.add(checkBoxPhanQuyen_bangLuongExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel113.add(checkBoxPhanQuyen_bangLuongEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel114.setBackground(new java.awt.Color(172, 234, 255));
         jPanel114.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4339,9 +4363,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel114.add(checkBoxPhanQuyen_caLamXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel114.add(checkBoxPhanQuyen_caLamThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel114.add(checkBoxPhanQuyen_caLamCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel114.add(checkBoxPhanQuyen_caLamImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
-        jPanel114.add(checkBoxPhanQuyen_caLamExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel114.add(checkBoxPhanQuyen_caLamEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel115.setBackground(new java.awt.Color(242, 249, 255));
         jPanel115.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4354,7 +4375,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel115.add(checkBoxPhanQuyen_chiNhanhCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
         jPanel115.add(checkBoxPhanQuyen_chiNhanhImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel115.add(checkBoxPhanQuyen_chiNhanhExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel115.add(checkBoxPhanQuyen_chiNhanhEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel116.setBackground(new java.awt.Color(172, 234, 255));
         jPanel116.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4367,7 +4387,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel116.add(checkBoxPhanQuyen_hangHoaCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
         jPanel116.add(checkBoxPhanQuyen_hangHoaImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel116.add(checkBoxPhanQuyen_hangHoaExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel116.add(checkBoxPhanQuyen_hangHoaMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel117.setBackground(new java.awt.Color(242, 249, 255));
         jPanel117.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4378,7 +4397,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel117.add(checkBoxPhanQuyen_hoaDonXem, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 6, -1, -1));
         jPanel117.add(checkBoxPhanQuyen_hoaDonThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 6, -1, -1));
         jPanel117.add(checkBoxPhanQuyen_hoaDonCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
-        jPanel117.add(checkBoxPhanQuyen_hoaDonImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel117.add(checkBoxPhanQuyen_hoaDonExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
         jPanel117.add(checkBoxPhanQuyen_hoaDonMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
@@ -4393,7 +4411,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel118.add(checkBoxPhanQuyen_khachHangCapNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 6, -1, -1));
         jPanel118.add(checkBoxPhanQuyen_khachHangImport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1002, 6, -1, -1));
         jPanel118.add(checkBoxPhanQuyen_khachHangExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1181, 6, -1, -1));
-        jPanel118.add(checkBoxPhanQuyen_khachHangEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(1345, 6, -1, -1));
 
         jPanel119.setBackground(new java.awt.Color(242, 249, 255));
         jPanel119.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -4572,34 +4589,61 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        jPanel132.setBackground(new java.awt.Color(172, 234, 255));
+
+        jLabel125.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel125.setText("(17) Đặt hàng");
+
+        javax.swing.GroupLayout jPanel132Layout = new javax.swing.GroupLayout(jPanel132);
+        jPanel132.setLayout(jPanel132Layout);
+        jPanel132Layout.setHorizontalGroup(
+            jPanel132Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel132Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel125)
+                .addGap(33, 33, 33)
+                .addComponent(checkBoxPhanQuyen_datHang)
+                .addGap(1359, 1359, 1359))
+        );
+        jPanel132Layout.setVerticalGroup(
+            jPanel132Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel132Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel132Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxPhanQuyen_datHang)
+                    .addComponent(jLabel125)))
+        );
+
         javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
         jPanel49.setLayout(jPanel49Layout);
         jPanel49Layout.setHorizontalGroup(
             jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel49Layout.createSequentialGroup()
-                .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel112, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel113, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel114, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel115, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel116, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel117, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel118, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel119, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel105, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel120, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel121, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel122, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel123, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel129, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel130, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel49Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel131, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnPhanQuyen_capNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel49Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel112, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel113, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel114, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel115, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel116, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel117, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel118, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel119, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel105, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel120, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel121, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel122, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel123, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel129, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel130, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel49Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanel131, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPhanQuyen_capNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel132, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel49Layout.setVerticalGroup(
@@ -4642,8 +4686,10 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jPanel130, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
-                .addComponent(jPanel58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addComponent(jPanel58, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel132, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         tabbedPane_nhanVien.addTab("Phân quyền", jPanel49);
@@ -5425,6 +5471,10 @@ public class TrangChu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHangHoa_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_themActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm hàng hóa!");
+                return;
+            }
         Frame_ThemHangHoa frame_themHangHoa = new Frame_ThemHangHoa();
         frame_themHangHoa.setVisible(true);
         frame_themHangHoa.setSize(850, 460);
@@ -5462,6 +5512,10 @@ public class TrangChu extends javax.swing.JFrame {
     private void tabPane_giaoDichStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabPane_giaoDichStateChanged
         int selectedIndex = tabPane_giaoDich.getSelectedIndex();
         if (selectedIndex == 1 && tabbedPane_trangChu.getSelectedIndex() == 1) { // Change 1 to the index of your specific tab
+            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý hóa đơn!");
+                return;
+            }
             hienThiDanhSachHoaDon();
             hienThiDanhSachNhanVienCombobox(cbHoaDon_nguoiTao);
         } 
@@ -5519,6 +5573,13 @@ public class TrangChu extends javax.swing.JFrame {
             tare_noiDungSuaChua.setEnabled(false);
             tb_danhSachPhieuSuaChua.setEnabled(true);
             btnSuaChua_reset.setVisible(false);
+        }
+        if (selectedIndex == 4){
+            try {
+                hienThiDanhSachPhieuNhapHang();
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_tabPane_giaoDichStateChanged
 
@@ -5582,10 +5643,18 @@ public class TrangChu extends javax.swing.JFrame {
         int selectedTab = tabbedPane_trangChu.getSelectedIndex();
         
         if (selectedTab == 3 && tabbedPane_nhanVien.getSelectedIndex() == 0){
+            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý chi nhánh!");
+                return;
+            }
             hienThiDanhSachNhanVien();
             hienThiDanhSachChiNhanh();
         }
         if (selectedTab == 1 && tabPane_giaoDich.getSelectedIndex() == 0){
+             if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 17 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền đặt hàng ,thanh toán!");
+                return;
+            }
             hienThiDanhSachHangHoaKhiDatHang();
             hienThiDanhSachKhachHangTaiCombobox(cbDatHang_danhSachKhachHang);
 //            int soHoaDon = 0;
@@ -5598,6 +5667,10 @@ public class TrangChu extends javax.swing.JFrame {
             
         }
         if (selectedTab == 2 && tabbedPane_doiTac.getSelectedIndex() == 0){
+            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập trang quản lý khách hàng!");
+                return;
+            }
             hienThiDanhSachKhachHang();
         }
     }//GEN-LAST:event_tabbedPane_trangChuStateChanged
@@ -5606,8 +5679,8 @@ public class TrangChu extends javax.swing.JFrame {
         
         int selectedTab = tabbedPane_nhanVien.getSelectedIndex();
         if (selectedTab == 1 && tabbedPane_trangChu.getSelectedIndex() == 3 ){
-            if (util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1 ")){
-                
+            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào bảng chấm công!");
                 return;
             }
             hienThiDanhSachBangChamCong();
@@ -5737,7 +5810,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_bangCongResetActionPerformed
 
     private void btn_bangCongCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongCapNhatActionPerformed
-
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.3 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật bảng chấm công!");
+            return;
+        }
         BangChamCong bangChamCongNew = new BangChamCong();
         bangChamCongNew.setMaCaLam(cb_bangCongCaLam.getSelectedItem().toString().split(" ")[0]);
         bangChamCongNew.setMaBangChamCong(lb_maBangChamCong.getText());
@@ -5752,6 +5828,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_bangCongCapNhatActionPerformed
 
     private void btn_bangCongThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bangCongThemActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.2 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm bảng chấm công!");
+            return;
+        }
         BangChamCong bangChamCongNew = new BangChamCong();
         bangChamCongNew.setMaCaLam(cb_bangCongCaLam.getSelectedItem().toString().split(" ")[0]);
         bangChamCongNew.setMaBangChamCong("BC0" + String.valueOf(tongSoBangChamCong + 1));
@@ -5768,6 +5848,10 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnChamCong_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamCong_timKiemActionPerformed
         try {
+            if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào xem bảng chấm công!");
+                return;
+            }
             List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
             if (radioChamCong_khoangThoiGian.isSelected() == true){
                 danhSachBangChamCong = bangChamCongService.hienThiBangChamCongTheoTheoNgayBatDauVaNgayKetThuc(dateChooserChamCong_ngayBatDau.getDate(), dateChooserChamCong_ngayKetThuc.getDate());
@@ -5805,6 +5889,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChamCong_timKiemActionPerformed
 
     private void btnChamCong_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChamCong_taiLaiActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem bảng chấm công!");
+                return;
+            }
         hienThiDanhSachBangChamCong();
     }//GEN-LAST:event_btnChamCong_taiLaiActionPerformed
 
@@ -5846,6 +5934,10 @@ public class TrangChu extends javax.swing.JFrame {
     List<String> inputs = new ArrayList<>();
 
     private void btnHangHoa_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_timKiemActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hàng hóa!");
+                return;
+            }
         if (inputs.isEmpty()){
             try {
                 hienThiDanhSachHangHoa(tfHangHoa_maHangHoa.getText(), tfHangHoa_timTheoTen.getText());
@@ -5868,6 +5960,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHangHoa_timKiemActionPerformed
 
     private void btnHangHoa_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_taiLaiActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hàng hóa!");
+                return;
+            }
         inputs.clear();
         tfHangHoa_maHangHoa.setText("");
         tfHangHoa_timTheoTen.setText("");
@@ -5939,6 +6035,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfHangHoa_timTheoTenActionPerformed
 
     private void tb_danhSachHangHoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachHangHoaMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết hàng hóa!");
+                return;
+            }
         int index = tb_danhSachHangHoa.getSelectedRow();
         TableModel model = tb_danhSachHangHoa.getModel();
         HangHoa hangHoa = new HangHoa();
@@ -5948,7 +6048,7 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Frame_chiTietHangHoa frame_chiTietHangHoa = new Frame_chiTietHangHoa(hangHoa);
+        Frame_chiTietHangHoa frame_chiTietHangHoa = new Frame_chiTietHangHoa(hangHoa, this.nhanVien);
         frame_chiTietHangHoa.setVisible(true);
         frame_chiTietHangHoa.setSize(1320, 560);
         frame_chiTietHangHoa.setLocation(0,0);
@@ -6053,7 +6153,11 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDatHang_timHangHoaFocusLost
 
     private void btnKhachHang_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang_themActionPerformed
-        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang();
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm khách hàng!");
+                return;
+            }
+        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang(this.nhanVien);
         frame_themKhachHang.setVisible(true);
         frame_themKhachHang.setSize(950, 400);
         frame_themKhachHang.setLocation(0,0);
@@ -6123,6 +6227,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_cbDatHang_danhSachKhachHangActionPerformed
 
     private void btnDatHang_datHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_datHangActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 17 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền đặt hàng!");
+                return;
+            }
         KhachHang khachHang = new KhachHang();
         
         try {
@@ -6146,13 +6254,17 @@ public class TrangChu extends javax.swing.JFrame {
         }
         int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText().toString());
         double tongTienHang = Double.parseDouble(tfDatHang_tongTienHang.getText().toString());
-        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, trangChuInstance);
+        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, trangChuInstance, this.nhanVien);
         frame_thanhToan.setVisible(true);
         frame_thanhToan.setSize(360, 650);
         frame_thanhToan.setLocation(1170,0);
     }//GEN-LAST:event_btnDatHang_datHangActionPerformed
 
     private void btnKhachHoa_xuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHoa_xuatFileActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền export file khách hàng!");
+                return;
+            }
         try {
             WriteCSV writeCSV = new WriteCSV();
             List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
@@ -6186,11 +6298,18 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfHoaDon_timHoaDonKeyReleased
 
     private void btnHoaDon_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_taiLaiActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hóa đơn!");
+                return;
+            }
         hienThiDanhSachHoaDon();
     }//GEN-LAST:event_btnHoaDon_taiLaiActionPerformed
 
     private void btnHoaDon_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_timKiemActionPerformed
-        
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem danh sách hóa đơn!");
+                return;
+            }
         if (cbHoaDon_nguoiTao.getSelectedItem().equals("Chọn tất cả") && (dateChooseHoaDon_batDau.getDate() == null || dateChooserHoaDon_ketThuc.getDate() == null )){
             hienThiDanhSachHoaDon();
             return;
@@ -6252,6 +6371,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_cbHoaDon_nguoiTaoActionPerformed
 
     private void tbHoaDon_danhSachHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHoaDon_danhSachHoaDonMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 6.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết hóa đơn!");
+                return;
+            }
         int index = tbHoaDon_danhSachHoaDon.getSelectedRow();
         TableModel model = tbHoaDon_danhSachHoaDon.getModel();
         HoaDon hoaDon = new HoaDon();
@@ -6268,7 +6391,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        phieuNhapHang.setTrangThai(model.getValueAt(index, 5).toString());
         String tenNhanVien = model.getValueAt(index, 3).toString();
         String tenDoiTac = model.getValueAt(index, 4).toString();
-        Frame_HoaDonChiTiet frame_hoaDonChiTiet = new Frame_HoaDonChiTiet(hoaDon, tenNhanVien, tenDoiTac);
+        Frame_HoaDonChiTiet frame_hoaDonChiTiet = new Frame_HoaDonChiTiet(hoaDon, tenNhanVien, tenDoiTac, this.nhanVien);
         frame_hoaDonChiTiet.setVisible(true);
         frame_hoaDonChiTiet.setSize(1075, 620);
         frame_hoaDonChiTiet.setLocation(0,0);
@@ -6577,6 +6700,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhapHang_themActionPerformed
 
     private void tb_danhSachKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_danhSachKhachHangMouseClicked
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 7.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết khách hàng!");
+                return;
+            }
         int index = tb_danhSachKhachHang.getSelectedRow();
         TableModel model = tb_danhSachKhachHang.getModel();
         KhachHang khachHang = new KhachHang();
@@ -6586,7 +6713,7 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        Frame_XemChiTietCapNhatKhachHang frame_XemChiTietCapNhatKhachHang = new Frame_XemChiTietCapNhatKhachHang(khachHang);
+        Frame_XemChiTietCapNhatKhachHang frame_XemChiTietCapNhatKhachHang = new Frame_XemChiTietCapNhatKhachHang(khachHang, this.nhanVien);
         frame_XemChiTietCapNhatKhachHang.setVisible(true);
         frame_XemChiTietCapNhatKhachHang.setSize(950, 370);
         frame_XemChiTietCapNhatKhachHang.setLocation(0,0);
@@ -6709,9 +6836,14 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNhanVienChiNhanh_locTuDongKeyReleased
 
     private void btnNhanVienChiNhanh_xemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_xemChiTietActionPerformed
+        
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 1.1 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem thông tin chi tiết chi nhánh!");
+            return;
+        }
         try {
             ChiNhanh chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(lbNhanVienChiNhanh_ma.getText());
-            Frame_XemChiTietCapNhatChiNhanh frame_XemChiTietCapNhatchiNhanh = new Frame_XemChiTietCapNhatChiNhanh(chiNhanh);
+            Frame_XemChiTietCapNhatChiNhanh frame_XemChiTietCapNhatchiNhanh = new Frame_XemChiTietCapNhatChiNhanh(chiNhanh, this.nhanVien);
             frame_XemChiTietCapNhatchiNhanh.setVisible(true);
             frame_XemChiTietCapNhatchiNhanh.setSize(860, 290);
             frame_XemChiTietCapNhatchiNhanh.setLocation(0,0);
@@ -6721,6 +6853,10 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienChiNhanh_xemChiTietActionPerformed
 
     private void btnNhanVienChiNhanh_taiLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_taiLaiActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem trang chi nhánh!");
+                return;
+            }
         hienThiDanhSachNhanVien();
         hienThiDanhSachChiNhanh();
     }//GEN-LAST:event_btnNhanVienChiNhanh_taiLaiActionPerformed
@@ -6748,7 +6884,11 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_danhSachNhanVienMouseClicked
 
     private void btnNhanVienChiNhanh_themChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_themChiNhanhActionPerformed
-        Frame_ThemChiNhanh frame_ThemChiNhanh = new Frame_ThemChiNhanh();
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm chi nhánh!");
+                return;
+            }
+        Frame_ThemChiNhanh frame_ThemChiNhanh = new Frame_ThemChiNhanh(this.nhanVien);
         frame_ThemChiNhanh.setVisible(true);
         frame_ThemChiNhanh.setSize(860, 290);
         frame_ThemChiNhanh.setLocation(0,0);
@@ -7153,14 +7293,22 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tbLichLamViec_lichTangCaMouseClicked
 
     private void btnLichLamViec_themBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_themBangLuongActionPerformed
-        Frame_BangLuong frame_BangLuong = new Frame_BangLuong();
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 2.")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào bảng lương!");
+            return;
+        }
+        Frame_BangLuong frame_BangLuong = new Frame_BangLuong(this.nhanVien);
         frame_BangLuong.setVisible(true);
         frame_BangLuong.setSize(875, 435);
         frame_BangLuong.setLocation(0,0);
     }//GEN-LAST:event_btnLichLamViec_themBangLuongActionPerformed
 
     private void btnLichLamViec_capNhatCaLamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichLamViec_capNhatCaLamActionPerformed
-        Frame_CaLam frame_CaLam = new Frame_CaLam();
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 3.")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào bảng ca làm!");
+                return;
+            }
+        Frame_CaLam frame_CaLam = new Frame_CaLam(this.nhanVien);
         frame_CaLam.setVisible(true);
         frame_CaLam.setSize(875, 435);
         frame_CaLam.setLocation(0,0);
@@ -7215,6 +7363,34 @@ public class TrangChu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnPhanQuyen_capNhatActionPerformed
+
+    private void btnNhanVienChiNhanh_importChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_importChiNhanhActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.4 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền import file chinh nhánh!");
+                return;
+            }
+    }//GEN-LAST:event_btnNhanVienChiNhanh_importChiNhanhActionPerformed
+
+    private void btnNhanVienChiNhanh_exportChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_exportChiNhanhActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 4.5 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền export file chinh nhánh!");
+            return;
+        }
+    }//GEN-LAST:event_btnNhanVienChiNhanh_exportChiNhanhActionPerformed
+
+    private void btnHangHoa_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_importActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.4 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền import file hàng hóa!");
+                return;
+            }
+    }//GEN-LAST:event_btnHangHoa_importActionPerformed
+
+    private void btnHangHoa_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_exportActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 5.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền export file hàng hóa!");
+                return;
+            }
+    }//GEN-LAST:event_btnHangHoa_exportActionPerformed
     
     private String getTokenPhanQuyen(){
         String token = " ";
@@ -7222,42 +7398,30 @@ public class TrangChu extends javax.swing.JFrame {
         if(checkBoxPhanQuyen_bangChamCongXem.isSelected()){ token = token + "1.1 ";}
         if(checkBoxPhanQuyen_bangChamCongThem.isSelected()){ token = token + "1.2 ";}
         if(checkBoxPhanQuyen_bangChamCongCapNhat.isSelected()){ token = token + "1.3 ";}
-        if(checkBoxPhanQuyen_bangChamCongImport.isSelected()){ token = token + "1.4 ";}
-        if(checkBoxPhanQuyen_bangChamCongExport.isSelected()){ token = token + "1.5 ";}
-        if(checkBoxPhanQuyen_bangChamCongEmail.isSelected()){ token = token + "1.6 ";}
         
         if(checkBoxPhanQuyen_bangLuongXem.isSelected()){ token = token + "2.1 ";}
         if(checkBoxPhanQuyen_bangLuongThem.isSelected()){ token = token + "2.2 ";}
         if(checkBoxPhanQuyen_bangLuongCapNhat.isSelected()){ token = token + "2.3 ";}
-        if(checkBoxPhanQuyen_bangLuongImport.isSelected()){ token = token + "2.4 ";}
-        if(checkBoxPhanQuyen_bangLuongExport.isSelected()){ token = token + "2.5 ";}
-        if(checkBoxPhanQuyen_bangLuongEmail.isSelected()){ token = token + "2.6 ";}
         
         if(checkBoxPhanQuyen_caLamXem.isSelected()){ token = token + "3.1 ";}
         if(checkBoxPhanQuyen_caLamThem.isSelected()){ token = token + "3.2 ";}
         if(checkBoxPhanQuyen_caLamCapNhat.isSelected()){ token = token + "3.3 ";}
-        if(checkBoxPhanQuyen_caLamImport.isSelected()){ token = token + "3.4 ";}
-        if(checkBoxPhanQuyen_caLamExport.isSelected()){ token = token + "3.5 ";}
-        if(checkBoxPhanQuyen_caLamEmail.isSelected()){ token = token + "3.6 ";}
         
         if(checkBoxPhanQuyen_chiNhanhXem.isSelected()){ token = token + "4.1 ";}
         if(checkBoxPhanQuyen_chiNhanhThem.isSelected()){ token = token + "4.2 ";}
         if(checkBoxPhanQuyen_chiNhanhCapNhat.isSelected()){ token = token + "4.3 ";}
         if(checkBoxPhanQuyen_chiNhanhImport.isSelected()){ token = token + "4.4 ";}
         if(checkBoxPhanQuyen_chiNhanhExport.isSelected()){ token = token + "4.5 ";}
-        if(checkBoxPhanQuyen_chiNhanhEmail.isSelected()){ token = token + "4.6 ";}
         
         if(checkBoxPhanQuyen_hangHoaXem.isSelected()){ token = token + "5.1 ";}
         if(checkBoxPhanQuyen_hangHoaThem.isSelected()){ token = token + "5.2 ";}
         if(checkBoxPhanQuyen_hangHoaCapNhat.isSelected()){ token = token + "5.3 ";}
         if(checkBoxPhanQuyen_hangHoaImport.isSelected()){ token = token + "5.4 ";}
         if(checkBoxPhanQuyen_hangHoaExport.isSelected()){ token = token + "5.5 ";}
-        if(checkBoxPhanQuyen_hangHoaMail.isSelected()){ token = token + "5.6 ";}
         
         if(checkBoxPhanQuyen_hoaDonXem.isSelected()){ token = token + "6.1 ";}
         if(checkBoxPhanQuyen_hoaDonThem.isSelected()){ token = token + "6.2 ";}
         if(checkBoxPhanQuyen_hoaDonCapNhat.isSelected()){ token = token + "6.3 ";}
-        if(checkBoxPhanQuyen_hoaDonImport.isSelected()){ token = token + "6.4 ";}
         if(checkBoxPhanQuyen_hoaDonExport.isSelected()){ token = token + "6.5 ";}
         if(checkBoxPhanQuyen_hoaDonMail.isSelected()){ token = token + "6.6 ";}
         
@@ -7266,7 +7430,6 @@ public class TrangChu extends javax.swing.JFrame {
         if(checkBoxPhanQuyen_khachHangCapNhat.isSelected()){ token = token + "7.3 ";}
         if(checkBoxPhanQuyen_khachHangImport.isSelected()){ token = token + "7.4 ";}
         if(checkBoxPhanQuyen_khachHangExport.isSelected()){ token = token + "7.5 ";}
-        if(checkBoxPhanQuyen_khachHangEmail.isSelected()){ token = token + "7.6 ";}
         
         if(checkBoxPhanQuyen_lichLamViecXem.isSelected()){ token = token + "8.1 ";}
         if(checkBoxPhanQuyen_lichLamViecThem.isSelected()){ token = token + "8.2 ";}
@@ -7331,6 +7494,8 @@ public class TrangChu extends javax.swing.JFrame {
         if(checkBoxPhanQuyen_kiemKhoExport.isSelected()){ token = token + "16.5 ";}
         if(checkBoxPhanQuyen_kiemKhoMail.isSelected()){ token = token + "16.6 ";}
         
+        if(checkBoxPhanQuyen_datHang.isSelected()){ token = token + "17 ";}
+        
         return token;
     }
     
@@ -7338,42 +7503,30 @@ public class TrangChu extends javax.swing.JFrame {
         setSelectCheckBox(checkBoxPhanQuyen_bangChamCongXem,tokenPhanQuyen, " 1.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_bangChamCongThem,tokenPhanQuyen, " 1.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_bangChamCongCapNhat,tokenPhanQuyen, " 1.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_bangChamCongImport,tokenPhanQuyen, " 1.4 ");
-        setSelectCheckBox(checkBoxPhanQuyen_bangChamCongExport,tokenPhanQuyen, " 1.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_bangChamCongEmail,tokenPhanQuyen, " 1.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_bangLuongXem,tokenPhanQuyen, " 2.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_bangLuongThem,tokenPhanQuyen, " 2.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_bangLuongCapNhat,tokenPhanQuyen, " 2.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_bangLuongImport,tokenPhanQuyen, " 2.4 ");
-        setSelectCheckBox(checkBoxPhanQuyen_bangLuongExport,tokenPhanQuyen, " 2.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_bangLuongEmail,tokenPhanQuyen, " 2.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_caLamXem,tokenPhanQuyen, " 3.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_caLamThem,tokenPhanQuyen, " 3.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_caLamCapNhat,tokenPhanQuyen, " 3.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_caLamImport,tokenPhanQuyen, " 3.4 ");
-        setSelectCheckBox(checkBoxPhanQuyen_caLamExport,tokenPhanQuyen, " 3.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_caLamEmail,tokenPhanQuyen, " 3.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_chiNhanhXem,tokenPhanQuyen, " 4.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_chiNhanhThem,tokenPhanQuyen, " 4.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_chiNhanhCapNhat,tokenPhanQuyen, " 4.3 ");
         setSelectCheckBox(checkBoxPhanQuyen_chiNhanhImport,tokenPhanQuyen, " 4.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_chiNhanhExport,tokenPhanQuyen, " 4.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_chiNhanhEmail,tokenPhanQuyen, " 4.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_hangHoaXem,tokenPhanQuyen, " 5.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_hangHoaThem,tokenPhanQuyen, " 5.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_hangHoaCapNhat,tokenPhanQuyen, " 5.3 ");
         setSelectCheckBox(checkBoxPhanQuyen_hangHoaImport,tokenPhanQuyen, " 5.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_hangHoaExport,tokenPhanQuyen, " 5.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_hangHoaMail,tokenPhanQuyen, " 5.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_hoaDonXem,tokenPhanQuyen, " 6.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_hoaDonThem,tokenPhanQuyen, " 6.2 ");
         setSelectCheckBox(checkBoxPhanQuyen_hoaDonCapNhat,tokenPhanQuyen, " 6.3 ");
-        setSelectCheckBox(checkBoxPhanQuyen_hoaDonImport,tokenPhanQuyen, " 6.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_hoaDonExport,tokenPhanQuyen, " 6.5 ");
         setSelectCheckBox(checkBoxPhanQuyen_hoaDonMail,tokenPhanQuyen, " 6.6 ");
         
@@ -7382,7 +7535,6 @@ public class TrangChu extends javax.swing.JFrame {
         setSelectCheckBox(checkBoxPhanQuyen_khachHangCapNhat,tokenPhanQuyen, " 7.3 ");
         setSelectCheckBox(checkBoxPhanQuyen_khachHangImport,tokenPhanQuyen, " 7.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_khachHangExport,tokenPhanQuyen, " 7.5 ");
-        setSelectCheckBox(checkBoxPhanQuyen_khachHangEmail,tokenPhanQuyen, " 7.6 ");
         
         setSelectCheckBox(checkBoxPhanQuyen_lichLamViecXem,tokenPhanQuyen, " 8.1 ");
         setSelectCheckBox(checkBoxPhanQuyen_lichLamViecThem,tokenPhanQuyen, " 8.2 ");
@@ -7446,6 +7598,8 @@ public class TrangChu extends javax.swing.JFrame {
         setSelectCheckBox(checkBoxPhanQuyen_kiemKhoImport,tokenPhanQuyen, " 16.4 ");
         setSelectCheckBox(checkBoxPhanQuyen_kiemKhoExport,tokenPhanQuyen, " 16.5 ");
         setSelectCheckBox(checkBoxPhanQuyen_kiemKhoMail,tokenPhanQuyen, " 16.6 ");
+        
+        setSelectCheckBox(checkBoxPhanQuyen_datHang,tokenPhanQuyen, " 17 ");
     }
     
     private void setSelectCheckBox(JCheckBox checkBox, String tokenPhanQuyen, String quyen){
@@ -8326,6 +8480,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnDatHang_datHang;
     private javax.swing.JButton btnDatHang_themKhachHang;
     private javax.swing.JButton btnDatHang_timKhachHang;
+    private javax.swing.JButton btnHangHoa_export;
+    private javax.swing.JButton btnHangHoa_import;
     private javax.swing.JButton btnHangHoa_taiLai;
     private javax.swing.JButton btnHangHoa_them;
     private javax.swing.JButton btnHangHoa_timKiem;
@@ -8347,6 +8503,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnLichLamViec_themLichTangCa;
     private javax.swing.JButton btnLichLamViec_themPhuCap;
     private javax.swing.JButton btnNhaCungCap_them;
+    private javax.swing.JButton btnNhanVienChiNhanh_exportChiNhanh;
+    private javax.swing.JButton btnNhanVienChiNhanh_exportNhanVien;
+    private javax.swing.JButton btnNhanVienChiNhanh_importChiNhanh;
     private javax.swing.JButton btnNhanVienChiNhanh_taiLai;
     private javax.swing.JButton btnNhanVienChiNhanh_themChiNhanh;
     private javax.swing.JButton btnNhanVienChiNhanh_themNhanVien;
@@ -8384,43 +8543,31 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_nhanVienSuaChua;
     private javax.swing.JComboBox<String> cb_phuTungCanThay;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongEmail;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangLuongCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_bangLuongEmail;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_bangLuongExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_bangLuongImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangLuongThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangLuongXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_caLamCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_caLamEmail;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_caLamExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_caLamImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_caLamThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_caLamXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_chiNhanhCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_chiNhanhEmail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_chiNhanhExport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_chiNhanhImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_chiNhanhThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_chiNhanhXem;
+    private javax.swing.JCheckBox checkBoxPhanQuyen_datHang;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hangHoaCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hangHoaExport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hangHoaImport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_hangHoaMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hangHoaThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hangHoaXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hoaDonCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hoaDonExport;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_hoaDonImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hoaDonMail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hoaDonThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_hoaDonXem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_khachHangCapNhat;
-    private javax.swing.JCheckBox checkBoxPhanQuyen_khachHangEmail;
     private javax.swing.JCheckBox checkBoxPhanQuyen_khachHangExport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_khachHangImport;
     private javax.swing.JCheckBox checkBoxPhanQuyen_khachHangThem;
@@ -8490,12 +8637,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton33;
-    private javax.swing.JButton jButton34;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox13;
@@ -8593,6 +8737,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -8736,6 +8881,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel130;
     private javax.swing.JPanel jPanel131;
+    private javax.swing.JPanel jPanel132;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;

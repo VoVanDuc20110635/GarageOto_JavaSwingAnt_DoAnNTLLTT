@@ -45,6 +45,11 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JTabbedPane" name="tabbedPaneChiTietHangHoa_theKho">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="f9" red="f2" type="rgb"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tabbedPaneChiTietHangHoa_theKhoStateChanged"/>
           </Events>
@@ -59,7 +64,7 @@
             <Container class="javax.swing.JPanel" name="jPanel38">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="ff" green="f9" red="f2" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -116,6 +121,11 @@
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel41">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="f9" red="f2" type="rgb"/>
+                    </Property>
+                  </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="310" y="50" width="-1" height="280"/>
@@ -163,7 +173,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel42">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color blue="ff" green="f9" red="f2" type="rgb"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -223,11 +233,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel38">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Kh&#xe1;ch &#x111;&#x1eb7;t:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_khachDat">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -267,7 +286,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cbChiTietHangHang_dichVuLienQuan" pref="262" max="32767" attributes="0"/>
+                                  <Component id="cbChiTietHangHang_dichVuLienQuan" pref="240" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -288,11 +307,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel40">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="D&#x1ecb;ch v&#x1ee5; li&#xea;n quan:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbChiTietHangHang_dichVuLienQuan">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
@@ -337,7 +365,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="tfChiTietHangHang_tenHangHoa" pref="260" max="32767" attributes="0"/>
+                                  <Component id="tfChiTietHangHang_tenHangHoa" pref="246" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -358,11 +386,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel41">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="T&#xea;n h&#xe0;ng h&#xf3;a:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_tenHangHoa">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -420,11 +457,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel42">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Lo&#x1ea1;i h&#xe0;ng:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_loaiHang">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -482,11 +528,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel45">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Gi&#xe1; b&#xe1;n:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_giaBan">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -547,11 +602,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel46">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Gi&#xe1; v&#x1ed1;n:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_giaVon">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -612,11 +676,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel47">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="T&#x1ed3;n kho:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_tonKho">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -677,11 +750,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel48">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="M&#xe3; h&#xe0;ng:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfChiTietHangHang_maHangHoa">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                                 <EmptyBorder/>
@@ -761,7 +843,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                                  <EmptySpace pref="37" max="32767" attributes="0"/>
                                   <Component id="cbChiTietHangHang_trangThai" min="-2" pref="262" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -783,11 +865,20 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel43">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Tr&#x1ea1;ng th&#xe1;i:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbChiTietHangHang_trangThai">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color type="null"/>
+                            </Property>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="16" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
                                 <StringItem index="0" value="C&#xf2;n b&#xe1;n"/>
@@ -834,7 +925,7 @@
                     <Container class="javax.swing.JPanel" name="panelChiTietHangHoa_error">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                          <Color blue="ff" green="f9" red="f2" type="rgb"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -846,32 +937,35 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbChiTietHangHoa_error" alignment="0" pref="350" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="350" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="lbChiTietHangHoa_error" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JLabel" name="lbChiTietHangHoa_error">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Times New Roman" size="16" style="0"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="horizontalAlignment" type="int" value="4"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="lbChiTietHangHoa_error">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="f9" red="f2" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="16" style="0"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="40" y="330" width="350" height="30"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JButton" name="btnChiTietHangHoa_thayHinh3">
@@ -918,7 +1012,7 @@
             <Container class="javax.swing.JPanel" name="jPanel39">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="ff" green="f9" red="f2" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>

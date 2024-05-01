@@ -11,12 +11,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import src.Model.ChiNhanh;
 import src.Model.ChiTietPhieuNhapHang;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Model.PhieuNhapHang;
+import src.Service.ChiNhanhServive;
 import src.Service.ChiTietPhieuNhapHangService;
 import src.Service.HangHoaService;
 import src.Service.HoaDonChiTietService;
@@ -47,8 +51,11 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     private HangHoaService hangHoaService = new HangHoaService();
     private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
     private ChiTietPhieuNhapHangService chiTietPhieuNhapHangService = new ChiTietPhieuNhapHangService();
+    private ChiNhanhServive chiNhanhService = new ChiNhanhServive();
     
     private TrangChu trangChuReference;
+    
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_ThanhToan
      */
@@ -57,7 +64,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public Frame_ThanhToan(List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, TrangChu trangChu) {
+    public Frame_ThanhToan(List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, TrangChu trangChu, NhanVien nhanVien) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.danhSachHoaDonChiTiet = danhSachHoaDonChiTiet;
@@ -66,6 +73,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         this.tongSoLuong = tongSoLuong;
         this.tongTienHang = tongTienHang;
         this.trangChuReference = trangChu;
+        this.nhanVienDangNhap = nhanVien;
         System.out.println(this.trangChuReference);
         
         lbThanhToan_ma.setText("Mã khách hàng:");
@@ -599,48 +607,57 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     }//GEN-LAST:event_tfThanhToan_khachThanhToanKeyReleased
 
     private void btnThanhToan_thanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToan_thanhToanActionPerformed
-        if (this.maPhieuNhapHang == null && this.maHoaDon != null){
-            HoaDon hoaDon = new HoaDon();
-            hoaDon.setMaHoaDon(this.maHoaDon);
-            hoaDon.setGiamGia(Double.parseDouble(tfThanhToan_giamGia.getText()));
-            hoaDon.setLoaiThuChi("Thu");
-            hoaDon.setThoiGian(util.localDateParseMethodFromTableSwing(lbThanhToan_ngay.getText()));
-            hoaDon.setTienDaTra(Double.parseDouble(tfThanhToan_khachThanhToan.getText()));
-            hoaDon.setTongTien(tongTienHang);
-            hoaDon.setTrangThai("Hoàn thành");
-            hoaDon.setMaKhachHang(this.khachHang.getMaKhachHang());
-            hoaDon.setMaNhanVien("NV005");
-            hoaDon.setMaChiNhanh("CN001");
-            try {
-                hoaDonService.themHoaDon(hoaDon);
-            } catch (SQLException ex) {
-                Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền tạo hóa đơn!");
+                return;
             }
-            for (HoaDonChiTiet hoaDonChiTiet: danhSachHoaDonChiTiet){
+        if (this.maPhieuNhapHang == null && this.maHoaDon != null){
+            try {
+                HoaDon hoaDon = new HoaDon();
+                hoaDon.setMaHoaDon(this.maHoaDon);
+                hoaDon.setGiamGia(Double.parseDouble(tfThanhToan_giamGia.getText()));
+                hoaDon.setLoaiThuChi("Thu");
+                hoaDon.setThoiGian(util.localDateParseMethodFromTableSwing(lbThanhToan_ngay.getText()));
+                hoaDon.setTienDaTra(Double.parseDouble(tfThanhToan_khachThanhToan.getText()));
+                hoaDon.setTongTien(tongTienHang);
+                hoaDon.setTrangThai("Hoàn thành");
+                hoaDon.setMaKhachHang(this.khachHang.getMaKhachHang());
+                hoaDon.setMaNhanVien(this.nhanVienDangNhap.getMaNhanVien());
+                ChiNhanh chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(this.nhanVienDangNhap.getMaChiNhanh());
+                hoaDon.setMaChiNhanh(chiNhanh.getMaChiNhanh());
                 try {
-                    hoaDonChiTietService.themHoaDonChiTiet(hoaDonChiTiet);
-    //                hangHoaService.updateSoLuongTonKhoHangHoa(hoaDonChiTiet.getMaHangHoa(), (-1)*hoaDonChiTiet.getSoLuong());
+                    hoaDonService.themHoaDon(hoaDon);
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                for (HoaDonChiTiet hoaDonChiTiet: danhSachHoaDonChiTiet){
+                    try {
+                        hoaDonChiTietService.themHoaDonChiTiet(hoaDonChiTiet);
+                        //                hangHoaService.updateSoLuongTonKhoHangHoa(hoaDonChiTiet.getMaHangHoa(), (-1)*hoaDonChiTiet.getSoLuong());
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                
+                double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
+                double tienKhachTra = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
+                double tienThua = Double.parseDouble(tfThanhToan_tienThuaTraKhach.getText());
+                double giamGia = Double.parseDouble(tfThanhToan_giamGia.getText());
+                String ngayGioHienTai = util.localDateParseMethod(LocalDateTime.now());
+                
+                
+                trangChuReference.resetDanhSachHangHoaMain();
+                trangChuReference.hienThiDanhSachHangHoaKhiDatHang();
+                trangChuReference.removeAllRowTableDanhSachHangDaChon();
+                
+                Frame_HoaDon frame_hoaDon = new Frame_HoaDon(ngayGioHienTai, danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua, giamGia, hoaDon, this.nhanVienDangNhap);
+                frame_hoaDon.setVisible(true);
+                frame_hoaDon.setSize(460, 800);
+                frame_hoaDon.setLocation(1070,0);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-
-            double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
-            double tienKhachTra = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
-            double tienThua = Double.parseDouble(tfThanhToan_tienThuaTraKhach.getText());
-            double giamGia = Double.parseDouble(tfThanhToan_giamGia.getText());
-            String ngayGioHienTai = util.localDateParseMethod(LocalDateTime.now());
-
-
-            trangChuReference.resetDanhSachHangHoaMain();
-            trangChuReference.hienThiDanhSachHangHoaKhiDatHang();
-            trangChuReference.removeAllRowTableDanhSachHangDaChon();
-
-            Frame_HoaDon frame_hoaDon = new Frame_HoaDon(ngayGioHienTai, danhSachHoaDonChiTiet, khachHang, maHoaDon, tongSoLuong, tongTienHang, tienCanTra, tienKhachTra, tienThua, giamGia, hoaDon);
-            frame_hoaDon.setVisible(true);
-            frame_hoaDon.setSize(460, 800);
-            frame_hoaDon.setLocation(1070,0);
         }
         
         if (this.maPhieuNhapHang != null && this.maHoaDon == null){

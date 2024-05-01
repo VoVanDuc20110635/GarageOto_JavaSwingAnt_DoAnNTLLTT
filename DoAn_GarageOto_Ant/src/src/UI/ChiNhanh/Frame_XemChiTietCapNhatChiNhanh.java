@@ -14,6 +14,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import src.Model.ChiNhanh;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Service.ChiNhanhServive;
 import src.Service.NhaCungCapService;
 import src.Util.Util;
@@ -26,11 +27,13 @@ public class Frame_XemChiTietCapNhatChiNhanh extends javax.swing.JFrame {
     private Util util = new Util();
     private ChiNhanhServive chiNhanhService = new ChiNhanhServive();
     private ChiNhanh chiNhanh;
+    private NhanVien nhanVienDangNhap;
 
     /**
      * Creates new form frame_ThemNhaCungCap
      */
-    public Frame_XemChiTietCapNhatChiNhanh(ChiNhanh chiNhanh) {
+    public Frame_XemChiTietCapNhatChiNhanh(ChiNhanh chiNhanh, NhanVien nhanVien) {
+        this.nhanVienDangNhap = nhanVien;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.chiNhanh = chiNhanh;
@@ -304,6 +307,10 @@ public class Frame_XemChiTietCapNhatChiNhanh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXemChiNhanh_thoatActionPerformed
 
     private void btnXemChiNhanh_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiNhanh_luuActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 4.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật chi nhánh!");
+                return;
+            }
         if (btnXemChiNhanh_luu.getText().equals("Cập nhật")){
             btnXemChiNhanh_luu.setText("Lưu");
             tfXemChiNhanh_soDienThoai.setEnabled(true);

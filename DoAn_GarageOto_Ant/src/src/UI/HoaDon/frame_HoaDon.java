@@ -10,18 +10,21 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import src.Model.ChiTietPhieuNhapHang;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Model.PhieuNhapHang;
 import src.Service.HoaDonService;
 import src.Service.MailSender;
 import src.Service.PhieuNhapHangService;
 import src.UI.TrangChu;
 import src.Util.FullTextTableCellRenderer;
+import src.Util.Util;
 import src.Util.WritePDF;
 
 /**
@@ -47,9 +50,13 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     double giamGia;
     String ngayHienTai;
     
+    private NhanVien nhanVienDangNhap;
+    
     private HoaDonService hoaDonService = new HoaDonService();
     private MailSender mailSender = new MailSender();
     private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
+    
+    private Util util = new Util();
     /**
      * Creates new form frame_HoaDon
      */
@@ -58,7 +65,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public Frame_HoaDon(String ngayHienTai, List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, double tienCanTra, double tienKhachTra, double tienThua, double giamGia, HoaDon hoaDon) {
+    public Frame_HoaDon(String ngayHienTai, List<HoaDonChiTiet> danhSachHoaDonChiTiet, KhachHang khachHang, String maHoaDon, int tongSoLuong, double tongTienHang, double tienCanTra, double tienKhachTra, double tienThua, double giamGia, HoaDon hoaDon, NhanVien nhanVien) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.danhSachHoaDonChiTiet = danhSachHoaDonChiTiet;
@@ -72,6 +79,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         this.ngayHienTai = ngayHienTai;
         this.giamGia = giamGia;
         this.hoaDon = hoaDon;
+        this.nhanVienDangNhap = nhanVien;
         lbHoadon_maLable.setText("Mã khách hàng:");
         lbHoadon_tenLable.setText("Tên khách hàng: ");
         lbHoadon_canTraLable.setText("Khách cần trả: ");
@@ -634,6 +642,10 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHoaDon_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_inActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền in hóa đơn!");
+                return;
+            }
         WritePDF writePDF = new WritePDF();
         if (lbHoadon_tenLable.getText().toString().equals("khách")){
             HoaDon hoaDon = new HoaDon();
@@ -657,6 +669,10 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDon_inActionPerformed
 
     private void btnHoaDon_guiMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDon_guiMailActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.6 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền gửi hóa đơn qua Email!");
+                return;
+            }
         if (lbHoadon_tenLable.getText().toString().equals("khách")){
             String to = "2k2lmhtlol@gmail.com";
 

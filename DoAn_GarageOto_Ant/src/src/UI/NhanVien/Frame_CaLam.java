@@ -12,6 +12,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +20,7 @@ import javax.swing.table.TableModel;
 import src.Model.BangLuong;
 import src.Model.CaLam;
 import src.Model.LichLamViec;
+import src.Model.NhanVien;
 import src.Service.BangLuongService;
 import src.Service.CaLamService;
 import src.UI.TrangChu;
@@ -32,12 +34,22 @@ import src.Util.Util;
 public class Frame_CaLam extends javax.swing.JFrame {
     private CaLamService caLamService = new CaLamService();
     private Util util = new Util();
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form Frame_BangLuong
      */
+    
     public Frame_CaLam() {
+    }
+
+    public Frame_CaLam(NhanVien nhanVien) {
+        this.nhanVienDangNhap = nhanVien;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 3.1 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xem bảng ca làm!");
+            return;
+        }
         hienThiDanhSachCaLam();
         setEnabel(false);
         
@@ -45,7 +57,6 @@ public class Frame_CaLam extends javax.swing.JFrame {
         addModelSpinner(spinnerGioKetThuc, 0, 23);
         addModelSpinner(spinnerPhutBatDau, 0, 59);
         addModelSpinner(spinnerPhutKetThuc, 0, 59);
-        
     }
 
     private void addModelSpinner(JSpinner jSpinner, int minimum, int maximum){
@@ -382,6 +393,10 @@ public class Frame_CaLam extends javax.swing.JFrame {
     }
     
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 3.2 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm ca làm!");
+                return;
+            }
         try {
             if (btnThem.getText().equals("Thêm")){
                 tfTenCaLam.setText("");

@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import src.Model.KhachHang;
+import src.Model.NhanVien;
 import src.Service.ChiNhanhServive;
 import src.Service.KhachHangService;
 import src.Util.Util;
@@ -23,6 +25,7 @@ public class Frame_XemChiTietCapNhatKhachHang extends javax.swing.JFrame {
     private KhachHangService khachHangService = new KhachHangService();
     private ChiNhanhServive chiNhanhServive = new ChiNhanhServive();
     private KhachHang khachHang;
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_ThemKhachHang
      */
@@ -30,10 +33,11 @@ public class Frame_XemChiTietCapNhatKhachHang extends javax.swing.JFrame {
     public Frame_XemChiTietCapNhatKhachHang() {
     }
 
-    public Frame_XemChiTietCapNhatKhachHang(KhachHang khachHang) {
+    public Frame_XemChiTietCapNhatKhachHang(KhachHang khachHang, NhanVien nhanVien) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.khachHang = khachHang;
+        this.nhanVienDangNhap = nhanVien;
         try {
             lbXemKhachHang_tenChiNhanh.setText(chiNhanhServive.hienThiChiNhanhTheoMaChiNhanh(khachHang.getMaChiNhanh()).getTenChiNhanh());
         } catch (SQLException ex) {
@@ -504,6 +508,10 @@ public class Frame_XemChiTietCapNhatKhachHang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemKhachHang_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachHang_luuActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 7.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập cập nhật thông tin khách hàng!");
+                return;
+            }
         if (btnThemKhachHang_luu.getText().equals("Cập nhật")){
             btnThemKhachHang_luu.setText("Lưu");
             tfThemKhachHang_diaChi.setEnabled(true);

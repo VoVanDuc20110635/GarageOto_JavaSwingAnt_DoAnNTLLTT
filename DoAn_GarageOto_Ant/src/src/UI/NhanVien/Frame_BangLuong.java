@@ -11,12 +11,15 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import src.Model.BangLuong;
 import src.Model.LichLamViec;
+import src.Model.NhanVien;
 import src.Service.BangLuongService;
 import src.UI.TrangChu;
+import src.Util.Util;
 
 /**
  *
@@ -24,14 +27,24 @@ import src.UI.TrangChu;
  */
 public class Frame_BangLuong extends javax.swing.JFrame {
     private BangLuongService bangLuongService = new BangLuongService();
+    private NhanVien nhanVien;
+    private Util util = new Util();
     /**
      * Creates new form Frame_BangLuong
      */
-    public Frame_BangLuong() {
+    public Frame_BangLuong(NhanVien nhanVien) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 2.1 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền xem bảng lương!");
+                return;
+            }
         hienThiDanhSachBangLuong();
         setEnabel(false);
+        this.nhanVien = nhanVien;
+    }
+
+    public Frame_BangLuong() {
     }
 
     private void hienThiDanhSachBangLuong(){
@@ -413,20 +426,15 @@ public class Frame_BangLuong extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        lamMoi();
-    }//GEN-LAST:event_btnLamMoiActionPerformed
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnThoatActionPerformed
 
-    private void lamMoi(){
-        tfTienLuong.setText("");
-        tfNoiDung.setText("");
-        lbError.setText("");
-        cbLoaiBangLuong.setSelectedIndex(-1);
-        cbThoiGian.setSelectedIndex(-1);
-        cbTrangThai.setSelectedIndex(-1);
-    }
-    
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 2.2 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền thêm bảng lương!");
+            return;
+        }
         try {
             if (btnThem.getText().equals("Thêm")){
                 tfTienLuong.setText("");
@@ -449,7 +457,7 @@ public class Frame_BangLuong extends javax.swing.JFrame {
                     lbError.setForeground(Color.red);
                     return;
                 }
-                
+
                 BangLuong bangLuong = new BangLuong();
                 bangLuong.setMaBangLuong(lbMaBangLuong.getText());
                 bangLuong.setLoai(cbLoaiBangLuong.getSelectedItem().toString());
@@ -468,10 +476,51 @@ public class Frame_BangLuong extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Frame_BangLuong.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnThemActionPerformed
 
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        lamMoi();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void cbLoaiBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLoaiBangLuongActionPerformed
+        try {
+            if (cbLoaiBangLuong.isEnabled()){
+                int soBangLuong = bangLuongService.demSoBangLuong();
+                if (cbLoaiBangLuong.getSelectedItem().equals("Bảng lương")){
+                    lbMaBangLuong.setText("BL0" + String.valueOf(soBangLuong + 1));
+                } else if (cbLoaiBangLuong.getSelectedItem().equals("Lương thưởng")){
+                    lbMaBangLuong.setText("LT0" + String.valueOf(soBangLuong + 1));
+                } else if (cbLoaiBangLuong.getSelectedItem().equals("Trợ cấp")){
+                    lbMaBangLuong.setText("TC0" + String.valueOf(soBangLuong + 1));
+                } else if (cbLoaiBangLuong.getSelectedItem().equals("Tăng ca")){
+                    lbMaBangLuong.setText("TCa0" + String.valueOf(soBangLuong + 1));
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_BangLuong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cbLoaiBangLuongActionPerformed
+
+    private void tbBangLuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangLuongMouseClicked
+        int index = tbBangLuong.getSelectedRow();
+        TableModel model = tbBangLuong.getModel();
+        lbError.setText("");
+        btnCapNhat.setEnabled(true);
+        lbMaBangLuong.setText(model.getValueAt(index, 0).toString());
+        tfTienLuong.setText(model.getValueAt(index, 2).toString());
+        tfNoiDung.setText(model.getValueAt(index, 4).toString());
+        cbLoaiBangLuong.setSelectedItem(model.getValueAt(index, 1).toString());
+        cbThoiGian.setSelectedItem(model.getValueAt(index, 3).toString());
+        cbTrangThai.setSelectedItem(model.getValueAt(index, 5).toString());
+    }//GEN-LAST:event_tbBangLuongMouseClicked
+
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVien.getPhanQuyen(), " 2.3 ")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật bảng lương!");
+            return;
+        }
         if (btnCapNhat.getText().equals("Cập nhật")){
             setEnabel(true);
             btnCapNhat.setText("Lưu");
@@ -503,9 +552,18 @@ public class Frame_BangLuong extends javax.swing.JFrame {
                 Logger.getLogger(Frame_BangLuong.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
+    private void lamMoi(){
+        tfTienLuong.setText("");
+        tfNoiDung.setText("");
+        lbError.setText("");
+        cbLoaiBangLuong.setSelectedIndex(-1);
+        cbThoiGian.setSelectedIndex(-1);
+        cbTrangThai.setSelectedIndex(-1);
+    }
+    
     private void setEnabel(boolean capNhat){
         tfNoiDung.setEnabled(capNhat);
         tfTienLuong.setEnabled(capNhat);
@@ -514,43 +572,6 @@ public class Frame_BangLuong extends javax.swing.JFrame {
         cbTrangThai.setEnabled(capNhat);
     }
     
-    private void tbBangLuongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangLuongMouseClicked
-        int index = tbBangLuong.getSelectedRow();
-        TableModel model = tbBangLuong.getModel();
-        lbError.setText("");
-        btnCapNhat.setEnabled(true);
-        lbMaBangLuong.setText(model.getValueAt(index, 0).toString());
-        tfTienLuong.setText(model.getValueAt(index, 2).toString());
-        tfNoiDung.setText(model.getValueAt(index, 4).toString());
-        cbLoaiBangLuong.setSelectedItem(model.getValueAt(index, 1).toString());
-        cbThoiGian.setSelectedItem(model.getValueAt(index, 3).toString());
-        cbTrangThai.setSelectedItem(model.getValueAt(index, 5).toString());
-    }//GEN-LAST:event_tbBangLuongMouseClicked
-
-    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnThoatActionPerformed
-
-    private void cbLoaiBangLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLoaiBangLuongActionPerformed
-        try {
-            if (cbLoaiBangLuong.isEnabled()){
-                int soBangLuong = bangLuongService.demSoBangLuong();
-                if (cbLoaiBangLuong.getSelectedItem().equals("Bảng lương")){
-                    lbMaBangLuong.setText("BL0" + String.valueOf(soBangLuong + 1));
-                } else if (cbLoaiBangLuong.getSelectedItem().equals("Lương thưởng")){
-                    lbMaBangLuong.setText("LT0" + String.valueOf(soBangLuong + 1));
-                } else if (cbLoaiBangLuong.getSelectedItem().equals("Trợ cấp")){
-                    lbMaBangLuong.setText("TC0" + String.valueOf(soBangLuong + 1));
-                } else if (cbLoaiBangLuong.getSelectedItem().equals("Tăng ca")){
-                    lbMaBangLuong.setText("TCa0" + String.valueOf(soBangLuong + 1));
-                }
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Frame_BangLuong.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_cbLoaiBangLuongActionPerformed
-
     /**
      * @param args the command line arguments
      */

@@ -9,7 +9,10 @@ import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import src.Model.ChiNhanh;
 import src.Model.KhachHang;
+import src.Model.NhanVien;
+import src.Service.ChiNhanhServive;
 import src.Service.KhachHangService;
 import src.Util.Util;
 
@@ -20,11 +23,18 @@ import src.Util.Util;
 public class Frame_ThemKhachHang extends javax.swing.JFrame {
     private Util util = new Util();
     private KhachHangService khachHangService = new KhachHangService();
+    private ChiNhanhServive chiNhanhServive  = new ChiNhanhServive();
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_ThemKhachHang
      */
-    public Frame_ThemKhachHang() {
+    
+    public Frame_ThemKhachHang( ) {
+    }
+
+    public Frame_ThemKhachHang(NhanVien nhanVien) {
         initComponents();
+        this.nhanVienDangNhap = nhanVien;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         int soLuongKhachHang = 0;
         try {
@@ -462,29 +472,36 @@ public class Frame_ThemKhachHang extends javax.swing.JFrame {
 
     private void btnThemKhachHang_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhachHang_luuActionPerformed
                                                           
-        KhachHang khachHang = new KhachHang();
-        khachHang.setMaKhachHang(tfThemKhachHang_maKhachHang.getText());
-        khachHang.setDiaChi(tfThemKhachHang_diaChi.getText());
-        khachHang.setEmail(tfThemKhachHang_email.getText());
-        khachHang.setMaSoThue(tfThemKhachHang_maSoThue.getText());
-        khachHang.setNgaySinh(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooserThemKhachHang_ngaySinh.getDate())));
-        khachHang.setNgayTao(LocalDateTime.now());
-        khachHang.setSoDienThoai(tfThemKhachHang_dienThoai.getText());
-        khachHang.setTenKhachHang(tfThemKhachHang_tenKhachHang.getText());
-        khachHang.setMaNhanVien("NV004");
-        khachHang.setMaChiNhanh("CN001");
-        if (radioThemKhachHang_nam.isSelected()){
-            khachHang.setGioiTinh("Nam");
-        } else {
-            khachHang.setGioiTinh("Nữ");
-        }
-        if (radioThemKhachHang_congTy.isSelected()){
-            khachHang.setLoaiKhach("Công ty");
-        } else {
-            khachHang.setLoaiKhach("Cá nhân");
-        }
-        try {
-            khachHangService.themKhachHang(khachHang);
+        try {                                                     
+            
+            KhachHang khachHang = new KhachHang();
+            khachHang.setMaKhachHang(tfThemKhachHang_maKhachHang.getText());
+            khachHang.setDiaChi(tfThemKhachHang_diaChi.getText());
+            khachHang.setEmail(tfThemKhachHang_email.getText());
+            khachHang.setMaSoThue(tfThemKhachHang_maSoThue.getText());
+            khachHang.setNgaySinh(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooserThemKhachHang_ngaySinh.getDate())));
+            khachHang.setNgayTao(LocalDateTime.now());
+            khachHang.setSoDienThoai(tfThemKhachHang_dienThoai.getText());
+            khachHang.setTenKhachHang(tfThemKhachHang_tenKhachHang.getText());
+            khachHang.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+            ChiNhanh chiNhanh = chiNhanhServive.hienThiChiNhanhTheoMaChiNhanh(this.nhanVienDangNhap.getMaChiNhanh());
+            khachHang.setMaChiNhanh(nhanVienDangNhap.getMaChiNhanh());
+            if (radioThemKhachHang_nam.isSelected()){
+                khachHang.setGioiTinh("Nam");
+            } else {
+                khachHang.setGioiTinh("Nữ");
+            }
+            if (radioThemKhachHang_congTy.isSelected()){
+                khachHang.setLoaiKhach("Công ty");
+            } else {
+                khachHang.setLoaiKhach("Cá nhân");
+            }
+            try {
+                khachHangService.themKhachHang(khachHang);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(Frame_ThemKhachHang.class.getName()).log(Level.SEVERE, null, ex);
         }

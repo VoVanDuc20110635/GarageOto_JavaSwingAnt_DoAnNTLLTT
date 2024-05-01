@@ -14,6 +14,7 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import src.Model.ChiNhanh;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Service.ChiNhanhServive;
 import src.Service.NhaCungCapService;
 import src.Util.Util;
@@ -25,12 +26,14 @@ import src.Util.Util;
 public class Frame_ThemChiNhanh extends javax.swing.JFrame {
     private Util util = new Util();
     private ChiNhanhServive chiNhanhService = new ChiNhanhServive();
+    private NhanVien nhanVienDangNhap;
     
 
     /**
      * Creates new form frame_ThemNhaCungCap
      */
-    public Frame_ThemChiNhanh() {
+    public Frame_ThemChiNhanh(NhanVien nhanVien) {
+        nhanVienDangNhap = nhanVien;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         int soChiNhanh = 0;
@@ -41,6 +44,9 @@ public class Frame_ThemChiNhanh extends javax.swing.JFrame {
         }
         tfXemChiNhanh_ma.setText("CN0" + String.valueOf(soChiNhanh + 1));
         tfXemChiNhanh_ma.setEnabled(false);
+    }
+
+    public Frame_ThemChiNhanh() {
     }
 
     

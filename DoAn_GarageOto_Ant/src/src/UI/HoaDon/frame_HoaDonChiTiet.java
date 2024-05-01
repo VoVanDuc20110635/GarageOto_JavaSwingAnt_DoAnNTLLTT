@@ -10,6 +10,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -18,6 +19,7 @@ import src.Model.ChiTietPhieuTraHang;
 import src.Model.HangHoa;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
+import src.Model.NhanVien;
 import src.Model.PhieuNhapHang;
 import src.Model.PhieuTraHang;
 import src.Service.ChiNhanhServive;
@@ -44,6 +46,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
     private Util util = new Util();
     private String tenNhanVien;
     private String tenDoiTac;
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_HoaDonChiTiet
      */
@@ -52,10 +55,11 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public Frame_HoaDonChiTiet(HoaDon hoaDon, String tenNhanVien, String tenDoiTac) {
+    public Frame_HoaDonChiTiet(HoaDon hoaDon, String tenNhanVien, String tenDoiTac, NhanVien nhanVien) {
         this.hoaDon = hoaDon;
         this.tenNhanVien= tenNhanVien;
         this.tenDoiTac = tenDoiTac;
+        this.nhanVienDangNhap  = nhanVien;
         
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -240,22 +244,21 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel239.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel239.setBackground(new java.awt.Color(242, 249, 255));
         jPanel239.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnHoaDonChiTiet_capNhat.setBackground(new java.awt.Color(51, 204, 0));
         btnHoaDonChiTiet_capNhat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnHoaDonChiTiet_capNhat.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDonChiTiet_capNhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/update.png"))); // NOI18N
         btnHoaDonChiTiet_capNhat.setText("Cập nhật");
         btnHoaDonChiTiet_capNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHoaDonChiTiet_capNhatActionPerformed(evt);
             }
         });
-        jPanel239.add(btnHoaDonChiTiet_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 550, -1, -1));
+        jPanel239.add(btnHoaDonChiTiet_capNhat, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 550, -1, -1));
 
-        btnHoaDonChiTiet_traHang.setBackground(new java.awt.Color(51, 204, 0));
+        btnHoaDonChiTiet_traHang.setBackground(new java.awt.Color(255, 153, 153));
         btnHoaDonChiTiet_traHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnHoaDonChiTiet_traHang.setForeground(new java.awt.Color(255, 255, 255));
         btnHoaDonChiTiet_traHang.setText("Trả hàng");
@@ -264,7 +267,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
                 btnHoaDonChiTiet_traHangActionPerformed(evt);
             }
         });
-        jPanel239.add(btnHoaDonChiTiet_traHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 550, 119, -1));
+        jPanel239.add(btnHoaDonChiTiet_traHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 119, -1));
 
         jPanel240.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -298,26 +301,29 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel240, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 510, 277, -1));
 
-        btnHoaDonChiTiet_in.setBackground(new java.awt.Color(51, 204, 0));
+        btnHoaDonChiTiet_in.setBackground(new java.awt.Color(0, 102, 255));
         btnHoaDonChiTiet_in.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnHoaDonChiTiet_in.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDonChiTiet_in.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
         btnHoaDonChiTiet_in.setText("In");
-        jPanel239.add(btnHoaDonChiTiet_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, -1, -1));
+        btnHoaDonChiTiet_in.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoaDonChiTiet_inActionPerformed(evt);
+            }
+        });
+        jPanel239.add(btnHoaDonChiTiet_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 550, -1, -1));
 
         btnHoaDonChiTiet_huyBo.setBackground(new java.awt.Color(255, 51, 51));
         btnHoaDonChiTiet_huyBo.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnHoaDonChiTiet_huyBo.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDonChiTiet_huyBo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/cancel.png"))); // NOI18N
-        btnHoaDonChiTiet_huyBo.setText("Hủy bỏ");
+        btnHoaDonChiTiet_huyBo.setText("Thoát");
         btnHoaDonChiTiet_huyBo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHoaDonChiTiet_huyBoActionPerformed(evt);
             }
         });
-        jPanel239.add(btnHoaDonChiTiet_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 550, -1, -1));
+        jPanel239.add(btnHoaDonChiTiet_huyBo, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 550, -1, -1));
 
-        jPanel241.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel241.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel287.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel287.setText("Mã hóa đơn:");
@@ -432,7 +438,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel247, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, -1, -1));
 
-        jPanel248.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel248.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel301.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel301.setText("Thời gian:");
@@ -496,7 +502,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel250, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 277, -1));
 
-        jPanel251.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel251.setBackground(new java.awt.Color(242, 249, 255));
         jPanel251.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel307.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -578,7 +584,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel253, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, -1, -1));
 
-        jPanel246.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel246.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel297.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel297.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -611,7 +617,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel246, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 280, -1));
 
-        jPanel249.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel249.setBackground(new java.awt.Color(242, 249, 255));
 
         jLabel303.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel303.setText("Trạng thái:");
@@ -643,7 +649,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel249, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 280, -1));
 
-        jPanel243.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel243.setBackground(new java.awt.Color(242, 249, 255));
         jPanel243.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         jLabel291.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -676,7 +682,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel243, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 280, -1));
 
-        jPanel254.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel254.setBackground(new java.awt.Color(242, 249, 255));
         jPanel254.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         lbHoaDonChiTiet_doiTac.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -709,7 +715,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(jPanel254, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 290, -1));
 
-        panelHoaDonChiTiet_soLuong.setBackground(new java.awt.Color(255, 255, 255));
+        panelHoaDonChiTiet_soLuong.setBackground(new java.awt.Color(242, 249, 255));
 
         lbHoaDonChiTiet_doiTac2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbHoaDonChiTiet_doiTac2.setText("Số lượng:");
@@ -746,7 +752,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(panelHoaDonChiTiet_soLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 180, -1));
 
-        panelHoaDonChiTiet_maHang.setBackground(new java.awt.Color(255, 255, 255));
+        panelHoaDonChiTiet_maHang.setBackground(new java.awt.Color(242, 249, 255));
 
         lbHoaDonChiTiet_doiTac3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbHoaDonChiTiet_doiTac3.setText("Mã hàng:");
@@ -777,7 +783,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
 
         jPanel239.add(panelHoaDonChiTiet_maHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 180, -1));
 
-        panelHoaDonChiTiet_tenHang.setBackground(new java.awt.Color(255, 255, 255));
+        panelHoaDonChiTiet_tenHang.setBackground(new java.awt.Color(242, 249, 255));
 
         lbHoaDonChiTiet_doiTac4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbHoaDonChiTiet_doiTac4.setText("Tên hàng:");
@@ -888,6 +894,10 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
     }//GEN-LAST:event_tbHoaDonChiTiet_danhSachHoaDonChiTietMouseClicked
 
     private void btnHoaDonChiTiet_capNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonChiTiet_capNhatActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.3 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền cập nhật thông tin hóa đơn!");
+                return;
+            }
         if (btnHoaDonChiTiet_capNhat.getText().equals("Cập nhật")){
             btnHoaDonChiTiet_capNhat.setText("Lưu");
             panelHoaDonChiTiet_maHang.setVisible(true);
@@ -992,6 +1002,10 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
     }//GEN-LAST:event_tfHoaDonChiTiet_soLuongKeyReleased
 
     private void btnHoaDonChiTiet_traHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonChiTiet_traHangActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 14.2")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền trả hàng!");
+                return;
+            }
 //        JTable tbDanhSachSanPhamTraHang, double tongTienHang, short soLuongHang, String maHoaDon, String maKhachHang, String maNhanVien
         Frame_TienThanhToanTraHang frame_TienThanhToanTraHang = new Frame_TienThanhToanTraHang(tbHoaDonChiTiet_traHang, Double.parseDouble(lbHoaDonChiTiet_tongTienHang.getText()),Short.parseShort(lbHoaDonChiTiet_soLuong.getText()), lbHoaDonChiTiet_maHoaDon.getText(), hoaDon.getMaKhachHang() , "NV004" );
         frame_TienThanhToanTraHang.setVisible(true);
@@ -1000,6 +1014,13 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnHoaDonChiTiet_traHangActionPerformed
+
+    private void btnHoaDonChiTiet_inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonChiTiet_inActionPerformed
+        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 6.5 ")){
+                JOptionPane.showMessageDialog(this, "Bạn không có quyền in hóa đơn!");
+                return;
+            }
+    }//GEN-LAST:event_btnHoaDonChiTiet_inActionPerformed
 
     /**
      * @param args the command line arguments
