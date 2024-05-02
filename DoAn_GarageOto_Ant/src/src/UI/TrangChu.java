@@ -4,6 +4,7 @@
  */
 package src.UI;
 
+import java.awt.BorderLayout;
 import src.UI.HoaDon.Frame_HoaDonChiTiet;
 import java.awt.Color;
 import java.awt.Component;
@@ -26,13 +27,18 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -40,9 +46,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -86,6 +94,9 @@ import src.Service.PhieuLuongService;
 import src.Service.PhieuNhapHangService;
 import src.Service.PhieuSuaChuaService;
 import src.Service.PhieuTraHangService;
+import src.UI.Chart.chat.ModelChart;
+import src.UI.Chart.piechart.ModelPieChart;
+import src.UI.Chart.piechart.PieChart;
 import src.UI.ChiNhanh.Frame_ThemChiNhanh;
 import src.UI.ChiNhanh.Frame_XemChiTietCapNhatChiNhanh;
 import src.UI.HangHoa.Frame_ThemHangHoa;
@@ -793,7 +804,11 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel89 = new javax.swing.JLabel();
         jLabel90 = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        tabbedDoanhThu = new javax.swing.JTabbedPane();
+        jPanel133 = new javax.swing.JPanel();
+        chart1 = new src.UI.Chart.chat.Chart();
+        jPanel134 = new javax.swing.JPanel();
+        pieChart1 = new src.UI.Chart.piechart.PieChart();
         jPanel28 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
@@ -5164,11 +5179,56 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel35.add(jPanel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 40, 160, 100));
 
-        jPanel37.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel37.setBackground(new java.awt.Color(242, 249, 255));
         jPanel37.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel13.setText("Doanh thu");
+        tabbedDoanhThu.setBackground(new java.awt.Color(242, 249, 255));
+        tabbedDoanhThu.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                tabbedDoanhThuStateChanged(evt);
+            }
+        });
+
+        jPanel133.setBackground(new java.awt.Color(242, 249, 255));
+
+        javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
+        jPanel133.setLayout(jPanel133Layout);
+        jPanel133Layout.setHorizontalGroup(
+            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel133Layout.createSequentialGroup()
+                .addComponent(chart1, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel133Layout.setVerticalGroup(
+            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel133Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tabbedDoanhThu.addTab("Doanh thu", jPanel133);
+
+        jPanel134.setBackground(new java.awt.Color(242, 249, 255));
+
+        javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
+        jPanel134.setLayout(jPanel134Layout);
+        jPanel134Layout.setHorizontalGroup(
+            jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel134Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(397, Short.MAX_VALUE))
+        );
+        jPanel134Layout.setVerticalGroup(
+            jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel134Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pieChart1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabbedDoanhThu.addTab("Sản phẩm bán chạy", jPanel134);
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -5176,15 +5236,15 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tabbedDoanhThu)
+                .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13)
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addComponent(tabbedDoanhThu)
+                .addContainerGap())
         );
 
         jPanel28.setBackground(new java.awt.Color(242, 249, 255));
@@ -5392,7 +5452,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -5402,8 +5462,8 @@ public class TrangChu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5424,7 +5484,7 @@ public class TrangChu extends javax.swing.JFrame {
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane_trangChu.addTab("Doanh thu", jPanel27);
@@ -5683,6 +5743,19 @@ public class TrangChu extends javax.swing.JFrame {
                 return;
             }
             hienThiDanhSachKhachHang();
+        }
+        
+        if (selectedTab == 4 && tabbedDoanhThu.getSelectedIndex() == 0){
+            chart1.addLegend("Income", new Color(245, 189, 135));
+            chart1.addLegend("Expense", new Color(135, 189, 245));
+            chart1.addLegend("Profit", new Color(189, 135, 245));
+            chart1.addLegend("Cost", new Color(139, 229, 222));
+            chart1.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+            chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+            chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+            chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+            chart1.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+            chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
         }
     }//GEN-LAST:event_tabbedPane_trangChuStateChanged
 
@@ -7505,6 +7578,78 @@ public class TrangChu extends javax.swing.JFrame {
                 return;
             }
     }//GEN-LAST:event_btnPhieuTraHang_exportFileActionPerformed
+
+    private void tabbedDoanhThuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedDoanhThuStateChanged
+        int selectedTabDoanhThu =tabbedDoanhThu.getSelectedIndex();
+        int selectedTabTrangChu = tabbedPane_trangChu.getSelectedIndex();
+        if (selectedTabTrangChu == 4 && selectedTabDoanhThu == 0 ){
+            
+            chart1 = new src.UI.Chart.chat.Chart();
+            
+//            chart1.getModel().clear();
+//            chart1.getPanelLegend().removeAll();
+//            chart1.getPanelLegend().revalidate();
+//            chart1.getPanelLegend().repaint();
+            
+            chart1.addLegend("Income", new Color(245, 189, 135));
+            chart1.addLegend("Expense", new Color(135, 189, 245));
+            chart1.addLegend("Profit", new Color(189, 135, 245));
+            chart1.addLegend("Cost", new Color(139, 229, 222));
+            chart1.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+            chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+            chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+            chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+            chart1.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+            chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+        }
+        if (selectedTabTrangChu == 4 && selectedTabDoanhThu == 1){
+            JPanel dataPanel;
+            pieChart1.setModelsEmpty();
+            pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
+            pieChart1.addData(new ModelPieChart("Tigher", 150, new Color(23, 126, 238)));
+            pieChart1.addData(new ModelPieChart("ABC", 100, new Color(221, 65, 65)));
+            pieChart1.addData(new ModelPieChart("Coca", 1, new Color(47, 157, 64)));
+            pieChart1.addData(new ModelPieChart("Vita", 60, new Color(196, 151, 58)));
+
+            // Initialize and configure the dataPanel
+            dataPanel = new JPanel();
+            dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+            dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
+            dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
+
+            // Tạo font mới
+            Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
+
+            // Add data to the dataPanel dynamically based on the pie chart data
+            JLabel labelTigher = new JLabel("Tigher: 150");
+            labelTigher.setFont(labelFont);
+            dataPanel.add(labelTigher);
+
+            JLabel labelABC = new JLabel("ABC: 100");
+            labelABC.setFont(labelFont);
+            dataPanel.add(labelABC);
+
+            JLabel labelCoca = new JLabel("Coca: 1");
+            labelCoca.setFont(labelFont);
+            dataPanel.add(labelCoca);
+
+            JLabel labelVita = new JLabel("Vita: 60");
+            labelVita.setFont(labelFont);
+            dataPanel.add(labelVita);
+
+            // Now, add pieChart1 to jPanel134
+            dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
+
+            // Now, add both pieChart1 and dataPanel to jPanel134
+            jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
+            jPanel134.add(pieChart1, BorderLayout.CENTER); // Add pieChart1 to the center
+            jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
+
+            // Revalidate jPanel134 to apply the new layout and components
+            jPanel134.revalidate();
+            jPanel134.repaint();
+        }
+    }//GEN-LAST:event_tabbedDoanhThuStateChanged
     
     private String getTokenPhanQuyen(){
         String token = " ";
@@ -8634,6 +8779,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_loaiXe;
     private javax.swing.JComboBox<String> cb_nhanVienSuaChua;
     private javax.swing.JComboBox<String> cb_phuTungCanThay;
+    private src.UI.Chart.chat.Chart chart1;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongXem;
@@ -8812,7 +8958,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel153;
@@ -8956,6 +9101,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel130;
     private javax.swing.JPanel jPanel131;
     private javax.swing.JPanel jPanel132;
+    private javax.swing.JPanel jPanel133;
+    private javax.swing.JPanel jPanel134;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -9100,6 +9247,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel lb_maBangChamCong;
     private com.toedter.calendar.JMonthChooser monthChooser_theoThang_thang;
     private javax.swing.JPanel panelLichLamViec_ngayKetThuc;
+    private src.UI.Chart.piechart.PieChart pieChart1;
     private javax.swing.JRadioButton radioBtnHangHoa_conHangTrongKho;
     private javax.swing.JRadioButton radioBtnHangHoa_hetHangTrongKho;
     private javax.swing.JRadioButton radioChamCong_khoangThoiGian;
@@ -9107,6 +9255,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioChamCong_theoNgay;
     private javax.swing.JRadioButton radioChamCong_theoThang;
     private javax.swing.JTabbedPane tabPane_giaoDich;
+    private javax.swing.JTabbedPane tabbedDoanhThu;
     private javax.swing.JTabbedPane tabbedPane_doiTac;
     private javax.swing.JTabbedPane tabbedPane_nhanVien;
     private javax.swing.JTabbedPane tabbedPane_trangChu;

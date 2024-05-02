@@ -36,7 +36,11 @@ public class PieChart extends JComponent{
     private int hoverIndex = -1;
     private float borderHover = 0.05f;
     private float padding = 0.2f;
-
+    
+    public void setModelsEmpty(){
+        models.clear();
+    }
+    
     public PieChart() {
         models = new ArrayList<>();
         setForeground(new Color(60, 60, 60));

@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JPanel;
 import src.UI.Chart.blankchart.BlankPlotChart;
 import src.UI.Chart.blankchart.BlankPlotChatRender;
 import src.UI.Chart.blankchart.SeriesSize;
@@ -21,11 +22,30 @@ public class Chart extends javax.swing.JPanel {
     private List<ModelChart> model = new ArrayList<>();
     private final int seriesSize = 12;
     private final int seriesSpace = 6;
+
+    
+    public List<ModelChart> getModel() {
+        return model;
+    }
+
+    public void setModel(List<ModelChart> model) {
+        this.model = model;
+    }
+
+    public JPanel getPanelLegend() {
+        return panelLegend;
+    }
+
     /**
      * Creates new form Chart
      */
+    public void setPanelLegend(JPanel panelLegend) {    
+        this.panelLegend = panelLegend;
+    }
+
     public Chart() {
         initComponents();
+        
         blankPlotChart1.setBlankPlotChatRender(new BlankPlotChatRender() {
             @Override
             public String getLabelText(int index) {
@@ -36,11 +56,16 @@ public class Chart extends javax.swing.JPanel {
             public void renderSeries(BlankPlotChart chart, Graphics2D g2, SeriesSize size, int index) {
                 double totalSeriesWidth = (seriesSize * legends.size()) + (seriesSpace * (legends.size() - 1));
                 double x = (size.getWidth() - totalSeriesWidth) / 2;
+                double[] values = model.get(index).getValues(); // Get the values array for the current index
+
                 for (int i = 0; i < legends.size(); i++) {
                     ModelLegend legend = legends.get(i);
                     g2.setColor(legend.getColor());
-                    double seriesValues = chart.getSeriesValuesOf(model.get(index).getValues()[i], size.getHeight());
-                    g2.fillRect((int) (size.getX() + x), (int) (size.getY() + size.getHeight() - seriesValues), seriesSize, (int) seriesValues);
+                    // Check if the values array has enough elements for the current legend
+                    if (i < values.length) {
+                        double seriesValues = chart.getSeriesValuesOf(values[i], size.getHeight());
+                        g2.fillRect((int) (size.getX() + x), (int) (size.getY() + size.getHeight() - seriesValues), seriesSize, (int) seriesValues);
+                    }
                     x += seriesSpace + seriesSize;
                 }
             }

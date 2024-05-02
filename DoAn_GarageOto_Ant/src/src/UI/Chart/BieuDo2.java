@@ -4,7 +4,16 @@
  */
 package src.UI.Chart;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import src.UI.Chart.piechart.ModelPieChart;
 import src.UI.Chart.piechart.PieChart;
 
@@ -13,7 +22,7 @@ import src.UI.Chart.piechart.PieChart;
  * @author WINDOWS 10
  */
 public class BieuDo2 extends javax.swing.JFrame {
-
+    private JPanel dataPanel;
     /**
      * Creates new form BieuDo2
      */
@@ -25,6 +34,59 @@ public class BieuDo2 extends javax.swing.JFrame {
         pieChart1.addData(new ModelPieChart("ABC", 100, new Color(221, 65, 65)));
         pieChart1.addData(new ModelPieChart("Coca", 1, new Color(47, 157, 64)));
         pieChart1.addData(new ModelPieChart("Vita", 60, new Color(196, 151, 58)));
+        
+        // Create the data display panel
+        dataPanel = new JPanel();
+        dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+        dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
+        dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
+
+        // Tạo font mới
+        Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
+        
+
+        // Add data to the dataPanel dynamically based on the pie chart data
+        JLabel labelTigher = new JLabel("Tigher: 150");
+        labelTigher.setFont(labelFont);
+        dataPanel.add(labelTigher);
+
+        JLabel labelABC = new JLabel("ABC: 100");
+        labelABC.setFont(labelFont);
+        dataPanel.add(labelABC);
+
+        JLabel labelCoca = new JLabel("Coca: 1");
+        labelCoca.setFont(labelFont);
+        dataPanel.add(labelCoca);
+
+        JLabel labelVita = new JLabel("Vita: 60");
+        labelVita.setFont(labelFont);
+        dataPanel.add(labelVita);
+        
+        
+
+        // Adjust the main layout to include the dataPanel
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(30)
+                    .addComponent(pieChart1, GroupLayout.PREFERRED_SIZE, 302, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18)
+                    .addComponent(dataPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(20, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(30)
+                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                        .addComponent(dataPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pieChart1, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        pack();
     }
 
     /**
@@ -47,14 +109,14 @@ public class BieuDo2 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
