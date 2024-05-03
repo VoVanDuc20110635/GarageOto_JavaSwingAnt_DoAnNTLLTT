@@ -40,7 +40,7 @@ public class NhaCungCapService {
                 nhaCungCap.setSoDienThoai(resultTable.getString("so_dien_thoai"));
                 nhaCungCap.setTenNhaCungCap(resultTable.getString("ten_nha_cung_cap"));
                 nhaCungCap.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
-                nhaCungCap.setTongMua(Double.parseDouble(resultTable.getString("tong_mua")));
+                nhaCungCap.setTongMua(resultTable.getDouble("tong_mua"));
             }
             danhSachNhaCungCap.add(nhaCungCap);
         }

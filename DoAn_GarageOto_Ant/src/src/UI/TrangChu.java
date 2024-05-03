@@ -5610,7 +5610,10 @@ public class TrangChu extends javax.swing.JFrame {
             cb_phuTungCanThay.removeAllItems();
             cb_phuTungCanThay.addItem("");
             for (HangHoa hangHoa : danhSachHangHoa) {
-                cb_phuTungCanThay.addItem(hangHoa.getMaHangHoa() + " " + hangHoa.getTenHangHoa() + " ;Giá " + hangHoa.getGiaThay());
+                if (hangHoa.getTonKho() > 0){
+                    cb_phuTungCanThay.addItem(hangHoa.getMaHangHoa() + " " + hangHoa.getTenHangHoa() + " ;Giá " + hangHoa.getGiaThay());
+                }
+                
             }
             hienThiDanhSachPhieuSuaChua();
             hienThiDanhSachKhachHangTaiCombobox(cbSuaChua_danhSachKhachHang);

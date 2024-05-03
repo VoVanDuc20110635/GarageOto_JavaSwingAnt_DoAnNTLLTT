@@ -89,6 +89,8 @@ public class PhieuSuaChuaService {
                              "values ('%s','%s' )",
                 maPhieuSuaChua, maHangHoa);
             connectorDB.executeUpdateQueryConnectorDB(query);
+            String queryCapNhatKho = String.format("update hang_hoa set ton_kho = ton_kho - 1 where ma_hang_hoa = '%s'", maHangHoa );
+            connectorDB.executeUpdateQueryConnectorDB(queryCapNhatKho);
             connectorDB.closeConnection();
             return true;
         } catch (Exception err){

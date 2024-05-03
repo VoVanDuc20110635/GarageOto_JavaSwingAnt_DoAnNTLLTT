@@ -126,6 +126,11 @@ for (int i =0 ; i < model.getRowCount(); i++){
         chiTietPhieuTraHang.setMaHangHoa(model.getValueAt(i, 0).toString());
         chiTietPhieuTraHang.setTenHangHoa(model.getValueAt(i, 1).toString());
         chiTietPhieuTraHang.setMaPhieuTraHang(phieuTraHang.getMaPhieuTraHang());
+        if (model.getValueAt(i, 4).toString().equals("Lỗi")){
+            chiTietPhieuTraHang.setLoi(true);
+        } else {
+            chiTietPhieuTraHang.setLoi(false);
+        }
         chiTietPhieuTraHangService.themChiTietPhieuTraHang(chiTietPhieuTraHang);
     } catch (SQLException ex) {
         Logger.getLogger(Frame_TienThanhToanTraHang.class.getName()).log(Level.SEVERE, null, ex);

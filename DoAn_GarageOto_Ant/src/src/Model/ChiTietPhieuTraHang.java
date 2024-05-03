@@ -18,6 +18,7 @@ public class ChiTietPhieuTraHang {
     private String maPhieuTraHang;
     private HangHoa hangHoa;
     private PhieuTraHang phieuTraHang;
+    private boolean loi;
 
     public ChiTietPhieuTraHang() {
     }
@@ -101,6 +102,14 @@ public class ChiTietPhieuTraHang {
 
     public void setTenHangHoa(String tenHangHoa) {
         this.tenHangHoa = tenHangHoa;
+    }
+
+    public boolean isLoi() {
+        return loi;
+    }
+
+    public void setLoi(boolean loi) {
+        this.loi = loi;
     }
     
     

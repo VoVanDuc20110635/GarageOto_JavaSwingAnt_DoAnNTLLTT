@@ -179,6 +179,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         btnChiTietDonNhapHang_traSanPham = new javax.swing.JButton();
         btnChiTietDonNhapHang_hoanTac = new javax.swing.JButton();
         lbChiTietDonNhapHang_error = new javax.swing.JLabel();
+        checkBoxChiTietDonNhapHang_sanPhamLoi = new javax.swing.JCheckBox();
         jPanel250 = new javax.swing.JPanel();
         jLabel305 = new javax.swing.JLabel();
         lb_tongSoLuong = new javax.swing.JLabel();
@@ -624,7 +625,11 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
             }
         });
         panel_ChiTietDonNhapHang.add(btnChiTietDonNhapHang_hoanTac, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 100, 30));
-        panel_ChiTietDonNhapHang.add(lbChiTietDonNhapHang_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 370, 20));
+        panel_ChiTietDonNhapHang.add(lbChiTietDonNhapHang_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 370, 20));
+
+        checkBoxChiTietDonNhapHang_sanPhamLoi.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        checkBoxChiTietDonNhapHang_sanPhamLoi.setText("Sản phẩm lỗi");
+        panel_ChiTietDonNhapHang.add(checkBoxChiTietDonNhapHang_sanPhamLoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
 
         jPanel1.add(panel_ChiTietDonNhapHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 977, 510));
 
@@ -794,7 +799,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã hàng", "Tên hàng", "Đơn giá", "Số lượng"
+                "Mã hàng", "Tên hàng", "Đơn giá", "Số lượng", "Lỗi"
             }
         ));
         tbChiTietDonNhapHang_traHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -974,8 +979,15 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
         Vector columnData = new Vector();
         columnData.add(lbChiTietDonNhapHang_maHang.getText());
         columnData.add(tfChiTietDonNhapHang_tenHang.getText());
-        columnData.add(donGiaSanPhamTra);
+        if (checkBoxChiTietDonNhapHang_sanPhamLoi.isSelected()){
+            columnData.add(donGiaSanPhamTra);
+        } else {
+            columnData.add(donGiaSanPhamTra*1.1); // phụ thu 10%
+        }
         columnData.add(tfChiTietDonNhapHang_soLuong.getText());
+        if (checkBoxChiTietDonNhapHang_sanPhamLoi.isSelected()){
+            columnData.add("Lỗi");
+        }
         recordTable.addRow(columnData);
 
         if (recordTable.getRowCount() > 0){
@@ -1131,6 +1143,7 @@ public class frame_ChiTietDonNhapHang extends javax.swing.JFrame {
     private javax.swing.JButton btn_in;
     private javax.swing.JComboBox<String> cb_nhaCungCap;
     private javax.swing.JComboBox<String> cb_trangThai;
+    private javax.swing.JCheckBox checkBoxChiTietDonNhapHang_sanPhamLoi;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel287;
     private javax.swing.JLabel jLabel289;
