@@ -67,6 +67,30 @@ public class BangChamCongService {
         return danhSachBangChamCong;
     }
     
+    public List<BangChamCong> hienThiBangChamCongTheoMaNhanVien (int month, int year, String maNhanVien) throws SQLException{ //
+        String query = String.format("select * from bang_cham_cong where ma_nhan_vien='%s' and extract(month from ngay_lam) = %s and extract(year from ngay_lam) = %s and trang_thai not like '%%Đầy đủ%%'",
+                             maNhanVien, month, year);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<BangChamCong> danhSachBangChamCong = new ArrayList<>();
+        while(resultTable.next()){
+            BangChamCong bangChamCong = new BangChamCong();
+            for (i= 1; i <= q; i++){
+                bangChamCong.setMaBangChamCong(resultTable.getString("ma_bang_cham_cong"));
+                bangChamCong.setGioTangCa(resultTable.getShort("gio_tang_ca"));
+                bangChamCong.setNgayLam(util.localDateParseMethodToLocalDate(resultTable.getString("ngay_lam")));
+                bangChamCong.setTrangThai(resultTable.getString("trang_thai"));
+                bangChamCong.setMaCaLam(resultTable.getString("ma_ca_lam"));
+                bangChamCong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            }
+            danhSachBangChamCong.add(bangChamCong);
+        }
+        connectorDB.closeConnection();
+        return danhSachBangChamCong;
+    }
+    
     public int themBangChamCong (BangChamCong bangChamCongMoi) throws SQLException{ //   
         try{
            String query = String.format("insert into bang_cham_cong(ma_bang_cham_cong, ngay_lam, trang_thai, ma_ca_lam, ma_nhan_vien) " +

@@ -10,11 +10,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import src.Model.BangChamCong;
 import src.Model.BangLuong;
 import src.Model.BangLuongNhanVien;
 import src.Model.LichLamViec;
 import src.Model.NhanVien;
 import src.Model.PhieuLuong;
+import src.Service.BangChamCongService;
 import src.Service.BangLuongNhanVienService;
 import src.Service.BangLuongService;
 import src.Service.LichLamViecService;
@@ -29,6 +31,7 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
     private LichLamViec lichLamViec;
     private List<LichLamViec> danhSachLichTangCa;
     private List<BangLuong> danhSachTroCap;
+    private List<BangChamCong> danhSachBangChamCong;
     private NhanVien nhanVien;
     private int thang;
     private int nam;
@@ -38,6 +41,7 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
     private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
     private PhieuLuongService phieuLuongService = new PhieuLuongService();
     private BangLuongService bangLuongService = new BangLuongService();
+    private BangChamCongService bangChamCongService = new BangChamCongService();
     
     /**
      * Creates new form Frame_PhieuLuong
@@ -46,10 +50,11 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
         initComponents();
     }
 
-    Frame_PhieuLuong(LichLamViec lichLamViecMain, List<LichLamViec> danhSachLichTangCaMain, List<BangLuong> danhSachTroCapMain, NhanVien nhanVien, int month, int year) {
+    Frame_PhieuLuong(LichLamViec lichLamViecMain, List<LichLamViec> danhSachLichTangCaMain, List<BangLuong> danhSachTroCapMain, List<BangChamCong> danhSachBangChamCongMain,  NhanVien nhanVien, int month, int year) {
         this.lichLamViec = lichLamViecMain;
         this.danhSachLichTangCa = danhSachLichTangCaMain;
         this.danhSachTroCap = danhSachTroCapMain;
+        this.danhSachBangChamCong = danhSachBangChamCongMain;
         this.nhanVien = nhanVien;
         this.thang = month;
         this.nam = year;
@@ -83,6 +88,15 @@ public class Frame_PhieuLuong extends javax.swing.JFrame {
             // tinh tien phu cap
             for (BangLuong troCap: danhSachTroCap){
                 tongTienLuong += troCap.getTienLuong();
+            }
+            
+            for (int i =0; i < danhSachBangChamCong.size(); i++){
+                if (danhSachBangChamCong.get(i).getTrangThai().equals("Đi trễ")){
+                    tongTienLuong = tongTienLuong - bangLuongLichLamViec.getTienLuong()/30*0.1;
+                } 
+                if (danhSachBangChamCong.get(i).getTrangThai().equals("Vắng")){
+                    tongTienLuong = tongTienLuong - bangLuongLichLamViec.getTienLuong()/30;
+                }
             }
             return tongTienLuong;
         } catch (SQLException ex) {

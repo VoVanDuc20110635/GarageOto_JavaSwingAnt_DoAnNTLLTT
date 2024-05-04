@@ -15,11 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import src.Model.BangChamCong;
 import src.Model.BangLuong;
 import src.Model.BangLuongNhanVien;
 import src.Model.LichLamViec;
 import src.Model.LichLamViecCaLam;
 import src.Model.NhanVien;
+import src.Service.BangChamCongService;
 import src.Service.BangLuongNhanVienService;
 import src.Service.BangLuongService;
 import src.Service.CaLamService;
@@ -38,11 +40,13 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
     private LichLamViecService lichLamViecService = new LichLamViecService();
     private LichLamViecCaLamService lichLamViecCaLamService = new LichLamViecCaLamService();
+    private BangChamCongService bangChamCongService = new BangChamCongService();
     private NhanVien nhanVien;
     
     private LichLamViec lichLamViecMain = new LichLamViec();
     private List<LichLamViec> danhSachLichTangCaMain = new ArrayList<>();
     private List<BangLuong> danhSachTroCapMain = new ArrayList<>();
+    private List<BangChamCong> danhSachBangChamCongMain = new ArrayList<>();
     
     private NhanVien nhanVienDangNhap;
     private Util util = new Util();
@@ -143,6 +147,9 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbPhuCap = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbBangChamCong = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -220,8 +227,6 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel2.setText(":");
 
-        yearChooser.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -256,7 +261,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
                 btnLapPhieuLuongActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLapPhieuLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, -1, 39));
+        jPanel1.add(btnLapPhieuLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 140, 39));
 
         btnTimKiem.setBackground(new java.awt.Color(255, 153, 153));
         btnTimKiem.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -267,7 +272,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
                 btnTimKiemActionPerformed(evt);
             }
         });
-        jPanel1.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 116, 42));
+        jPanel1.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(816, 10, 140, 42));
 
         lbError.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbError.setForeground(new java.awt.Color(255, 0, 0));
@@ -633,7 +638,24 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         tbPhuCap.setRowHeight(30);
         jScrollPane5.setViewportView(tbPhuCap);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 1080, 110));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 1080, 100));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel6.setText("Vắng, trễ");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, -1, -1));
+
+        tbBangChamCong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tbBangChamCong.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã bảng chấm công", "Ngày làm", "Trạng thái", "Trừ lương"
+            }
+        ));
+        jScrollPane2.setViewportView(tbBangChamCong);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 1080, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -643,7 +665,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();
@@ -656,7 +678,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
             }
         int month = monthChooser.getMonth() + 1;
         int year = yearChooser.getYear();
-        Frame_PhieuLuong frame_PhieuLuong = new Frame_PhieuLuong(lichLamViecMain, danhSachLichTangCaMain, danhSachTroCapMain, nhanVien, month, year);
+        Frame_PhieuLuong frame_PhieuLuong = new Frame_PhieuLuong(lichLamViecMain, danhSachLichTangCaMain, danhSachTroCapMain, danhSachBangChamCongMain, nhanVien, month, year);
         frame_PhieuLuong.setVisible(true);
         frame_PhieuLuong.setSize(630, 210);
         frame_PhieuLuong.setLocation(0,0);
@@ -673,6 +695,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         hienThiThongTinLichLamViec(month, year, nhanVien.getMaNhanVien());
         hienThiLichTangCa(month, year, nhanVien.getMaNhanVien());
         hienThiLichTroCap(month, year, nhanVien.getMaNhanVien());
+        hienThiDanhSachBangChamCongVangTre(month, year, nhanVien.getMaNhanVien());
         if (lbTrangThai.getText().equals("Chưa trả")){
             btnLapPhieuLuong.setEnabled(true);
         } else {
@@ -786,6 +809,33 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         }
     }
     
+    private void hienThiDanhSachBangChamCongVangTre (int month, int year, String maNhanVien){
+        try {
+            List<BangChamCong> danhSachBangChamCong =  bangChamCongService.hienThiBangChamCongTheoMaNhanVien(month, year, maNhanVien);
+            danhSachBangChamCongMain = danhSachBangChamCong;
+            DefaultTableModel recordTable = (DefaultTableModel)tbBangChamCong.getModel();        
+            recordTable.setRowCount(0);
+            for (int i =0; i < danhSachBangChamCong.size(); i++){
+                Vector columnData = new Vector();
+                columnData.add(danhSachBangChamCong.get(i).getMaBangChamCong());
+                columnData.add(danhSachBangChamCong.get(i).getNgayLam());
+                columnData.add(danhSachBangChamCong.get(i).getTrangThai());
+                if (danhSachBangChamCong.get(i).getTrangThai().equals("Đi trễ")){
+                    Double truTien = Double.parseDouble(lbTienLuong.getText())/30*0.1;
+                    columnData.add(Math.round(truTien));
+                } 
+                if (danhSachBangChamCong.get(i).getTrangThai().equals("Vắng")){
+                    Double truTien = Double.parseDouble(lbTienLuong.getText())/30;
+                    columnData.add(Math.round(truTien));
+                }
+                
+                recordTable.addRow(columnData);
+            }            
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_LapPhieuLuong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
@@ -843,6 +893,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -861,6 +912,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lbCaLam;
     private javax.swing.JLabel lbCheDoLuong;
@@ -875,6 +927,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private javax.swing.JLabel lbTienLuong;
     private javax.swing.JLabel lbTrangThai;
     private com.toedter.calendar.JMonthChooser monthChooser;
+    private javax.swing.JTable tbBangChamCong;
     private javax.swing.JTable tbLichTangCa;
     private javax.swing.JTable tbPhuCap;
     private com.toedter.calendar.JYearChooser yearChooser;

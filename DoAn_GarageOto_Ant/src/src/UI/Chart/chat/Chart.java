@@ -88,6 +88,10 @@ public class Chart extends javax.swing.JPanel {
             blankPlotChart1.setMaxValues(max);
         }
     }
+    
+    public int showData(){
+        return model.size();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

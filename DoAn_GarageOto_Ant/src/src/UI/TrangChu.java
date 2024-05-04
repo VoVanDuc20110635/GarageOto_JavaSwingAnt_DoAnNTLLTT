@@ -811,23 +811,25 @@ public class TrangChu extends javax.swing.JFrame {
         pieChart1 = new src.UI.Chart.piechart.PieChart();
         jPanel28 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
+        jPanel18 = new javax.swing.JPanel();
+        dateChooser_theoThang_thang = new com.toedter.calendar.JMonthChooser();
+        radioDoanhThu_thang = new javax.swing.JRadioButton();
+        dateChooser_theoThang_nam = new com.toedter.calendar.JYearChooser();
+        jPanel17 = new javax.swing.JPanel();
+        dateChooser_theoNgay_ngay = new com.toedter.calendar.JDateChooser();
+        radioDoanhThu_ngay = new javax.swing.JRadioButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel82 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
-        jDateChooser5 = new com.toedter.calendar.JDateChooser();
+        dateChooser_ngayBatDau = new com.toedter.calendar.JDateChooser();
         jPanel83 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
-        jDateChooser10 = new com.toedter.calendar.JDateChooser();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jPanel17 = new javax.swing.JPanel();
-        jDateChooser11 = new com.toedter.calendar.JDateChooser();
-        jRadioButton10 = new javax.swing.JRadioButton();
-        jPanel18 = new javax.swing.JPanel();
-        jMonthChooser2 = new com.toedter.calendar.JMonthChooser();
-        jRadioButton11 = new javax.swing.JRadioButton();
+        dateChooser_ngayKetThuc = new com.toedter.calendar.JDateChooser();
+        radioDoanhThu_khoangThoiGian = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
-        jYearChooser2 = new com.toedter.calendar.JYearChooser();
-        jRadioButton12 = new javax.swing.JRadioButton();
+        dateChooser_theoNam_nam = new com.toedter.calendar.JYearChooser();
+        radioDoanhThu_nam = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel51 = new javax.swing.JPanel();
 
@@ -5252,20 +5254,72 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel67.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel67.setText("Tìm kiếm");
 
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel18.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+
+        dateChooser_theoThang_thang.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        dateChooser_theoThang_thang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+
+        buttonGroup1.add(radioDoanhThu_thang);
+        radioDoanhThu_thang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        radioDoanhThu_thang.setText("Theo tháng");
+
+        dateChooser_theoThang_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(radioDoanhThu_thang, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dateChooser_theoThang_nam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dateChooser_theoThang_thang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
-                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(radioDoanhThu_thang)
+                    .addComponent(dateChooser_theoThang_thang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateChooser_theoThang_nam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+
+        dateChooser_theoNgay_ngay.setDateFormatString("yyyy-MM-dd");
+        dateChooser_theoNgay_ngay.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+
+        buttonGroup1.add(radioDoanhThu_ngay);
+        radioDoanhThu_ngay.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        radioDoanhThu_ngay.setText("Theo ngày");
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(radioDoanhThu_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dateChooser_theoNgay_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(radioDoanhThu_ngay)
+                    .addComponent(dateChooser_theoNgay_ngay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
@@ -5276,6 +5330,9 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel68.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel68.setText("Ngày bắt đầu");
 
+        dateChooser_ngayBatDau.setDateFormatString("yyyy-MM-dd");
+        dateChooser_ngayBatDau.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel82Layout = new javax.swing.GroupLayout(jPanel82);
         jPanel82.setLayout(jPanel82Layout);
         jPanel82Layout.setHorizontalGroup(
@@ -5285,7 +5342,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel82Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel82Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jDateChooser5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(dateChooser_ngayBatDau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel82Layout.createSequentialGroup()
                         .addComponent(jLabel68)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -5297,7 +5354,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel68)
                 .addGap(12, 12, 12)
-                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateChooser_ngayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -5305,6 +5362,9 @@ public class TrangChu extends javax.swing.JFrame {
 
         jLabel69.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel69.setText("Ngày kết thúc");
+
+        dateChooser_ngayKetThuc.setDateFormatString("yyyy-MM-dd");
+        dateChooser_ngayKetThuc.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel83Layout = new javax.swing.GroupLayout(jPanel83);
         jPanel83.setLayout(jPanel83Layout);
@@ -5315,7 +5375,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel83Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel83Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jDateChooser10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(dateChooser_ngayKetThuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel83Layout.createSequentialGroup()
                         .addComponent(jLabel69)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -5327,13 +5387,13 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel69)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jDateChooser10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateChooser_ngayKetThuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        buttonGroup1.add(jRadioButton9);
-        jRadioButton9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jRadioButton9.setText("Theo khoảng thời gian");
+        buttonGroup1.add(radioDoanhThu_khoangThoiGian);
+        radioDoanhThu_khoangThoiGian.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        radioDoanhThu_khoangThoiGian.setText("Theo khoảng thời gian");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -5345,7 +5405,7 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jPanel83, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel82, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jRadioButton9)
+                        .addComponent(radioDoanhThu_khoangThoiGian)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -5353,7 +5413,7 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton9)
+                .addComponent(radioDoanhThu_khoangThoiGian)
                 .addGap(5, 5, 5)
                 .addComponent(jPanel82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -5361,70 +5421,24 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel17.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-
-        buttonGroup1.add(jRadioButton10);
-        jRadioButton10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jRadioButton10.setText("Theo ngày");
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDateChooser11, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton10)
-                    .addComponent(jDateChooser11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel18.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-
-        jMonthChooser2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-
-        buttonGroup1.add(jRadioButton11);
-        jRadioButton11.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jRadioButton11.setText("Theo tháng");
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jMonthChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton11)
-                    .addComponent(jMonthChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Tìm kiếm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
-        buttonGroup1.add(jRadioButton12);
-        jRadioButton12.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jRadioButton12.setText("Theo năm");
+        dateChooser_theoNam_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+
+        buttonGroup1.add(radioDoanhThu_nam);
+        radioDoanhThu_nam.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        radioDoanhThu_nam.setText("Theo năm");
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -5432,9 +5446,9 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radioDoanhThu_nam, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jYearChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateChooser_theoNam_nam, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
@@ -5442,9 +5456,42 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton12)
-                    .addComponent(jYearChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(radioDoanhThu_nam)
+                    .addComponent(dateChooser_theoNam_nam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
@@ -5452,34 +5499,20 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel27Layout.createSequentialGroup()
-                        .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel27Layout.createSequentialGroup()
                         .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -5753,12 +5786,31 @@ public class TrangChu extends javax.swing.JFrame {
             chart1.addLegend("Expense", new Color(135, 189, 245));
             chart1.addLegend("Profit", new Color(189, 135, 245));
             chart1.addLegend("Cost", new Color(139, 229, 222));
-            chart1.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+            double[] mang1 = new double[10];
+            mang1[0] = 10;
+            mang1[1] = 10;
+            mang1[2] = 10;
+            
+                    
+            chart1.addData(new ModelChart("January", mang1));
             chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
             chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
             chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-            chart1.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+            chart1.addData(new ModelChart("May", new double[]{350, 540, 300}));
             chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+//            chart1.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+//            chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+//            chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+//            chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+//            chart1.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+//            chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
         }
     }//GEN-LAST:event_tabbedPane_trangChuStateChanged
 
@@ -7123,7 +7175,7 @@ public class TrangChu extends javax.swing.JFrame {
             NhanVien nhanVien = nhanVienService.hienThiNhanVienTheoMaNhanVien(lbLichLamViec_maNhanVien.getText());
             Frame_LapPhieuLuong frame_LapPhieuLuong = new Frame_LapPhieuLuong(nhanVien, nhanVienDangNhap);
             frame_LapPhieuLuong.setVisible(true);
-            frame_LapPhieuLuong.setSize(1135, 640);
+            frame_LapPhieuLuong.setSize(1135, 800);
             frame_LapPhieuLuong.setLocation(0,0);
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -7586,24 +7638,43 @@ public class TrangChu extends javax.swing.JFrame {
         int selectedTabDoanhThu =tabbedDoanhThu.getSelectedIndex();
         int selectedTabTrangChu = tabbedPane_trangChu.getSelectedIndex();
         if (selectedTabTrangChu == 4 && selectedTabDoanhThu == 0 ){
+            jPanel133.removeAll();
+            src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
+            jPanel133.setBackground(new java.awt.Color(242, 249, 255));
+            javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
+            jPanel133.setLayout(jPanel133Layout);
+                    jPanel133Layout.setHorizontalGroup(
+                        jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel133Layout.createSequentialGroup()
+                            .addComponent(chart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
+                            .addContainerGap())
+                    );
+                    jPanel133Layout.setVerticalGroup(
+                        jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel133Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    );
+            jPanel133.revalidate();
+            jPanel133.repaint();
             
-            chart1 = new src.UI.Chart.chat.Chart();
-            
-//            chart1.getModel().clear();
-//            chart1.getPanelLegend().removeAll();
-//            chart1.getPanelLegend().revalidate();
-//            chart1.getPanelLegend().repaint();
-            
-            chart1.addLegend("Income", new Color(245, 189, 135));
-            chart1.addLegend("Expense", new Color(135, 189, 245));
-            chart1.addLegend("Profit", new Color(189, 135, 245));
-            chart1.addLegend("Cost", new Color(139, 229, 222));
-            chart1.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
-            chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-            chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-            chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-            chart1.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
-            chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+            chart2.addLegend("1", new Color(245, 189, 135));
+            chart2.addLegend("2", new Color(135, 189, 245));
+            chart2.addLegend("3", new Color(189, 135, 245));
+            chart2.addLegend("4", new Color(139, 229, 222));
+            chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+            chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
         }
         if (selectedTabTrangChu == 4 && selectedTabDoanhThu == 1){
             JPanel dataPanel;
@@ -7653,6 +7724,52 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel134.repaint();
         }
     }//GEN-LAST:event_tabbedDoanhThuStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (radioDoanhThu_khoangThoiGian.isSelected()){
+            System.out.println(dateChooser_ngayBatDau.getDate());
+            System.out.println(dateChooser_ngayKetThuc.getDate());
+            System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayBatDau.getDate())));
+            System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayKetThuc.getDate())));
+            if (dateChooser_ngayBatDau.getDate().after(dateChooser_ngayKetThuc.getDate())){
+                System.out.println("sai dinh dang");
+            }
+            
+            dateChooser_ngayBatDau.setEnabled(true);
+            dateChooser_ngayKetThuc.setEnabled(true);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
+            
+        } else if (radioDoanhThu_ngay.isSelected()){
+            System.out.println(dateChooser_theoNgay_ngay.getDate());
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(true);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
+        } else if (radioDoanhThu_thang.isSelected()){
+            System.out.println(dateChooser_theoThang_thang.getMonth() + 1);
+            System.out.println(dateChooser_theoThang_nam.getYear());
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(true);
+            dateChooser_theoThang_thang.setEnabled(true);
+        } else if (radioDoanhThu_nam.isSelected()){
+            System.out.println(dateChooser_theoNam_nam.getYear());
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(true);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     
     private String getTokenPhanQuyen(){
         String token = " ";
@@ -8861,6 +8978,13 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateChooserHoaDon_ketThuc;
     private com.toedter.calendar.JDateChooser dateChooserLichLamViec_ngayBatDau;
     private com.toedter.calendar.JDateChooser dateChooserLichLamViec_ngayKetThuc;
+    private com.toedter.calendar.JDateChooser dateChooser_ngayBatDau;
+    private com.toedter.calendar.JDateChooser dateChooser_ngayKetThuc;
+    private com.toedter.calendar.JYearChooser dateChooser_theoNam_nam;
+    private com.toedter.calendar.JDateChooser dateChooser_theoNgay_ngay;
+    private com.toedter.calendar.JYearChooser dateChooser_theoThang_nam;
+    private com.toedter.calendar.JMonthChooser dateChooser_theoThang_thang;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton17;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
@@ -8925,9 +9049,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox8;
-    private com.toedter.calendar.JDateChooser jDateChooser10;
-    private com.toedter.calendar.JDateChooser jDateChooser11;
-    private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser8;
     private com.toedter.calendar.JDateChooser jDateChooser9;
     private javax.swing.JLabel jLabel1;
@@ -9065,7 +9186,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
-    private com.toedter.calendar.JMonthChooser jMonthChooser2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel100;
@@ -9205,10 +9325,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel97;
     private javax.swing.JPanel jPanel98;
     private javax.swing.JPanel jPanel99;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton11;
-    private javax.swing.JRadioButton jRadioButton12;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -9230,7 +9346,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField31;
     private javax.swing.JTextField jTextField32;
     private javax.swing.JTextField jTextField46;
-    private com.toedter.calendar.JYearChooser jYearChooser2;
     private javax.swing.JLabel lbDatHang_maDonHang;
     private javax.swing.JLabel lbDatHang_maDonHang1;
     private javax.swing.JLabel lbLichLamViec_Ma;
@@ -9257,6 +9372,10 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioChamCong_theoNam;
     private javax.swing.JRadioButton radioChamCong_theoNgay;
     private javax.swing.JRadioButton radioChamCong_theoThang;
+    private javax.swing.JRadioButton radioDoanhThu_khoangThoiGian;
+    private javax.swing.JRadioButton radioDoanhThu_nam;
+    private javax.swing.JRadioButton radioDoanhThu_ngay;
+    private javax.swing.JRadioButton radioDoanhThu_thang;
     private javax.swing.JTabbedPane tabPane_giaoDich;
     private javax.swing.JTabbedPane tabbedDoanhThu;
     private javax.swing.JTabbedPane tabbedPane_doiTac;
