@@ -63,6 +63,7 @@ import src.Model.BangLuong;
 import src.Model.BangLuongNhanVien;
 import src.Model.CaLam;
 import src.Model.ChiNhanh;
+import src.Model.DoanhThu.DoanhThuTrongNam;
 import src.Model.HangHoa;
 import src.Model.HinhAnh;
 import src.Model.HoaDon;
@@ -81,6 +82,7 @@ import src.Service.BangLuongNhanVienService;
 import src.Service.BangLuongService;
 import src.Service.CaLamService;
 import src.Service.ChiNhanhServive;
+import src.Service.DoanhThuService;
 import src.Service.HangHoaService;
 import src.Service.HinhAnhService;
 import src.Service.HoaDonService;
@@ -148,7 +150,7 @@ public class TrangChu extends javax.swing.JFrame {
     private PhieuLuongService phieuLuongService = new PhieuLuongService();
     private BangLuongNhanVienService bangLuongNhanVienService = new BangLuongNhanVienService();
     private LichLamViecCaLamService  lichLamViecCaLamService = new LichLamViecCaLamService();
-    
+    private DoanhThuService doanhThuService = new DoanhThuService();
     
     private List<HangHoa> danhSachHangHoaMain = new ArrayList<>();
     private List<String> danhSachLinkAnhHangHoa1th = new ArrayList<>();
@@ -826,7 +828,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         dateChooser_ngayKetThuc = new com.toedter.calendar.JDateChooser();
         radioDoanhThu_khoangThoiGian = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        btnDoanhThu_timKiem = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         dateChooser_theoNam_nam = new com.toedter.calendar.JYearChooser();
         radioDoanhThu_nam = new javax.swing.JRadioButton();
@@ -5185,11 +5187,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel37.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
         tabbedDoanhThu.setBackground(new java.awt.Color(242, 249, 255));
-        tabbedDoanhThu.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                tabbedDoanhThuStateChanged(evt);
-            }
-        });
 
         jPanel133.setBackground(new java.awt.Color(242, 249, 255));
 
@@ -5263,8 +5260,11 @@ public class TrangChu extends javax.swing.JFrame {
         buttonGroup1.add(radioDoanhThu_thang);
         radioDoanhThu_thang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         radioDoanhThu_thang.setText("Theo tháng");
-
-        dateChooser_theoThang_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        radioDoanhThu_thang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioDoanhThu_thangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -5300,6 +5300,11 @@ public class TrangChu extends javax.swing.JFrame {
         buttonGroup1.add(radioDoanhThu_ngay);
         radioDoanhThu_ngay.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         radioDoanhThu_ngay.setText("Theo ngày");
+        radioDoanhThu_ngay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioDoanhThu_ngayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -5394,6 +5399,11 @@ public class TrangChu extends javax.swing.JFrame {
         buttonGroup1.add(radioDoanhThu_khoangThoiGian);
         radioDoanhThu_khoangThoiGian.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         radioDoanhThu_khoangThoiGian.setText("Theo khoảng thời gian");
+        radioDoanhThu_khoangThoiGian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioDoanhThu_khoangThoiGianActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -5421,24 +5431,27 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 102));
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Tìm kiếm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDoanhThu_timKiem.setBackground(new java.awt.Color(255, 102, 102));
+        btnDoanhThu_timKiem.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnDoanhThu_timKiem.setForeground(new java.awt.Color(255, 255, 255));
+        btnDoanhThu_timKiem.setText("Tìm kiếm");
+        btnDoanhThu_timKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDoanhThu_timKiemActionPerformed(evt);
             }
         });
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
-        dateChooser_theoNam_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-
         buttonGroup1.add(radioDoanhThu_nam);
         radioDoanhThu_nam.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         radioDoanhThu_nam.setText("Theo năm");
+        radioDoanhThu_nam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioDoanhThu_namActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -5469,20 +5482,19 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(btnDoanhThu_timKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnDoanhThu_timKiem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -5782,29 +5794,6 @@ public class TrangChu extends javax.swing.JFrame {
         }
         
         if (selectedTab == 4 && tabbedDoanhThu.getSelectedIndex() == 0){
-            chart1.addLegend("Income", new Color(245, 189, 135));
-            chart1.addLegend("Expense", new Color(135, 189, 245));
-            chart1.addLegend("Profit", new Color(189, 135, 245));
-            chart1.addLegend("Cost", new Color(139, 229, 222));
-            double[] mang1 = new double[10];
-            mang1[0] = 10;
-            mang1[1] = 10;
-            mang1[2] = 10;
-            
-                    
-            chart1.addData(new ModelChart("January", mang1));
-            chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-            chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-            chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-            chart1.addData(new ModelChart("May", new double[]{350, 540, 300}));
-            chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-//            chart1.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
-//            chart1.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-//            chart1.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-//            chart1.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-//            chart1.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
-//            chart1.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-
             dateChooser_ngayBatDau.setEnabled(false);
             dateChooser_ngayKetThuc.setEnabled(false);
             dateChooser_theoNam_nam.setEnabled(false);
@@ -7634,10 +7623,125 @@ public class TrangChu extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnPhieuTraHang_exportFileActionPerformed
 
-    private void tabbedDoanhThuStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedDoanhThuStateChanged
-        int selectedTabDoanhThu =tabbedDoanhThu.getSelectedIndex();
-        int selectedTabTrangChu = tabbedPane_trangChu.getSelectedIndex();
-        if (selectedTabTrangChu == 4 && selectedTabDoanhThu == 0 ){
+    private void btnDoanhThu_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThu_timKiemActionPerformed
+        if (radioDoanhThu_khoangThoiGian.isSelected()){
+            try {
+                System.out.println(dateChooser_ngayBatDau.getDate());
+                System.out.println(dateChooser_ngayKetThuc.getDate());
+                System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayBatDau.getDate())));
+                System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayKetThuc.getDate())));
+                LocalDate ngayBatDau = util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayBatDau.getDate()));
+                LocalDate ngayKetThuc = util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayKetThuc.getDate()));
+                if (dateChooser_ngayBatDau.getDate().after(dateChooser_ngayKetThuc.getDate())){
+                    System.out.println("sai dinh dang");
+                }
+                
+                double doanhThuHoaDon = doanhThuService.tinhDoanhThuHoaDonTrongKhoangThoiGian(ngayBatDau, ngayKetThuc );
+                double doanhThuSuaChua = doanhThuService.tinhDoanhThuPhieuSuaChuaTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                double doanhThuTraHang = doanhThuService.tinhDoanhThuPhieuTraHangTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                
+                double chiTieuTraHang = doanhThuService.tinhChiTieuPhieuTraHangTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                double chiTieuNhapHang = doanhThuService.tinhChiTieuPhieuNhapHangTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                double chiTieuTienLuongNhanVien = doanhThuService.tinhTienLuongNhanVienTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                
+                double loiNhuan = doanhThuHoaDon + doanhThuSuaChua + doanhThuTraHang - chiTieuTraHang - chiTieuNhapHang - chiTieuTienLuongNhanVien;
+                double doanhThu = doanhThuHoaDon + doanhThuSuaChua + doanhThuTraHang;
+                double chiTieu = chiTieuTraHang + chiTieuNhapHang + chiTieuTienLuongNhanVien;
+                
+                jPanel133.removeAll();
+                src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
+                jPanel133.setBackground(new java.awt.Color(242, 249, 255));
+                javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
+                jPanel133.setLayout(jPanel133Layout);
+                        jPanel133Layout.setHorizontalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addComponent(chart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                        jPanel133Layout.setVerticalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        );
+                jPanel133.revalidate();
+                jPanel133.repaint();
+
+                chart2.addLegend("DoanhThu", new Color(245, 189, 135));
+                chart2.addLegend("Chi phí", new Color(135, 189, 245));
+                chart2.addLegend("Lợi nhuận", new Color(189, 135, 245));
+
+                chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
+    //            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+    //            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+    //            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+    //            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+    //            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+    //            chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
+    //            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
+    //            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
+    //            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
+    //            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
+    //            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
+
+
+                JPanel dataPanel;
+                pieChart1.setModelsEmpty();
+                pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
+                pieChart1.addData(new ModelPieChart("Tigher", 150, new Color(23, 126, 238)));
+                pieChart1.addData(new ModelPieChart("ABC", 100, new Color(221, 65, 65)));
+                pieChart1.addData(new ModelPieChart("Coca", 1, new Color(47, 157, 64)));
+                pieChart1.addData(new ModelPieChart("Vita", 60, new Color(196, 151, 58)));
+
+                // Initialize and configure the dataPanel
+                dataPanel = new JPanel();
+                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
+                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
+
+                // Tạo font mới
+                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
+
+                // Add data to the dataPanel dynamically based on the pie chart data
+                JLabel labelTigher = new JLabel("Tigher: 150");
+                labelTigher.setFont(labelFont);
+                dataPanel.add(labelTigher);
+
+                JLabel labelABC = new JLabel("ABC: 100");
+                labelABC.setFont(labelFont);
+                dataPanel.add(labelABC);
+
+                JLabel labelCoca = new JLabel("Coca: 1");
+                labelCoca.setFont(labelFont);
+                dataPanel.add(labelCoca);
+
+                JLabel labelVita = new JLabel("Vita: 60");
+                labelVita.setFont(labelFont);
+                dataPanel.add(labelVita);
+
+                // Now, add pieChart1 to jPanel134
+                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
+
+                // Now, add both pieChart1 and dataPanel to jPanel134
+                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
+                jPanel134.add(pieChart1, BorderLayout.CENTER); // Add pieChart1 to the center
+                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
+
+                // Revalidate jPanel134 to apply the new layout and components
+                jPanel134.revalidate();
+                jPanel134.repaint();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+            
+            
+        } else if (radioDoanhThu_ngay.isSelected()){
+            System.out.println(dateChooser_theoNgay_ngay.getDate());
             jPanel133.removeAll();
             src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
             jPanel133.setBackground(new java.awt.Color(242, 249, 255));
@@ -7659,31 +7763,25 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel133.revalidate();
             jPanel133.repaint();
             
-            chart2.addLegend("1", new Color(245, 189, 135));
-            chart2.addLegend("2", new Color(135, 189, 245));
-            chart2.addLegend("3", new Color(189, 135, 245));
-            chart2.addLegend("4", new Color(139, 229, 222));
+            chart2.addLegend("Income", new Color(245, 189, 135));
+            chart2.addLegend("Expense", new Color(135, 189, 245));
+            chart2.addLegend("Profit", new Color(189, 135, 245));
+            chart2.addLegend("Cost", new Color(139, 229, 222));
             chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
             chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
             chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
             chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
             chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
             chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-            chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
-            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
-            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-        }
-        if (selectedTabTrangChu == 4 && selectedTabDoanhThu == 1){
+            
+            
             JPanel dataPanel;
             pieChart1.setModelsEmpty();
             pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
-            pieChart1.addData(new ModelPieChart("Tigher", 150, new Color(23, 126, 238)));
-            pieChart1.addData(new ModelPieChart("ABC", 100, new Color(221, 65, 65)));
-            pieChart1.addData(new ModelPieChart("Coca", 1, new Color(47, 157, 64)));
-            pieChart1.addData(new ModelPieChart("Vita", 60, new Color(196, 151, 58)));
+            pieChart1.addData(new ModelPieChart("1", 100, new Color(23, 126, 238)));
+            pieChart1.addData(new ModelPieChart("2", 100, new Color(221, 65, 65)));
+            pieChart1.addData(new ModelPieChart("3", 100, new Color(47, 157, 64)));
+            pieChart1.addData(new ModelPieChart("4", 100, new Color(196, 151, 58)));
 
             // Initialize and configure the dataPanel
             dataPanel = new JPanel();
@@ -7722,53 +7820,89 @@ public class TrangChu extends javax.swing.JFrame {
             // Revalidate jPanel134 to apply the new layout and components
             jPanel134.revalidate();
             jPanel134.repaint();
-        }
-    }//GEN-LAST:event_tabbedDoanhThuStateChanged
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (radioDoanhThu_khoangThoiGian.isSelected()){
-            System.out.println(dateChooser_ngayBatDau.getDate());
-            System.out.println(dateChooser_ngayKetThuc.getDate());
-            System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayBatDau.getDate())));
-            System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayKetThuc.getDate())));
-            if (dateChooser_ngayBatDau.getDate().after(dateChooser_ngayKetThuc.getDate())){
-                System.out.println("sai dinh dang");
-            }
             
+            
+        } else if (radioDoanhThu_thang.isSelected()){
+            System.out.println(dateChooser_theoThang_thang.getMonth() + 1);
+            System.out.println(dateChooser_theoThang_nam.getYear());
+        } else if (radioDoanhThu_nam.isSelected()){
+            System.out.println(dateChooser_theoNam_nam.getYear());
+        }
+    }//GEN-LAST:event_btnDoanhThu_timKiemActionPerformed
+
+    private void radioDoanhThu_khoangThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDoanhThu_khoangThoiGianActionPerformed
+        if (radioDoanhThu_khoangThoiGian.isSelected()){
             dateChooser_ngayBatDau.setEnabled(true);
             dateChooser_ngayKetThuc.setEnabled(true);
             dateChooser_theoNam_nam.setEnabled(false);
             dateChooser_theoNgay_ngay.setEnabled(false);
             dateChooser_theoThang_nam.setEnabled(false);
             dateChooser_theoThang_thang.setEnabled(false);
-            
-        } else if (radioDoanhThu_ngay.isSelected()){
-            System.out.println(dateChooser_theoNgay_ngay.getDate());
+        } else {
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
+        }
+    }//GEN-LAST:event_radioDoanhThu_khoangThoiGianActionPerformed
+
+    private void radioDoanhThu_ngayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDoanhThu_ngayActionPerformed
+        if (radioDoanhThu_ngay.isSelected()){
             dateChooser_ngayBatDau.setEnabled(false);
             dateChooser_ngayKetThuc.setEnabled(false);
             dateChooser_theoNam_nam.setEnabled(false);
             dateChooser_theoNgay_ngay.setEnabled(true);
             dateChooser_theoThang_nam.setEnabled(false);
             dateChooser_theoThang_thang.setEnabled(false);
-        } else if (radioDoanhThu_thang.isSelected()){
-            System.out.println(dateChooser_theoThang_thang.getMonth() + 1);
-            System.out.println(dateChooser_theoThang_nam.getYear());
+        } else {
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
+        }
+    }//GEN-LAST:event_radioDoanhThu_ngayActionPerformed
+
+    private void radioDoanhThu_thangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDoanhThu_thangActionPerformed
+        if (radioDoanhThu_thang.isSelected()){
             dateChooser_ngayBatDau.setEnabled(false);
             dateChooser_ngayKetThuc.setEnabled(false);
             dateChooser_theoNam_nam.setEnabled(false);
             dateChooser_theoNgay_ngay.setEnabled(false);
             dateChooser_theoThang_nam.setEnabled(true);
             dateChooser_theoThang_thang.setEnabled(true);
-        } else if (radioDoanhThu_nam.isSelected()){
-            System.out.println(dateChooser_theoNam_nam.getYear());
+        } else {
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
+        }
+    }//GEN-LAST:event_radioDoanhThu_thangActionPerformed
+
+    private void radioDoanhThu_namActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDoanhThu_namActionPerformed
+        if (radioDoanhThu_nam.isSelected()){
             dateChooser_ngayBatDau.setEnabled(false);
             dateChooser_ngayKetThuc.setEnabled(false);
             dateChooser_theoNam_nam.setEnabled(true);
             dateChooser_theoNgay_ngay.setEnabled(false);
             dateChooser_theoThang_nam.setEnabled(false);
             dateChooser_theoThang_thang.setEnabled(false);
+        } else {
+            dateChooser_ngayBatDau.setEnabled(false);
+            dateChooser_ngayKetThuc.setEnabled(false);
+            dateChooser_theoNam_nam.setEnabled(false);
+            dateChooser_theoNgay_ngay.setEnabled(false);
+            dateChooser_theoThang_nam.setEnabled(false);
+            dateChooser_theoThang_thang.setEnabled(false);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_radioDoanhThu_namActionPerformed
+    
+    
     
     
     private String getTokenPhanQuyen(){
@@ -8833,6 +8967,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnDatHang_datHang;
     private javax.swing.JButton btnDatHang_themKhachHang;
     private javax.swing.JButton btnDatHang_timKhachHang;
+    private javax.swing.JButton btnDoanhThu_timKiem;
     private javax.swing.JButton btnHangHoa_export;
     private javax.swing.JButton btnHangHoa_import;
     private javax.swing.JButton btnHangHoa_taiLai;
@@ -8984,7 +9119,6 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateChooser_theoNgay_ngay;
     private com.toedter.calendar.JYearChooser dateChooser_theoThang_nam;
     private com.toedter.calendar.JMonthChooser dateChooser_theoThang_thang;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton17;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
