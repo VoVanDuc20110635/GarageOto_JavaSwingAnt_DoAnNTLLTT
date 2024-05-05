@@ -37,6 +37,8 @@ public class PieChart extends JComponent{
     private float borderHover = 0.05f;
     private float padding = 0.2f;
     
+    private List<Color> colorList = new ArrayList<>();
+    
     public void setModelsEmpty(){
         models.clear();
     }
@@ -71,6 +73,26 @@ public class PieChart extends JComponent{
         };
         addMouseListener(mouseEvent);
         addMouseMotionListener(mouseEvent);
+        
+        colorList.add(Color.RED);
+        colorList.add(Color.GREEN);
+        colorList.add(Color.BLUE);
+        colorList.add(Color.ORANGE);
+        colorList.add(Color.YELLOW);
+        colorList.add(Color.PINK);
+        colorList.add(Color.CYAN);
+        colorList.add(Color.MAGENTA);
+        colorList.add(Color.GRAY);
+        colorList.add(Color.DARK_GRAY);
+        colorList.add(Color.LIGHT_GRAY);
+        colorList.add(Color.BLACK);
+        colorList.add(Color.WHITE);
+
+        // Creating custom colors using RGB values
+        colorList.add(new Color(255, 165, 0)); // Orange
+        colorList.add(new Color(255, 105, 180)); // Hot Pink
+        colorList.add(new Color(173, 216, 230)); // Light Blue
+        colorList.add(new Color(240, 230, 140)); // Khaki
     }
 
     @Override
@@ -298,6 +320,14 @@ public class PieChart extends JComponent{
 
     public static enum PeiChartType {
         DEFAULT, DONUT_CHART
+    }
+    
+    public List<Color> getColorList() {
+        return colorList;
+    }
+
+    public void setColorList(List<Color> colorList) {
+        this.colorList = colorList;
     }
     
 }

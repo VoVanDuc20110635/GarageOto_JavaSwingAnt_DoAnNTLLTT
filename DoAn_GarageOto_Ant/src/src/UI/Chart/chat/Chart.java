@@ -28,8 +28,8 @@ public class Chart extends javax.swing.JPanel {
     private List<ModelChart> model = new ArrayList<>();
     private final int seriesSize = 12;
     private final int seriesSpace = 6;
-    private int hoverIndex = -1;
-    private int selectedIndex = -1;
+    
+    private List<Color> colorList = new ArrayList<>();
     
     public List<ModelChart> getModel() {
         return model;
@@ -51,7 +51,7 @@ public class Chart extends javax.swing.JPanel {
     }
 
     public Chart() {
-        initComponents();
+        initComponents();   
         
         blankPlotChart1.setBlankPlotChatRender(new BlankPlotChatRender() {
             @Override
@@ -79,38 +79,25 @@ public class Chart extends javax.swing.JPanel {
             }
         });
         
-        model = new ArrayList<>();
-        setForeground(new Color(60, 60, 60));
+        colorList.add(Color.RED);
+        colorList.add(Color.GREEN);
+        colorList.add(Color.BLUE);
+        colorList.add(Color.ORANGE);
+        colorList.add(Color.YELLOW);
+        colorList.add(Color.PINK);
+        colorList.add(Color.CYAN);
+        colorList.add(Color.MAGENTA);
+        colorList.add(Color.GRAY);
+        colorList.add(Color.DARK_GRAY);
+        colorList.add(Color.LIGHT_GRAY);
+        colorList.add(Color.BLACK);
+        colorList.add(Color.WHITE);
 
-        MouseAdapter mouseEvent = new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                int index = checkMouseHover(e.getPoint().x, e.getPoint().y);
-                if (index != hoverIndex) {
-                    hoverIndex = index;
-                    repaint();
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (SwingUtilities.isLeftMouseButton(e)) {
-                    int index = checkMouseHover(e.getPoint().x, e.getPoint().y);
-                    if (index != -1) {
-                        if (index != selectedIndex) {
-                            selectedIndex = index;
-                        } else {
-                            selectedIndex = -1;
-                        }
-                        repaint();
-                    }
-                }
-            }
-        };
-        addMouseListener(mouseEvent);
-        addMouseMotionListener(mouseEvent);
-        
-       
+        // Creating custom colors using RGB values
+        colorList.add(new Color(255, 165, 0)); // Orange
+        colorList.add(new Color(255, 105, 180)); // Hot Pink
+        colorList.add(new Color(173, 216, 230)); // Light Blue
+        colorList.add(new Color(240, 230, 140)); // Khaki
     }
     
     public void addLegend(String name, Color color) {
@@ -129,45 +116,16 @@ public class Chart extends javax.swing.JPanel {
             blankPlotChart1.setMaxValues(max);
         }
     }
+
+    public List<Color> getColorList() {
+        return colorList;
+    }
+
+    public void setColorList(List<Color> colorList) {
+        this.colorList = colorList;
+    }
     
-    private int checkMouseHover(int mouseX, int mouseY) {
-        int index = -1;
-        double barWidth = calculateBarWidth();
-        double x = calculateStartingX();
-        for (int i = 0; i < model.size(); i++) {
-            ModelChart data = model.get(i);
-            Rectangle barBounds = new Rectangle((int)x, calculateY(data), (int)barWidth, calculateHeight(data));
-            if (barBounds.contains(mouseX, mouseY)) {
-                index = i;
-                break;
-            }
-            x += barWidth + calculateSpacing();
-        }
-        return index;
-    }
-
-    // Dummy methods for calculating bar dimensions - you'll need to implement these based on your data and chart size
-    private double calculateBarWidth() {
-        return 50; // Example fixed width
-    }
-
-    private double calculateStartingX() {
-        return 10; // Example starting X position
-    }
-
-    private int calculateY(ModelChart data) {
-        // Calculate the Y position based on the data value
-        return 100; // Example Y position
-    }
-
-    private int calculateHeight(ModelChart data) {
-        // Calculate the height of the bar based on the data value
-        return 50; // Example height
-    }
-
-    private double calculateSpacing() {
-        return 10; // Example spacing between bars
-    }
+    
     
     public int showData(){
         return model.size();

@@ -12,6 +12,7 @@ import java.util.List;
 import src.ConnectDB.ConnectorDB;
 import src.Model.DoanhThu.DoanhThuTrongNam;
 import src.Model.DoanhThu.HangHoaTieuThuTrongKhoangThoiGian;
+import src.Model.DoanhThu.ThongKeTongTienSoLuong;
 import src.Util.Util;
 /**
  *
@@ -22,36 +23,38 @@ public class DoanhThuService {
     private ConnectorDB connectorDB = new ConnectorDB();
     
     // doanh thu
-    public Double tinhDoanhThuHoaDonTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
-        String query = String.format("SELECT SUM(tong_tien) AS revenue FROM hoa_don WHERE thoi_gian > '%s' AND thoi_gian < '%s';  ",
+    public ThongKeTongTienSoLuong tinhDoanhThuHoaDonTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("SELECT SUM(tong_tien) AS revenue, count(ma_hoa_don) as so_luong FROM hoa_don WHERE thoi_gian > '%s' AND thoi_gian < '%s';  ",
                              String.valueOf(ngayBaDau),
                              String.valueOf(ngayKetThuc));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("revenue");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("revenue"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhDoanhThuHoaDonTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("SELECT SUM(tong_tien) AS revenue FROM hoa_don WHERE YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;  ",
+    public ThongKeTongTienSoLuong tinhDoanhThuHoaDonTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
+        String query = String.format("SELECT SUM(tong_tien) AS revenue, count(ma_hoa_don) as so_luong FROM hoa_don WHERE YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;  ",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("revenue");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("revenue"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
     public List<DoanhThuTrongNam> tinhDoanhThuHoaDonTrongNamNhatDinh ( int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong_tien) AS tong_tien FROM   hoa_don WHERE   YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong_tien) AS tong_tien , count(ma_hoa_don) as so_luong FROM   hoa_don WHERE   YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -60,42 +63,45 @@ public class DoanhThuService {
             DoanhThuTrongNam doanhThuTrongNam = new DoanhThuTrongNam();
             doanhThuTrongNam.setThang(resultTable.getString("thang"));
             doanhThuTrongNam.setTongTien(resultTable.getDouble("tong_tien"));
+            doanhThuTrongNam.setSoLuong(resultTable.getInt("so_luong"));
             danhSachDoanhThuTheoThang.add(doanhThuTrongNam);
         }
         connectorDB.closeConnection();
         return danhSachDoanhThuTheoThang;
     }
     
-    public Double tinhDoanhThuPhieuSuaChuaTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
-        String query = String.format("SELECT SUM(tong_tien) AS revenue FROM phieu_sua_chua WHERE thoi_gian > '%s' AND thoi_gian < '%s';  ",
+    public ThongKeTongTienSoLuong tinhDoanhThuPhieuSuaChuaTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("SELECT SUM(tong_tien) AS revenue, count(ma_phieu_sua_chua) as so_luong FROM phieu_sua_chua WHERE thoi_gian > '%s' AND thoi_gian < '%s';  ",
                              String.valueOf(ngayBaDau),
                              String.valueOf(ngayKetThuc));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("revenue");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("revenue"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhDoanhThuPhieuSuaChuaTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("SELECT SUM(tong_tien) AS revenue FROM phieu_sua_chua WHERE YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;  ",
+    public ThongKeTongTienSoLuong tinhDoanhThuPhieuSuaChuaTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
+        String query = String.format("SELECT SUM(tong_tien) AS revenue, count(ma_phieu_sua_chua)as so_luong FROM phieu_sua_chua WHERE YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;  ",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("revenue");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("revenue"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
     public List<DoanhThuTrongNam> tinhDoanhThuPhieuSuaChuaTrongNamNhatDinh ( int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong_tien) AS tong_tien FROM   phieu_sua_chua WHERE   YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong_tien) AS tong_tien, count(ma_phieu_sua_chua)as so_luong FROM   phieu_sua_chua WHERE   YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -104,42 +110,45 @@ public class DoanhThuService {
             DoanhThuTrongNam doanhThuTrongNam = new DoanhThuTrongNam();
             doanhThuTrongNam.setThang(resultTable.getString("thang"));
             doanhThuTrongNam.setTongTien(resultTable.getDouble("tong_tien"));
+            doanhThuTrongNam.setSoLuong(resultTable.getInt("so_luong"));
             danhSachDoanhThuTheoThang.add(doanhThuTrongNam);
         }
         connectorDB.closeConnection();
         return danhSachDoanhThuTheoThang;
     }
     
-    public Double tinhDoanhThuPhieuTraHangTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
-        String query = String.format("select SUM(can_tra) as revenue from phieu_tra_hang where thoi_gian between '%s' and '%s';",
+    public ThongKeTongTienSoLuong tinhDoanhThuPhieuTraHangTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select SUM(can_tra) as revenue, count(ma_phieu_tra_hang) as so_luong from phieu_tra_hang where thoi_gian between '%s' and '%s';",
                              String.valueOf(ngayBaDau),
                              String.valueOf(ngayKetThuc));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("revenue");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("revenue"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhDoanhThuPhieuPhieuTraHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(can_tra) as revenue from phieu_tra_hang WHERE YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;  ",
+    public ThongKeTongTienSoLuong tinhDoanhThuPhieuPhieuTraHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
+        String query = String.format("select SUM(can_tra) as revenue, count(ma_phieu_tra_hang) as so_luong from phieu_tra_hang WHERE YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;  ",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("revenue");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("revenue"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
     public List<DoanhThuTrongNam> tinhDoanhThuPhieuTraHangTrongNamNhatDinh ( int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien FROM   phieu_tra_hang WHERE  nha_cung_cap is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien, count(ma_phieu_tra_hang) as so_luong FROM   phieu_tra_hang WHERE  nha_cung_cap is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -148,6 +157,7 @@ public class DoanhThuService {
             DoanhThuTrongNam doanhThuTrongNam = new DoanhThuTrongNam();
             doanhThuTrongNam.setThang(resultTable.getString("thang"));
             doanhThuTrongNam.setTongTien(resultTable.getDouble("tong_tien"));
+            doanhThuTrongNam.setSoLuong(resultTable.getInt("so_luong"));
             danhSachDoanhThuTheoThang.add(doanhThuTrongNam);
         }
         connectorDB.closeConnection();
@@ -156,92 +166,98 @@ public class DoanhThuService {
     
     // chi tieu
     
-    public Double tinhChiTieuPhieuTraHangTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
-        String query = String.format("select SUM(can_tra) as chi_phi from phieu_tra_hang where ma_khach_hang is not null and thoi_gian between '%s' and '%s';",
+    public ThongKeTongTienSoLuong tinhChiTieuPhieuTraHangTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select SUM(can_tra) as chi_phi, count(ma_phieu_tra_hang) as so_luong from phieu_tra_hang where ma_khach_hang is not null and thoi_gian between '%s' and '%s';",
                              String.valueOf(ngayBaDau),
                              String.valueOf(ngayKetThuc));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("chi_phi");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("chi_phi"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhChiTieuPhieuNhapHangTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
-        String query = String.format("select SUM(tong) as chi_phi from phieu_nhap_hang where thoi_gian between '%s' and '%s';",
+    public ThongKeTongTienSoLuong tinhChiTieuPhieuNhapHangTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select SUM(tong) as chi_phi, count(phieu_nhap_hang) as so_luong from phieu_nhap_hang where thoi_gian between '%s' and '%s';",
                              String.valueOf(ngayBaDau),
                              String.valueOf(ngayKetThuc));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("chi_phi");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("chi_phi"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhTienLuongNhanVienTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
-        String query = String.format("select SUM(tong_luong) as tien_luong from phieu_luong where ngay_in between '%s' and '%s';",
+    public ThongKeTongTienSoLuong tinhTienLuongNhanVienTrongKhoangThoiGian (LocalDate ngayBaDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select SUM(tong_luong) as tien_luong, count(ma_phieu) as so_luong from phieu_luong where ngay_in between '%s' and '%s';",
                              String.valueOf(ngayBaDau),
                              String.valueOf(ngayKetThuc));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("tien_luong");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("tien_luong"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhChiTieuPhieuTraHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(can_tra) as chi_phi from phieu_tra_hang where ma_khach_hang is not null and YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
+    public ThongKeTongTienSoLuong tinhChiTieuPhieuTraHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
+        String query = String.format("select SUM(can_tra) as chi_phi, count(ma_phieu_tra_hang) as so_luong from phieu_tra_hang where ma_khach_hang is not null and YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("chi_phi");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("chi_phi"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhChiTieuPhieuNhapHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(tong) as chi_phi from phieu_nhap_hang where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
+    public ThongKeTongTienSoLuong tinhChiTieuPhieuNhapHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
+        String query = String.format("select SUM(tong) as chi_phi, count(phieu_nhap_hang) as so_luong from phieu_nhap_hang where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("chi_phi");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("chi_phi"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
-    public Double tinhTienLuongNhanVienTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(tong_luong) as tien_luong from phieu_luong where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
+    public ThongKeTongTienSoLuong tinhTienLuongNhanVienTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
+        String query = String.format("select SUM(tong_luong), count(ma_phieu) as so_luong as tien_luong from phieu_luong where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
-        double tongHoaDon = 0;
+        ThongKeTongTienSoLuong thongKeTongTienSoLuong = new ThongKeTongTienSoLuong();
         while(resultTable.next()){
-            tongHoaDon = resultTable.getDouble("tien_luong");
+            thongKeTongTienSoLuong.setTongTien(resultTable.getDouble("tien_luong"));
+            thongKeTongTienSoLuong.setSoLuong(resultTable.getInt("so_luong"));
         }
         connectorDB.closeConnection();
-        return tongHoaDon;
+        return thongKeTongTienSoLuong;
     }
     
     public List<DoanhThuTrongNam> tinhChiTieuPhieuTraHangTrongNamNhatDinh (int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien FROM   phieu_tra_hang WHERE  ma_khach_hang is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien, count(ma_phieu_tra_hang) FROM   phieu_tra_hang WHERE  ma_khach_hang is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -250,6 +266,7 @@ public class DoanhThuService {
             DoanhThuTrongNam doanhThuTrongNam = new DoanhThuTrongNam();
             doanhThuTrongNam.setThang(resultTable.getString("thang"));
             doanhThuTrongNam.setTongTien(resultTable.getDouble("tong_tien"));
+            doanhThuTrongNam.setSoLuong(resultTable.getInt("so_luong"));
             danhSachDoanhThuTheoThang.add(doanhThuTrongNam);
         }
         connectorDB.closeConnection();
@@ -257,7 +274,7 @@ public class DoanhThuService {
     }
     
     public List<DoanhThuTrongNam> tinhTienLuongNhanVienTrongNamNhatDinh (int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(ngay_in) AS thang,  SUM(tong_luong) AS tong_tien FROM   phieu_luong WHERE YEAR(ngay_in) = %s  GROUP BY    MONTH(ngay_in) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(ngay_in) AS thang,  SUM(tong_luong) AS tong_tien, count(ma_phieu_tra_hang) FROM   phieu_luong WHERE YEAR(ngay_in) = %s  GROUP BY    MONTH(ngay_in) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -266,6 +283,7 @@ public class DoanhThuService {
             DoanhThuTrongNam doanhThuTrongNam = new DoanhThuTrongNam();
             doanhThuTrongNam.setThang(resultTable.getString("thang"));
             doanhThuTrongNam.setTongTien(resultTable.getDouble("tong_tien"));
+            doanhThuTrongNam.setSoLuong(resultTable.getInt("so_luong"));
             danhSachDoanhThuTheoThang.add(doanhThuTrongNam);
         }
         connectorDB.closeConnection();
@@ -273,7 +291,7 @@ public class DoanhThuService {
     }
     
     public List<DoanhThuTrongNam> tinhChiTieuPhieuNhapHangTrongNamNhatDinh (int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong) AS tong_tien FROM   phieu_nhap_hang WHERE YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong) AS tong_tien, count(ma_phieu_tra_hang) FROM   phieu_nhap_hang WHERE YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -282,6 +300,7 @@ public class DoanhThuService {
             DoanhThuTrongNam doanhThuTrongNam = new DoanhThuTrongNam();
             doanhThuTrongNam.setThang(resultTable.getString("thang"));
             doanhThuTrongNam.setTongTien(resultTable.getDouble("tong_tien"));
+            doanhThuTrongNam.setSoLuong(resultTable.getInt("so_luong"));
             danhSachDoanhThuTheoThang.add(doanhThuTrongNam);
         }
         connectorDB.closeConnection();

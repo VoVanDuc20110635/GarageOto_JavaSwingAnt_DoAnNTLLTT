@@ -8,20 +8,11 @@ package src.Model.DoanhThu;
  *
  * @author WINDOWS 10
  */
-public class DoanhThuTrongNam {
-    private String thang;
+public class ThongKeTongTienSoLuong {
     private double tongTien;
     private int soLuong;
 
-    public DoanhThuTrongNam() {
-    }
-
-    public String getThang() {
-        return thang;
-    }
-
-    public void setThang(String thang) {
-        this.thang = thang;
+    public ThongKeTongTienSoLuong() {
     }
 
     public double getTongTien() {
