@@ -126,6 +126,37 @@ public class PieChart extends JComponent{
         colorList.add(new Color(72, 61, 139));   // Dark Slate Blue
         colorList.add(new Color(143, 188, 143)); // Dark Sea Green
         colorList.add(new Color(60, 179, 113));  // Medium Sea Green
+        
+        colorList.add(new Color(255, 0, 0));     // Red
+        colorList.add(new Color(0, 0, 255));     // Blue
+        colorList.add(new Color(0, 128, 0));     // Green (Duplicate, consider removing or replacing)
+        colorList.add(new Color(255, 255, 0));   // Yellow
+        colorList.add(new Color(0, 0, 0));       // Black
+        colorList.add(new Color(255, 255, 255)); // White
+        colorList.add(new Color(128, 0, 0));     // Maroon
+        colorList.add(new Color(128, 128, 0));   // Olive
+        colorList.add(new Color(0, 128, 128));   // Teal (Duplicate, consider removing or replacing)
+        colorList.add(new Color(0, 0, 128));     // Navy
+        colorList.add(new Color(139, 69, 19));   // Saddle Brown
+        colorList.add(new Color(255, 69, 0));    // Orange Red
+        colorList.add(new Color(75, 0, 130));    // Indigo (Duplicate, consider removing or replacing)
+        colorList.add(new Color(255, 20, 147));  // Deep Pink (Duplicate, consider removing or replacing)
+        colorList.add(new Color(123, 104, 238)); // Medium Slate Blue
+        colorList.add(new Color(0, 191, 255));   // Deep Sky Blue
+        colorList.add(new Color(34, 139, 34));   // Forest Green
+        colorList.add(new Color(255, 127, 80));  // Coral
+        colorList.add(new Color(188, 143, 143)); // Rosy Brown
+        colorList.add(new Color(153, 50, 204));  // Dark Orchid
+        colorList.add(new Color(233, 150, 122)); // Dark Salmon
+        colorList.add(new Color(250, 128, 114)); // Salmon
+        colorList.add(new Color(244, 102, 27));  // Vermilion
+        colorList.add(new Color(255, 182, 193)); // Light Pink
+        colorList.add(new Color(30, 144, 255));  // Dodger Blue
+        colorList.add(new Color(210, 180, 222)); // Thistle
+        colorList.add(new Color(107, 142, 35));  // Olive Drab
+        colorList.add(new Color(102, 205, 170)); // Medium Aquamarine
+        colorList.add(new Color(0, 255, 127));   // Spring Green
+        colorList.add(new Color(70, 130, 180));  // Steel Blue
 
     }
 

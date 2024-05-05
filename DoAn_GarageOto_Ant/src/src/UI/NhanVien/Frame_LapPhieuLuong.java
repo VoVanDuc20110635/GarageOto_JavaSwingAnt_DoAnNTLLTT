@@ -21,14 +21,17 @@ import src.Model.BangLuongNhanVien;
 import src.Model.LichLamViec;
 import src.Model.LichLamViecCaLam;
 import src.Model.NhanVien;
+import src.Model.PhieuLuong;
 import src.Service.BangChamCongService;
 import src.Service.BangLuongNhanVienService;
 import src.Service.BangLuongService;
 import src.Service.CaLamService;
 import src.Service.LichLamViecCaLamService;
 import src.Service.LichLamViecService;
+import src.Service.PhieuLuongService;
 import src.UI.TrangChu;
 import src.Util.Util;
+import src.Util.WritePDF;
 
 /**
  *
@@ -41,7 +44,9 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     private LichLamViecService lichLamViecService = new LichLamViecService();
     private LichLamViecCaLamService lichLamViecCaLamService = new LichLamViecCaLamService();
     private BangChamCongService bangChamCongService = new BangChamCongService();
+    private PhieuLuongService phieuLuongService = new PhieuLuongService();
     private NhanVien nhanVien;
+    private PhieuLuong phieuLuong;
     
     private LichLamViec lichLamViecMain = new LichLamViec();
     private List<LichLamViec> danhSachLichTangCaMain = new ArrayList<>();
@@ -150,6 +155,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbBangChamCong = new javax.swing.JTable();
+        btnIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -278,7 +284,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         lbError.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(lbError, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 255, 28));
 
-        btnThoat.setBackground(new java.awt.Color(0, 102, 255));
+        btnThoat.setBackground(new java.awt.Color(0, 204, 255));
         btnThoat.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
         btnThoat.setText("Thoát");
@@ -287,7 +293,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
                 btnThoatActionPerformed(evt);
             }
         });
-        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 116, 42));
+        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 70, 116, 42));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -657,6 +663,17 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 1080, 120));
 
+        btnIn.setBackground(new java.awt.Color(0, 102, 255));
+        btnIn.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnIn.setForeground(new java.awt.Color(255, 255, 255));
+        btnIn.setText("In");
+        btnIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 116, 42));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -698,8 +715,10 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         hienThiDanhSachBangChamCongVangTre(month, year, nhanVien.getMaNhanVien());
         if (lbTrangThai.getText().equals("Chưa trả")){
             btnLapPhieuLuong.setEnabled(true);
+            btnIn.setVisible(false);
         } else {
             btnLapPhieuLuong.setEnabled(false);
+            btnIn.setVisible(true);
         }
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
@@ -730,6 +749,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
             lbCaLam.setText(danhSachTenCaLam);
             if (bangLuongNhanVien.getMaPhieuLuong() != null){
                 lbTrangThai.setText("Đã trả");
+                phieuLuong = phieuLuongService.hienThiPhieuLuongTheoMaPhieuLuong(bangLuongNhanVien.getMaPhieuLuong());
             } else {
                 lbTrangThai.setText("Chưa trả");
             }
@@ -840,6 +860,13 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
 
+    private void btnInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInActionPerformed
+        WritePDF writePDF = new WritePDF();
+        int thang = monthChooser.getMonth() + 1;
+        int nam = yearChooser.getYear();
+        writePDF.writePhieuLuong(nhanVienDangNhap, nhanVien, phieuLuong, lichLamViecMain,  danhSachLichTangCaMain,  danhSachTroCapMain,  danhSachBangChamCongMain, thang, nam);
+    }//GEN-LAST:event_btnInActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -877,6 +904,7 @@ public class Frame_LapPhieuLuong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIn;
     private javax.swing.JButton btnLapPhieuLuong;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnTimKiem;

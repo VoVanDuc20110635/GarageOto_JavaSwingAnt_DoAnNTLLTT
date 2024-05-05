@@ -42,6 +42,25 @@ import src.Util.Util;
         return danhSachPhieuLuong;
     }
     
+    public PhieuLuong hienThiPhieuLuongTheoMaPhieuLuong(String maPhieuLuong) throws SQLException{
+        String query = String.format("select * from phieu_luong where ma_phieu = '%s'", maPhieuLuong);
+        
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        PhieuLuong phieuLuong = new PhieuLuong();
+        while(resultTable.next()){
+            
+            phieuLuong.setMaPhieu(resultTable.getString("ma_phieu"));
+            phieuLuong.setDaTra(resultTable.getDouble("da_tra"));
+            phieuLuong.setTongLuong(resultTable.getDouble("tong_luong"));
+            phieuLuong.setMaNhanVien(resultTable.getString("ma_nhan_vien"));
+            phieuLuong.setMaNhanVienIn(resultTable.getString("ma_nhan_vien_in"));
+            phieuLuong.setNgayIn(util.localDateParseMethod(resultTable.getString("ngay_in")));
+        }
+        connectorDB.closeConnection();
+        return phieuLuong;
+    }
+    
     public PhieuLuong hienThiPhieuLuongTheoMaBangLuongNhanVien(String maBangLuongNhanVien) throws SQLException{
         String query = String.format("select * from phieu_luong where ma_bang_luong_nhan_vien = '%s'", maBangLuongNhanVien);
         

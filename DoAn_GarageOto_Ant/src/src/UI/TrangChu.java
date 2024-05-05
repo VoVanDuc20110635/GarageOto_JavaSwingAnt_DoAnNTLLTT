@@ -808,6 +808,27 @@ public class TrangChu extends javax.swing.JFrame {
         chart1 = new src.UI.Chart.chat.Chart();
         jPanel134 = new javax.swing.JPanel();
         pieChart1 = new src.UI.Chart.piechart.PieChart();
+        jPanel20 = new javax.swing.JPanel();
+        pieChart2 = new src.UI.Chart.piechart.PieChart();
+        jPanel136 = new javax.swing.JPanel();
+        pieChart3 = new src.UI.Chart.piechart.PieChart();
+        jPanel137 = new javax.swing.JPanel();
+        jPanel138 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lbDoanhThu_tienLuong_tongSoNhanVien = new javax.swing.JLabel();
+        jPanel139 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        lbDoanhThu_tienLuong_luongCung = new javax.swing.JLabel();
+        jPanel140 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        lbDoanhThu_tienLuong_tangCa = new javax.swing.JLabel();
+        jPanel141 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        lbDoanhThu_tienLuong_tongTienThuong = new javax.swing.JLabel();
+        jPanel142 = new javax.swing.JPanel();
+        jLabel70 = new javax.swing.JLabel();
+        lbDoanhThu_tienLuong_tongTienTroCap = new javax.swing.JLabel();
+        chart2 = new src.UI.Chart.chat.Chart();
         jPanel28 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -5072,13 +5093,10 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lbDoanhThu_tienNhapHang))
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbDoanhThu_tienNhapHang)
+                    .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -5185,7 +5203,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel133Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(chart1, javax.swing.GroupLayout.PREFERRED_SIZE, 1222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel133Layout.setVerticalGroup(
             jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5199,6 +5217,8 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel134.setBackground(new java.awt.Color(242, 249, 255));
 
+        pieChart1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
         jPanel134.setLayout(jPanel134Layout);
         jPanel134Layout.setHorizontalGroup(
@@ -5206,7 +5226,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel134Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 1230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel134Layout.setVerticalGroup(
             jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5216,7 +5236,146 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabbedDoanhThu.addTab("Sản phẩm bán chạy", jPanel134);
+        tabbedDoanhThu.addTab("Hàng hóa bán chạy", jPanel134);
+
+        jPanel20.setBackground(new java.awt.Color(242, 249, 255));
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pieChart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1222, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pieChart2, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
+        );
+
+        tabbedDoanhThu.addTab("Hàng hóa sữa chữa", jPanel20);
+
+        jPanel136.setBackground(new java.awt.Color(242, 249, 255));
+
+        javax.swing.GroupLayout jPanel136Layout = new javax.swing.GroupLayout(jPanel136);
+        jPanel136.setLayout(jPanel136Layout);
+        jPanel136Layout.setHorizontalGroup(
+            jPanel136Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel136Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pieChart3, javax.swing.GroupLayout.DEFAULT_SIZE, 1222, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel136Layout.setVerticalGroup(
+            jPanel136Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel136Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pieChart3, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
+        );
+
+        tabbedDoanhThu.addTab("Hàng hóa được nhập", jPanel136);
+
+        jPanel137.setBackground(new java.awt.Color(242, 249, 255));
+
+        jPanel138.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel138.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel2.setText("Tổng số nhân viên:");
+        jPanel138.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 140, -1));
+
+        lbDoanhThu_tienLuong_tongSoNhanVien.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbDoanhThu_tienLuong_tongSoNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDoanhThu_tienLuong_tongSoNhanVien.setText("0");
+        jPanel138.add(lbDoanhThu_tienLuong_tongSoNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 6, 110, -1));
+
+        jPanel139.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel139.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel13.setText("Tổng lương cứng:");
+        jPanel139.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 140, -1));
+
+        lbDoanhThu_tienLuong_luongCung.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbDoanhThu_tienLuong_luongCung.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDoanhThu_tienLuong_luongCung.setText("0");
+        jPanel139.add(lbDoanhThu_tienLuong_luongCung, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 6, 100, -1));
+
+        jPanel140.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel140.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel15.setText("Tổng lương tăng ca:");
+        jPanel140.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 140, -1));
+
+        lbDoanhThu_tienLuong_tangCa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbDoanhThu_tienLuong_tangCa.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDoanhThu_tienLuong_tangCa.setText("0");
+        jPanel140.add(lbDoanhThu_tienLuong_tangCa, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 6, 90, -1));
+
+        jPanel141.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel141.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel22.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel22.setText("Tổng tiền thưởng:");
+        jPanel141.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 140, -1));
+
+        lbDoanhThu_tienLuong_tongTienThuong.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbDoanhThu_tienLuong_tongTienThuong.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDoanhThu_tienLuong_tongTienThuong.setText("0");
+        jPanel141.add(lbDoanhThu_tienLuong_tongTienThuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 6, 100, -1));
+
+        jPanel142.setBackground(new java.awt.Color(242, 249, 255));
+        jPanel142.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel70.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel70.setText("Tổng tiền trợ cấp:");
+        jPanel142.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 140, -1));
+
+        lbDoanhThu_tienLuong_tongTienTroCap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbDoanhThu_tienLuong_tongTienTroCap.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbDoanhThu_tienLuong_tongTienTroCap.setText("0");
+        jPanel142.add(lbDoanhThu_tienLuong_tongTienTroCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 6, 100, -1));
+
+        javax.swing.GroupLayout jPanel137Layout = new javax.swing.GroupLayout(jPanel137);
+        jPanel137.setLayout(jPanel137Layout);
+        jPanel137Layout.setHorizontalGroup(
+            jPanel137Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel137Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel137Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel139, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel140, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel141, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel142, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel137Layout.setVerticalGroup(
+            jPanel137Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel137Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel137Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel137Layout.createSequentialGroup()
+                        .addComponent(jPanel138, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel139, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel140, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel141, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel142, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tabbedDoanhThu.addTab("Tiền lương", jPanel137);
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -5224,8 +5383,8 @@ public class TrangChu extends javax.swing.JFrame {
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedDoanhThu)
-                .addContainerGap())
+                .addComponent(tabbedDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 1234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5254,8 +5413,6 @@ public class TrangChu extends javax.swing.JFrame {
                 radioDoanhThu_thangActionPerformed(evt);
             }
         });
-
-        dateChooser_theoThang_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -5435,8 +5592,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
-        dateChooser_theoNam_nam.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-
         buttonGroup1.add(radioDoanhThu_nam);
         radioDoanhThu_nam.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         radioDoanhThu_nam.setText("Theo năm");
@@ -5509,7 +5664,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel35, javax.swing.GroupLayout.DEFAULT_SIZE, 1471, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
@@ -7679,83 +7834,12 @@ public class TrangChu extends javax.swing.JFrame {
 
                 chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
                 
-                jPanel134.removeAll();
-                src.UI.Chart.piechart.PieChart pieChart2 = new src.UI.Chart.piechart.PieChart();
-                
-                jPanel134.setBackground(new java.awt.Color(242, 249, 255));
-
-                javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
-                jPanel134.setLayout(jPanel134Layout);
-                jPanel134Layout.setHorizontalGroup(
-                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel134Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pieChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 1230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(221, Short.MAX_VALUE))
-                );
-                jPanel134Layout.setVerticalGroup(
-                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel134Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pieChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
-                
-                
-                
-                JPanel dataPanel;
-                pieChart2.setModelsEmpty();
-                pieChart2.setChartType(PieChart.PeiChartType.DONUT_CHART);
-                
-                // Initialize and configure the dataPanel
-                dataPanel = new JPanel();
-                dataPanel.removeAll();
-                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
-                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
-                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
-
-                // Tạo font mới
-                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
-                
-                
                 List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
-                
-                for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
-                    pieChart2.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart2.getColorList().get(i)));
-                
-                    // Add data to the dataPanel dynamically based on the pie chart data
-                    String input = danhSachHangHoaHoaDon.get(i).getTenHangHoa() + ": " + danhSachHangHoaHoaDon.get(i).getSoLuongSuDung();
-                    JLabel labelTigher = new JLabel(input);
-                    labelTigher.setFont(labelFont);
-                    dataPanel.add(labelTigher);
-                }
-
-                // Now, add pieChart2 to jPanel134
-                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
-
-                // Create a JScrollPane that will contain dataPanel
-                JScrollPane scrollPane = new JScrollPane(dataPanel);                
-                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                scrollPane.setBorder(null); // You can set a border if you like
-                
-                // Calculate the preferred width of the dataPanel based on its components
-                int preferredWidth = dataPanel.getPreferredSize().width;
-                // Optionally, you can add some extra width to accommodate the vertical scrollbar
-                preferredWidth += scrollPane.getVerticalScrollBar().getPreferredSize().width;
-
-                // Set the preferred size of the scrollPane with the calculated width
-                scrollPane.setPreferredSize(new Dimension(preferredWidth, dataPanel.getPreferredSize().height));
-                
-                // Now, add both pieChart2 and dataPanel to jPanel134
-                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
-                jPanel134.add(pieChart2, BorderLayout.CENTER); // Add pieChart2 to the center
-//                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
-                jPanel134.add(scrollPane, BorderLayout.EAST);
-                
-                // Revalidate jPanel134 to apply the new layout and components
-                jPanel134.revalidate();
-                jPanel134.repaint();
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaSuaChua = doanhThuService.hangHoaTieuThuTrongSuaChuaTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaNhapHang = doanhThuService.hangHoaBiNhapTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                veBieuDoTron(jPanel134, danhSachHangHoaHoaDon);
+                veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
+                veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -7823,82 +7907,14 @@ public class TrangChu extends javax.swing.JFrame {
 
                 chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
                 
-                jPanel134.removeAll();
-                src.UI.Chart.piechart.PieChart pieChart2 = new src.UI.Chart.piechart.PieChart();
-                
-                jPanel134.setBackground(new java.awt.Color(242, 249, 255));
-
-                javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
-                jPanel134.setLayout(jPanel134Layout);
-                jPanel134Layout.setHorizontalGroup(
-                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel134Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pieChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 1230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(221, Short.MAX_VALUE))
-                );
-                jPanel134Layout.setVerticalGroup(
-                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel134Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pieChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
-                
-                
-                
-                JPanel dataPanel;
-                pieChart2.setModelsEmpty();
-                pieChart2.setChartType(PieChart.PeiChartType.DONUT_CHART);
-                
-                // Initialize and configure the dataPanel
-                dataPanel = new JPanel();
-                dataPanel.removeAll();
-                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
-                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
-                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
-
-                // Tạo font mới
-                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
                 
                 List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongNgayNhatDinh(ngayDuocChon);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaSuaChua = doanhThuService.hangHoaTieuThuTrongSuaChuaTrongNgayNhatDinh(ngayDuocChon);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaNhapHang = doanhThuService.hangHoaBiNhapTrongNgayNhatDinh(ngayDuocChon);
+                veBieuDoTron(jPanel134, danhSachHangHoaHoaDon);
+                veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
+                veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
-                for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
-                    pieChart2.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart2.getColorList().get(i)));
-                
-                    // Add data to the dataPanel dynamically based on the pie chart data
-                    String input = danhSachHangHoaHoaDon.get(i).getTenHangHoa() + ": " + danhSachHangHoaHoaDon.get(i).getSoLuongSuDung();
-                    JLabel labelTigher = new JLabel(input);
-                    labelTigher.setFont(labelFont);
-                    dataPanel.add(labelTigher);
-                }
-
-                // Now, add pieChart2 to jPanel134
-                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
-
-                // Create a JScrollPane that will contain dataPanel
-                JScrollPane scrollPane = new JScrollPane(dataPanel);                
-                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                scrollPane.setBorder(null); // You can set a border if you like
-                
-                // Calculate the preferred width of the dataPanel based on its components
-                int preferredWidth = dataPanel.getPreferredSize().width;
-                // Optionally, you can add some extra width to accommodate the vertical scrollbar
-                preferredWidth += scrollPane.getVerticalScrollBar().getPreferredSize().width;
-
-                // Set the preferred size of the scrollPane with the calculated width
-                scrollPane.setPreferredSize(new Dimension(preferredWidth, dataPanel.getPreferredSize().height));
-                
-                // Now, add both pieChart2 and dataPanel to jPanel134
-                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
-                jPanel134.add(pieChart2, BorderLayout.CENTER); // Add pieChart2 to the center
-//                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
-                jPanel134.add(scrollPane, BorderLayout.EAST);
-                
-                // Revalidate jPanel134 to apply the new layout and components
-                jPanel134.revalidate();
-                jPanel134.repaint();
                 
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -7968,82 +7984,13 @@ public class TrangChu extends javax.swing.JFrame {
 
                 chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
                 
-                jPanel134.removeAll();
-                src.UI.Chart.piechart.PieChart pieChart2 = new src.UI.Chart.piechart.PieChart();
-                
-                jPanel134.setBackground(new java.awt.Color(242, 249, 255));
-
-                javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
-                jPanel134.setLayout(jPanel134Layout);
-                jPanel134Layout.setHorizontalGroup(
-                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel134Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pieChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 1230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(221, Short.MAX_VALUE))
-                );
-                jPanel134Layout.setVerticalGroup(
-                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel134Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pieChart2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
-                
-                
-                
-                JPanel dataPanel;
-                pieChart2.setModelsEmpty();
-                pieChart2.setChartType(PieChart.PeiChartType.DONUT_CHART);
-                
-                // Initialize and configure the dataPanel
-                dataPanel = new JPanel();
-                dataPanel.removeAll();
-                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
-                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
-                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
-
-                // Tạo font mới
-                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
-                
                 List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongThangNhatDinh(thang, nam);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaSuaChua = doanhThuService.hangHoaTieuThuTrongSuaChuaTrongThangNhatDinh(thang, nam);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaNhapHang = doanhThuService.hangHoaBiNhapTrongThangNhatDinh(thang, nam);
+                veBieuDoTron(jPanel134, danhSachHangHoaHoaDon);
+                veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
+                veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
-                for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
-                    pieChart2.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart2.getColorList().get(i)));
-                
-                    // Add data to the dataPanel dynamically based on the pie chart data
-                    String input = danhSachHangHoaHoaDon.get(i).getTenHangHoa() + ": " + danhSachHangHoaHoaDon.get(i).getSoLuongSuDung();
-                    JLabel labelTigher = new JLabel(input);
-                    labelTigher.setFont(labelFont);
-                    dataPanel.add(labelTigher);
-                }
-
-                // Now, add pieChart2 to jPanel134
-                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
-
-                // Create a JScrollPane that will contain dataPanel
-                JScrollPane scrollPane = new JScrollPane(dataPanel);                
-                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-                scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                scrollPane.setBorder(null); // You can set a border if you like
-                
-                // Calculate the preferred width of the dataPanel based on its components
-                int preferredWidth = dataPanel.getPreferredSize().width;
-                // Optionally, you can add some extra width to accommodate the vertical scrollbar
-                preferredWidth += scrollPane.getVerticalScrollBar().getPreferredSize().width;
-
-                // Set the preferred size of the scrollPane with the calculated width
-                scrollPane.setPreferredSize(new Dimension(preferredWidth, dataPanel.getPreferredSize().height));
-                
-                // Now, add both pieChart2 and dataPanel to jPanel134
-                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
-                jPanel134.add(pieChart2, BorderLayout.CENTER); // Add pieChart2 to the center
-//                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
-                jPanel134.add(scrollPane, BorderLayout.EAST);
-                
-                // Revalidate jPanel134 to apply the new layout and components
-                jPanel134.revalidate();
-                jPanel134.repaint();
                 
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -8185,15 +8132,29 @@ public class TrangChu extends javax.swing.JFrame {
                 lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(tongTienPhieuTraHangNhaCungCap));
                 lbDoanhThu_loiNhuan.setText(String.valueOf(loiNhuanTong));
                 
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongNam(nam);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaSuaChua = doanhThuService.hangHoaTieuThuTrongSuaChuaTrongNam( nam);
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaNhapHang = doanhThuService.hangHoaBiNhapTrongNam( nam);
+                veBieuDoTron(jPanel134, danhSachHangHoaHoaDon);
+                veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
+                veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
-                jPanel134.removeAll();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btnDoanhThu_timKiemActionPerformed
+
+    private void veBieuDoTron(JPanel jpanel, List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDonInput){
+        jpanel.removeAll();
                 src.UI.Chart.piechart.PieChart pieChart2 = new src.UI.Chart.piechart.PieChart();
                 
-                jPanel134.setBackground(new java.awt.Color(242, 249, 255));
+                jpanel.setBackground(new java.awt.Color(242, 249, 255));
 
-                javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
-                jPanel134.setLayout(jPanel134Layout);
-                jPanel134Layout.setHorizontalGroup(
+                javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jpanel);
+                jpanel.setLayout(jPanel134Layout);
+                jPanel134Layout.setHorizontalGroup( 
                     jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel134Layout.createSequentialGroup()
                         .addContainerGap()
@@ -8224,7 +8185,8 @@ public class TrangChu extends javax.swing.JFrame {
                 // Tạo font mới
                 Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
                 
-                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongNam(nam);
+                
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = danhSachHangHoaHoaDonInput;
                 
                 for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
                     pieChart2.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart2.getColorList().get(i)));
@@ -8254,21 +8216,16 @@ public class TrangChu extends javax.swing.JFrame {
                 scrollPane.setPreferredSize(new Dimension(preferredWidth, dataPanel.getPreferredSize().height));
                 
                 // Now, add both pieChart2 and dataPanel to jPanel134
-                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
-                jPanel134.add(pieChart2, BorderLayout.CENTER); // Add pieChart2 to the center
+                jpanel.setLayout(new BorderLayout()); // Set layout for jPanel134
+                jpanel.add(pieChart2, BorderLayout.CENTER); // Add pieChart2 to the center
 //                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
-                jPanel134.add(scrollPane, BorderLayout.EAST);
+                jpanel.add(scrollPane, BorderLayout.EAST);
                 
                 // Revalidate jPanel134 to apply the new layout and components
-                jPanel134.revalidate();
-                jPanel134.repaint();
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_btnDoanhThu_timKiemActionPerformed
-
+                jpanel.revalidate();
+                jpanel.repaint();
+    }
+    
     private void radioDoanhThu_khoangThoiGianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDoanhThu_khoangThoiGianActionPerformed
         if (radioDoanhThu_khoangThoiGian.isSelected()){
             dateChooser_ngayBatDau.setEnabled(true);
@@ -9474,6 +9431,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_nhanVienSuaChua;
     private javax.swing.JComboBox<String> cb_phuTungCanThay;
     private src.UI.Chart.chat.Chart chart1;
+    private src.UI.Chart.chat.Chart chart2;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongXem;
@@ -9655,6 +9613,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel153;
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
@@ -9666,7 +9626,9 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -9722,6 +9684,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel76;
@@ -9781,13 +9744,21 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel133;
     private javax.swing.JPanel jPanel134;
     private javax.swing.JPanel jPanel135;
+    private javax.swing.JPanel jPanel136;
+    private javax.swing.JPanel jPanel137;
+    private javax.swing.JPanel jPanel138;
+    private javax.swing.JPanel jPanel139;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel140;
+    private javax.swing.JPanel jPanel141;
+    private javax.swing.JPanel jPanel142;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
@@ -9911,6 +9882,11 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel lbDoanhThu_soLuongSuaChua;
     private javax.swing.JLabel lbDoanhThu_tienHoaDon;
     private javax.swing.JLabel lbDoanhThu_tienLuongNhanVien;
+    private javax.swing.JLabel lbDoanhThu_tienLuong_luongCung;
+    private javax.swing.JLabel lbDoanhThu_tienLuong_tangCa;
+    private javax.swing.JLabel lbDoanhThu_tienLuong_tongSoNhanVien;
+    private javax.swing.JLabel lbDoanhThu_tienLuong_tongTienThuong;
+    private javax.swing.JLabel lbDoanhThu_tienLuong_tongTienTroCap;
     private javax.swing.JLabel lbDoanhThu_tienNhapHang;
     private javax.swing.JLabel lbDoanhThu_tienSuaChua;
     private javax.swing.JLabel lbDoanhThu_tienTraHangKhachHang;
@@ -9933,6 +9909,8 @@ public class TrangChu extends javax.swing.JFrame {
     private com.toedter.calendar.JMonthChooser monthChooser_theoThang_thang;
     private javax.swing.JPanel panelLichLamViec_ngayKetThuc;
     private src.UI.Chart.piechart.PieChart pieChart1;
+    private src.UI.Chart.piechart.PieChart pieChart2;
+    private src.UI.Chart.piechart.PieChart pieChart3;
     private javax.swing.JRadioButton radioBtnHangHoa_conHangTrongKho;
     private javax.swing.JRadioButton radioBtnHangHoa_hetHangTrongKho;
     private javax.swing.JRadioButton radioChamCong_khoangThoiGian;
