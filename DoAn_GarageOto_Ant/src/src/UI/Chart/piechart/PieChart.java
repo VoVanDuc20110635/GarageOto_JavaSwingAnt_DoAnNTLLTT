@@ -93,6 +93,18 @@ public class PieChart extends JComponent{
         colorList.add(new Color(255, 105, 180)); // Hot Pink
         colorList.add(new Color(173, 216, 230)); // Light Blue
         colorList.add(new Color(240, 230, 140)); // Khaki
+        
+        colorList.add(new Color(128, 0, 128));   // Purple
+        colorList.add(new Color(255, 20, 147));  // Deep Pink
+        colorList.add(new Color(75, 0, 130));    // Indigo
+        colorList.add(new Color(0, 128, 128));   // Teal
+        colorList.add(new Color(255, 140, 0));   // Dark Orange
+        colorList.add(new Color(0, 255, 255));   // Aqua
+        colorList.add(new Color(127, 255, 212)); // Aquamarine
+        colorList.add(new Color(210, 105, 30));  // Chocolate
+        colorList.add(new Color(0, 100, 0));     // Dark Green
+        colorList.add(new Color(106, 90, 205));  // Slate Blue
+
     }
 
     @Override

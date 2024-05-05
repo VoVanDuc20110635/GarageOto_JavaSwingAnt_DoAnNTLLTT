@@ -9,18 +9,18 @@ package src.Model.DoanhThu;
  * @author WINDOWS 10
  */
 public class DoanhThuTrongNam {
-    private String thang;
+    private int thang;
     private double tongTien;
     private int soLuong;
 
     public DoanhThuTrongNam() {
     }
 
-    public String getThang() {
+    public int getThang() {
         return thang;
     }
 
-    public void setThang(String thang) {
+    public void setThang(int thang) {
         this.thang = thang;
     }
 

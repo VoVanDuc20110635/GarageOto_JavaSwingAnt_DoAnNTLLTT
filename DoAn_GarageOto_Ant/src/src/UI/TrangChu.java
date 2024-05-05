@@ -7584,10 +7584,6 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnDoanhThu_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThu_timKiemActionPerformed
         if (radioDoanhThu_khoangThoiGian.isSelected()){
             try {
-//                System.out.println(dateChooser_ngayBatDau.getDate());
-//                System.out.println(dateChooser_ngayKetThuc.getDate());
-//                System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayBatDau.getDate())));
-//                System.out.println(util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayKetThuc.getDate())));
                 LocalDate ngayBatDau = util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayBatDau.getDate()));
                 LocalDate ngayKetThuc = util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_ngayKetThuc.getDate()));
                 if (dateChooser_ngayBatDau.getDate().after(dateChooser_ngayKetThuc.getDate())){
@@ -7608,6 +7604,7 @@ public class TrangChu extends javax.swing.JFrame {
                 lbDoanhThu_soLuongPhieuTraHangKhachHang.setText(String.valueOf(chiTieuTraHang.getSoLuong()) + " phiếu trả hàng");
                 lbDoanhThu_soLuongPhieuTraHangNhaCungCap.setText(String.valueOf(doanhThuTraHang.getSoLuong()) + " phiếu trả hàng");
                 lbDoanhThu_soLuongSuaChua.setText(String.valueOf(doanhThuSuaChua.getSoLuong()) + " phiếu sữa chữa");
+                lbDoanhThu_soLuongHoaDon.setText(String.valueOf(doanhThuSuaChua.getSoLuong()) + " hóa đơn");
                 lbDoanhThu_tienHoaDon.setText(String.valueOf(doanhThuHoaDon.getTongTien()));
                 lbDoanhThu_tienLuongNhanVien.setText(String.valueOf(chiTieuTienLuongNhanVien.getTongTien()));
                 lbDoanhThu_tienNhapHang.setText(String.valueOf(chiTieuNhapHang.getTongTien()));
@@ -7646,42 +7643,6 @@ public class TrangChu extends javax.swing.JFrame {
                 chart2.addLegend("Lợi nhuận", new Color(189, 135, 245));
 
                 chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
-    //            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-    //            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-    //            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-    //            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
-    //            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-    //            chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
-    //            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-    //            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-    //            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-    //            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
-    //            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-
-    
-//                List<HangHoaTieuThuTrongKhoangThoiGian> so
-
-//                src.UI.Chart.piechart.PieChart pieChart2 = new src.UI.Chart.piechart.PieChart();
-//                jPanel134.setBackground(new java.awt.Color(242, 249, 255));
-//
-//                javax.swing.GroupLayout jPanel134Layout = new javax.swing.GroupLayout(jPanel134);
-//                jPanel134.setLayout(jPanel134Layout);
-//                jPanel134Layout.setHorizontalGroup(
-//                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                    .addGroup(jPanel134Layout.createSequentialGroup()
-//                        .addContainerGap()
-//                        .addComponent(pieChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                        .addContainerGap(936, Short.MAX_VALUE))
-//                );
-//                jPanel134Layout.setVerticalGroup(
-//                    jPanel134Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                    .addGroup(jPanel134Layout.createSequentialGroup()
-//                        .addContainerGap()
-//                        .addComponent(pieChart1, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-//                        .addContainerGap())
-//                );
-                
-                
                 
                 JPanel dataPanel;
                 pieChart1.setModelsEmpty();
@@ -7708,9 +7669,108 @@ public class TrangChu extends javax.swing.JFrame {
                     dataPanel.add(labelTigher);
                 }
 
-                
+                // Now, add pieChart1 to jPanel134
+                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
 
+                // Now, add both pieChart1 and dataPanel to jPanel134
+                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
+                jPanel134.add(pieChart1, BorderLayout.CENTER); // Add pieChart1 to the center
+                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
+
+                // Revalidate jPanel134 to apply the new layout and components
+                jPanel134.revalidate();
+                jPanel134.repaint();
                 
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else if (radioDoanhThu_ngay.isSelected()){
+            try {
+                LocalDate ngayDuocChon = util.localDateParseMethodToLocalDate(util.layNgayString(dateChooser_theoNgay_ngay.getDate()));
+                    
+                ThongKeTongTienSoLuong doanhThuHoaDon = doanhThuService.tinhDoanhThuHoaDonTrongNgayNhatDinh(ngayDuocChon);
+                ThongKeTongTienSoLuong doanhThuSuaChua = doanhThuService.tinhDoanhThuPhieuSuaChuaTrongNgayNhatDinh(ngayDuocChon);
+                ThongKeTongTienSoLuong doanhThuTraHang = doanhThuService.tinhDoanhThuPhieuTraHangTrongNgayNhatDinh(ngayDuocChon);
+                
+                ThongKeTongTienSoLuong chiTieuTraHang = doanhThuService.tinhChiTieuPhieuTraHangTrongNgayNhatDinh(ngayDuocChon);
+                ThongKeTongTienSoLuong chiTieuNhapHang = doanhThuService.tinhChiTieuPhieuNhapHangTrongNgayNhatDinh(ngayDuocChon);
+                ThongKeTongTienSoLuong chiTieuTienLuongNhanVien = doanhThuService.tinhTienLuongNhanVienTrongNgayNhatDinh(ngayDuocChon);
+                
+                
+                lbDoanhThu_soLuongPhieuLuong.setText(String.valueOf(chiTieuTienLuongNhanVien.getSoLuong()) + " phiếu lương");
+                lbDoanhThu_soLuongPhieuNhapHang.setText(String.valueOf(chiTieuNhapHang.getSoLuong()) + " phiếu nhập hàng");
+                lbDoanhThu_soLuongPhieuTraHangKhachHang.setText(String.valueOf(chiTieuTraHang.getSoLuong()) + " phiếu trả hàng");
+                lbDoanhThu_soLuongPhieuTraHangNhaCungCap.setText(String.valueOf(doanhThuTraHang.getSoLuong()) + " phiếu trả hàng");
+                lbDoanhThu_soLuongSuaChua.setText(String.valueOf(doanhThuSuaChua.getSoLuong()) + " phiếu sữa chữa");
+                lbDoanhThu_soLuongHoaDon.setText(String.valueOf(doanhThuSuaChua.getSoLuong()) + " hóa đơn");
+                lbDoanhThu_tienHoaDon.setText(String.valueOf(doanhThuHoaDon.getTongTien()));
+                lbDoanhThu_tienLuongNhanVien.setText(String.valueOf(chiTieuTienLuongNhanVien.getTongTien()));
+                lbDoanhThu_tienNhapHang.setText(String.valueOf(chiTieuNhapHang.getTongTien()));
+                lbDoanhThu_tienSuaChua.setText(String.valueOf(doanhThuSuaChua.getTongTien()));
+                lbDoanhThu_tienTraHangKhachHang.setText(String.valueOf(doanhThuTraHang.getTongTien()));
+                lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(chiTieuTraHang.getTongTien()));
+                        
+                
+                double loiNhuan = 0;
+                double doanhThu = 0;
+                double chiTieu = 0;
+                
+                loiNhuan = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
+                doanhThu = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
+                chiTieu = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                
+                jPanel133.removeAll();
+                src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
+                jPanel133.setBackground(new java.awt.Color(242, 249, 255));
+                javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
+                jPanel133.setLayout(jPanel133Layout);
+                        jPanel133Layout.setHorizontalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addComponent(chart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                        jPanel133Layout.setVerticalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        );
+                jPanel133.revalidate();
+                jPanel133.repaint();
+
+                chart2.addLegend("DoanhThu", new Color(245, 189, 135));
+                chart2.addLegend("Chi phí", new Color(135, 189, 245));
+                chart2.addLegend("Lợi nhuận", new Color(189, 135, 245));
+
+                chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
+                
+                JPanel dataPanel;
+                pieChart1.setModelsEmpty();
+                pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
+                
+                // Initialize and configure the dataPanel
+                dataPanel = new JPanel();
+                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
+                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
+
+                // Tạo font mới
+                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
+                
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongNgayNhatDinh(ngayDuocChon);
+                
+                for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
+                    pieChart1.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart1.getColorList().get(i)));
+                
+                    // Add data to the dataPanel dynamically based on the pie chart data
+                    String input = danhSachHangHoaHoaDon.get(i).getTenHangHoa() + ": " + danhSachHangHoaHoaDon.get(i).getSoLuongSuDung();
+                    JLabel labelTigher = new JLabel(input);
+                    labelTigher.setFont(labelFont);
+                    dataPanel.add(labelTigher);
+                }
 
                 // Now, add pieChart1 to jPanel134
                 dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
@@ -7728,96 +7788,294 @@ public class TrangChu extends javax.swing.JFrame {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            
-            
-            
-        } else if (radioDoanhThu_ngay.isSelected()){
-            System.out.println(dateChooser_theoNgay_ngay.getDate());
-            jPanel133.removeAll();
-            src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
-            jPanel133.setBackground(new java.awt.Color(242, 249, 255));
-            javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
-            jPanel133.setLayout(jPanel133Layout);
-                    jPanel133Layout.setHorizontalGroup(
-                        jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel133Layout.createSequentialGroup()
-                            .addComponent(chart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
-                            .addContainerGap())
-                    );
-                    jPanel133Layout.setVerticalGroup(
-                        jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel133Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    );
-            jPanel133.revalidate();
-            jPanel133.repaint();
-            
-            chart2.addLegend("Income", new Color(245, 189, 135));
-            chart2.addLegend("Expense", new Color(135, 189, 245));
-            chart2.addLegend("Profit", new Color(189, 135, 245));
-            chart2.addLegend("Cost", new Color(139, 229, 222));
-            chart2.addData(new ModelChart("January", new double[]{500, 200, 80,89}));
-            chart2.addData(new ModelChart("February", new double[]{600, 750, 90,150}));
-            chart2.addData(new ModelChart("March", new double[]{200, 350, 460,900}));
-            chart2.addData(new ModelChart("April", new double[]{480, 150, 750,700}));
-            chart2.addData(new ModelChart("May", new double[]{350, 540, 300,150}));
-            chart2.addData(new ModelChart("June", new double[]{190, 280, 81,200}));
-            
-            
-            JPanel dataPanel;
-            pieChart1.setModelsEmpty();
-            pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
-            pieChart1.addData(new ModelPieChart("1", 100, new Color(23, 126, 238)));
-            pieChart1.addData(new ModelPieChart("2", 100, new Color(221, 65, 65)));
-            pieChart1.addData(new ModelPieChart("3", 100, new Color(47, 157, 64)));
-            pieChart1.addData(new ModelPieChart("4", 100, new Color(196, 151, 58)));
-
-            // Initialize and configure the dataPanel
-            dataPanel = new JPanel();
-            dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
-            dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
-            dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
-
-            // Tạo font mới
-            Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
-
-            // Add data to the dataPanel dynamically based on the pie chart data
-            JLabel labelTigher = new JLabel("Tigher: 150");
-            labelTigher.setFont(labelFont);
-            dataPanel.add(labelTigher);
-
-            JLabel labelABC = new JLabel("ABC: 100");
-            labelABC.setFont(labelFont);
-            dataPanel.add(labelABC);
-
-            JLabel labelCoca = new JLabel("Coca: 1");
-            labelCoca.setFont(labelFont);
-            dataPanel.add(labelCoca);
-
-            JLabel labelVita = new JLabel("Vita: 60");
-            labelVita.setFont(labelFont);
-            dataPanel.add(labelVita);
-
-            // Now, add pieChart1 to jPanel134
-            dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
-
-            // Now, add both pieChart1 and dataPanel to jPanel134
-            jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
-            jPanel134.add(pieChart1, BorderLayout.CENTER); // Add pieChart1 to the center
-            jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
-
-            // Revalidate jPanel134 to apply the new layout and components
-            jPanel134.revalidate();
-            jPanel134.repaint();
-            
-            
         } else if (radioDoanhThu_thang.isSelected()){
-            System.out.println(dateChooser_theoThang_thang.getMonth() + 1);
-            System.out.println(dateChooser_theoThang_nam.getYear());
+            int thang = dateChooser_theoThang_thang.getMonth() + 1;
+            int nam = dateChooser_theoThang_nam.getYear();
+            
+            try {
+                    
+                ThongKeTongTienSoLuong doanhThuHoaDon = doanhThuService.tinhDoanhThuHoaDonTrongThangNhatDinh(thang, nam);
+                ThongKeTongTienSoLuong doanhThuSuaChua = doanhThuService.tinhDoanhThuPhieuSuaChuaTrongThangNhatDinh(thang, nam);
+                ThongKeTongTienSoLuong doanhThuTraHang = doanhThuService.tinhDoanhThuPhieuPhieuTraHangTrongThangNhatDinh(thang, nam);
+                
+                ThongKeTongTienSoLuong chiTieuTraHang = doanhThuService.tinhChiTieuPhieuTraHangTrongThangNhatDinh(thang, nam);
+                ThongKeTongTienSoLuong chiTieuNhapHang = doanhThuService.tinhChiTieuPhieuNhapHangTrongThangNhatDinh(thang, nam);
+                ThongKeTongTienSoLuong chiTieuTienLuongNhanVien = doanhThuService.tinhTienLuongNhanVienTrongThangNhatDinh(thang, nam);
+                
+                
+                lbDoanhThu_soLuongPhieuLuong.setText(String.valueOf(chiTieuTienLuongNhanVien.getSoLuong()) + " phiếu lương");
+                lbDoanhThu_soLuongPhieuNhapHang.setText(String.valueOf(chiTieuNhapHang.getSoLuong()) + " phiếu nhập hàng");
+                lbDoanhThu_soLuongPhieuTraHangKhachHang.setText(String.valueOf(chiTieuTraHang.getSoLuong()) + " phiếu trả hàng");
+                lbDoanhThu_soLuongPhieuTraHangNhaCungCap.setText(String.valueOf(doanhThuTraHang.getSoLuong()) + " phiếu trả hàng");
+                lbDoanhThu_soLuongSuaChua.setText(String.valueOf(doanhThuSuaChua.getSoLuong()) + " phiếu sữa chữa");
+                lbDoanhThu_soLuongHoaDon.setText(String.valueOf(doanhThuSuaChua.getSoLuong()) + " hóa đơn");
+                lbDoanhThu_tienHoaDon.setText(String.valueOf(doanhThuHoaDon.getTongTien()));
+                lbDoanhThu_tienLuongNhanVien.setText(String.valueOf(chiTieuTienLuongNhanVien.getTongTien()));
+                lbDoanhThu_tienNhapHang.setText(String.valueOf(chiTieuNhapHang.getTongTien()));
+                lbDoanhThu_tienSuaChua.setText(String.valueOf(doanhThuSuaChua.getTongTien()));
+                lbDoanhThu_tienTraHangKhachHang.setText(String.valueOf(doanhThuTraHang.getTongTien()));
+                lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(chiTieuTraHang.getTongTien()));
+                        
+                
+                double loiNhuan = 0;
+                double doanhThu = 0;
+                double chiTieu = 0;
+                
+                loiNhuan = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
+                doanhThu = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
+                chiTieu = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                
+                jPanel133.removeAll();
+                src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
+                jPanel133.setBackground(new java.awt.Color(242, 249, 255));
+                javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
+                jPanel133.setLayout(jPanel133Layout);
+                        jPanel133Layout.setHorizontalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addComponent(chart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                        jPanel133Layout.setVerticalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        );
+                jPanel133.revalidate();
+                jPanel133.repaint();
+
+                chart2.addLegend("DoanhThu", new Color(245, 189, 135));
+                chart2.addLegend("Chi phí", new Color(135, 189, 245));
+                chart2.addLegend("Lợi nhuận", new Color(189, 135, 245));
+
+                chart2.addData(new ModelChart("Tổng quan", new double[]{doanhThu, chiTieu, loiNhuan}));
+                
+                JPanel dataPanel;
+                pieChart1.setModelsEmpty();
+                pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
+                
+                // Initialize and configure the dataPanel
+                dataPanel = new JPanel();
+                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
+                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
+
+                // Tạo font mới
+                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
+                
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongThangNhatDinh(thang, nam);
+                
+                for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
+                    pieChart1.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart1.getColorList().get(i)));
+                
+                    // Add data to the dataPanel dynamically based on the pie chart data
+                    String input = danhSachHangHoaHoaDon.get(i).getTenHangHoa() + ": " + danhSachHangHoaHoaDon.get(i).getSoLuongSuDung();
+                    JLabel labelTigher = new JLabel(input);
+                    labelTigher.setFont(labelFont);
+                    dataPanel.add(labelTigher);
+                }
+
+                // Now, add pieChart1 to jPanel134
+                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
+
+                // Now, add both pieChart1 and dataPanel to jPanel134
+                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
+                jPanel134.add(pieChart1, BorderLayout.CENTER); // Add pieChart1 to the center
+                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
+
+                // Revalidate jPanel134 to apply the new layout and components
+                jPanel134.revalidate();
+                jPanel134.repaint();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (radioDoanhThu_nam.isSelected()){
-            System.out.println(dateChooser_theoNam_nam.getYear());
+            try {
+                
+                jPanel133.removeAll();
+                src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
+                jPanel133.setBackground(new java.awt.Color(242, 249, 255));
+                javax.swing.GroupLayout jPanel133Layout = new javax.swing.GroupLayout(jPanel133);
+                jPanel133.setLayout(jPanel133Layout);
+                        jPanel133Layout.setHorizontalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addComponent(chart2, javax.swing.GroupLayout.DEFAULT_SIZE, 1230, Short.MAX_VALUE)
+                                .addContainerGap())
+                        );
+                        jPanel133Layout.setVerticalGroup(
+                            jPanel133Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel133Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        );
+                jPanel133.revalidate();
+                jPanel133.repaint();
+
+                chart2.addLegend("DoanhThu", new Color(245, 189, 135));
+                chart2.addLegend("Chi phí", new Color(135, 189, 245));
+                chart2.addLegend("Lợi nhuận", new Color(189, 135, 245));
+                
+                
+                int nam = dateChooser_theoNam_nam.getYear();
+                List<DoanhThuTrongNam> doanhThuHoaDon = doanhThuService.tinhDoanhThuHoaDonTrongNamNhatDinh( nam);
+                List<DoanhThuTrongNam> doanhThuSuaChua = doanhThuService.tinhDoanhThuPhieuSuaChuaTrongNamNhatDinh( nam);
+                List<DoanhThuTrongNam> doanhThuTraHang = doanhThuService.tinhDoanhThuPhieuTraHangTrongNamNhatDinh( nam);
+                
+                List<DoanhThuTrongNam> chiTieuTraHang = doanhThuService.tinhChiTieuPhieuTraHangTrongNamNhatDinh( nam);
+                List<DoanhThuTrongNam> chiTieuNhapHang = doanhThuService.tinhChiTieuPhieuNhapHangTrongNamNhatDinh( nam);
+                List<DoanhThuTrongNam> chiTieuTienLuongNhanVien = doanhThuService.tinhTienLuongNhanVienTrongNamNhatDinh( nam);
+                
+                double loiNhuan = 0;
+                double doanhThu = 0;
+                double chiTieu = 0;
+                int soLuongHoaDon = 0;
+                int soLuongPhieuSuaChua = 0;
+                int soLuongPhieuTraHangNhaCungCap = 0;
+                int soLuongPhieuTraHangKhachHang = 0;
+                int soLuongPhieuNhapHang = 0;
+                int soLuongPhieuLuong = 0;
+                
+                double tongTienHoaDon = 0;
+                double tongTienPhieuSuaChua = 0;
+                double tongTienPhieuTraHangNhaCungCap = 0;
+                double tongTienPhieuTraHangKhachHang = 0;
+                double tongTienPhieuNhapHang = 0;
+                double tongTienPhieuLuong = 0;
+                
+                
+                for (int i =1; i <= 12; i++){
+                    soLuongHoaDon = 0;
+                    soLuongPhieuSuaChua = 0;
+                    soLuongPhieuTraHangNhaCungCap = 0;
+                    soLuongPhieuTraHangKhachHang = 0;
+                    soLuongPhieuNhapHang = 0;
+                    soLuongPhieuLuong = 0;
+
+                    tongTienHoaDon = 0;
+                    tongTienPhieuSuaChua = 0;
+                    tongTienPhieuTraHangNhaCungCap = 0;
+                    tongTienPhieuTraHangKhachHang = 0;
+                    tongTienPhieuNhapHang = 0;
+                    tongTienPhieuLuong = 0;
+                    for (int j = 0; j < doanhThuHoaDon.size(); j++){
+                        if(doanhThuHoaDon.get(j).getThang() == i){
+                            doanhThu = doanhThu + doanhThuHoaDon.get(i).getTongTien();
+                            soLuongHoaDon = soLuongHoaDon + doanhThuHoaDon.get(i).getSoLuong();
+                            tongTienHoaDon = tongTienHoaDon + doanhThuHoaDon.get(i).getTongTien();
+                            break;
+                        } 
+                    }
+                    
+                    for (int j = 0; j < doanhThuSuaChua.size(); j++){
+                        if(doanhThuSuaChua.get(j).getThang() == i){
+                            doanhThu = doanhThu + doanhThuSuaChua.get(i).getTongTien();
+                            soLuongPhieuSuaChua = soLuongPhieuSuaChua + doanhThuSuaChua.get(i).getSoLuong();
+                            tongTienPhieuSuaChua = tongTienPhieuSuaChua + doanhThuSuaChua.get(i).getTongTien();
+                            break;
+                        } 
+                    }
+                    
+                    for (int j = 0; j < doanhThuTraHang.size(); j++){
+                        if(doanhThuTraHang.get(j).getThang() == i){
+                            doanhThu = doanhThu + doanhThuTraHang.get(i).getTongTien();
+                            soLuongPhieuTraHangNhaCungCap = soLuongPhieuTraHangNhaCungCap + doanhThuTraHang.get(i).getSoLuong();
+                            tongTienPhieuTraHangNhaCungCap = tongTienPhieuTraHangNhaCungCap + doanhThuTraHang.get(i).getTongTien();
+                            break;
+                        } 
+                    }
+                    
+                    for (int j = 0; j < chiTieuNhapHang.size(); j++){
+                        if(chiTieuNhapHang.get(j).getThang() == i){
+                            chiTieu = chiTieu + chiTieuNhapHang.get(i).getTongTien();
+                            soLuongPhieuNhapHang = soLuongPhieuNhapHang + chiTieuNhapHang.get(i).getSoLuong();
+                            tongTienPhieuNhapHang = tongTienPhieuNhapHang + chiTieuNhapHang.get(i).getTongTien();
+                            break;
+                        } 
+                    }
+                    
+                    for (int j = 0; j < chiTieuTraHang.size(); j++){
+                        if(chiTieuTraHang.get(j).getThang() == i){
+                            chiTieu = chiTieu + chiTieuTraHang.get(i).getTongTien();
+                            soLuongPhieuTraHangKhachHang = soLuongPhieuTraHangKhachHang + chiTieuTraHang.get(i).getSoLuong();
+                            tongTienPhieuTraHangKhachHang = tongTienPhieuTraHangKhachHang + chiTieuTraHang.get(i).getTongTien();
+                            break;
+                        } 
+                    }
+                    
+                    for (int j = 0; j < chiTieuTienLuongNhanVien.size(); j++){
+                        if(chiTieuTienLuongNhanVien.get(j).getThang() == i){
+                            chiTieu = chiTieu + chiTieuTienLuongNhanVien.get(i).getTongTien();
+                            soLuongPhieuLuong = soLuongPhieuLuong + chiTieuTienLuongNhanVien.get(i).getSoLuong();
+                            tongTienPhieuLuong = tongTienPhieuLuong + chiTieuTienLuongNhanVien.get(i).getTongTien();
+                            break;
+                        } 
+                    }
+                    String thang = "Tháng " + String.valueOf(i);
+                    chart2.addData(new ModelChart(thang, new double[]{doanhThu, chiTieu, loiNhuan}));
+                    
+                    
+                }
+                
+                lbDoanhThu_soLuongPhieuLuong.setText(String.valueOf(soLuongPhieuLuong) + " phiếu lương");
+                lbDoanhThu_soLuongPhieuNhapHang.setText(String.valueOf(soLuongPhieuNhapHang) + " phiếu nhập hàng");
+                lbDoanhThu_soLuongPhieuTraHangKhachHang.setText(String.valueOf(soLuongPhieuTraHangKhachHang) + " phiếu trả hàng");
+                lbDoanhThu_soLuongPhieuTraHangNhaCungCap.setText(String.valueOf(soLuongPhieuTraHangNhaCungCap) + " phiếu trả hàng");
+                lbDoanhThu_soLuongSuaChua.setText(String.valueOf(soLuongPhieuSuaChua) + " phiếu sữa chữa");
+                lbDoanhThu_soLuongHoaDon.setText(String.valueOf(soLuongHoaDon) + " hóa đơn");
+                lbDoanhThu_tienHoaDon.setText(String.valueOf(tongTienHoaDon));
+                lbDoanhThu_tienLuongNhanVien.setText(String.valueOf(tongTienPhieuLuong));
+                lbDoanhThu_tienNhapHang.setText(String.valueOf(tongTienPhieuNhapHang));
+                lbDoanhThu_tienSuaChua.setText(String.valueOf(tongTienPhieuSuaChua));
+                lbDoanhThu_tienTraHangKhachHang.setText(String.valueOf(tongTienPhieuTraHangKhachHang));
+                lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(tongTienPhieuTraHangNhaCungCap));
+
+                
+                
+                JPanel dataPanel;
+                pieChart1.setModelsEmpty();
+                pieChart1.setChartType(PieChart.PeiChartType.DONUT_CHART);
+                
+                // Initialize and configure the dataPanel
+                dataPanel = new JPanel();
+                dataPanel.setLayout(new BoxLayout(dataPanel, BoxLayout.Y_AXIS));
+                dataPanel.setBorder(BorderFactory.createTitledBorder("Data"));
+                dataPanel.setBackground(new Color(242, 249, 255)); // Set màu nền cho dataPanel
+
+                // Tạo font mới
+                Font labelFont = new Font("Times New Roman", Font.PLAIN, 16);
+                
+                List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDon = doanhThuService.hangHoaDuocMuaTrongHoaDonTrongNam(nam);
+                
+                for (int i =0; i < danhSachHangHoaHoaDon.size(); i++){
+                    pieChart1.addData(new ModelPieChart(danhSachHangHoaHoaDon.get(i).getTenHangHoa(), danhSachHangHoaHoaDon.get(i).getSoLuongSuDung(), pieChart1.getColorList().get(i)));
+                
+                    // Add data to the dataPanel dynamically based on the pie chart data
+                    String input = danhSachHangHoaHoaDon.get(i).getTenHangHoa() + ": " + danhSachHangHoaHoaDon.get(i).getSoLuongSuDung();
+                    JLabel labelTigher = new JLabel(input);
+                    labelTigher.setFont(labelFont);
+                    dataPanel.add(labelTigher);
+                }
+
+                // Now, add pieChart1 to jPanel134
+                dataPanel.setBorder(new EmptyBorder(20, 0, 0, 200));
+
+                // Now, add both pieChart1 and dataPanel to jPanel134
+                jPanel134.setLayout(new BorderLayout()); // Set layout for jPanel134
+                jPanel134.add(pieChart1, BorderLayout.CENTER); // Add pieChart1 to the center
+                jPanel134.add(dataPanel, BorderLayout.EAST); // Add dataPanel to the right (east)
+
+                // Revalidate jPanel134 to apply the new layout and components
+                jPanel134.revalidate();
+                jPanel134.repaint();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnDoanhThu_timKiemActionPerformed
 
