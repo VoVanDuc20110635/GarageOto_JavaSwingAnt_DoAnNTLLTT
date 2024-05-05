@@ -104,6 +104,28 @@ public class PieChart extends JComponent{
         colorList.add(new Color(210, 105, 30));  // Chocolate
         colorList.add(new Color(0, 100, 0));     // Dark Green
         colorList.add(new Color(106, 90, 205));  // Slate Blue
+        
+        // Adding 20 more colors
+        colorList.add(new Color(255, 165, 0));   // Orange
+        colorList.add(new Color(255, 215, 0));   // Gold
+        colorList.add(new Color(218, 165, 32));  // Golden Rod
+        colorList.add(new Color(220, 20, 60));   // Crimson
+        colorList.add(new Color(95, 158, 160));  // Cadet Blue
+        colorList.add(new Color(0, 206, 209));   // Dark Turquoise
+        colorList.add(new Color(148, 0, 211));   // Dark Violet
+        colorList.add(new Color(255, 99, 71));   // Tomato
+        colorList.add(new Color(64, 224, 208));  // Turquoise
+        colorList.add(new Color(244, 164, 96));  // Sandy Brown
+        colorList.add(new Color(210, 180, 140)); // Tan
+        colorList.add(new Color(255, 105, 180)); // Hot Pink
+        colorList.add(new Color(112, 128, 144)); // Slate Gray
+        colorList.add(new Color(255, 228, 181)); // Moccasin
+        colorList.add(new Color(32, 178, 170));  // Light Sea Green
+        colorList.add(new Color(47, 79, 79));    // Dark Slate Gray
+        colorList.add(new Color(0, 128, 0));     // Green
+        colorList.add(new Color(72, 61, 139));   // Dark Slate Blue
+        colorList.add(new Color(143, 188, 143)); // Dark Sea Green
+        colorList.add(new Color(60, 179, 113));  // Medium Sea Green
 
     }
 

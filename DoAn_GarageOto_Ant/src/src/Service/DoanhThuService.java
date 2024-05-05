@@ -190,7 +190,7 @@ public class DoanhThuService {
     }
     
     public List<DoanhThuTrongNam> tinhDoanhThuPhieuTraHangTrongNamNhatDinh ( int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien, count(ma_phieu_tra_hang) as so_luong FROM   phieu_tra_hang WHERE  nha_cung_cap is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien, count(ma_phieu_tra_hang) as so_luong FROM   phieu_tra_hang WHERE  ma_nha_cung_cap is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -296,7 +296,7 @@ public class DoanhThuService {
     }
     
     public ThongKeTongTienSoLuong tinhChiTieuPhieuTraHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(can_tra) as chi_phi, count(ma_phieu_tra_hang) as so_luong from phieu_tra_hang where ma_khach_hang is not null and YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
+        String query = String.format("select SUM(can_tra) as chi_phi, count(ma_phieu_tra_hang) as so_luong from phieu_tra_hang where ma_khach_hang is not null and YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
@@ -311,7 +311,7 @@ public class DoanhThuService {
     }
     
     public ThongKeTongTienSoLuong tinhChiTieuPhieuNhapHangTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(tong) as chi_phi, count(phieu_nhap_hang) as so_luong from phieu_nhap_hang where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
+        String query = String.format("select SUM(tong) as chi_phi, count(phieu_nhap_hang) as so_luong from phieu_nhap_hang where YEAR(thoi_gian) = %s AND MONTH(thoi_gian) = %s;",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
@@ -326,7 +326,7 @@ public class DoanhThuService {
     }
     
     public ThongKeTongTienSoLuong tinhTienLuongNhanVienTrongThangNhatDinh (int thang, int nam) throws SQLException{ //
-        String query = String.format("select SUM(tong_luong), count(ma_phieu) as so_luong as tien_luong from phieu_luong where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
+        String query = String.format("select SUM(tong_luong) as tien_luong, count(ma_phieu) as so_luong from phieu_luong where YEAR(ngay_in) = %s AND MONTH(ngay_in) = %s;",
                              String.valueOf(nam),
                              String.valueOf(thang));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
@@ -341,7 +341,7 @@ public class DoanhThuService {
     }
     
     public List<DoanhThuTrongNam> tinhChiTieuPhieuTraHangTrongNamNhatDinh (int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien, count(ma_phieu_tra_hang) FROM   phieu_tra_hang WHERE  ma_khach_hang is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(can_tra) AS tong_tien, count(ma_phieu_tra_hang) as so_luong FROM   phieu_tra_hang WHERE  ma_khach_hang is not null and YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -358,7 +358,7 @@ public class DoanhThuService {
     }
     
     public List<DoanhThuTrongNam> tinhTienLuongNhanVienTrongNamNhatDinh (int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(ngay_in) AS thang,  SUM(tong_luong) AS tong_tien, count(ma_phieu_tra_hang) FROM   phieu_luong WHERE YEAR(ngay_in) = %s  GROUP BY    MONTH(ngay_in) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(ngay_in) AS thang,  SUM(tong_luong) AS tong_tien, count(ma_phieu) as so_luong FROM   phieu_luong WHERE YEAR(ngay_in) = %s  GROUP BY    MONTH(ngay_in) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
@@ -375,7 +375,7 @@ public class DoanhThuService {
     }
     
     public List<DoanhThuTrongNam> tinhChiTieuPhieuNhapHangTrongNamNhatDinh (int nam) throws SQLException{ //
-        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong) AS tong_tien, count(ma_phieu_tra_hang) FROM   phieu_nhap_hang WHERE YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
+        String query = String.format("SELECT  MONTH(thoi_gian) AS thang,  SUM(tong) AS tong_tien, count(phieu_nhap_hang) as so_luong FROM   phieu_nhap_hang WHERE YEAR(thoi_gian) = %s  GROUP BY    MONTH(thoi_gian) ORDER BY  thang;",
                              String.valueOf(nam));
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
