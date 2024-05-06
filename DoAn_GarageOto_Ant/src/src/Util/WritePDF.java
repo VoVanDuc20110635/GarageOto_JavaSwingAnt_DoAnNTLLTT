@@ -608,10 +608,13 @@ public class WritePDF {
             document.add(Chunk.NEWLINE);
             
             
+            
+            Paragraph paragraph12 = new Paragraph("Lịch tăng ca" , fontBold15);
+            document.add(paragraph12);
             // Thêm table 5 cột vào file PDF
             PdfPTable table = new PdfPTable(6);
             table.setWidthPercentage(100);
-            table.setWidths(new float[]{30f, 35f, 20f, 15f, 20f, 20f});
+            table.setWidths(new float[]{20f, 20f, 20f, 20f, 20f, 20f});
             PdfPCell cell;
 
             table.addCell(new PdfPCell(new Phrase("Mã lịch tăng ca", fontBold15)));
@@ -640,9 +643,11 @@ public class WritePDF {
 
             // tro cap
             // Thêm table 5 cột vào file PDF
+            Paragraph paragraph13 = new Paragraph("Trợ cấp" , fontBold15);
+            document.add(paragraph13);
             PdfPTable table2 = new PdfPTable(3);
             table2.setWidthPercentage(100);
-            table2.setWidths(new float[]{30f, 35f, 20f});
+            table2.setWidths(new float[]{20f, 20f, 40f});
             PdfPCell cell2;
  
             table2.addCell(new PdfPCell(new Phrase("Mã phụ cấp", fontBold15)));
@@ -667,9 +672,11 @@ public class WritePDF {
             // vang, tre
             // tro cap
             // Thêm table 5 cột vào file PDF
+            Paragraph paragraph14 = new Paragraph("Trễ, vắng" , fontBold15);
+            document.add(paragraph14);
             PdfPTable table3 = new PdfPTable(4);
             table3.setWidthPercentage(100);
-            table3.setWidths(new float[]{30f, 35f, 20f, 20f});
+            table3.setWidths(new float[]{20f, 20f, 20f, 20f});
             PdfPCell cell3;
  
             table3.addCell(new PdfPCell(new Phrase("Mã", fontBold15)));
@@ -691,11 +698,11 @@ public class WritePDF {
                 
                 if (bangChamCong.getTrangThai().equals("Đi trễ")){
                     Double truTien = bangLuong.getTienLuong()/30*0.1;
-                    table3.addCell(new PdfPCell(new Phrase(String.valueOf(truTien), fontNormal10)));
+                    table3.addCell(new PdfPCell(new Phrase(String.valueOf( Math.round(truTien)), fontNormal10)));
                 } 
                 if (bangChamCong.getTrangThai().equals("Vắng")){
                     Double truTien = bangLuong.getTienLuong()/30;
-                    table3.addCell(new PdfPCell(new Phrase(String.valueOf(truTien), fontNormal10)));
+                    table3.addCell(new PdfPCell(new Phrase(String.valueOf(Math.round(truTien)), fontNormal10)));
                 }
             }
 

@@ -828,7 +828,8 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel142 = new javax.swing.JPanel();
         jLabel70 = new javax.swing.JLabel();
         lbDoanhThu_tienLuong_tongTienTroCap = new javax.swing.JLabel();
-        chart2 = new src.UI.Chart.chat.Chart();
+        jPanel143 = new javax.swing.JPanel();
+        chart3 = new src.UI.Chart.chat.Chart();
         jPanel28 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
@@ -5340,6 +5341,23 @@ public class TrangChu extends javax.swing.JFrame {
         lbDoanhThu_tienLuong_tongTienTroCap.setText("0");
         jPanel142.add(lbDoanhThu_tienLuong_tongTienTroCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 6, 100, -1));
 
+        javax.swing.GroupLayout jPanel143Layout = new javax.swing.GroupLayout(jPanel143);
+        jPanel143.setLayout(jPanel143Layout);
+        jPanel143Layout.setHorizontalGroup(
+            jPanel143Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel143Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chart3, javax.swing.GroupLayout.DEFAULT_SIZE, 929, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel143Layout.setVerticalGroup(
+            jPanel143Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel143Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chart3, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel137Layout = new javax.swing.GroupLayout(jPanel137);
         jPanel137.setLayout(jPanel137Layout);
         jPanel137Layout.setHorizontalGroup(
@@ -5352,17 +5370,15 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(jPanel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel141, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel142, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, 941, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel143, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel137Layout.setVerticalGroup(
             jPanel137Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel137Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(jPanel137Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chart2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel137Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(jPanel138, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel139, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -5371,8 +5387,12 @@ public class TrangChu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel141, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel142, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel142, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 126, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel137Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel143, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         tabbedDoanhThu.addTab("Tiền lương", jPanel137);
@@ -7841,6 +7861,16 @@ public class TrangChu extends javax.swing.JFrame {
                 veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
                 veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
+                int tongSoNhanVien = doanhThuService.tongSoNhanVienTrongKhoangThoiGian(ngayBatDau, ngayKetThuc);
+                double tongLuongCung = doanhThuService.tongTienLuongTrongKhoangThoiGian("BL", ngayBatDau, ngayKetThuc);
+                double tongTangCa = doanhThuService.tongTienLuongTrongKhoangThoiGian("TC", ngayBatDau, ngayKetThuc);
+                double tongLuongThuong = doanhThuService.tongTienLuongTrongKhoangThoiGian("LT", ngayBatDau, ngayKetThuc);
+                double tongTroCap = doanhThuService.tongTienLuongTrongKhoangThoiGian("TCa", ngayBatDau, ngayKetThuc);
+                
+                lbDoanhThu_tienLuong_tongSoNhanVien.setText(String.valueOf(tongSoNhanVien));
+                veBieuTroDoanhThu(jPanel143, tongLuongCung, tongTangCa, tongLuongThuong, tongTroCap);
+                
+                
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -7915,6 +7945,14 @@ public class TrangChu extends javax.swing.JFrame {
                 veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
                 veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
+                int tongSoNhanVien = doanhThuService.tongSoNhanVienTrongTrongNgayNhatDinh(ngayDuocChon);
+                double tongLuongCung = doanhThuService.tongTienLuongTrongNgayNhatDinh("BL", ngayDuocChon);
+                double tongTangCa = doanhThuService.tongTienLuongTrongNgayNhatDinh("TC", ngayDuocChon);
+                double tongLuongThuong = doanhThuService.tongTienLuongTrongNgayNhatDinh("LT", ngayDuocChon);
+                double tongTroCap = doanhThuService.tongTienLuongTrongNgayNhatDinh("TCa", ngayDuocChon);
+                
+                lbDoanhThu_tienLuong_tongSoNhanVien.setText(String.valueOf(tongSoNhanVien));
+                veBieuTroDoanhThu(jPanel143, tongLuongCung, tongTangCa, tongLuongThuong, tongTroCap);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -7991,6 +8029,14 @@ public class TrangChu extends javax.swing.JFrame {
                 veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
                 veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
+                int tongSoNhanVien = doanhThuService.tongSoNhanVienTrongTrongThangNhatDinh(thang, nam);
+                double tongLuongCung = doanhThuService.tongTienLuongTrongThangNhatDinh("BL", thang, nam);
+                double tongTangCa = doanhThuService.tongTienLuongTrongThangNhatDinh("TC", thang, nam);
+                double tongLuongThuong = doanhThuService.tongTienLuongTrongThangNhatDinh("LT", thang, nam);
+                double tongTroCap = doanhThuService.tongTienLuongTrongThangNhatDinh("TCa", thang, nam);
+                
+                lbDoanhThu_tienLuong_tongSoNhanVien.setText(String.valueOf(tongSoNhanVien));
+                veBieuTroDoanhThu(jPanel143, tongLuongCung, tongTangCa, tongLuongThuong, tongTroCap);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -8139,6 +8185,14 @@ public class TrangChu extends javax.swing.JFrame {
                 veBieuDoTron(jPanel20, danhSachHangHoaSuaChua);
                 veBieuDoTron(jPanel136, danhSachHangHoaNhapHang);
                 
+                int tongSoNhanVien = doanhThuService.tongSoNhanVienTrongTrongNamNhatDinh( nam);
+                double tongLuongCung = doanhThuService.tongTienLuongTrongNamNhatDinh("BL",  nam);
+                double tongTangCa = doanhThuService.tongTienLuongTrongNamNhatDinh("TC",  nam);
+                double tongLuongThuong = doanhThuService.tongTienLuongTrongNamNhatDinh("LT",  nam);
+                double tongTroCap = doanhThuService.tongTienLuongTrongNamNhatDinh("TCa",  nam);
+                
+                lbDoanhThu_tienLuong_tongSoNhanVien.setText(String.valueOf(tongSoNhanVien));
+                veBieuTroDoanhThu(jPanel143, tongLuongCung, tongTangCa, tongLuongThuong, tongTroCap);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -8146,6 +8200,42 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDoanhThu_timKiemActionPerformed
 
+    private void veBieuTroDoanhThu(JPanel panel, double tongLuongCung, double tongTangCa, double tongLuongThuong, double tongTroCap){
+        lbDoanhThu_tienLuong_luongCung.setText(String.valueOf(tongLuongCung));
+        lbDoanhThu_tienLuong_tangCa.setText(String.valueOf(tongTangCa));
+        lbDoanhThu_tienLuong_tongTienThuong.setText(String.valueOf(tongLuongThuong));
+        lbDoanhThu_tienLuong_tongTienTroCap.setText(String.valueOf(tongTroCap));
+
+        panel.removeAll();
+        src.UI.Chart.chat.Chart chart4 = new src.UI.Chart.chat.Chart();
+        panel.setBackground(new java.awt.Color(242, 249, 255));
+        javax.swing.GroupLayout jPanel143Layout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(jPanel143Layout);
+        jPanel143Layout.setHorizontalGroup(
+            jPanel143Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel143Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chart4, javax.swing.GroupLayout.DEFAULT_SIZE, 929, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel143Layout.setVerticalGroup(
+            jPanel143Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel143Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(chart4, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel.revalidate();
+        panel.repaint();
+
+        chart4.addLegend("Lương cứng", new Color(245, 189, 135));
+        chart4.addLegend("Lương tăng ca", new Color(135, 189, 245));
+        chart4.addLegend("Lương thưởng", new Color(189, 135, 245));
+        chart4.addLegend("Trợ cấp", new Color(48,210,175)); 
+
+        chart4.addData(new ModelChart("Tổng quan", new double[]{tongLuongCung, tongTangCa, tongLuongThuong, tongTroCap}));
+    }
+    
     private void veBieuDoTron(JPanel jpanel, List<HangHoaTieuThuTrongKhoangThoiGian> danhSachHangHoaHoaDonInput){
         jpanel.removeAll();
                 src.UI.Chart.piechart.PieChart pieChart2 = new src.UI.Chart.piechart.PieChart();
@@ -9431,7 +9521,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_nhanVienSuaChua;
     private javax.swing.JComboBox<String> cb_phuTungCanThay;
     private src.UI.Chart.chat.Chart chart1;
-    private src.UI.Chart.chat.Chart chart2;
+    private src.UI.Chart.chat.Chart chart3;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongCapNhat;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongThem;
     private javax.swing.JCheckBox checkBoxPhanQuyen_bangChamCongXem;
@@ -9752,6 +9842,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel140;
     private javax.swing.JPanel jPanel141;
     private javax.swing.JPanel jPanel142;
+    private javax.swing.JPanel jPanel143;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;

@@ -758,4 +758,112 @@ public class DoanhThuService {
         return danhSachHangHoa;
     }
     
+    
+    // tien luong
+    public int tongSoNhanVienTrongKhoangThoiGian ( LocalDate ngayBatDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select count(ma_nhan_vien) as so_nhan_vien from nhan_vien where ngay_bat_dau_lam_viec < '%s';",
+                             String.valueOf(ngayBatDau));
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getInt("so_nhan_vien");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public int tongSoNhanVienTrongTrongNgayNhatDinh ( LocalDate ngayBatDau) throws SQLException{ //
+        String query = String.format("select count(ma_nhan_vien) as so_nhan_vien from nhan_vien where ngay_bat_dau_lam_viec < '%s';",
+                             String.valueOf(ngayBatDau));
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getInt("so_nhan_vien");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public int tongSoNhanVienTrongTrongThangNhatDinh ( int thang, int nam) throws SQLException{ //
+        String query = String.format("select count(ma_nhan_vien) as so_nhan_vien from nhan_vien where YEAR(ngay_bat_dau_lam_viec) < %s OR (YEAR(ngay_bat_dau_lam_viec) = %s AND MONTH(ngay_bat_dau_lam_viec) <= %s);",
+                             String.valueOf(thang), String.valueOf(nam));
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getInt("so_nhan_vien");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public int tongSoNhanVienTrongTrongNamNhatDinh ( int nam) throws SQLException{ //
+        String query = String.format("select count(ma_nhan_vien) as so_nhan_vien from nhan_vien where YEAR(ngay_bat_dau_lam_viec) <= %s ;",
+                             String.valueOf(nam));
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getInt("so_nhan_vien");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public double tongTienLuongTrongKhoangThoiGian (String loaiLuong, LocalDate ngayBatDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select SUM(bang_luong.tien_luong) as tong_luong from bang_luong_nhan_vien inner join bang_luong on bang_luong.ma_bang_luong = bang_luong_nhan_vien.ma_bang_luong inner join phieu_luong on phieu_luong.ma_phieu = bang_luong_nhan_vien.ma_phieu_luong where phieu_luong.ngay_in between '%s' and '%s' and bang_luong_nhan_vien.ma_bang_luong like '%%%s%%' and bang_luong_nhan_vien.ma_phieu_luong is not null;",
+                             String.valueOf(ngayBatDau), String.valueOf(ngayKetThuc), loaiLuong);
+        System.out.println(query);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        double tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getDouble("tong_luong");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public double tongTienLuongTrongNgayNhatDinh (String loaiLuong, LocalDate ngayBatDau) throws SQLException{ //
+        String query = String.format("select SUM(bang_luong.tien_luong) as tong_luong from bang_luong_nhan_vien inner join bang_luong on bang_luong.ma_bang_luong = bang_luong_nhan_vien.ma_bang_luong inner join phieu_luong on phieu_luong.ma_phieu = bang_luong_nhan_vien.ma_phieu_luong where phieu_luong.ngay_in = '%s' and bang_luong_nhan_vien.ma_bang_luong like '%%%s%%' and bang_luong_nhan_vien.ma_phieu_luong is not null;",
+                             String.valueOf(ngayBatDau), loaiLuong);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        double tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getDouble("tong_luong");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public double tongTienLuongTrongThangNhatDinh (String loaiLuong, int thang, int nam) throws SQLException{ //
+        String query = String.format("select SUM(bang_luong.tien_luong) as tong_luong from bang_luong_nhan_vien inner join bang_luong on bang_luong.ma_bang_luong = bang_luong_nhan_vien.ma_bang_luong inner join phieu_luong on phieu_luong.ma_phieu = bang_luong_nhan_vien.ma_phieu_luong where YEAR(phieu_luong.ngay_in) = %s AND MONTH(phieu_luong.ngay_in) = %s and bang_luong_nhan_vien.ma_bang_luong like '%%%s%%' and bang_luong_nhan_vien.ma_phieu_luong is not null;",
+                             String.valueOf(thang), String.valueOf(nam), loaiLuong);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        double tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getDouble("tong_luong");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+    
+    public double tongTienLuongTrongNamNhatDinh (String loaiLuong, int nam) throws SQLException{ //
+        String query = String.format("select SUM(bang_luong.tien_luong) as tong_luong from bang_luong_nhan_vien inner join bang_luong on bang_luong.ma_bang_luong = bang_luong_nhan_vien.ma_bang_luong inner join phieu_luong on phieu_luong.ma_phieu = bang_luong_nhan_vien.ma_phieu_luong where YEAR(phieu_luong.ngay_in) = %s  and bang_luong_nhan_vien.ma_bang_luong like '%%%s%%' and bang_luong_nhan_vien.ma_phieu_luong is not null;",
+                             String.valueOf(nam), loaiLuong);
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        double tongSoNhanVien = 0;
+        while(resultTable.next()){
+            tongSoNhanVien = resultTable.getDouble("tong_luong");
+        }
+        connectorDB.closeConnection();
+        return tongSoNhanVien;
+    }
+
 }
+
