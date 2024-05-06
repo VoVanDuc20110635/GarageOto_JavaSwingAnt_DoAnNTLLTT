@@ -400,7 +400,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         btnNhapHang_them = new javax.swing.JButton();
         btnPhieuNhapHang_export = new javax.swing.JButton();
-        jPanel32 = new javax.swing.JPanel();
         tabbedPane_doiTac = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jPanel71 = new javax.swing.JPanel();
@@ -2438,19 +2437,6 @@ public class TrangChu extends javax.swing.JFrame {
         );
 
         tabPane_giaoDich.addTab("Nhập hàng", jPanel4);
-
-        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
-        jPanel32.setLayout(jPanel32Layout);
-        jPanel32Layout.setHorizontalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1540, Short.MAX_VALUE)
-        );
-        jPanel32Layout.setVerticalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-
-        tabPane_giaoDich.addTab("tab6", jPanel32);
 
         tabbedPane_trangChu.addTab("Giao dịch", tabPane_giaoDich);
 
@@ -6472,7 +6458,7 @@ public class TrangChu extends javax.swing.JFrame {
         try {
             WriteCSV writeCSV = new WriteCSV();
             List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
-            writeCSV.writeCSVFile1(danhSachKhachHang);
+            writeCSV.writeCSVFileDanhSachKhachHang(danhSachKhachHang);
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -7640,6 +7626,13 @@ public class TrangChu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bạn không có quyền export file chinh nhánh!");
             return;
         }
+        try {
+            WriteCSV writeCSV = new WriteCSV();
+            List<ChiNhanh> danhSachChiNhanh = chiNhanhService.hienThiTatCaChiNhanh();
+            writeCSV.writeCSVFileDanhSachChiNhanh(danhSachChiNhanh);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnNhanVienChiNhanh_exportChiNhanhActionPerformed
 
     private void btnHangHoa_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_importActionPerformed
@@ -7654,6 +7647,15 @@ public class TrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền export file hàng hóa!");
                 return;
             }
+        
+        try {
+            WriteCSV writeCSV = new WriteCSV();
+            List<HangHoa> danhSachHangHoa = hangHoaService.hienThiTatCaHangHoa("", "");
+            writeCSV.writeCSVFileDanhSachHangHoa(danhSachHangHoa);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnHangHoa_exportActionPerformed
 
     private void btnNhacungCap_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhacungCap_importActionPerformed
@@ -7665,9 +7667,16 @@ public class TrangChu extends javax.swing.JFrame {
 
     private void btnNhaCungCap_xuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaCungCap_xuatFileActionPerformed
         if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.5 ")){
-                JOptionPane.showMessageDialog(this, "Bạn không có quyền xuất file danh sách nhà cung cấp!");
-                return;
-            }
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền xuất file danh sách nhà cung cấp!");
+            return;
+        }
+        try {
+            WriteCSV writeCSV = new WriteCSV();
+            List<NhaCungCap> danhSachNhaCungCap = nhaCungCapService.hienThiTatCaNhaCungCap();
+            writeCSV.writeCSVFileDanhSachNhaCungCap(danhSachNhaCungCap);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnNhaCungCap_xuatFileActionPerformed
 
     private void btnNhanVienChiNhanh_exportNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_exportNhanVienActionPerformed
@@ -7675,6 +7684,13 @@ public class TrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền xuất file danh sách nhân viên!");
                 return;
             }
+        try {
+            WriteCSV writeCSV = new WriteCSV();
+            List<NhanVien> danhSachNhanVien = nhanVienService.hienThiTatCaNhanVien();
+            writeCSV.writeCSVFileDanhSachNhanVien(danhSachNhanVien);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnNhanVienChiNhanh_exportNhanVienActionPerformed
 
     private void btnPhieuNhapHang_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuNhapHang_exportActionPerformed
@@ -9759,7 +9775,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel35;

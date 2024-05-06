@@ -30,7 +30,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import src.Model.ChiNhanh;
+import src.Model.HangHoa;
 import src.Model.KhachHang;
+import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 
 
 /**
@@ -45,10 +49,10 @@ public class WriteCSV {
         
     }
     
-    public void writeCSVFile1(List<KhachHang> danhSachKhachHang){
+    public void writeCSVFileDanhSachKhachHang(List<KhachHang> danhSachKhachHang){
         try {
             String url = "";
-            fd.setTitle("In hóa đơn");
+            fd.setTitle("In danh sách khách hàng");
             fd.setLocationRelativeTo(null);
             url = getFile("danhSachKhachHang" + "");
             if (url.equals("nullnull")) {
@@ -75,6 +79,175 @@ public class WriteCSV {
                     String.valueOf(util.localDateParseMethod(khachHang.getNgayTao())),
                     String.valueOf(khachHang.getLoaiKhach()),
                     String.valueOf(khachHang.getTongBan()),};
+                    write.writeNext(set);
+                }
+
+                write.flush();
+                openFile(url);
+            }
+//            CSVWriter write = new CSVWriter(new FileWriter(url, StandardCharsets.UTF_8));
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(WriteCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void writeCSVFileDanhSachNhaCungCap(List<NhaCungCap> danhSachNhaCungCap){
+        try {
+            String url = "";
+            fd.setTitle("In danh sách nhà cung cấp");
+            fd.setLocationRelativeTo(null);
+            url = getFile("danhSachNhaCungCap" + "");
+            if (url.equals("nullnull")) {
+                return;
+            }
+            url = url + ".csv";
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(url), StandardCharsets.UTF_8)) {
+                writer.write('\ufeff');  // Writes the BOM
+                CSVWriter write = new CSVWriter(writer);
+                // ... rest of your code ...
+                String set1[] = {"Mã nhà cung cấp", "Tên nhà cung cấp", "Địa chỉ", "Email", "Số điện thoại", "Mã số thuế", "Ngày tạo"};
+                write.writeNext(set1);
+
+                for (NhaCungCap nhaCungCap : danhSachNhaCungCap){
+                    String set[] = {String.valueOf(nhaCungCap.getMaNhaCungCap()),
+                    String.valueOf(nhaCungCap.getTenNhaCungCap()),
+                    String.valueOf(nhaCungCap.getDiaChi()),
+                    String.valueOf(nhaCungCap.getEmail()),
+                    String.valueOf(nhaCungCap.getSoDienThoai()),
+                    String.valueOf(nhaCungCap.getMaSoThue()),
+                    String.valueOf(util.localDateParseMethod(nhaCungCap.getNgayTao()))};
+                    write.writeNext(set);
+                }
+
+                write.flush();
+                openFile(url);
+            }
+//            CSVWriter write = new CSVWriter(new FileWriter(url, StandardCharsets.UTF_8));
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(WriteCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void writeCSVFileDanhSachChiNhanh(List<ChiNhanh> danhSachChiNhanh){
+        try {
+            String url = "";
+            fd.setTitle("In danh sách chi nhánh");
+            fd.setLocationRelativeTo(null);
+            url = getFile("danhSachChiNhanh" + "");
+            if (url.equals("nullnull")) {
+                return;
+            }
+            url = url + ".csv";
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(url), StandardCharsets.UTF_8)) {
+                writer.write('\ufeff');  // Writes the BOM
+                CSVWriter write = new CSVWriter(writer);
+                // ... rest of your code ...
+                String set1[] = {"Mã chi nhánh", "Tên chi nhánh", "Địa chỉ", "Số điện thoại", "Trạng thái"};
+                write.writeNext(set1);
+
+                for (ChiNhanh chiNhanh : danhSachChiNhanh){
+                    String set[] = {String.valueOf(chiNhanh.getMaChiNhanh()),
+                    String.valueOf(chiNhanh.getTenChiNhanh()),
+                    String.valueOf(chiNhanh.getDiaChi()),
+                    String.valueOf(chiNhanh.getSoDienThoai()),
+                    String.valueOf(chiNhanh.getTrangThai())};
+                    write.writeNext(set);
+                }
+
+                write.flush();
+                openFile(url);
+            }
+//            CSVWriter write = new CSVWriter(new FileWriter(url, StandardCharsets.UTF_8));
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(WriteCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void writeCSVFileDanhSachNhanVien(List<NhanVien> danhSachNhanVien){
+        try {
+            String url = "";
+            fd.setTitle("In danh sách nhân viên");
+            fd.setLocationRelativeTo(null);
+            url = getFile("danhSachNhanVien" + "");
+            if (url.equals("nullnull")) {
+                return;
+            }
+            url = url + ".csv";
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(url), StandardCharsets.UTF_8)) {
+                writer.write('\ufeff');  // Writes the BOM
+                CSVWriter write = new CSVWriter(writer);
+                // ... rest of your code ...
+                String set1[] = {"Mã nhân viên", "Căn cước công dân ", "Chức danh", "Giới tính", "Ngày bắt đầu làm việc", 
+                    "Ngày sinh", "Số điện thoại", "Tên nhân viên", "Mã chi nhánh", "Tạo bởi mã nhân viên", "Địa chỉ", 
+                    "Mã số thuế", "Trạng thái"};
+                write.writeNext(set1);
+
+                for (NhanVien nhanVien : danhSachNhanVien){
+                    String set[] = {String.valueOf(nhanVien.getMaNhanVien()),
+                    String.valueOf(nhanVien.getCccd()),
+                    String.valueOf(nhanVien.getChucDanh()),
+                    String.valueOf(nhanVien.getGioiTinh()),
+                    String.valueOf(nhanVien.getNgayBatDauLamViec()),
+                    String.valueOf(nhanVien.getNgaySinh()),
+                    String.valueOf(nhanVien.getSoDienThoai()),
+                    String.valueOf(nhanVien.getTenNhanVien()),
+                    String.valueOf(nhanVien.getMaChiNhanh()),
+                    String.valueOf(nhanVien.getTaoBoiMaNhanVien()),
+                    String.valueOf(nhanVien.getDiaChi()),
+                    String.valueOf(nhanVien.getMaSoThue()),
+                    String.valueOf(nhanVien.getTrangThai())};
+                    write.writeNext(set);
+                }
+
+                write.flush();
+                openFile(url);
+            }
+//            CSVWriter write = new CSVWriter(new FileWriter(url, StandardCharsets.UTF_8));
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(WriteCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void writeCSVFileDanhSachHangHoa(List<HangHoa> danhSachHangHoa){
+        try {
+            String url = "";
+            fd.setTitle("In danh sách hàng hóa");
+            fd.setLocationRelativeTo(null);
+            url = getFile("danhSachHangHoa" + "");
+            if (url.equals("nullnull")) {
+                return;
+            }
+            url = url + ".csv";
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(url), StandardCharsets.UTF_8)) {
+                writer.write('\ufeff');  // Writes the BOM
+                CSVWriter write = new CSVWriter(writer);
+                // ... rest of your code ...
+                String set1[] = {"Mã hàng hóa", "Tên hàng hóa", "Số lượng đã bán", "Số lượng tồn kho", "Giá vốn", 
+                    "Giá bán", "Giá thay", "Loại hàng", "Trạng thái"};
+                write.writeNext(set1);
+
+                for (HangHoa hangHoa : danhSachHangHoa){
+                    String set[] = {String.valueOf(hangHoa.getMaHangHoa()),
+                    String.valueOf(hangHoa.getTenHangHoa()),
+                    String.valueOf(hangHoa.getKhachDat()),
+                    String.valueOf(hangHoa.getTonKho()),
+                    String.valueOf(hangHoa.getGiaVon()),
+                    String.valueOf(hangHoa.getGiaBan()),
+                    String.valueOf(hangHoa.getGiaThay()),
+                    String.valueOf(hangHoa.getLoaiHang()),
+                    String.valueOf(hangHoa.getTrangThai())};
                     write.writeNext(set);
                 }
 
