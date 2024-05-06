@@ -75,7 +75,7 @@ public class ImportFileCSV {
             System.out.println(e);
         }
     }
-    public List<KhachHang> readCsvFile() {
+    public List<KhachHang> readCsvFileDanhSachKhachHang() {
         String url = "";
             fd.setTitle("Import file csv");
             fd.setLocationRelativeTo(null);
@@ -85,8 +85,8 @@ public class ImportFileCSV {
             }
 //            url = url;
         List<KhachHang> khachHangList = new ArrayList<>();
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/d/yyyy HH:mm");
         
         DateTimeFormatter dateFormatterTrue = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter dateTimeFormatterTrue = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -100,20 +100,20 @@ public class ImportFileCSV {
                     continue;
                 }
                 String[] values = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
                 // Create a new KhachHang object and add it to the list
                 KhachHang khachHang = new KhachHang();
-                khachHang.setMaKhachHang(values[0].replace("\"", "").trim());
-                khachHang.setTenKhachHang(values[1].replace("\"", "").trim());
-                khachHang.setGioiTinh(values[2].replace("\"", "").trim());
-                khachHang.setSoDienThoai(values[3].replace("\"", "").trim());
-                khachHang.setDiaChi(values[4].replace("\"", "").trim());
-                khachHang.setEmail(values[5].replace("\"", "").trim());
-                khachHang.setNgaySinh(LocalDate.parse(values[6].replace("\"", "").trim(), dateFormatterTrue));
-                khachHang.setMaSoThue(values[7].replace("\"", "").trim());
-                khachHang.setMaNhanVien(values[8].replace("\"", "").trim());
-                khachHang.setNgayTao(LocalDateTime.parse(values[9].replace("\"", "").trim(), dateTimeFormatterTrue));
-                khachHang.setLoaiKhach(values[10].replace("\"", "").trim());
-                khachHang.setTongBan(Double.parseDouble(values[11].replace("\"", "").trim()));
+                khachHang.setTenKhachHang(values[0].replace("\"", "").trim());
+                khachHang.setGioiTinh(values[1].replace("\"", "").trim());
+                khachHang.setSoDienThoai(values[2].replace("\"", "").trim());
+                khachHang.setDiaChi(values[3].replace("\"", "").trim());
+                khachHang.setEmail(values[4].replace("\"", "").trim());
+                khachHang.setNgaySinh(LocalDate.parse(values[5].replace("\"", "").trim(), dateFormatter));
+                khachHang.setMaSoThue(values[6].replace("\"", "").trim());
+                khachHang.setMaNhanVien(values[7].replace("\"", "").trim());
+                khachHang.setNgayTao(LocalDateTime.parse(values[8].replace("\"", "").trim(), dateTimeFormatter));
+                khachHang.setLoaiKhach(values[9].replace("\"", "").trim());
+                khachHang.setTongBan(Double.parseDouble(values[10].replace("\"", "").trim()));
                 khachHangList.add(khachHang);
             }
         } catch (IOException e) {

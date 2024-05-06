@@ -6467,7 +6467,22 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnKhachHang_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang_importActionPerformed
         ImportFileCSV importCSV = new ImportFileCSV();
 //            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
-            importCSV.readCsvFile();
+        List<KhachHang> danhSachKhachHang = importCSV.readCsvFileDanhSachKhachHang();
+        for (KhachHang khachHang : danhSachKhachHang){
+            System.out.println(khachHang.getTenKhachHang()); 
+            System.out.println(khachHang.getGioiTinh()); 
+            System.out.println(khachHang.getSoDienThoai()); 
+            System.out.println(khachHang.getDiaChi()); 
+            System.out.println(khachHang.getEmail()); 
+            System.out.println(khachHang.getNgaySinh()); 
+            System.out.println(khachHang.getMaSoThue()); 
+            System.out.println(khachHang.getMaNhanVien()); 
+            System.out.println(util.localDateParseMethod(khachHang.getNgayTao())); 
+            System.out.println(khachHang.getLoaiKhach()); 
+            System.out.println(khachHang.getTongBan()); 
+            System.out.println("");
+            System.out.println("");
+        }
     }//GEN-LAST:event_btnKhachHang_importActionPerformed
 
     private void tfHoaDon_timHoaDonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHoaDon_timHoaDonFocusGained
