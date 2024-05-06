@@ -691,7 +691,7 @@ public class WritePDF {
 
             //Truyen thong tin tung chi tiet vao table
             for (BangChamCong bangChamCong : danhSachBangChamCongMain) {
-                table3.addCell(new PdfPCell(new Phrase(bangChamCong.getMaCaLam(), fontNormal10)));
+                table3.addCell(new PdfPCell(new Phrase(bangChamCong.getMaBangChamCong(), fontNormal10)));
                 table3.addCell(new PdfPCell(new Phrase(String.valueOf(bangChamCong.getNgayLam()), fontNormal10)));
                 table3.addCell(new PdfPCell(new Phrase(bangChamCong.getTrangThai(), fontNormal10)));
                 

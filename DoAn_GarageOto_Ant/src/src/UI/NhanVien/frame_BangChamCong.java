@@ -54,13 +54,10 @@ public class frame_BangChamCong extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Ngày làm", "Ca làm", "Trạng thái", "Tăng ca (giờ)"
+                "Ngày làm", "Trạng thái"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -132,9 +129,9 @@ public class frame_BangChamCong extends javax.swing.JFrame {
         for (BangChamCong bangChamCong : danhSachBangChamCong){
             Vector columnData = new Vector();
             columnData.add(bangChamCong.getNgayLam());
-            columnData.add(bangChamCong.getMaCaLam());
+            
             columnData.add(bangChamCong.getTrangThai());
-            columnData.add(bangChamCong.getGioTangCa());
+            
             recordTable.addRow(columnData);
         }
     }

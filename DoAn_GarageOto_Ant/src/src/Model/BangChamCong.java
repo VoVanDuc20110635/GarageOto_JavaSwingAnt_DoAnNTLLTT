@@ -15,9 +15,9 @@ public class BangChamCong {
     private String maBangChamCong;
     private LocalDate ngayLam;
     private String trangThai;
-    private short gioTangCa;
+    
     private String maNhanVien;
-    private String maCaLam;
+    
     private NhanVien nhanVien;
     private CaLam caLam;
 
@@ -28,9 +28,9 @@ public class BangChamCong {
         this.maBangChamCong = maBangChamCong;
         this.ngayLam = ngayLam;
         this.trangThai = trangThai;
-        this.gioTangCa = gioTangCa;
+        
         this.maNhanVien = maNhanVien;
-        this.maCaLam = maCaLam;
+        
     }
 
     public String getMaBangChamCong() {
@@ -57,13 +57,6 @@ public class BangChamCong {
         this.trangThai = trangThai;
     }
 
-    public short getGioTangCa() {
-        return gioTangCa;
-    }
-
-    public void setGioTangCa(short gioTangCa) {
-        this.gioTangCa = gioTangCa;
-    }
 
     public String getMaNhanVien() {
         return maNhanVien;
@@ -73,13 +66,6 @@ public class BangChamCong {
         this.maNhanVien = maNhanVien;
     }
 
-    public String getMaCaLam() {
-        return maCaLam;
-    }
-
-    public void setMaCaLam(String maCaLam) {
-        this.maCaLam = maCaLam;
-    }
 
     public NhanVien getNhanVien() {
         return nhanVien;
