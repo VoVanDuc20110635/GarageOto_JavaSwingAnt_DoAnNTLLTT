@@ -412,7 +412,6 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel72 = new javax.swing.JPanel();
         btnKhachHang_them = new javax.swing.JButton();
         btnKhachHoa_xuatFile = new javax.swing.JButton();
-        btnKhachHang_import = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel73 = new javax.swing.JPanel();
         jPanel94 = new javax.swing.JPanel();
@@ -435,6 +434,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnNhanVienChiNhanh_taiLai = new javax.swing.JButton();
         btnNhanVienChiNhanh_themChiNhanh = new javax.swing.JButton();
         btnNhanVienChiNhanh_exportChiNhanh = new javax.swing.JButton();
+        btnNhanVienChiNhanh_importNhanVien = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         tb_danhSachChiNhanh = new javax.swing.JTable();
         jPanel95 = new javax.swing.JPanel();
@@ -2526,26 +2526,14 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        btnKhachHang_import.setBackground(new java.awt.Color(102, 102, 102));
-        btnKhachHang_import.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btnKhachHang_import.setForeground(new java.awt.Color(255, 255, 255));
-        btnKhachHang_import.setText("Import");
-        btnKhachHang_import.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHang_importActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel72Layout = new javax.swing.GroupLayout(jPanel72);
         jPanel72.setLayout(jPanel72Layout);
         jPanel72Layout.setHorizontalGroup(
             jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel72Layout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
+                .addContainerGap(202, Short.MAX_VALUE)
                 .addComponent(btnKhachHang_them)
-                .addGap(29, 29, 29)
-                .addComponent(btnKhachHang_import)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(btnKhachHoa_xuatFile)
                 .addGap(14, 14, 14))
         );
@@ -2555,8 +2543,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel72Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnKhachHang_them, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnKhachHoa_xuatFile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnKhachHang_import, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnKhachHoa_xuatFile, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2798,18 +2785,30 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
+        btnNhanVienChiNhanh_importNhanVien.setBackground(new java.awt.Color(0, 204, 204));
+        btnNhanVienChiNhanh_importNhanVien.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        btnNhanVienChiNhanh_importNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhanVienChiNhanh_importNhanVien.setText("Import nhân viên");
+        btnNhanVienChiNhanh_importNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienChiNhanh_importNhanVienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel76Layout = new javax.swing.GroupLayout(jPanel76);
         jPanel76.setLayout(jPanel76Layout);
         jPanel76Layout.setHorizontalGroup(
             jPanel76Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel76Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
                 .addComponent(btnNhanVienChiNhanh_taiLai)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnNhanVienChiNhanh_themChiNhanh)
                 .addGap(18, 18, 18)
                 .addComponent(btnNhanVienChiNhanh_themNhanVien)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnNhanVienChiNhanh_importNhanVien)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnNhanVienChiNhanh_importChiNhanh)
                 .addGap(18, 18, 18)
                 .addComponent(btnNhanVienChiNhanh_exportChiNhanh)
@@ -2827,11 +2826,12 @@ public class TrangChu extends javax.swing.JFrame {
                     .addComponent(btnNhanVienChiNhanh_importChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNhanVienChiNhanh_taiLai, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNhanVienChiNhanh_themChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNhanVienChiNhanh_exportChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNhanVienChiNhanh_exportChiNhanh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNhanVienChiNhanh_importNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel75.add(jPanel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, 930, 40));
+        jPanel75.add(jPanel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 1080, 40));
 
         tb_danhSachChiNhanh.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tb_danhSachChiNhanh.setModel(new javax.swing.table.DefaultTableModel(
@@ -6464,27 +6464,6 @@ public class TrangChu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnKhachHoa_xuatFileActionPerformed
 
-    private void btnKhachHang_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHang_importActionPerformed
-        ImportFileCSV importCSV = new ImportFileCSV();
-//            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
-        List<KhachHang> danhSachKhachHang = importCSV.readCsvFileDanhSachKhachHang();
-        for (KhachHang khachHang : danhSachKhachHang){
-            System.out.println(khachHang.getTenKhachHang()); 
-            System.out.println(khachHang.getGioiTinh()); 
-            System.out.println(khachHang.getSoDienThoai()); 
-            System.out.println(khachHang.getDiaChi()); 
-            System.out.println(khachHang.getEmail()); 
-            System.out.println(khachHang.getNgaySinh()); 
-            System.out.println(khachHang.getMaSoThue()); 
-            System.out.println(khachHang.getMaNhanVien()); 
-            System.out.println(util.localDateParseMethod(khachHang.getNgayTao())); 
-            System.out.println(khachHang.getLoaiKhach()); 
-            System.out.println(khachHang.getTongBan()); 
-            System.out.println("");
-            System.out.println("");
-        }
-    }//GEN-LAST:event_btnKhachHang_importActionPerformed
-
     private void tfHoaDon_timHoaDonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfHoaDon_timHoaDonFocusGained
         if(tfHoaDon_timHoaDon.getText().equals("Tìm hóa đơn theo tên người nộp/ nhận")){
             tfHoaDon_timHoaDon.setText("");
@@ -7634,6 +7613,29 @@ public class TrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền import file chinh nhánh!");
                 return;
             }
+        try {                                                                   
+            ImportFileCSV importCSV = new ImportFileCSV();
+            //            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
+            List<ChiNhanh> danhSachChiNhanh = importCSV.readCsvFileDanhSachChiNhanh();
+            int soLuongChiNhanh = 0;
+            try {
+                soLuongChiNhanh = chiNhanhService.demSoChiNhanh();
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            for (ChiNhanh chiNhanh : danhSachChiNhanh){
+                soLuongChiNhanh += 1;
+                chiNhanh.setMaChiNhanh("CN0" + soLuongChiNhanh);
+                try {
+                    chiNhanhService.themChiNhanh(chiNhanh);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnNhanVienChiNhanh_importChiNhanhActionPerformed
 
     private void btnNhanVienChiNhanh_exportChiNhanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_exportChiNhanhActionPerformed
@@ -7655,6 +7657,24 @@ public class TrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền import file hàng hóa!");
                 return;
             }
+        ImportFileCSV importCSV = new ImportFileCSV();
+//            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
+        List<HangHoa> danhSachHangHoa = importCSV.readCsvFileDanhSachHangHoa();
+        int soLuongHangHoa = 0;
+        try {
+            soLuongHangHoa = hangHoaService.demSoHangHoa();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (HangHoa hangHoa : danhSachHangHoa){
+            soLuongHangHoa += 1;
+            hangHoa.setMaHangHoa("HH0" + soLuongHangHoa);
+            try {
+                hangHoaService.themHangHoa(hangHoa);
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnHangHoa_importActionPerformed
 
     private void btnHangHoa_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangHoa_exportActionPerformed
@@ -7674,10 +7694,37 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHangHoa_exportActionPerformed
 
     private void btnNhacungCap_importActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhacungCap_importActionPerformed
-        if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.4 ")){
+        try {
+            if (!util.kiemTraTonTaiChuoi(nhanVienDangNhap.getPhanQuyen(), " 9.4 ")){
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền import file nhà cung cấp!");
                 return;
             }
+            ImportFileCSV importCSV = new ImportFileCSV();
+            //            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
+            List<NhaCungCap> danhSachNhaCungCap = importCSV.readCsvFileDanhSachNhaCungCap();
+            int soLuongNhaCungCap = 0;
+            try {
+                soLuongNhaCungCap = nhaCungCapService.demSoNhaCungCap();
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ChiNhanh chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(nhanVienDangNhap.getMaChiNhanh());
+
+            for (NhaCungCap nhaCungCap : danhSachNhaCungCap){
+                soLuongNhaCungCap += 1;
+                nhaCungCap.setMaNhaCungCap("NCC0" + soLuongNhaCungCap);
+                nhaCungCap.setNgayTao(LocalDateTime.now());
+                nhaCungCap.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+                nhaCungCap.setMaChiNhanh(chiNhanh.getMaChiNhanh());
+                try {
+                    nhaCungCapService.themNhaCungCap(nhaCungCap);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnNhacungCap_importActionPerformed
 
     private void btnNhaCungCap_xuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaCungCap_xuatFileActionPerformed
@@ -8318,6 +8365,37 @@ public class TrangChu extends javax.swing.JFrame {
             dateChooser_theoThang_thang.setEnabled(false);
         }
     }//GEN-LAST:event_radioDoanhThu_namActionPerformed
+
+    private void btnNhanVienChiNhanh_importNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienChiNhanh_importNhanVienActionPerformed
+        try {                                                                   
+            ImportFileCSV importCSV = new ImportFileCSV();
+            //            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
+            List<NhanVien> danhSachNhanVien = importCSV.readCsvFileDanhSachNhanVien();
+            int soLuongNhanVien = 0;
+            try {
+                soLuongNhanVien = nhanVienService.demSoNhanVien();
+            } catch (SQLException ex) {
+                Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ChiNhanh chiNhanh = chiNhanhService.hienThiChiNhanhTheoMaChiNhanh(nhanVienDangNhap.getMaChiNhanh());
+
+            for (NhanVien nhanVien : danhSachNhanVien){
+                soLuongNhanVien += 1;
+                nhanVien.setMaNhanVien("NV0" + soLuongNhanVien);
+                nhanVien.setTaoBoiMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+                nhanVien.setMaChiNhanh(chiNhanh.getMaChiNhanh());
+                nhanVien.setTenTaiKhoan("NV0" + soLuongNhanVien);
+                nhanVien.setMatKhau("0");
+                try {
+                    nhanVienService.themNhanVien(nhanVien);
+                } catch (SQLException ex) {
+                    Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }//GEN-LAST:event_btnNhanVienChiNhanh_importNhanVienActionPerformed
     
     
     
@@ -9391,7 +9469,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnHangHoa_timKiem;
     private javax.swing.JButton btnHoaDon_taiLai;
     private javax.swing.JButton btnHoaDon_timKiem;
-    private javax.swing.JButton btnKhachHang_import;
     private javax.swing.JButton btnKhachHang_them;
     private javax.swing.JButton btnKhachHoa_xuatFile;
     private javax.swing.JButton btnLichLamViec_capNhatCaLam;
@@ -9412,6 +9489,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVienChiNhanh_exportChiNhanh;
     private javax.swing.JButton btnNhanVienChiNhanh_exportNhanVien;
     private javax.swing.JButton btnNhanVienChiNhanh_importChiNhanh;
+    private javax.swing.JButton btnNhanVienChiNhanh_importNhanVien;
     private javax.swing.JButton btnNhanVienChiNhanh_taiLai;
     private javax.swing.JButton btnNhanVienChiNhanh_themChiNhanh;
     private javax.swing.JButton btnNhanVienChiNhanh_themNhanVien;

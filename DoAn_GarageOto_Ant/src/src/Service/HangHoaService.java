@@ -127,8 +127,8 @@ public class HangHoaService {
     
     public int themHangHoa (HangHoa hangHoaMoi) throws SQLException{ //   
         try{
-           String query = String.format("insert into hang_hoa(ma_hang_hoa, gia_ban, gia_von, khach_dat, ten_hang_hoa, ton_kho, ma_nhom_hang, loai_hang) " +
-                             "values ('%s', %s, %s, %s, '%s', %s, '%s', '%s')",
+           String query = String.format("insert into hang_hoa(ma_hang_hoa, gia_ban, gia_von, khach_dat, ten_hang_hoa, ton_kho, ma_nhom_hang, loai_hang, trang_thai) " +
+                             "values ('%s', %s, %s, %s, '%s', %s, '%s', '%s', %s)",
                              hangHoaMoi.getMaHangHoa(), 
                              String.valueOf(hangHoaMoi.getGiaBan()),
                              String.valueOf(hangHoaMoi.getGiaVon()),
@@ -136,7 +136,8 @@ public class HangHoaService {
                              hangHoaMoi.getTenHangHoa(),
                              String.valueOf(hangHoaMoi.getTonKho()),
                              hangHoaMoi.getMaNhomHang(),
-                             hangHoaMoi.getLoaiHang());
+                             hangHoaMoi.getLoaiHang(),
+                             0);
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;

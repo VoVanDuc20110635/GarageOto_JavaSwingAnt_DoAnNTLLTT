@@ -1,24 +1,24 @@
-﻿"Mã khách hàng","Tên khách hàng","Giới tính","Số điện thoại","Địa chỉ","Email","Ngày sinh","Mã số thuế","Nhân viên tạo","Ngày tạo","Loại Khách","Tổng bán"
-"KH001","Nguyễn Văn An","Nam","0987654321","123 Đường ABC, Quận 1, TP.HCM","nguyenvana@example.com","1990-01-01","123456789","NV004","2023-01-01 10:00:00","Cá nhân","1500000.0"
-"KH002","Trần Thị Bình","Nam","0123456789","456 Đường XYZ, Quận 2, TP.HCM","tranthib@example.com","1985-05-15","987654321","NV004","2023-01-02 11:30:00","Cá nhân","800000.0"
-"KH003","Lê Văn Chiến","Nam","0987123456","789 Đường MNO, Quận 3, TP.HCM","levanc@example.com","1992-03-20","135792468","NV004","2023-01-03 14:45:00","Cá nhân","2000000.0"
-"KH004","Phạm Thị Dương","Nữ","0967123456","0123 Đường DEF, Quận 4, TP.HCM","phamthid@example.com","2002-12-10","246813579","NV005","2023-01-04 09:15:00","Cá nhân","500000.0"
-"KH005","Hoàng Văn Én","Nam","0987654321","456 Đường GHI, Quận 5, TP.HCM","hoangvane@example.com","1995-08-25","369258147","NV005","2023-01-05 13:20:00","Cá nhân","3000000.0"
-"KH006","Trần Văn Phú","Nam","0987123456","789 Đường KLM, Quận 6, TP.HCM","tranvanf@example.com","1991-07-05","975310486","NV004","2023-01-06 08:30:00","Cá nhân","1000000.0"
-"KH007","Nguyễn Thị Giang","Nam","0967123456","123 Đường NOP, Quận 7, TP.HCM","nguyenthig@example.com","1987-09-15","864203951","NV004","2023-01-07 10:45:00","Cá nhân","1200000.0"
-"KH008","Phan Văn Hòa","Nam","0987654321","456 Đường QRS, Quận 8, TP.HCM","phanvanh@example.com","1994-04-30","753196482","NV005","2023-01-08 12:00:00","Cá nhân","1800000.0"
-"KH009","Lý Thị Yến","Nam","0123456789","789 Đường TUV, Quận 9, TP.HCM","lythi@example.com","1989-11-20","642087513","NV005","2023-01-09 15:10:00","Cá nhân","600000.0"
-"KH010","Đặng Văn Kiên","Nam","0987123456","0123 Đường WXY, Quận 10, TP.HCM","dangvank@example.com","1996-06-10","531974820","NV004","2023-01-10 09:30:00","Cá nhân","900000.0"
-"KH011","Bùi Thị Lý","Nam","0967123456","456 Đường ZAB, Quận 11, TP.HCM","buithil@example.com","1993-02-05","420865139","NV004","2023-01-11 14:00:00","Cá nhân","2500000.0"
-"KH012","Nguyễn Văn Minh","Nam","0987654321","123 Đường BCD, Quận 12, TP.HCM","nguyenvanm@example.com","1990-10-15","309751824","NV005","2023-01-12 11:20:00","Cá nhân","700000.0"
-"KH013","Trần Thị Như","Nam","0123456789","456 Đường EFG, Quận Bình Tân, TP.HCM","tranthin@example.com","1986-08-20","198642037","NV004","2023-01-13 10:05:00","Cá nhân","3500000.0"
-"KH014","Lê Văn Ôn","Nam","0987123456","789 Đường HIJ, Quận Bình Chánh, TP.HCM","levano@example.com","1991-06-01","087529314","NV005","2023-01-14 08:40:00","Cá nhân","800000.0"
-"KH015","Phạm Thị Phương","Nam","0967123456","0123 Đường KLM, Quận Thủ Đức, TP.HCM","phamthip@example.com","1988-04-05","976420831","NV005","2023-01-15 12:50:00","Cá nhân","2000000.0"
-"KH016","Hoàng Văn Qúy","Nam","0987654321","456 Đường NOP, Quận Gò Vấp, TP.HCM","hoangvanq@example.com","1995-02-25","865309472","NV004","2023-01-16 09:55:00","Cá nhân","1100000.0"
-"KH017","Trần Thị Riềng","Nam","0123456789","789 Đường QRS, Quận Phú Nhuận, TP.HCM","tranthir@example.com","1987-12-10","753186204","NV004","2023-01-17 14:25:00","Cá nhân","900000.0"
-"KH018","Nguyễn Văn Sang","Nam","0967123456","123 Đường TUV, Quận Tân Bình, TP.HCM","nguyenvans@example.com","1994-10-05","642097531","NV005","2023-01-18 10:35:00","Cá nhân","3000000.0"
-"KH019","Phan Thị Thư","Nam","0987654321","456 Đường WXY, Quận Tân Phú, TP.HCM","phanthit@example.com","1989-08-15","531874260","NV005","2023-01-19 11:15:00","Cá nhân","400000.0"
-"KH020","Lý Văn Uyên","Nam","0123456789","789 Đường ZAB, Quận Bình Thạnh, TP.HCM","lyvanu@example.com","1996-05-30","420963187","NV004","2023-01-20 13:40:00","Cá nhân","1500000.0"
-"KH021","Võ Văn Đức","Nam","086990187","84, thôn 1, xã Đạ Oai, huyện Đạ Huoai, tỉnh Lâm Đồng","voduc0100@gmail.com","2024-04-06","005615489","NV004","2024-04-02 11:57:35","Cá nhân","0.0"
-"KH022","Lê Đình Phong","Nam","0869990187","Thôn 1, xã Đạ Oai, huyện Đạ Huoai, tỉnh Lâm Đồng","dinhphongdaoai@gmail.com","2002-04-11","0068415531","NV004","2024-04-20 13:35:34","Cá nhân","0.0"
-"KH023","Dương Triệu Lâm","Nữ","0861584658","Tân bình, HCM","duongtanbinh@gmail.com","2002-04-18","0164598588","NV004","2024-04-20 15:10:09","Cá nhân","0.0"
+M� kh�ch h�ng	T�n kh�ch h�ng	Gi?i t�nh	S? ?i?n tho?i	??a ch?	Email	Ng�y sinh	M� s? thu?	Nh�n vi�n t?o	Ng�y t?o	Lo?i Kh�ch	T?ng b�n	M� chi nh�nh
+KH001	Nguy?n V?n An	Nam	987654321	"123 ???ng ABC, Qu?n 1, TP.HCM"	nguyenvana@example.com	1/1/1990	123456789	NV004	1/1/2023 10:00	C� nh�n	1500000	CN001
+KH002	Tr?n Th? B�nh	Nam	123456789	"456 ???ng XYZ, Qu?n 2, TP.HCM"	tranthib@example.com	5/15/1985	987654321	NV004	1/2/2023 11:30	C� nh�n	800000	CN001
+KH003	L� V?n Chi?n	Nam	987123456	"789 ???ng MNO, Qu?n 3, TP.HCM"	levanc@example.com	3/20/1992	135792468	NV004	1/3/2023 14:45	C� nh�n	2000000	CN001
+KH004	Ph?m Th? D??ng	N?	967123456	"0123 ???ng DEF, Qu?n 4, TP.HCM"	phamthid@example.com	12/10/2002	246813579	NV005	1/4/2023 9:15	C� nh�n	500000	CN001
+KH005	Ho�ng V?n �n	Nam	987654321	"456 ???ng GHI, Qu?n 5, TP.HCM"	hoangvane@example.com	8/25/1995	369258147	NV005	1/5/2023 13:20	C� nh�n	3000000	CN001
+KH006	Tr?n V?n Ph�	Nam	987123456	"789 ???ng KLM, Qu?n 6, TP.HCM"	tranvanf@example.com	7/5/1991	975310486	NV004	1/6/2023 8:30	C� nh�n	1000000	CN001
+KH007	Nguy?n Th? Giang	Nam	967123456	"123 ???ng NOP, Qu?n 7, TP.HCM"	nguyenthig@example.com	9/15/1987	864203951	NV004	1/7/2023 10:45	C� nh�n	1200000	CN001
+KH008	Phan V?n H�a	Nam	987654321	"456 ???ng QRS, Qu?n 8, TP.HCM"	phanvanh@example.com	4/30/1994	753196482	NV005	1/8/2023 12:00	C� nh�n	1800000	CN001
+KH009	L� Th? Y?n	Nam	123456789	"789 ???ng TUV, Qu?n 9, TP.HCM"	lythi@example.com	11/20/1989	642087513	NV005	1/9/2023 15:10	C� nh�n	600000	CN001
+KH010	??ng V?n Ki�n	Nam	987123456	"0123 ???ng WXY, Qu?n 10, TP.HCM"	dangvank@example.com	6/10/1996	531974820	NV004	1/10/2023 9:30	C� nh�n	900000	CN001
+KH011	B�i Th? L�	Nam	967123456	"456 ???ng ZAB, Qu?n 11, TP.HCM"	buithil@example.com	2/5/1993	420865139	NV004	1/11/2023 14:00	C� nh�n	2500000	CN001
+KH012	Nguy?n V?n Minh	Nam	987654321	"123 ???ng BCD, Qu?n 12, TP.HCM"	nguyenvanm@example.com	10/15/1990	309751824	NV005	1/12/2023 11:20	C� nh�n	700000	CN001
+KH013	Tr?n Th? Nh?	Nam	123456789	"456 ???ng EFG, Qu?n B�nh T�n, TP.HCM"	tranthin@example.com	8/20/1986	198642037	NV004	1/13/2023 10:05	C� nh�n	3500000	CN001
+KH014	L� V?n �n	Nam	987123456	"789 ???ng HIJ, Qu?n B�nh Ch�nh, TP.HCM"	levano@example.com	6/1/1991	87529314	NV005	1/14/2023 8:40	C� nh�n	800000	CN001
+KH015	Ph?m Th? Ph??ng	Nam	967123456	"0123 ???ng KLM, Qu?n Th? ??c, TP.HCM"	phamthip@example.com	4/5/1988	976420831	NV005	1/15/2023 12:50	C� nh�n	2000000	CN001
+KH016	Ho�ng V?n Q�y	Nam	987654321	"456 ???ng NOP, Qu?n G� V?p, TP.HCM"	hoangvanq@example.com	2/25/1995	865309472	NV004	1/16/2023 9:55	C� nh�n	1100000	CN001
+KH017	Tr?n Th? Ri?ng	Nam	123456789	"789 ???ng QRS, Qu?n Ph� Nhu?n, TP.HCM"	tranthir@example.com	12/10/1987	753186204	NV004	1/17/2023 14:25	C� nh�n	900000	CN001
+KH018	Nguy?n V?n Sang	Nam	967123456	"123 ???ng TUV, Qu?n T�n B�nh, TP.HCM"	nguyenvans@example.com	10/5/1994	642097531	NV005	1/18/2023 10:35	C� nh�n	3000000	CN001
+KH019	Phan Th? Th?	Nam	987654321	"456 ???ng WXY, Qu?n T�n Ph�, TP.HCM"	phanthit@example.com	8/15/1989	531874260	NV005	1/19/2023 11:15	C� nh�n	400000	CN001
+KH020	L� V?n Uy�n	Nam	123456789	"789 ???ng ZAB, Qu?n B�nh Th?nh, TP.HCM"	lyvanu@example.com	5/30/1996	420963187	NV004	1/20/2023 13:40	C� nh�n	1500000	CN001
+KH021	V� V?n ??c	Nam	86990187	"84, th�n 1, x� ?? Oai, huy?n ?? Huoai, t?nh L�m ??ng"	voduc0100@gmail.com	4/6/2024	5615489	NV004	4/2/2024 11:57	C� nh�n	0	CN001
+KH022	L� ?�nh Phong	Nam	869990187	"Th�n 1, x� ?? Oai, huy?n ?? Huoai, t?nh L�m ??ng"	dinhphongdaoai@gmail.com	4/11/2002	68415531	NV004	4/20/2024 13:35	C� nh�n	0	CN001
+KH023	D??ng Tri?u L�m	N?	861584658	"T�n b�nh, HCM"	duongtanbinh@gmail.com	4/18/2002	164598588	NV004	4/20/2024 15:10	C� nh�n	0	CN001

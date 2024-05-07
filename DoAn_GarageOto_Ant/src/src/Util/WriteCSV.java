@@ -63,7 +63,7 @@ public class WriteCSV {
                 writer.write('\ufeff');  // Writes the BOM
                 CSVWriter write = new CSVWriter(writer);
                 // ... rest of your code ...
-                String set1[] = {"Mã khách hàng", "Tên khách hàng", "Giới tính", "Số điện thoại", "Địa chỉ", "Email", "Ngày sinh", "Mã số thuế", "Nhân viên tạo", "Ngày tạo", "Loại Khách", "Tổng bán"};
+                String set1[] = {"Mã khách hàng", "Tên khách hàng", "Giới tính", "Số điện thoại", "Địa chỉ", "Email", "Ngày sinh", "Mã số thuế", "Nhân viên tạo", "Ngày tạo", "Loại Khách", "Tổng bán", "Mã chi nhánh"};
                 write.writeNext(set1);
 
                 for (KhachHang khachHang : danhSachKhachHang){
@@ -78,7 +78,8 @@ public class WriteCSV {
                     String.valueOf(khachHang.getMaNhanVien()),
                     String.valueOf(util.localDateParseMethod(khachHang.getNgayTao())),
                     String.valueOf(khachHang.getLoaiKhach()),
-                    String.valueOf(khachHang.getTongBan()),};
+                    String.valueOf(khachHang.getTongBan()),
+                    String.valueOf(khachHang.getMaChiNhanh()),};
                     write.writeNext(set);
                 }
 
