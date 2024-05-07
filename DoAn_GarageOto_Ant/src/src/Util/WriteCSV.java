@@ -35,6 +35,7 @@ import src.Model.HangHoa;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
 import src.Model.NhanVien;
+import src.Model.PhieuNhapHang;
 
 
 /**
@@ -206,6 +207,48 @@ public class WriteCSV {
                     String.valueOf(nhanVien.getDiaChi()),
                     String.valueOf(nhanVien.getMaSoThue()),
                     String.valueOf(nhanVien.getTrangThai())};
+                    write.writeNext(set);
+                }
+
+                write.flush();
+                openFile(url);
+            }
+//            CSVWriter write = new CSVWriter(new FileWriter(url, StandardCharsets.UTF_8));
+            
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(WriteCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void writeCSVFileDanhSachPhieuNhapHang(List<PhieuNhapHang> danhSachPhieuNhapHang){
+        try {
+            String url = "";
+            fd.setTitle("In danh sách phiếu nhập hàng");
+            fd.setLocationRelativeTo(null);
+            url = getFile("danhSachPhieuNhapHang" + "");
+            if (url.equals("nullnull")) {
+                return;
+            }
+            url = url + ".csv";
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(url), StandardCharsets.UTF_8)) {
+                writer.write('\ufeff');  // Writes the BOM
+                CSVWriter write = new CSVWriter(writer);
+                // ... rest of your code ...
+                String set1[] = {"Mã phiếu nhập hàng", "Thời gian", "Mã nhà cung cấp", 
+                    "Mã chi nhánh", "Mã nhân viên", "Trạng thái", "Tổng", "Đã trả"};
+                write.writeNext(set1);
+
+                for (PhieuNhapHang phieuNhapHang : danhSachPhieuNhapHang){
+                    String set[] = {String.valueOf(phieuNhapHang.getPhieuNhapHang()),
+                    String.valueOf(phieuNhapHang.getThoiGian()),
+                    String.valueOf(phieuNhapHang.getMaNhaCungCap()),
+                    String.valueOf(phieuNhapHang.getMaChiNhanh()),
+                    String.valueOf(phieuNhapHang.getMaNhanVienTao()),
+                    String.valueOf(phieuNhapHang.getTrangThai()),
+                    String.valueOf(phieuNhapHang.getTong()),
+                    String.valueOf(phieuNhapHang.getDaTra())};
                     write.writeNext(set);
                 }
 

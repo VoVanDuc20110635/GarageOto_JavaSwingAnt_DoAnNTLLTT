@@ -34,6 +34,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+import src.Model.ChiNhanh;
 import src.Model.HangHoa;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
@@ -261,5 +262,44 @@ public class ImportFileCSV {
             e.printStackTrace();
         }
         return nhanVienList;
+    }
+    
+    public List<ChiNhanh> readCsvFileDanhSachChiNhanh() {
+        String url = "";
+            fd.setTitle("Import file csv");
+            fd.setLocationRelativeTo(null);
+            url = getFile("danhSachChiNhanh" + "");
+            if (url.equals("nullnull")) {
+                return null;
+            }
+//            url = url;
+        List<ChiNhanh> chiNhanhList = new ArrayList<>();
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("M/d/yyyy HH:mm");
+        
+        DateTimeFormatter dateFormatterTrue = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter dateTimeFormatterTrue = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        int i = 0;
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(url))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (i ==0 ){
+                    i++;
+                    continue;
+                }
+                String[] values = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                // Create a new KhachHang object and add it to the list
+                ChiNhanh chiNhanh = new ChiNhanh();
+                chiNhanh.setDiaChi(values[0].replace("\"", "").trim());
+                chiNhanh.setTenChiNhanh(values[1].replace("\"", "").trim());
+                chiNhanh.setTrangThai(values[2].replace("\"", "").trim());
+                chiNhanh.setSoDienThoai(values[3].replace("\"", "").trim());
+                chiNhanhList.add(chiNhanh);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return chiNhanhList;
     }
 }

@@ -7613,28 +7613,23 @@ public class TrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền import file chinh nhánh!");
                 return;
             }
-        try {                                                                   
-            ImportFileCSV importCSV = new ImportFileCSV();
-            //            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
-            List<ChiNhanh> danhSachChiNhanh = importCSV.readCsvFileDanhSachChiNhanh();
-            int soLuongChiNhanh = 0;
+        ImportFileCSV importCSV = new ImportFileCSV();
+        //            List<KhachHang> danhSachKhachHang = khachHangService.hienThiTatCaKhachHang();
+        List<ChiNhanh> danhSachChiNhanh = importCSV.readCsvFileDanhSachChiNhanh();
+        int soLuongChiNhanh = 0;
+        try {
+            soLuongChiNhanh = chiNhanhService.demSoChiNhanh();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (ChiNhanh chiNhanh : danhSachChiNhanh){
+            soLuongChiNhanh += 1;
+            chiNhanh.setMaChiNhanh("CN0" + soLuongChiNhanh);
             try {
-                soLuongChiNhanh = chiNhanhService.demSoChiNhanh();
+                chiNhanhService.themChiNhanh(chiNhanh);
             } catch (SQLException ex) {
                 Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            for (ChiNhanh chiNhanh : danhSachChiNhanh){
-                soLuongChiNhanh += 1;
-                chiNhanh.setMaChiNhanh("CN0" + soLuongChiNhanh);
-                try {
-                    chiNhanhService.themChiNhanh(chiNhanh);
-                } catch (SQLException ex) {
-                    Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnNhanVienChiNhanh_importChiNhanhActionPerformed
 
@@ -7760,6 +7755,13 @@ public class TrangChu extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền export file phiếu nhập hàng!");
                 return;
             }
+        try {
+            WriteCSV writeCSV = new WriteCSV();
+            List<PhieuNhapHang> danhSachPhieuNhapHang = phieuNhapHangService.hienThiTatCaPhieuNhapHang();
+            writeCSV.writeCSVFileDanhSachPhieuNhapHang(danhSachPhieuNhapHang);
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPhieuNhapHang_exportActionPerformed
 
     private void btnPhieuTraHang_exportFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuTraHang_exportFileActionPerformed
