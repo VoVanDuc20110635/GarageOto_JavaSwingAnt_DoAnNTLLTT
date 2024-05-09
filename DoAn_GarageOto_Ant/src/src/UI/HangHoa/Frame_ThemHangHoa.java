@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,10 +26,13 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import src.Model.HangHoa;
 import src.Model.HinhAnh;
+import src.Model.NhanVien;
 import src.Model.NhomHang;
+import src.Model.TheKho;
 import src.Service.HangHoaService;
 import src.Service.HinhAnhService;
 import src.Service.NhomHangService;
+import src.Service.TheKhoService;
 
 /**
  *
@@ -38,12 +42,19 @@ public class Frame_ThemHangHoa extends javax.swing.JFrame {
     private HangHoaService hangHoaSerive = new HangHoaService();
     private NhomHangService nhomHangService = new NhomHangService();
     private HinhAnhService hinhAnhService = new HinhAnhService();
+    private TheKhoService theKhoService = new TheKhoService();
+    private NhanVien nhanVienDangNhap;
     String destinationFolderPath = "D:\\tai_lieu_tren_lop\\LapTrinhTienTien\\Workspace\\Git_GarageOtoAnt_DoAn\\GarageOto_JavaSwingAnt\\DoAn_GarageOto_Ant\\src\\image";
     /**
      * Creates new form frame_ThemHangHoa
      */
+    
     public Frame_ThemHangHoa() {
+    }
+
+    public Frame_ThemHangHoa(NhanVien nhanVien) {
         initComponents();
+        this.nhanVienDangNhap = nhanVien;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         try {
             tfThemHangHoa_maHang.setText("HH0" + (hangHoaSerive.demSoHangHoa()+1)) ;
@@ -112,7 +123,7 @@ public class Frame_ThemHangHoa extends javax.swing.JFrame {
 
         jLabel51.setBackground(new java.awt.Color(242, 249, 255));
         jLabel51.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel51.setText("Thêm dịch vụ");
+        jLabel51.setText("Thêm hàng hóa");
 
         javax.swing.GroupLayout jPanel63Layout = new javax.swing.GroupLayout(jPanel63);
         jPanel63.setLayout(jPanel63Layout);
@@ -554,6 +565,22 @@ public class Frame_ThemHangHoa extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(this, "Thêm hàng hóa thành công!");
         }
+        
+        try {
+            TheKho theKho = new TheKho();
+            int soLuongTheKho = theKhoService.demSoTheKho() + 1;
+            theKho.setMaTheKho("TK0" + soLuongTheKho + hangHoa.getMaHangHoa());
+            theKho.setGiaVon(hangHoa.getGiaVon());
+            theKho.setPhuongThuc("Thêm");
+            theKho.setSoLuong(hangHoa.getTonKho());
+            theKho.setThoiGian(LocalDateTime.now());
+            theKho.setMaHangHoa(hangHoa.getMaHangHoa());
+            theKho.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+            theKhoService.themTheKho(theKho);
+        } catch (SQLException ex) {
+            Logger.getLogger(Frame_ThemHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnThemHangHoa_luuActionPerformed
 
     private void lbThemHangHoa_hinhAnh1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbThemHangHoa_hinhAnh1MouseClicked

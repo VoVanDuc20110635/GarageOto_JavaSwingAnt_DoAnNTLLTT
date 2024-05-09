@@ -101,7 +101,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="16" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Th&#xea;m d&#x1ecb;ch v&#x1ee5;"/>
+                <Property name="text" type="java.lang.String" value="Th&#xea;m h&#xe0;ng h&#xf3;a"/>
               </Properties>
             </Component>
           </SubComponents>

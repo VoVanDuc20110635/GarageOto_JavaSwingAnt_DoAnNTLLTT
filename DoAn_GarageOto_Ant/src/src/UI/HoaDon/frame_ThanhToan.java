@@ -14,12 +14,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import src.Model.ChiNhanh;
 import src.Model.ChiTietPhieuNhapHang;
+import src.Model.HangHoa;
 import src.Model.HoaDon;
 import src.Model.HoaDonChiTiet;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
 import src.Model.NhanVien;
 import src.Model.PhieuNhapHang;
+import src.Model.TheKho;
 import src.Service.ChiNhanhServive;
 import src.Service.ChiTietPhieuNhapHangService;
 import src.Service.HangHoaService;
@@ -27,6 +29,8 @@ import src.Service.HoaDonChiTietService;
 import src.Service.HoaDonService;
 import src.Service.MailSender;
 import src.Service.PhieuNhapHangService;
+import src.Service.TheKhoService;
+import src.UI.HangHoa.Frame_ThemHangHoa;
 import src.UI.HangHoa.Frame_taoDonNhapHang;
 import src.UI.TrangChu;
 import src.Util.Util;
@@ -52,6 +56,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
     private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
     private ChiTietPhieuNhapHangService chiTietPhieuNhapHangService = new ChiTietPhieuNhapHangService();
     private ChiNhanhServive chiNhanhService = new ChiNhanhServive();
+    private TheKhoService theKhoService = new TheKhoService();
     
     private TrangChu trangChuReference;
     
@@ -85,7 +90,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         hienThiThongTin();
     }
     
-    public Frame_ThanhToan(List<ChiTietPhieuNhapHang> danhSachChiTietPhieuNhapHang, NhaCungCap nhaCungCap, String maPhieuNhapHang, int tongSoLuong, double tongTienHang,  Frame_taoDonNhapHang taoDonNhapHangInstance) {
+    public Frame_ThanhToan(List<ChiTietPhieuNhapHang> danhSachChiTietPhieuNhapHang, NhaCungCap nhaCungCap, String maPhieuNhapHang, int tongSoLuong, double tongTienHang,  Frame_taoDonNhapHang taoDonNhapHangInstance, NhanVien nhanVien) {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.danhChiTietPhieuNhapHang = danhSachChiTietPhieuNhapHang;
@@ -94,6 +99,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
         this.tongSoLuong = tongSoLuong;
         this.tongTienHang = tongTienHang;
         this.taoDonNhapHangInstance = taoDonNhapHangInstance;
+        this.nhanVienDangNhap = nhanVien;
         System.out.println(this.taoDonNhapHangInstance);
         
         lbThanhToan_ma.setText("Mã nhà cung cấp:");
@@ -630,9 +636,25 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                int soLuongTheKho = theKhoService.demSoTheKho();
                 for (HoaDonChiTiet hoaDonChiTiet: danhSachHoaDonChiTiet){
                     try {
                         hoaDonChiTietService.themHoaDonChiTiet(hoaDonChiTiet);
+                        try {
+                            TheKho theKho = new TheKho();
+                            soLuongTheKho = soLuongTheKho +1;
+                            theKho.setMaTheKho("TK0" + soLuongTheKho + hoaDonChiTiet.getMaHangHoa());
+                            theKho.setGiaVon(hoaDonChiTiet.getGiaBan());
+                            theKho.setPhuongThuc("Bán");
+                            theKho.setSoLuong(hoaDonChiTiet.getSoLuong());
+                            theKho.setThoiGian(LocalDateTime.now());
+                            theKho.setMaHangHoa(hoaDonChiTiet.getMaHangHoa());
+                            theKho.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+                            theKho.setMaKhachHang(this.khachHang.getMaKhachHang());
+                            theKhoService.themTheKho(theKho);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         //                hangHoaService.updateSoLuongTonKhoHangHoa(hoaDonChiTiet.getMaHangHoa(), (-1)*hoaDonChiTiet.getSoLuong());
                     } catch (SQLException ex) {
                         Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
@@ -679,6 +701,22 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
             for (ChiTietPhieuNhapHang chiTietPhieuNhapHang: danhChiTietPhieuNhapHang){
                 try {
                     chiTietPhieuNhapHangService.themChiTietPhieuNhapHang(chiTietPhieuNhapHang);
+                    int soLuongTheKho = theKhoService.demSoTheKho();
+                    try {
+                        TheKho theKho = new TheKho();
+                        soLuongTheKho = soLuongTheKho +1;
+                        theKho.setMaTheKho("TK0" + soLuongTheKho + chiTietPhieuNhapHang.getMaHangHoa());
+                        theKho.setGiaVon(chiTietPhieuNhapHang.getGia_nhap()*(1 - chiTietPhieuNhapHang.getGiam_gia()));
+                        theKho.setPhuongThuc("Nhập hàng");
+                        theKho.setSoLuong(chiTietPhieuNhapHang.getSo_luong());
+                        theKho.setThoiGian(LocalDateTime.now());
+                        theKho.setMaHangHoa(chiTietPhieuNhapHang.getMaHangHoa());
+                        theKho.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+                        theKho.setMaNhaCungCap(this.nhaCungCap.getMaNhaCungCap());
+                        theKhoService.themTheKho(theKho);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_ThanhToan.class.getName()).log(Level.SEVERE, null, ex);
                 }

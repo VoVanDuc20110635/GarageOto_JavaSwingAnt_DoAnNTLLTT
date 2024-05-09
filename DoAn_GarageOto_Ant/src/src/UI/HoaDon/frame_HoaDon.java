@@ -700,6 +700,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
             mailSender.sendEmailPhieuNhapHang(to, from, host, subject, phieuNhapHang,danhSachChiTietPhieuNhapHang);
         } 
+        JOptionPane.showMessageDialog(this, "Gửi mail thành công!");
         
     }//GEN-LAST:event_btnHoaDon_guiMailActionPerformed
 

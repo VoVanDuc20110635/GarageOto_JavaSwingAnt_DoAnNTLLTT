@@ -6,6 +6,7 @@ package src.Service;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import src.ConnectDB.ConnectorDB;
+import src.Model.HoaDon;
 import src.Model.PhieuNhapHang;
 import src.Util.Util;
 /**
@@ -123,5 +125,33 @@ public class PhieuNhapHangService {
         } catch (Exception err){
             return 0;
         }
+    }
+     
+     public List<PhieuNhapHang> hienThiPhieuNhapHangTheoNgayBatDauVaNgayKetThuc (LocalDate ngayBatDau, LocalDate ngayKetThuc) throws SQLException{ //
+        String query = String.format("select * from phieu_nhap_hang where thoi_gian between '%s' and '%s'", 
+                String.valueOf(ngayBatDau), 
+                String.valueOf(ngayKetThuc));
+        ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
+        ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
+        int q = resultSetMetaData.getColumnCount();
+        int i;
+        List<PhieuNhapHang> danhSachPhieuNhapHang = new ArrayList<>();
+        while(resultTable.next()){
+            PhieuNhapHang phieuNhapHang = new PhieuNhapHang();
+            for (i= 1; i <= q; i++){
+                phieuNhapHang.setPhieuNhapHang(resultTable.getString("phieu_nhap_hang"));
+                phieuNhapHang.setGiamGia(resultTable.getDouble("giam_gia"));
+                phieuNhapHang.setThoiGian( util.localDateParseMethod(resultTable.getString("thoi_gian")));
+                phieuNhapHang.setTong(resultTable.getDouble("tong"));
+                phieuNhapHang.setTrangThai(resultTable.getString("trang_thai"));
+                phieuNhapHang.setMaNhaCungCap(resultTable.getString("ma_nha_cung_cap"));
+                phieuNhapHang.setMaChiNhanh(resultTable.getString("ma_chi_nhanh"));
+                phieuNhapHang.setMaNhanVienTao(resultTable.getString("ma_nhan_vien"));
+                phieuNhapHang.setDaTra(resultTable.getDouble("da_tra"));
+            }
+            danhSachPhieuNhapHang.add(phieuNhapHang);
+        }
+        connectorDB.closeConnection();
+        return danhSachPhieuNhapHang;
     }
 }

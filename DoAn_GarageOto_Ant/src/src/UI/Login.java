@@ -4,6 +4,7 @@
  */
 package src.UI;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import src.Model.NhanVien;
 import src.Service.MailSender;
 import src.Service.NhanVienService;
@@ -222,6 +223,10 @@ public class Login extends javax.swing.JFrame {
         if (nhanVien.getMaNhanVien() == null){
             lbThongBao.setText("Sai tài khoản hoặc mật khẩu");
             lbThongBao.setForeground(Color.red);
+            return;
+        }
+        if (nhanVien.getPhanQuyen().equals("")){
+            JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập vào trang quản lý!");
             return;
         }
         TrangChu trangChu = new TrangChu(nhanVien);

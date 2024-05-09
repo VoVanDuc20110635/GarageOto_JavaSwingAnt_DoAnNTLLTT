@@ -36,6 +36,7 @@ import src.Model.ChiTietPhieuNhapHang;
 import src.Model.HangHoa;
 import src.Model.KhachHang;
 import src.Model.NhaCungCap;
+import src.Model.NhanVien;
 import src.Service.ChiTietPhieuNhapHangService;
 import src.Service.HangHoaService;
 import src.Service.HinhAnhService;
@@ -58,11 +59,18 @@ public class Frame_taoDonNhapHang extends javax.swing.JFrame {
     private NhaCungCapService nhaCungCapService = new NhaCungCapService();
     private ChiTietPhieuNhapHangService chiTietPhieuNhapHangService = new ChiTietPhieuNhapHangService();
     private PhieuNhapHangService phieuNhapHangService = new PhieuNhapHangService();
+    
+    private NhanVien nhanVienDangNhap;
     /**
      * Creates new form frame_ChiTietTraHang
      */
+    
     public Frame_taoDonNhapHang() {
+    }
+
+    public Frame_taoDonNhapHang(NhanVien nhanVien) {
         initComponents();
+        this.nhanVienDangNhap = nhanVien;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         hienThiDanhSachHangHoaKhiDatHang();
         hienThiDanhSachNhaCungCapTaiCombobox(cbDatHang_danhSachKhachHang);
@@ -825,7 +833,7 @@ public class Frame_taoDonNhapHang extends javax.swing.JFrame {
         }
         int tongSoLuong = Integer.parseInt(tfDatHang_soLuong.getText().toString());
         double tongTienHang = Double.parseDouble(tfDatHang_tongTienHang.getText().toString());
-        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachChiTietPhieuNhapHang, nhaCungCap, maPhieuNhapHang, tongSoLuong, tongTienHang, taoDonNhapHangInstance);
+        Frame_ThanhToan frame_thanhToan = new Frame_ThanhToan(danhSachChiTietPhieuNhapHang, nhaCungCap, maPhieuNhapHang, tongSoLuong, tongTienHang, taoDonNhapHangInstance, nhanVienDangNhap);
         frame_thanhToan.setVisible(true);
         frame_thanhToan.setSize(360, 650);
         frame_thanhToan.setLocation(1170,0);
@@ -863,10 +871,10 @@ public class Frame_taoDonNhapHang extends javax.swing.JFrame {
         }
         if (col == 6){
             int soLuong = Integer.parseInt(model.getValueAt(selectedRow, 5).toString().split("\\.")[0]) + 1 ;
-            if (soLuong > Integer.parseInt(model.getValueAt(selectedRow, 2).toString().split("\\.")[0])){
-                soLuong = Integer.parseInt(model.getValueAt(selectedRow, 2).toString().split("\\.")[0]);
-                return;
-            }
+//            if (soLuong > Integer.parseInt(model.getValueAt(selectedRow, 2).toString().split("\\.")[0])){
+//                soLuong = Integer.parseInt(model.getValueAt(selectedRow, 2).toString().split("\\.")[0]);
+//                return;
+//            }
             recordTable.setValueAt(soLuong , selectedRow, col - 1);
             recordTable.setValueAt(soLuong * donGia  , selectedRow, 7);
             tfDatHang_soLuong.setText(String.valueOf(Integer.parseInt(tfDatHang_soLuong.getText()) + 1));

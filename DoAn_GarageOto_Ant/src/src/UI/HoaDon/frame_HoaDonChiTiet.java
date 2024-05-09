@@ -99,6 +99,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
         btnHoaDonChiTiet_hoanTac.setVisible(false);
         tbHoaDonChiTiet_traHang.setVisible(false);
         scrollPaneHoaDonChiTiet_traHang.setVisible(false);
+        checkBoxHoaDonChiTiet_sanPhamLoi.setVisible(false);
     }
     
     private void hienThiDanhSachHoaDonChiTiet(){
@@ -915,6 +916,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
             btnHoaDonChiTiet_traSanPham.setVisible(true);
             tbHoaDonChiTiet_traHang.setVisible(true);
             scrollPaneHoaDonChiTiet_traHang.setVisible(true);
+            checkBoxHoaDonChiTiet_sanPhamLoi.setVisible(true);
             btnHoaDonChiTiet_in.setVisible(false);
             HoaDon hoaDonNew = new HoaDon();
             hoaDonNew.setMaHoaDon(lbHoaDonChiTiet_maHoaDon.getText());
@@ -933,6 +935,7 @@ public class Frame_HoaDonChiTiet extends javax.swing.JFrame {
             btnHoaDonChiTiet_traSanPham.setVisible(false);
             tbHoaDonChiTiet_traHang.setVisible(false);
             scrollPaneHoaDonChiTiet_traHang.setVisible(false);
+            checkBoxHoaDonChiTiet_sanPhamLoi.setVisible(false);
             btnHoaDonChiTiet_in.setVisible(true);
             btnHoaDonChiTiet_capNhat.setText("Cập nhật");
         }

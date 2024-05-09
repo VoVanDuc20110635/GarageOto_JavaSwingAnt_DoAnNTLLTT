@@ -100,7 +100,7 @@ public class PhieuSuaChuaService {
     
     public int capNhatPhieuSuaChua (PhieuSuaChua phieuSuaChua) throws SQLException{ //   
         try{
-           String query = String.format("update phieu_sua_chua set noi_dung_sua_chua = '%s' , set tong_tien = '%s', set trang_thai = '%s', set ma_khach_hang = '%s', set ma_loai_xe = '%s', set ma_nhan_vien = '%s', set thoi_gian = '%s') where ma_phieu_sua_chua = '%s' ", 
+           String query = String.format("update phieu_sua_chua set noi_dung_sua_chua = '%s' , set tong_tien = %s, set trang_thai = '%s', set ma_khach_hang = '%s', set ma_loai_xe = '%s', set ma_nhan_vien = '%s', set thoi_gian = '%s') where ma_phieu_sua_chua = '%s' ", 
                              phieuSuaChua.getNoiDungSuaChua(),
                              String.valueOf(phieuSuaChua.getTongTien()),
                              phieuSuaChua.getTrangThai(),

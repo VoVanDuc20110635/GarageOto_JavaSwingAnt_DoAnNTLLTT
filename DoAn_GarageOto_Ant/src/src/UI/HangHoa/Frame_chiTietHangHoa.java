@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -267,7 +268,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel90 = new javax.swing.JPanel();
         jLabel73 = new javax.swing.JLabel();
         lbChiTietHangHoa_theKho_tongTonKho = new javax.swing.JLabel();
-        btnChiTietHangHoa_theKho_xuatFile = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -786,14 +786,16 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
 
         jPanel39.setBackground(new java.awt.Color(242, 249, 255));
 
+        tbChiTietHangHoa_theKho.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tbChiTietHangHoa_theKho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã thẻ kho", "Phương thức", "Thời gian", "Người thực hiện", "Đối tác", "Giá vốn", "Số lượng", "Tồn cuối"
+                "Mã thẻ kho", "Phương thức", "Thời gian", "Người thực hiện", "Đối tác", "Giá vốn/ Giá bán", "Số lượng"
             }
         ));
+        tbChiTietHangHoa_theKho.setRowHeight(30);
         jScrollPane9.setViewportView(tbChiTietHangHoa_theKho);
 
         jPanel90.setBackground(new java.awt.Color(255, 255, 255));
@@ -825,12 +827,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnChiTietHangHoa_theKho_xuatFile.setBackground(new java.awt.Color(102, 102, 102));
-        btnChiTietHangHoa_theKho_xuatFile.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        btnChiTietHangHoa_theKho_xuatFile.setForeground(new java.awt.Color(255, 255, 255));
-        btnChiTietHangHoa_theKho_xuatFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/exportFile.png"))); // NOI18N
-        btnChiTietHangHoa_theKho_xuatFile.setText("Xuất file");
-
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
         jPanel39Layout.setHorizontalGroup(
@@ -839,9 +835,8 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnChiTietHangHoa_theKho_xuatFile))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 1273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -849,10 +844,8 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jPanel90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnChiTietHangHoa_theKho_xuatFile, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         tabbedPaneChiTietHangHoa_theKho.addTab("Thẻ kho", jPanel39);
@@ -973,6 +966,26 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 index ++;
             }
             
+            TheKho theKho = new TheKho();
+            int soLuongTheKho;
+            try {
+                soLuongTheKho = theKhoService.demSoTheKho() + 1;
+                theKho.setMaTheKho("TK0" + soLuongTheKho + hangHoa.getMaHangHoa());
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            theKho.setGiaVon(hangHoa.getGiaVon());
+            theKho.setPhuongThuc("Cập nhật");
+            theKho.setSoLuong(hangHoa.getTonKho());
+            theKho.setThoiGian(LocalDateTime.now());
+            theKho.setMaHangHoa(hangHoa.getMaHangHoa());
+            theKho.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+            try {
+                theKhoService.themTheKho(theKho);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnChiTietHangHoa_capNhatActionPerformed
 
@@ -986,6 +999,28 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             cbChiTietHangHang_trangThai.setSelectedItem("Ngưng bán");
 //            lbChiTietHangHoa_error.setText("Cập nhật thành công");
 //            panelChiTietHangHoa_error.setBackground(Color.GREEN);
+            TheKho theKho = new TheKho();
+            int soLuongTheKho;
+            try {
+                soLuongTheKho = theKhoService.demSoTheKho() + 1;
+                theKho.setMaTheKho("TK0" + soLuongTheKho + hangHoa.getMaHangHoa());
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            theKho.setGiaVon(hangHoa.getGiaVon());
+            theKho.setPhuongThuc("Ngừng kinh doanh");
+            theKho.setSoLuong(hangHoa.getTonKho());
+            theKho.setSoLuongThucTe(hangHoa.getTonKho());
+            theKho.setThoiGian(LocalDateTime.now());
+            theKho.setTonCuoi(hangHoa.getTonKho());
+            theKho.setMaHangHoa(hangHoa.getMaHangHoa());
+            theKho.setMaNhanVien(nhanVienDangNhap.getMaNhanVien());
+            try {
+                theKhoService.themTheKho(theKho);
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Cập nhật thông tin hàng hóa thành công!");
             
         } catch (SQLException ex) {
@@ -1187,14 +1222,13 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
 
     private void tabbedPaneChiTietHangHoa_theKhoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabbedPaneChiTietHangHoa_theKhoStateChanged
         int tabbedPaneSelected = tabbedPaneChiTietHangHoa_theKho.getSelectedIndex();
-        short tongSoLuong = 0;
+        short tongSoLuong = hangHoa.getTonKho();
         if (tabbedPaneSelected == 1){
             try {
                 danhSachTheKho = theKhoService.hienThiTatCaTheKhoTheoMaHangHoa(hangHoa.getMaHangHoa());
                 DefaultTableModel recordTable = (DefaultTableModel)tbChiTietHangHoa_theKho.getModel();
                 recordTable.setRowCount(0);
                 for (TheKho theKho : danhSachTheKho) {
-                    theKhoService.themTheKho(theKho);
                     Vector columnData = new Vector();
                     columnData.add(theKho.getMaTheKho());
                     columnData.add(theKho.getPhuongThuc());
@@ -1209,8 +1243,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                     
                     columnData.add(theKho.getGiaVon());
                     columnData.add(theKho.getSoLuong());
-                    columnData.add(theKho.getTonCuoi());
-                    tongSoLuong += theKho.getSoLuong();
+                    
                     
                     recordTable.addRow(columnData);
                 }
@@ -1320,7 +1353,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private javax.swing.JButton btnChiTietHangHoa_thayHinh1;
     private javax.swing.JButton btnChiTietHangHoa_thayHinh2;
     private javax.swing.JButton btnChiTietHangHoa_thayHinh3;
-    private javax.swing.JButton btnChiTietHangHoa_theKho_xuatFile;
     private javax.swing.JComboBox<String> cbChiTietHangHang_dichVuLienQuan;
     private javax.swing.JComboBox<String> cbChiTietHangHang_trangThai;
     private javax.swing.JLabel jLabel38;
