@@ -653,6 +653,8 @@ public class Frame_ThemNhanVien extends javax.swing.JFrame {
             nhanVien.setNoLuong(0);
         nhanVien.setDiaChi(tfChiTietNhanVien_diaChi.getText());
         nhanVien.setMaSoThue(tfChiTietNhanVien_maSoThue.getText());
+        nhanVien.setTenTaiKhoan(tfChiTietNhanVien_ma.getText());
+        nhanVien.setMatKhau("");
         try {
             nhanVienService.themNhanVien(nhanVien);
         } catch (SQLException ex) {

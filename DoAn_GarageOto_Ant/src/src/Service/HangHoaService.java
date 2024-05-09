@@ -127,8 +127,8 @@ public class HangHoaService {
     
     public int themHangHoa (HangHoa hangHoaMoi) throws SQLException{ //   
         try{
-           String query = String.format("insert into hang_hoa(ma_hang_hoa, gia_ban, gia_von, khach_dat, ten_hang_hoa, ton_kho, ma_nhom_hang, loai_hang, trang_thai) " +
-                             "values ('%s', %s, %s, %s, '%s', %s, '%s', '%s', %s)",
+           String query = String.format("insert into hang_hoa(ma_hang_hoa, gia_ban, gia_von, khach_dat, ten_hang_hoa, ton_kho, ma_nhom_hang, loai_hang, trang_thai, gia_thay) " +
+                             "values ('%s', %s, %s, %s, '%s', %s, '%s', '%s', %s, %s)",
                              hangHoaMoi.getMaHangHoa(), 
                              String.valueOf(hangHoaMoi.getGiaBan()),
                              String.valueOf(hangHoaMoi.getGiaVon()),
@@ -137,7 +137,8 @@ public class HangHoaService {
                              String.valueOf(hangHoaMoi.getTonKho()),
                              hangHoaMoi.getMaNhomHang(),
                              hangHoaMoi.getLoaiHang(),
-                             0);
+                             0,
+                             hangHoaMoi.getGiaThay());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();
             return 1;
@@ -161,13 +162,14 @@ public class HangHoaService {
     public int updateHangHoa (HangHoa hangHoa) throws SQLException{ //   
         try{
            String query = String.format("update hang_hoa set ten_hang_hoa='%s', ma_nhom_hang='%s', "
-                   + "loai_hang='%s', gia_ban=%s , gia_von=%s, trang_thai=%s where ma_hang_hoa='%s'",
+                   + "loai_hang='%s', gia_ban=%s , gia_von=%s, trang_thai=%s, gia_thay = %s where ma_hang_hoa='%s'",
                              hangHoa.getTenHangHoa(),
                              hangHoa.getMaNhomHang(),
                              hangHoa.getLoaiHang(),
                              hangHoa.getGiaBan(),
                              hangHoa.getGiaVon(),
                              hangHoa.getTrangThai(),
+                             hangHoa.getGiaThay(),
                              hangHoa.getMaHangHoa());
             connectorDB.executeUpdateQueryConnectorDB(query);
             connectorDB.closeConnection();

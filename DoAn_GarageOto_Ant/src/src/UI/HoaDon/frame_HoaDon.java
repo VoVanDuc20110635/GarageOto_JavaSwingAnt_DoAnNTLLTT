@@ -647,7 +647,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
                 return;
             }
         WritePDF writePDF = new WritePDF();
-        if (lbHoadon_tenLable.getText().toString().equals("khách")){
+        if (lbHoadon_tenLable.getText().toString().contains("khách")){
             HoaDon hoaDon = new HoaDon();
             try {
                 hoaDon = hoaDonService.hienThiHoaDonTheoMaHoadon(this.maHoaDon);
@@ -673,7 +673,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Bạn không có quyền gửi hóa đơn qua Email!");
                 return;
             }
-        if (lbHoadon_tenLable.getText().toString().equals("khách")){
+        if (lbHoadon_tenLable.getText().toString().contains("khách")){
             String to = "2k2lmhtlol@gmail.com";
 
             // Sender's email ID needs to be mentioned

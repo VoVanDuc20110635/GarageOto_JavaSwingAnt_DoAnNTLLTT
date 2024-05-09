@@ -142,4 +142,16 @@ public class HinhAnhService {
             return 0;
         }
     }
+    
+    public int deleteAllHinhAnh (String maHangHoa) throws SQLException{ //   
+        try{
+           String query = String.format("delete from hinh_anh where ma_hang_hoa='%s'",
+                             maHangHoa);
+            connectorDB.executeUpdateQueryConnectorDB(query);
+            connectorDB.closeConnection();
+            return 1;
+        } catch (Exception err){
+            return 0;
+        }
+    }
 }

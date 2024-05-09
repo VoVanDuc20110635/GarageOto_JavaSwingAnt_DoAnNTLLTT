@@ -130,6 +130,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         tfChiTietHangHang_tonKho.setText(String.valueOf(hangHoa.getTonKho()));
         tfChiTietHangHang_loaiHang.setText(String.valueOf(hangHoa.getLoaiHang()));
         tfChiTietHangHang_khachDat.setText(String.valueOf(hangHoa.getKhachDat()));
+        tfChiTietHangHang_giaThay.setText(String.valueOf(hangHoa.getGiaThay()));
         if (hangHoa.getTrangThai() == 1){
             cbChiTietHangHang_trangThai.setSelectedItem("Còn bán");
         }
@@ -144,15 +145,20 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         }
         hienThiHanhAnh(danhSachLinkHinhAnh);
         lbChiTietHangHang_hinhAnh0.setIcon(null);
-        File file = new File(danhSachLinkHinhAnh.get(0));
-        BufferedImage originalImage = ImageIO.read(file);
-        Image scaledImage = originalImage.getScaledInstance(284, 284, Image.SCALE_SMOOTH);
-        ImageIcon icon = new ImageIcon(scaledImage);
-        lbChiTietHangHang_hinhAnh0.setIcon(icon);
+        try{
+            File file = new File(danhSachLinkHinhAnh.get(0));
+            BufferedImage originalImage = ImageIO.read(file);
+            Image scaledImage = originalImage.getScaledInstance(284, 284, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(scaledImage);
+            lbChiTietHangHang_hinhAnh0.setIcon(icon);
+
+            btnChiTietHangHoa_thayHinh1.setVisible(false);
+            btnChiTietHangHoa_thayHinh2.setVisible(false);
+            btnChiTietHangHoa_thayHinh3.setVisible(false);
+        } catch (Exception err){
+            
+        }
         
-        btnChiTietHangHoa_thayHinh1.setVisible(false);
-        btnChiTietHangHoa_thayHinh2.setVisible(false);
-        btnChiTietHangHoa_thayHinh3.setVisible(false);
     }
     
     private void hienThiHanhAnh(List<String> danhSachLinkHinhAnh){
@@ -249,6 +255,9 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         btnChiTietHangHoa_capNhat = new javax.swing.JButton();
         panelChiTietHangHoa_error = new javax.swing.JPanel();
         lbChiTietHangHoa_error = new javax.swing.JLabel();
+        jPanel61 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        tfChiTietHangHang_giaThay = new javax.swing.JTextField();
         btnChiTietHangHoa_thayHinh3 = new javax.swing.JButton();
         btnChiTietHangHoa_thayHinh1 = new javax.swing.JButton();
         btnChiTietHangHoa_thayHinh2 = new javax.swing.JButton();
@@ -266,6 +275,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabbedPaneChiTietHangHoa_theKho.setBackground(new java.awt.Color(242, 249, 255));
+        tabbedPaneChiTietHangHoa_theKho.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tabbedPaneChiTietHangHoa_theKho.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 tabbedPaneChiTietHangHoa_theKhoStateChanged(evt);
@@ -342,7 +352,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel38.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel38.setText("Khách đặt:");
 
-        tfChiTietHangHang_khachDat.setBackground(null);
         tfChiTietHangHang_khachDat.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_khachDat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_khachDat.setEnabled(false);
@@ -373,7 +382,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel42.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 380, 30));
+        jPanel42.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 380, 30));
 
         jPanel52.setBackground(new java.awt.Color(255, 255, 255));
         jPanel52.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -381,7 +390,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel40.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel40.setText("Dịch vụ liên quan:");
 
-        cbChiTietHangHang_dichVuLienQuan.setBackground(null);
         cbChiTietHangHang_dichVuLienQuan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cbChiTietHangHang_dichVuLienQuan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         cbChiTietHangHang_dichVuLienQuan.setEnabled(false);
@@ -415,7 +423,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel41.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel41.setText("Tên hàng hóa:");
 
-        tfChiTietHangHang_tenHangHoa.setBackground(null);
         tfChiTietHangHang_tenHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_tenHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_tenHangHoa.setEnabled(false);
@@ -449,7 +456,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel42.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel42.setText("Loại hàng:");
 
-        tfChiTietHangHang_loaiHang.setBackground(null);
         tfChiTietHangHang_loaiHang.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_loaiHang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_loaiHang.setEnabled(false);
@@ -483,7 +489,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel45.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel45.setText("Giá bán:");
 
-        tfChiTietHangHang_giaBan.setBackground(null);
         tfChiTietHangHang_giaBan.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_giaBan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_giaBan.setEnabled(false);
@@ -522,7 +527,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel46.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel46.setText("Giá vốn:");
 
-        tfChiTietHangHang_giaVon.setBackground(null);
         tfChiTietHangHang_giaVon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_giaVon.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_giaVon.setEnabled(false);
@@ -553,7 +557,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel42.add(jPanel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 380, 30));
+        jPanel42.add(jPanel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 380, 30));
 
         jPanel59.setBackground(new java.awt.Color(255, 255, 255));
         jPanel59.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -561,7 +565,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel47.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel47.setText("Tồn kho:");
 
-        tfChiTietHangHang_tonKho.setBackground(null);
         tfChiTietHangHang_tonKho.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_tonKho.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_tonKho.setEnabled(false);
@@ -592,7 +595,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel42.add(jPanel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 380, 30));
+        jPanel42.add(jPanel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 380, 30));
 
         jPanel60.setBackground(new java.awt.Color(255, 255, 255));
         jPanel60.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -600,7 +603,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel48.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel48.setText("Mã hàng:");
 
-        tfChiTietHangHang_maHangHoa.setBackground(null);
         tfChiTietHangHang_maHangHoa.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         tfChiTietHangHang_maHangHoa.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         tfChiTietHangHang_maHangHoa.setEnabled(false);
@@ -656,7 +658,6 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         jLabel43.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel43.setText("Trạng thái:");
 
-        cbChiTietHangHang_trangThai.setBackground(null);
         cbChiTietHangHang_trangThai.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         cbChiTietHangHang_trangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn bán", "Ngưng bán" }));
         cbChiTietHangHang_trangThai.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -716,6 +717,44 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         lbChiTietHangHoa_error.setForeground(new java.awt.Color(255, 255, 255));
         lbChiTietHangHoa_error.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jPanel42.add(lbChiTietHangHoa_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 350, 30));
+
+        jPanel61.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel61.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+
+        jLabel49.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jLabel49.setText("Giá thay:");
+
+        tfChiTietHangHang_giaThay.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        tfChiTietHangHang_giaThay.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfChiTietHangHang_giaThay.setEnabled(false);
+        tfChiTietHangHang_giaThay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfChiTietHangHang_giaThayActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel61Layout = new javax.swing.GroupLayout(jPanel61);
+        jPanel61.setLayout(jPanel61Layout);
+        jPanel61Layout.setHorizontalGroup(
+            jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel61Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfChiTietHangHang_giaThay, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel61Layout.setVerticalGroup(
+            jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel61Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel61Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(tfChiTietHangHang_giaThay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel42.add(jPanel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 380, 30));
 
         jPanel38.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 870, 440));
 
@@ -871,7 +910,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             tfChiTietHangHang_loaiHang.setEnabled(true);
 //            tfChiTietHangHang_khachDat.setEnabled(true);
             cbChiTietHangHang_trangThai.setEnabled(true);
-            
+            tfChiTietHangHang_giaThay.setEnabled(true);
             btnChiTietHangHoa_capNhat.setText("Lưu");
             btnChiTietHangHoa_thayHinh1.setVisible(true);
             btnChiTietHangHoa_thayHinh2.setVisible(true);
@@ -886,6 +925,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             hangHoaNew.setTonKho(Short.parseShort(tfChiTietHangHang_tonKho.getText()));
             hangHoaNew.setLoaiHang(tfChiTietHangHang_loaiHang.getText());
             hangHoaNew.setKhachDat(Short.parseShort( tfChiTietHangHang_khachDat.getText()));
+            hangHoaNew.setGiaThay(Double.parseDouble(tfChiTietHangHang_giaThay.getText()));
             if (cbChiTietHangHang_trangThai.getSelectedItem().equals("Còn bán")){
                 hangHoaNew.setTrangThai(1);
             } else {
@@ -893,11 +933,9 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             }
             try {
                 hangHoaService.updateHangHoa(hangHoaNew);
-                lbChiTietHangHoa_error.setText("Cập nhật thành công");
-                panelChiTietHangHoa_error.setBackground(Color.GREEN);
+                JOptionPane.showMessageDialog(this, "Cập nhật thông tin hàng hóa thành công!");
             } catch (SQLException ex) {
-                lbChiTietHangHoa_error.setText("Cập nhật không thành công");
-                panelChiTietHangHoa_error.setBackground(Color.RED);
+                JOptionPane.showMessageDialog(this, "Cập nhật thông tin hàng hóa không thành công!");
             }
             btnChiTietHangHoa_capNhat.setText("Cập nhật");
             tfChiTietHangHang_maHangHoa.setEnabled(false);
@@ -909,25 +947,32 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             tfChiTietHangHang_tonKho.setEnabled(false);
             tfChiTietHangHang_loaiHang.setEnabled(false);
             tfChiTietHangHang_khachDat.setEnabled(false);
+            tfChiTietHangHang_giaThay.setEnabled(false);
             cbChiTietHangHang_trangThai.setEnabled(false);
             btnChiTietHangHoa_thayHinh1.setVisible(false);
             btnChiTietHangHoa_thayHinh2.setVisible(false);
             btnChiTietHangHoa_thayHinh3.setVisible(false);
             
             int index = 0;
+            try {
+                hinhAnhService.deleteAllHinhAnh(tfChiTietHangHang_maHangHoa.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
             for (HinhAnh hinhAnh : danhSachHinhAnh){
-                if (!danhSachLinkMoiHinhAnh.get(index).equals("")){
-                    deleteImage(danhSachLinkHinhAnh.get(index));
-                }
+//                if (!danhSachLinkMoiHinhAnh.get(index).equals("")){
+//                    deleteImage(danhSachLinkHinhAnh.get(index));
+//                }
                 
                 saveImage(danhSachLinkMoiHinhAnh.get(index), destinationFolderPath);
                 try {
-                    hinhAnhService.updateHinhAnh(hinhAnh);
+                    hinhAnhService.themHinhAnh(hinhAnh);
                 } catch (SQLException ex) {
                     Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 index ++;
             }
+            
         }
     }//GEN-LAST:event_btnChiTietHangHoa_capNhatActionPerformed
 
@@ -939,13 +984,14 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
         try {
             hangHoaService.updateTrangThaiHangHoa(tfChiTietHangHang_maHangHoa.getText(), 0);
             cbChiTietHangHang_trangThai.setSelectedItem("Ngưng bán");
-            lbChiTietHangHoa_error.setText("Cập nhật thành công");
-            panelChiTietHangHoa_error.setBackground(Color.GREEN);
-            
+//            lbChiTietHangHoa_error.setText("Cập nhật thành công");
+//            panelChiTietHangHoa_error.setBackground(Color.GREEN);
+            JOptionPane.showMessageDialog(this, "Cập nhật thông tin hàng hóa thành công!");
             
         } catch (SQLException ex) {
-            lbChiTietHangHoa_error.setText("Cập nhật không thành công");
-            panelChiTietHangHoa_error.setBackground(Color.RED);
+//            lbChiTietHangHoa_error.setText("Cập nhật không thành công");
+//            panelChiTietHangHoa_error.setBackground(Color.RED);
+            JOptionPane.showMessageDialog(this, "Cập nhật thông tin hàng hóa không thành công!");
         }
     }//GEN-LAST:event_btnChiTietHangHoa_ngungKinhDoanhActionPerformed
 
@@ -990,49 +1036,152 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
 
     private void btnChiTietHangHoa_thayHinh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietHangHoa_thayHinh1ActionPerformed
         try {
-            String linkHinhAnh = layTenFile();
-            String[] parts = linkHinhAnh.split("\\\\");
-            danhSachHinhAnh.get(0).setTenHinh(parts[parts.length - 1]);
-            danhSachLinkMoiHinhAnh.set(0, linkHinhAnh);
-            File file = new File(linkHinhAnh);
-            BufferedImage originalImage = ImageIO.read(file);
-            Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(scaledImage);
-            lbChiTietHinhAnh_hinhAnh1.setIcon(icon);
+            if (danhSachHinhAnh.size() > 0){
+                String linkHinhAnh = layTenFile();
+                String[] parts = linkHinhAnh.split("\\\\");
+                danhSachHinhAnh.get(0).setTenHinh(parts[parts.length - 1]);
+                danhSachLinkMoiHinhAnh.set(0, linkHinhAnh);
+                File file = new File(linkHinhAnh);
+                BufferedImage originalImage = ImageIO.read(file);
+                Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(scaledImage);
+                lbChiTietHinhAnh_hinhAnh1.setIcon(icon);
+            } else {
+                try {
+                    String linkHinhAnh = layTenFile();
+                    String[] parts = linkHinhAnh.split("\\\\");
+                    HinhAnh hinhAnh = new HinhAnh();
+
+
+                    int temp = 0;
+                    try {
+                        temp = hinhAnhService.demSoHinhAnh() + 1;
+                    } catch (SQLException ex1) {
+                        Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                    hinhAnh.setMaHinhAnh("HA0"+ temp);
+
+                    hinhAnh.setNoiDung(hangHoa.getTenHangHoa());
+                    hinhAnh.setTenHinh(parts[parts.length - 1]);
+                    hinhAnh.setMaHangHoa(hangHoa.getMaHangHoa());
+
+
+                    danhSachHinhAnh.add(hinhAnh);
+                    danhSachLinkMoiHinhAnh.add(linkHinhAnh);
+                    danhSachLinkHinhAnh.add(linkHinhAnh);
+                    File file = new File(linkHinhAnh);
+                    BufferedImage originalImage = ImageIO.read(file);
+                    Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
+                    ImageIcon icon = new ImageIcon(scaledImage);
+                    lbChiTietHinhAnh_hinhAnh1.setIcon(icon);
+                } catch (IOException ex1) {
+                    Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            }
+            
         } catch (IOException ex) {
-            Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }//GEN-LAST:event_btnChiTietHangHoa_thayHinh1ActionPerformed
 
     private void btnChiTietHangHoa_thayHinh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietHangHoa_thayHinh2ActionPerformed
         try {
-            String linkHinhAnh = layTenFile();
-            String[] parts = linkHinhAnh.split("\\\\");
-            danhSachHinhAnh.get(1).setTenHinh(parts[parts.length - 1]);
-            danhSachLinkMoiHinhAnh.set(1, linkHinhAnh);
-            File file = new File(linkHinhAnh);
-            BufferedImage originalImage = ImageIO.read(file);
-            Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(scaledImage);
-            lbChiTietHinhAnh_hinhAnh2.setIcon(icon);
+            if (danhSachHinhAnh.size() > 1){
+                String linkHinhAnh = layTenFile();
+                String[] parts = linkHinhAnh.split("\\\\");
+                danhSachHinhAnh.get(1).setTenHinh(parts[parts.length - 1]);
+                danhSachLinkMoiHinhAnh.set(1, linkHinhAnh);
+                File file = new File(linkHinhAnh);
+                BufferedImage originalImage = ImageIO.read(file);
+                Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(scaledImage);
+                lbChiTietHinhAnh_hinhAnh2.setIcon(icon);
+            } else {
+                try {
+                    String linkHinhAnh = layTenFile();
+                    String[] parts = linkHinhAnh.split("\\\\");
+                    HinhAnh hinhAnh = new HinhAnh();
+                    
+                    
+                    int temp = 0;
+                    try {
+                        temp = hinhAnhService.demSoHinhAnh() + 2;
+                    } catch (SQLException ex1) {
+                        Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                    hinhAnh.setMaHinhAnh("HA0"+ temp);
+                    
+                    hinhAnh.setNoiDung(hangHoa.getTenHangHoa());
+                    hinhAnh.setTenHinh(parts[parts.length - 1]);
+                    hinhAnh.setMaHangHoa(hangHoa.getMaHangHoa());
+                    
+                    
+                    danhSachHinhAnh.add(hinhAnh);
+                    danhSachLinkMoiHinhAnh.add(linkHinhAnh);
+                    danhSachLinkHinhAnh.add(linkHinhAnh);
+                    File file = new File(linkHinhAnh);
+                    BufferedImage originalImage = ImageIO.read(file);
+                    Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
+                    ImageIcon icon = new ImageIcon(scaledImage);
+                    lbChiTietHinhAnh_hinhAnh2.setIcon(icon);
+                } catch (IOException ex1) {
+                    Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            }
+            
+            
         } catch (IOException ex) {
-            Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+                
         }
     }//GEN-LAST:event_btnChiTietHangHoa_thayHinh2ActionPerformed
 
     private void btnChiTietHangHoa_thayHinh3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietHangHoa_thayHinh3ActionPerformed
         try {
-            String linkHinhAnh = layTenFile();
-            String[] parts = linkHinhAnh.split("\\\\");
-            danhSachHinhAnh.get(2).setTenHinh(parts[parts.length - 1]);
-            danhSachLinkMoiHinhAnh.set(2, linkHinhAnh);
-            File file = new File(linkHinhAnh);
-            BufferedImage originalImage = ImageIO.read(file);
-            Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(scaledImage);
-            lbChiTietHinhAnh_hinhAnh3.setIcon(icon);
+            if (danhSachHinhAnh.size() > 2){
+                String linkHinhAnh = layTenFile();
+                String[] parts = linkHinhAnh.split("\\\\");
+                danhSachHinhAnh.get(2).setTenHinh(parts[parts.length - 1]);
+                danhSachLinkMoiHinhAnh.set(2, linkHinhAnh);
+                File file = new File(linkHinhAnh);
+                BufferedImage originalImage = ImageIO.read(file);
+                Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(scaledImage);
+                lbChiTietHinhAnh_hinhAnh3.setIcon(icon);
+            } else {
+                try {
+                    String linkHinhAnh = layTenFile();
+                    String[] parts = linkHinhAnh.split("\\\\");
+                    HinhAnh hinhAnh = new HinhAnh();
+                    
+                    
+                    int temp = 0;
+                    try {
+                        temp = hinhAnhService.demSoHinhAnh() + 3;
+                    } catch (SQLException ex1) {
+                        Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                    hinhAnh.setMaHinhAnh("HA0"+ temp);
+                    
+                    hinhAnh.setNoiDung(hangHoa.getTenHangHoa());
+                    hinhAnh.setTenHinh(parts[parts.length - 1]);
+                    hinhAnh.setMaHangHoa(hangHoa.getMaHangHoa());
+                    
+                    
+                    danhSachHinhAnh.add(hinhAnh);
+                    danhSachLinkMoiHinhAnh.add(linkHinhAnh);
+                    danhSachLinkHinhAnh.add(linkHinhAnh);
+                    File file = new File(linkHinhAnh);
+                    BufferedImage originalImage = ImageIO.read(file);
+                    Image scaledImage = originalImage.getScaledInstance(88, 67, Image.SCALE_SMOOTH);
+                    ImageIcon icon = new ImageIcon(scaledImage);
+                    lbChiTietHinhAnh_hinhAnh3.setIcon(icon);
+                } catch (IOException ex1) {
+                    Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            }
+            
         } catch (IOException ex) {
-            Logger.getLogger(Frame_chiTietHangHoa.class.getName()).log(Level.SEVERE, null, ex);
+                
         }
     }//GEN-LAST:event_btnChiTietHangHoa_thayHinh3ActionPerformed
 
@@ -1071,6 +1220,10 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tabbedPaneChiTietHangHoa_theKhoStateChanged
+
+    private void tfChiTietHangHang_giaThayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfChiTietHangHang_giaThayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfChiTietHangHang_giaThayActionPerformed
 
     private String layTenFile(){
         JFileChooser chooser = new JFileChooser();
@@ -1179,6 +1332,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
@@ -1195,6 +1349,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel59;
     private javax.swing.JPanel jPanel60;
+    private javax.swing.JPanel jPanel61;
     private javax.swing.JPanel jPanel90;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lbChiTietHangHang_hinhAnh0;
@@ -1208,6 +1363,7 @@ public class Frame_chiTietHangHoa extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedPaneChiTietHangHoa_theKho;
     private javax.swing.JTable tbChiTietHangHoa_theKho;
     private javax.swing.JTextField tfChiTietHangHang_giaBan;
+    private javax.swing.JTextField tfChiTietHangHang_giaThay;
     private javax.swing.JTextField tfChiTietHangHang_giaVon;
     private javax.swing.JTextField tfChiTietHangHang_khachDat;
     private javax.swing.JTextField tfChiTietHangHang_loaiHang;
