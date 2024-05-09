@@ -788,7 +788,7 @@ public class DoanhThuService {
     
     public int tongSoNhanVienTrongTrongThangNhatDinh ( int thang, int nam) throws SQLException{ //
         String query = String.format("select count(ma_nhan_vien) as so_nhan_vien from nhan_vien where YEAR(ngay_bat_dau_lam_viec) < %s OR (YEAR(ngay_bat_dau_lam_viec) = %s AND MONTH(ngay_bat_dau_lam_viec) <= %s);",
-                             String.valueOf(thang), String.valueOf(nam));
+                             String.valueOf(nam), String.valueOf(nam),String.valueOf(thang) );
         ResultSet resultTable = connectorDB.executeQueryConnectorDB(query);
         ResultSetMetaData resultSetMetaData = resultTable.getMetaData();
         int tongSoNhanVien = 0;

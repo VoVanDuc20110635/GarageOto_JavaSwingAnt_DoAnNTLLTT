@@ -257,10 +257,6 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         cbHangHoa_loaiHang = new javax.swing.JComboBox<>();
         cbHangHoa_loaiHangDaChon = new javax.swing.JComboBox<>();
-        jPanel30 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        cbHangHoa_loaiXe = new javax.swing.JComboBox<>();
-        cbHangHoa_loaiXeDaChon = new javax.swing.JComboBox<>();
         jPanel31 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         radioBtnHangHoa_conHangTrongKho = new javax.swing.JRadioButton();
@@ -296,6 +292,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnDatHang_themKhachHang = new javax.swing.JButton();
         btnDatHang_timKhachHang = new javax.swing.JButton();
         cbDatHang_danhSachKhachHang = new javax.swing.JComboBox<>();
+        btnDatHang_loadLaiKhachHang = new javax.swing.JButton();
         btnDatHang_datHang = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         tbDatHang_danhSachHangHoaDaChon = new javax.swing.JTable();
@@ -355,7 +352,7 @@ public class TrangChu extends javax.swing.JFrame {
         tare_noiDungSuaChua = new javax.swing.JTextArea();
         jPanel69 = new javax.swing.JPanel();
         jLabel56 = new javax.swing.JLabel();
-        cb_loaiXe = new javax.swing.JComboBox<>();
+        tfSuaChua_loaiXe = new javax.swing.JTextField();
         jPanel68 = new javax.swing.JPanel();
         cb_phuTungCanThay = new javax.swing.JComboBox<>();
         cbSuaChua_phuTungDaChon = new javax.swing.JComboBox<>();
@@ -370,6 +367,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnSuaChua_themKhachHang = new javax.swing.JButton();
         btnSuaChua_timKhachHang = new javax.swing.JButton();
         cbSuaChua_danhSachKhachHang = new javax.swing.JComboBox<>();
+        btnDatHang_loadLaiKhachHang1 = new javax.swing.JButton();
         jPanel38 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         lbSuaChua_tongTien = new javax.swing.JLabel();
@@ -822,50 +820,6 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap(131, Short.MAX_VALUE))
         );
 
-        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel9.setText("Loại xe");
-
-        cbHangHoa_loaiXe.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        cbHangHoa_loaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbHangHoa_loaiXe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbHangHoa_loaiXeActionPerformed(evt);
-            }
-        });
-
-        cbHangHoa_loaiXeDaChon.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        cbHangHoa_loaiXeDaChon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbHangHoa_loaiXeDaChonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(cbHangHoa_loaiXe, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbHangHoa_loaiXeDaChon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbHangHoa_loaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbHangHoa_loaiXeDaChon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
-        );
-
         jPanel31.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel17.setText("Tồn kho");
@@ -1023,7 +977,6 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHangHoa_timKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHangHoa_taiLai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1060,9 +1013,8 @@ public class TrangChu extends javax.swing.JFrame {
                         .addGap(15, 15, 15)
                         .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(251, 251, 251))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -1232,7 +1184,7 @@ public class TrangChu extends javax.swing.JFrame {
                 btnDatHang_themKhachHangActionPerformed(evt);
             }
         });
-        jPanel107.add(btnDatHang_themKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 20, 20));
+        jPanel107.add(btnDatHang_themKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 20, 20));
 
         btnDatHang_timKhachHang.setBackground(new java.awt.Color(0, 102, 255));
         btnDatHang_timKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -1253,6 +1205,15 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
         jPanel107.add(cbDatHang_danhSachKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 300, -1));
+
+        btnDatHang_loadLaiKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/return2.png"))); // NOI18N
+        btnDatHang_loadLaiKhachHang.setBorder(null);
+        btnDatHang_loadLaiKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatHang_loadLaiKhachHangActionPerformed(evt);
+            }
+        });
+        jPanel107.add(btnDatHang_loadLaiKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 20, 20));
 
         jPanel106.add(jPanel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 760, 40));
 
@@ -1733,11 +1694,11 @@ public class TrangChu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Khách hàng", "Số điện thoại", "Loại xe", "Nội dung sửa chữa", "Nhân viên", "Tổng tiền", "Trạng thái", "Mã phiếu"
+                "Khách hàng", "Số điện thoại", "Loại xe", "Nội dung sửa chữa", "Nhân viên", "Tổng tiền", "Mã phiếu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1876,8 +1837,7 @@ public class TrangChu extends javax.swing.JFrame {
         jLabel56.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel56.setText("Loại xe:");
 
-        cb_loaiXe.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        cb_loaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Toyota", "Item 2", "Item 3", "Item 4" }));
+        tfSuaChua_loaiXe.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel69Layout = new javax.swing.GroupLayout(jPanel69);
         jPanel69.setLayout(jPanel69Layout);
@@ -1886,8 +1846,8 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jPanel69Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel56)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(cb_loaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(tfSuaChua_loaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel69Layout.setVerticalGroup(
@@ -1896,7 +1856,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel69Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel56)
-                    .addComponent(cb_loaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfSuaChua_loaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -2006,7 +1966,7 @@ public class TrangChu extends javax.swing.JFrame {
                 btnSuaChua_themKhachHangActionPerformed(evt);
             }
         });
-        jPanel109.add(btnSuaChua_themKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 20, 20));
+        jPanel109.add(btnSuaChua_themKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 20, 20));
 
         btnSuaChua_timKhachHang.setBackground(new java.awt.Color(0, 102, 255));
         btnSuaChua_timKhachHang.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -2027,6 +1987,15 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
         jPanel109.add(cbSuaChua_danhSachKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 300, -1));
+
+        btnDatHang_loadLaiKhachHang1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/return2.png"))); // NOI18N
+        btnDatHang_loadLaiKhachHang1.setBorder(null);
+        btnDatHang_loadLaiKhachHang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatHang_loadLaiKhachHang1ActionPerformed(evt);
+            }
+        });
+        jPanel109.add(btnDatHang_loadLaiKhachHang1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 20, 20));
 
         jPanel6.add(jPanel109, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 380, 90));
 
@@ -5275,7 +5244,6 @@ public class TrangChu extends javax.swing.JFrame {
         btnTaiLai.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         btnTaiLai.setForeground(new java.awt.Color(255, 255, 255));
         btnTaiLai.setText("Tải lại");
-        btnTaiLai.setActionCommand("Tải lại");
         btnTaiLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaiLaiActionPerformed(evt);
@@ -5287,7 +5255,7 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel51Layout.setHorizontalGroup(
             jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel51Layout.createSequentialGroup()
-                .addContainerGap(1127, Short.MAX_VALUE)
+                .addContainerGap(1130, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -5324,7 +5292,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHangHoa_themActionPerformed
 
     private void btnDatHang_themKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_themKhachHangActionPerformed
-        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang();
+        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang(nhanVienDangNhap);
         frame_themKhachHang.setVisible(true);
         frame_themKhachHang.setSize(950, 400);
         frame_themKhachHang.setLocation(0,0);
@@ -5384,10 +5352,6 @@ public class TrangChu extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 System.out.println("Loi hien thi combobox loai xe");
             }
-            cb_loaiXe.removeAllItems();
-            for (LoaiXe loaiXe : danhSachLoaiXe) {
-                cb_loaiXe.addItem(loaiXe.getMaLoaiXe() + " " + loaiXe.getTenLoaiXe());
-            }
             
             List<NhanVien> danhSachNhanVien = new ArrayList<>();
             try {
@@ -5418,11 +5382,11 @@ public class TrangChu extends javax.swing.JFrame {
             hienThiDanhSachKhachHangTaiCombobox(cbSuaChua_danhSachKhachHang);
             lbSuaChua_tongTien.setText("0");
             TableColumnModel columnModel = tb_danhSachPhieuSuaChua.getColumnModel();
-            TableColumn columnMaPhieuSuaChua = columnModel.getColumn(7);
+            TableColumn columnMaPhieuSuaChua = columnModel.getColumn(6);
             columnMaPhieuSuaChua.setMaxWidth(0);
             columnMaPhieuSuaChua.setMinWidth(0);
             
-            cbSuaChua_phuTungDaChon.setEnabled(false);
+//            cbSuaChua_phuTungDaChon.setEnabled(false);
             btnSuaChua_timKhachHang.setVisible(false);
             btnSuaChua_timPhuTung.setVisible(false);
             cb_phuTungCanThay.setEnabled(false);
@@ -5454,7 +5418,7 @@ public class TrangChu extends javax.swing.JFrame {
         int index = tb_danhSachPhieuSuaChua.getSelectedRow();
         TableModel model = tb_danhSachPhieuSuaChua.getModel();
         lbSuaChua_soDienThoai.setText(model.getValueAt(index, 1).toString());
-        cb_loaiXe.setSelectedItem(model.getValueAt(index, 2).toString());
+        tfSuaChua_loaiXe.setText(model.getValueAt(index, 2).toString());
         tare_noiDungSuaChua.setText(model.getValueAt(index, 3).toString());
 //        cb_phuTungCanThay.setSelectedItem(model.getValueAt(index, 4).toString());
 //        cb_nhanVienSuaChua.setSelectedItem(model.getValueAt(index, 4).toString());
@@ -5464,17 +5428,12 @@ public class TrangChu extends javax.swing.JFrame {
                 break;
             }
         }
-        for (int i =0; i< cb_loaiXe.getItemCount(); i++){
-            if (cb_loaiXe.getItemAt(i).toString().contains(model.getValueAt(index, 2).toString())){
-                cb_loaiXe.setSelectedIndex(i);
-                break;
-            }
-        } 
+
         cbSuaChua_danhSachKhachHang.setSelectedIndex(0);
         tfSuaChua_tenKhachHang.setText(model.getValueAt(index, 0).toString());
         lbSuaChua_tongTien.setText(model.getValueAt(index, 5).toString());
         try {
-            List<HangHoa> danhSachPhuTung = phieuSuaChuaService.hienThiTatCaPhuTungTheoMaPhieuSuaChua(model.getValueAt(index, 7).toString());
+            List<HangHoa> danhSachPhuTung = phieuSuaChuaService.hienThiTatCaPhuTungTheoMaPhieuSuaChua(model.getValueAt(index, 6).toString());
             actionPerformedPhuTungDaChonEnabled = false;
             cbSuaChua_phuTungDaChon.removeAllItems();
             actionPerformedPhuTungDaChonEnabled = true;
@@ -5855,6 +5814,9 @@ public class TrangChu extends javax.swing.JFrame {
                     }
                 }
             }
+            if (!radioBtnHangHoa_hetHangTrongKho.isSelected() && !radioBtnHangHoa_conHangTrongKho.isSelected()){
+                danhSachHangHoaTonKho = danhSachHangHoa;
+            }
             hienThiDanhSachHangHoa(danhSachHangHoaTonKho);
         } catch (SQLException ex) {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -5897,19 +5859,6 @@ public class TrangChu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cbHangHoa_loaiHangDaChonActionPerformed
 
-    private void cbHangHoa_loaiXeDaChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHangHoa_loaiXeDaChonActionPerformed
-        if (actionPerformedEnabledLoaiXe) {
-            
-            for (int i =0; i< inputs.size(); i++){
-                if (inputs.get(i).equals(cbHangHoa_loaiXeDaChon.getSelectedItem())){
-                    inputs.remove(i);
-                    cbHangHoa_loaiXeDaChon.removeItem(cbHangHoa_loaiXeDaChon.getSelectedItem());
-                    return;
-                }
-            }
-        }
-    }//GEN-LAST:event_cbHangHoa_loaiXeDaChonActionPerformed
-
     private void cbHangHoa_loaiHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHangHoa_loaiHangActionPerformed
         if (String.valueOf(cbHangHoa_loaiHang.getSelectedItem()).equals("null") || String.valueOf(cbHangHoa_loaiHang.getSelectedItem()).equals("Chọn loại hàng")){
             return;
@@ -5921,19 +5870,6 @@ public class TrangChu extends javax.swing.JFrame {
             actionPerformedEnabled = true;
         }
     }//GEN-LAST:event_cbHangHoa_loaiHangActionPerformed
-
-    private void cbHangHoa_loaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHangHoa_loaiXeActionPerformed
-        if (String.valueOf(cbHangHoa_loaiXe.getSelectedItem()).equals("null") || String.valueOf(cbHangHoa_loaiXe.getSelectedItem()).equals("Chọn loại xe")){
-            return;
-        } else {
-            if (inputs.contains(String.valueOf(cbHangHoa_loaiXe.getSelectedItem())) == false){
-                inputs.add(String.valueOf(cbHangHoa_loaiXe.getSelectedItem()));
-                actionPerformedEnabledLoaiXe = false;
-                cbHangHoa_loaiXeDaChon.addItem(String.valueOf(cbHangHoa_loaiXe.getSelectedItem()));
-                actionPerformedEnabledLoaiXe = true;
-            }
-        }
-    }//GEN-LAST:event_cbHangHoa_loaiXeActionPerformed
 
     private void tfHangHoa_timTheoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfHangHoa_timTheoTenActionPerformed
         // TODO add your handling code here:
@@ -6332,7 +6268,7 @@ public class TrangChu extends javax.swing.JFrame {
             actionPerformedPhuTungDaChonEnabled = true;
             cb_phuTungCanThay.setSelectedIndex(0);
             tare_noiDungSuaChua.setText("Nhập nội dung cần sửa");
-            cbSuaChua_phuTungDaChon.setEnabled(true);
+//            cbSuaChua_phuTungDaChon.setEnabled(true);
             btnSuaChua_timKhachHang.setVisible(true);
             btnSuaChua_timPhuTung.setVisible(true);
             cb_phuTungCanThay.setEnabled(true);
@@ -6354,7 +6290,7 @@ public class TrangChu extends javax.swing.JFrame {
                 phieuSuaChua.setTongTien(Double.parseDouble(lbSuaChua_tongTien.getText()));
                 phieuSuaChua.setTrangThai("Đang xử lý");
                 phieuSuaChua.setMaKhachHang(cbSuaChua_danhSachKhachHang.getSelectedItem().toString().split(" ")[0]);
-                phieuSuaChua.setMaLoaiXe(cb_loaiXe.getSelectedItem().toString().split(" ")[0]);
+                phieuSuaChua.setMaLoaiXe(tfSuaChua_loaiXe.getText());
                 phieuSuaChua.setMaNhanVien(cb_nhanVienSuaChua.getSelectedItem().toString().split(" ")[0]);
                 phieuSuaChua.setThoiGian(LocalDateTime.now());
                 
@@ -6381,7 +6317,7 @@ public class TrangChu extends javax.swing.JFrame {
                 }
                 
                 
-                cbSuaChua_phuTungDaChon.setEnabled(false);
+//                cbSuaChua_phuTungDaChon.setEnabled(false);
                 btnSuaChua_timKhachHang.setVisible(false);
                 btnSuaChua_timPhuTung.setVisible(false);
                 cb_phuTungCanThay.setEnabled(false);
@@ -6404,7 +6340,7 @@ public class TrangChu extends javax.swing.JFrame {
     }//GEN-LAST:event_tfSuaChua_tenKhachHangMouseClicked
 
     private void btnSuaChua_themKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaChua_themKhachHangActionPerformed
-        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang();
+        Frame_ThemKhachHang frame_themKhachHang = new Frame_ThemKhachHang(nhanVienDangNhap);
         frame_themKhachHang.setVisible(true);
         frame_themKhachHang.setSize(950, 400);
         frame_themKhachHang.setLocation(0,0);
@@ -7481,9 +7417,13 @@ public class TrangChu extends javax.swing.JFrame {
                 lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(chiTieuTraHang.getTongTien()));
                         
                 
-                double loiNhuan = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
-                double doanhThu = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
-                double chiTieu = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                double loiNhuan1 = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
+                double doanhThu1 = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
+                double chiTieu1 = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                
+                long loiNhuan = (long) loiNhuan1;
+                long doanhThu = (long) doanhThu1;
+                long chiTieu = (long) chiTieu1;
                 
                 jPanel133.removeAll();
                 src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
@@ -7560,13 +7500,17 @@ public class TrangChu extends javax.swing.JFrame {
                 lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(chiTieuTraHang.getTongTien()));
                         
                 
-                double loiNhuan = 0;
-                double doanhThu = 0;
-                double chiTieu = 0;
+                double loiNhuan1 = 0;
+                double doanhThu1 = 0;
+                double chiTieu1 = 0;
                 
-                loiNhuan = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
-                doanhThu = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
-                chiTieu = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                loiNhuan1 = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
+                doanhThu1 = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
+                chiTieu1 = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                
+                long loiNhuan = (long) loiNhuan1;
+                long doanhThu = (long) doanhThu1;
+                long chiTieu = (long) chiTieu1;
                 
                 jPanel133.removeAll();
                 src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
@@ -7645,13 +7589,17 @@ public class TrangChu extends javax.swing.JFrame {
                 lbDoanhThu_tienTraHangNhaCungCap.setText(String.valueOf(chiTieuTraHang.getTongTien()));
                         
                 
-                double loiNhuan = 0;
-                double doanhThu = 0;
-                double chiTieu = 0;
+                double loiNhuan1 = 0;
+                double doanhThu1 = 0;
+                double chiTieu1 = 0;
                 
-                loiNhuan = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
-                doanhThu = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
-                chiTieu = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                loiNhuan1 = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien() - chiTieuTraHang.getTongTien() - chiTieuNhapHang.getTongTien() - chiTieuTienLuongNhanVien.getTongTien();
+                doanhThu1 = doanhThuHoaDon.getTongTien() + doanhThuSuaChua.getTongTien() + doanhThuTraHang.getTongTien();
+                chiTieu1 = chiTieuTraHang.getTongTien() + chiTieuNhapHang.getTongTien() + chiTieuTienLuongNhanVien.getTongTien();
+                
+                long loiNhuan = (long) loiNhuan1;
+                long doanhThu = (long) doanhThu1;
+                long chiTieu = (long) chiTieu1;
                 
                 jPanel133.removeAll();
                 src.UI.Chart.chat.Chart chart2 = new src.UI.Chart.chat.Chart();
@@ -7737,9 +7685,9 @@ public class TrangChu extends javax.swing.JFrame {
                 List<DoanhThuTrongNam> chiTieuNhapHang = doanhThuService.tinhChiTieuPhieuNhapHangTrongNamNhatDinh( nam);
                 List<DoanhThuTrongNam> chiTieuTienLuongNhanVien = doanhThuService.tinhTienLuongNhanVienTrongNamNhatDinh( nam);
                 
-                double loiNhuanTong = 0;
-                double doanhThuTong = 0;
-                double chiTieuTong = 0;
+                double loiNhuanTong1 = 0;
+                double doanhThuTong1 = 0;
+                double chiTieuTong1 = 0;
                 int soLuongHoaDon = 0;
                 int soLuongPhieuSuaChua = 0;
                 int soLuongPhieuTraHangNhaCungCap = 0;
@@ -7747,12 +7695,12 @@ public class TrangChu extends javax.swing.JFrame {
                 int soLuongPhieuNhapHang = 0;
                 int soLuongPhieuLuong = 0;
                 
-                double tongTienHoaDon = 0;
-                double tongTienPhieuSuaChua = 0;
-                double tongTienPhieuTraHangNhaCungCap = 0;
-                double tongTienPhieuTraHangKhachHang = 0;
-                double tongTienPhieuNhapHang = 0;
-                double tongTienPhieuLuong = 0;
+                double tongTienHoaDon1 = 0;
+                double tongTienPhieuSuaChua1 = 0;
+                double tongTienPhieuTraHangNhaCungCap1 = 0;
+                double tongTienPhieuTraHangKhachHang1 = 0;
+                double tongTienPhieuNhapHang1 = 0;
+                double tongTienPhieuLuong1 = 0;
                 
                 
                 for (int i =1; i <= 12; i++){
@@ -7763,7 +7711,7 @@ public class TrangChu extends javax.swing.JFrame {
                         if(doanhThuHoaDon.get(j).getThang() == i){
                             doanhThu = doanhThu + doanhThuHoaDon.get(j).getTongTien();
                             soLuongHoaDon = soLuongHoaDon + doanhThuHoaDon.get(j).getSoLuong();
-                            tongTienHoaDon = tongTienHoaDon + doanhThuHoaDon.get(j).getTongTien();
+                            tongTienHoaDon1 = tongTienHoaDon1 + doanhThuHoaDon.get(j).getTongTien();
                             break;
                         } 
                     }
@@ -7772,7 +7720,7 @@ public class TrangChu extends javax.swing.JFrame {
                         if(doanhThuSuaChua.get(j).getThang() == i){
                             doanhThu = doanhThu + doanhThuSuaChua.get(j).getTongTien();
                             soLuongPhieuSuaChua = soLuongPhieuSuaChua + doanhThuSuaChua.get(j).getSoLuong();
-                            tongTienPhieuSuaChua = tongTienPhieuSuaChua + doanhThuSuaChua.get(j).getTongTien();
+                            tongTienPhieuSuaChua1 = tongTienPhieuSuaChua1 + doanhThuSuaChua.get(j).getTongTien();
                             break;
                         } 
                     }
@@ -7781,7 +7729,7 @@ public class TrangChu extends javax.swing.JFrame {
                         if(doanhThuTraHang.get(j).getThang() == i){
                             doanhThu = doanhThu + doanhThuTraHang.get(j).getTongTien();
                             soLuongPhieuTraHangNhaCungCap = soLuongPhieuTraHangNhaCungCap + doanhThuTraHang.get(j).getSoLuong();
-                            tongTienPhieuTraHangNhaCungCap = tongTienPhieuTraHangNhaCungCap + doanhThuTraHang.get(j).getTongTien();
+                            tongTienPhieuTraHangNhaCungCap1 = tongTienPhieuTraHangNhaCungCap1 + doanhThuTraHang.get(j).getTongTien();
                             break;
                         } 
                     }
@@ -7790,7 +7738,7 @@ public class TrangChu extends javax.swing.JFrame {
                         if(chiTieuNhapHang.get(j).getThang() == i){
                             chiTieu = chiTieu + chiTieuNhapHang.get(j).getTongTien();
                             soLuongPhieuNhapHang = soLuongPhieuNhapHang + chiTieuNhapHang.get(j).getSoLuong();
-                            tongTienPhieuNhapHang = tongTienPhieuNhapHang + chiTieuNhapHang.get(j).getTongTien();
+                            tongTienPhieuNhapHang1 = tongTienPhieuNhapHang1 + chiTieuNhapHang.get(j).getTongTien();
                             break;
                         } 
                     }
@@ -7799,7 +7747,7 @@ public class TrangChu extends javax.swing.JFrame {
                         if(chiTieuTraHang.get(j).getThang() == i){
                             chiTieu = chiTieu + chiTieuTraHang.get(j).getTongTien();
                             soLuongPhieuTraHangKhachHang = soLuongPhieuTraHangKhachHang + chiTieuTraHang.get(j).getSoLuong();
-                            tongTienPhieuTraHangKhachHang = tongTienPhieuTraHangKhachHang + chiTieuTraHang.get(j).getTongTien();
+                            tongTienPhieuTraHangKhachHang1 = tongTienPhieuTraHangKhachHang1 + chiTieuTraHang.get(j).getTongTien();
                             break;
                         } 
                     }
@@ -7808,19 +7756,27 @@ public class TrangChu extends javax.swing.JFrame {
                         if(chiTieuTienLuongNhanVien.get(j).getThang() == i){
                             chiTieu = chiTieu + chiTieuTienLuongNhanVien.get(j).getTongTien();
                             soLuongPhieuLuong = soLuongPhieuLuong + chiTieuTienLuongNhanVien.get(j).getSoLuong();
-                            tongTienPhieuLuong = tongTienPhieuLuong + chiTieuTienLuongNhanVien.get(j).getTongTien();
+                            tongTienPhieuLuong1 = tongTienPhieuLuong1 + chiTieuTienLuongNhanVien.get(j).getTongTien();
                             break;
                         } 
                     }
-                    doanhThuTong += doanhThu;
-                    chiTieuTong += chiTieu;
+                    doanhThuTong1 += doanhThu;
+                    chiTieuTong1 += chiTieu;
                     String thang = "Tháng " + String.valueOf(i);
                     chart2.addData(new ModelChart(thang, new double[]{doanhThu, chiTieu, loiNhuan}));
                     
                     
                 }
                 
-                loiNhuanTong = doanhThuTong - chiTieuTong;
+                loiNhuanTong1 = doanhThuTong1 - chiTieuTong1;
+                
+                long tongTienHoaDon = (long) tongTienHoaDon1;
+                long tongTienPhieuLuong = (long) tongTienPhieuLuong1;
+                long tongTienPhieuNhapHang = (long) tongTienPhieuNhapHang1;
+                long tongTienPhieuSuaChua = (long) tongTienPhieuSuaChua1;
+                long tongTienPhieuTraHangKhachHang = (long) tongTienPhieuTraHangKhachHang1;
+                long tongTienPhieuTraHangNhaCungCap = (long) tongTienPhieuTraHangNhaCungCap1;
+                long loiNhuanTong = (long) loiNhuanTong1;
                 
                 lbDoanhThu_soLuongPhieuLuong.setText(String.valueOf(soLuongPhieuLuong) + " phiếu lương");
                 lbDoanhThu_soLuongPhieuNhapHang.setText(String.valueOf(soLuongPhieuNhapHang) + " phiếu nhập hàng");
@@ -8120,6 +8076,14 @@ public class TrangChu extends javax.swing.JFrame {
             Logger.getLogger(TrangChu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPhieuNhapHang_taiLaiActionPerformed
+
+    private void btnDatHang_loadLaiKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_loadLaiKhachHangActionPerformed
+        hienThiDanhSachKhachHangTaiCombobox(cbDatHang_danhSachKhachHang);
+    }//GEN-LAST:event_btnDatHang_loadLaiKhachHangActionPerformed
+
+    private void btnDatHang_loadLaiKhachHang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatHang_loadLaiKhachHang1ActionPerformed
+        hienThiDanhSachKhachHangTaiCombobox(cbSuaChua_danhSachKhachHang);
+    }//GEN-LAST:event_btnDatHang_loadLaiKhachHang1ActionPerformed
     
     
     
@@ -8480,11 +8444,10 @@ public class TrangChu extends javax.swing.JFrame {
                 Vector columnData = new Vector();
                 columnData.add(khachHangService.hienThiKhachHangTheoMaKhachHang(phieuSuaChua.getMaKhachHang()).getTenKhachHang());
                 columnData.add(khachHangService.hienThiKhachHangTheoMaKhachHang(phieuSuaChua.getMaKhachHang()).getSoDienThoai());
-                columnData.add(loaiXeService.hienThiLoaiXeTheoMaLoaiXe(phieuSuaChua.getMaLoaiXe()).getTenLoaiXe());
+                columnData.add(phieuSuaChua.getMaLoaiXe());
                 columnData.add(phieuSuaChua.getNoiDungSuaChua());
                 columnData.add(nhanVienService.hienThiNhanVienTheoMaNhanVien(phieuSuaChua.getMaNhanVien()).getTenNhanVien());
                 columnData.add(phieuSuaChua.getTongTien());
-                columnData.add(phieuSuaChua.getTrangThai());
                 columnData.add(phieuSuaChua.getMaPhieuSuaChua());
                 recordTable.addRow(columnData);
             }
@@ -8652,7 +8615,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        cbHangHoa_loaiHangDaChon.setPopupVisible(true);
 //        cbHangHoa_loaiXeDaChon.setPopupVisible(true);
         cbHangHoa_loaiHangDaChon.removeAllItems();
-        cbHangHoa_loaiXeDaChon.removeAllItems();
+
         DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachHangHoa.getModel();
         recordTable.setRowCount(0);
         List<HangHoa> danhSachHangHoa = hangHoaService.hienThiTatCaHangHoa(maHangHoa,tenHangHoa);
@@ -8720,7 +8683,7 @@ public class TrangChu extends javax.swing.JFrame {
 //        cbHangHoa_loaiHangDaChon.setPopupVisible(true);
 //        cbHangHoa_loaiXeDaChon.setPopupVisible(true);
         cbHangHoa_loaiHangDaChon.removeAllItems();
-        cbHangHoa_loaiXeDaChon.removeAllItems();
+
         DefaultTableModel recordTable = (DefaultTableModel)tb_danhSachHangHoa.getModel();
         recordTable.setRowCount(0);
         danhSachHangHoaMain = hangHoaService.hienThiTatCaHangHoa("","");
@@ -8843,11 +8806,7 @@ public class TrangChu extends javax.swing.JFrame {
     
     public void hienThiComboboxLoaiXe() throws SQLException{
         List<LoaiXe> danhSachLoaiXe = loaiXeService.hienThiTatCaLoaiXe();
-        cbHangHoa_loaiXe.removeAllItems();
-        cbHangHoa_loaiXe.addItem("Chọn loại xe");
-        for (LoaiXe loaiXe : danhSachLoaiXe) {
-            cbHangHoa_loaiXe.addItem(loaiXe.getTenLoaiXe());
-        }
+
     }
     
     public boolean kiemTraItemTonTaiTrongComboboxLoaiHang(String loaiHang, javax.swing.JComboBox<String> cbHangHoa_loaiHang1){
@@ -9198,6 +9157,8 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JButton btnChamCong_timKiem;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDatHang_datHang;
+    private javax.swing.JButton btnDatHang_loadLaiKhachHang;
+    private javax.swing.JButton btnDatHang_loadLaiKhachHang1;
     private javax.swing.JButton btnDatHang_themKhachHang;
     private javax.swing.JButton btnDatHang_timKhachHang;
     private javax.swing.JButton btnDoanhThu_timKiem;
@@ -9253,8 +9214,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbDatHang_danhSachKhachHang;
     private javax.swing.JComboBox<String> cbHangHoa_loaiHang;
     private javax.swing.JComboBox<String> cbHangHoa_loaiHangDaChon;
-    private javax.swing.JComboBox<String> cbHangHoa_loaiXe;
-    private javax.swing.JComboBox<String> cbHangHoa_loaiXeDaChon;
     private javax.swing.JComboBox<String> cbHoaDon_nguoiTao;
     private javax.swing.JComboBox<String> cbLichLamViec_bangLuong;
     private javax.swing.JComboBox<String> cbLichLamViec_caLam;
@@ -9265,7 +9224,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbSuaChua_phuTungDaChon;
     private javax.swing.JComboBox<String> cb_bangCongNhanVien;
     private javax.swing.JComboBox<String> cb_bangCongTrangThai;
-    private javax.swing.JComboBox<String> cb_loaiXe;
     private javax.swing.JComboBox<String> cb_nhanVienSuaChua;
     private javax.swing.JComboBox<String> cb_phuTungCanThay;
     private src.UI.Chart.chat.Chart chart1;
@@ -9453,7 +9411,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
@@ -9524,7 +9481,6 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
@@ -9702,6 +9658,7 @@ public class TrangChu extends javax.swing.JFrame {
     private javax.swing.JTextField tfNhanVienChiNhanh_locTuDong;
     private javax.swing.JTextField tfPhanQuyen_matKhau;
     private javax.swing.JTextField tfPhanQuyen_tenTenKhoan;
+    private javax.swing.JTextField tfSuaChua_loaiXe;
     private javax.swing.JTextField tfSuaChua_tenKhachHang;
     private javax.swing.JTextField tfSuaChua_tenPhuTungTimKiem;
     private com.toedter.calendar.JYearChooser yearChooserChamCong_theoNam_nam;

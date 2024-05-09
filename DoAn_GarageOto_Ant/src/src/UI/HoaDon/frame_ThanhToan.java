@@ -602,7 +602,7 @@ public class Frame_ThanhToan extends javax.swing.JFrame {
             double tienThanhToan = Double.parseDouble(tfThanhToan_khachThanhToan.getText());
             double tienCanTra = Double.parseDouble(lbThanhToan_khachCanTra.getText());
             tfThanhToan_tienThuaTraKhach.setText(String.valueOf(tienThanhToan - tienCanTra));
-            if (tienThanhToan >= tienCanTra){
+            if (tienThanhToan >= tienCanTra && Double.parseDouble(tfThanhToan_giamGia.getText()) > 0 && Double.parseDouble(tfThanhToan_giamGia.getText()) < 100 ){
                 btnThanhToan_thanhToan.setVisible(true);
             } else {
                 btnThanhToan_thanhToan.setVisible(false);
